@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包立即执行函数</title>
+</head>
+
+<body>
+    <h3>闭包</h3>
+    <p> 内部函数被保存到了外面 必须生成闭包 </p>
+    <p> 函数执行完 销毁 ao;</p>
+    <p> 导致 原有作用域链不释放 内存泄露(占用 反向理解)</p>
+    <p> 作用 1 实现共有变量 函数累加器 例2</p>
+    <p> 2可以做缓存 存储结构 </p>
+    <p> 3实现封装 实现 私有化(对象里面应用)</p>
+    <p> 4模块化开发 防止污染全局变量</p>
+    <h3>立即执行函数</h3>
+    <p>不想用函数声明(初始化只执行一次的函数)</p>
+    <p>(匿名函数()); 执行玩以后释放</p>
+    <p>只有表达式才能被执行符号执行(),函数声明不能被直接执行</p>
+
+</body>
+<script>
+    // function a() {
+    //     function b() {
+    //         var bbb = 234;
+    //         console.log(aaa);
+    //     }
+    //     var aaa = 123;
+    //     return b;
+    // }
+    // var glob = 100;
+    // var demo = a();
+    // demo();
+
+    //   a  执行完 返回出 b  赋值给 demo   b 定义的时 保存了a 的作用域链
+    function a() {
+        var num = 100;
+
+        function b() {
+            num++;
+            console.log(num);
+        }
+        return b;
+        console.log(num); //  b  一直用的 b 拿到a 的ao  绑定自己的 ao
+    }
+    var demo = a();
+    demo();
+    demo();
+
+
+    function test() {
+        var num = 100;
+
+        function a() {
+            num++;
+            console.log(num);
+
+        }
+
+        function b() {
+            num--;
+            console.log(num);
+        }
+        return [a, b]
+        //  a 和 b  并列 公用一个 test 的 Ao;
+
+    }
+    var arry = test();
+    arry[0]();
+    arry[1]();
+    // 缓存小应用
+    function eater() {
+        var food = "";
+        var obj = {
+            eat: function () {
+                console.log(" i am eating " + food);
+                food = "";
+            },
+            push: function (myFood) {
+                food = myFood;
+            }
+        }
+        return obj;
+    }
+    var eater1 = eater();
+    eater1.push("bananr");
+    eater1.eat();
+    //  立即执行函数
+    (function abc() { //  建议使用 w3c 
+        var a = 3;
+        var b = 4;
+        console.log(a + b)
+    }());
+    var num = (function abc(a, b) {
+
+        return a + b;
+    }(1, 2));
+    console.log(num); //  接收返回值
+    (function a() {})(); // 也是立即行
+    //  只有表达式才能被执行符号执行
+
+    //  () 执行符号
+
+    +
+    function tset2() { //  + - !
+        console.log("a")
+    }(); //  也是立即执行函数
+    // console.log(test2)
+
+    //  
+    function aa(a, b, c) {
+        console.log(a, b, c)
+    }(1, 2, 3); //  不执行 也不报错;
+</script>
+
+</html>

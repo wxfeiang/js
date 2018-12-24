@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闭包精细1</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //  多对一
+    /*  function test() {
+         var arr = [];
+         for (var i = 0; i < 10; i++) {
+             arr[i] = function () { //  i 变 
+                 console.log(i) // 当前 函数体的内容没有执行 
+             }
+             //  赋值语句 后面函数没有执行 
+             //  循环结束  i = 10;
+             // 外部 调用才执行
+         }
+         return arr;
+     } 
+      var myarr = test();
+      for (var j = 0; j < 10; j++) {
+        myarr[j](); //  返回 10 个 10
+    }
+     
+     */
+    function test() {
+        var arr = [];
+        for (var i = 0; i < 10; i++) {
+            //  立即执行函数思路
+            (function (j) {
+                arr[j] = function () { // 赋值语句 
+                    console.log(j) // b 打印 0-9 ;
+                    // i =10 
+                }
+            }(i));
+
+        }
+        return arr;
+    }
+    var myarr = test();
+    for (var j = 0; j < 10; j++) {
+        myarr[j](); //  返回 10 个数
+    }
+
+    //  10?
+    // 全是 10 ?
+
+    //  10个1
+</script>
+
+</html>

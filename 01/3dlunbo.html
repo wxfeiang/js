@@ -156,7 +156,7 @@
     console.log(aName)
 
     function nextPic() { //  向下翻页   把数组的最后一个 拿到第一个位置  在删除
-        aName.unshift(aName[5]);
+        aName.unshift(aName[aName.length - 1]);
         // 第一个位置
         aName.pop(); // 在删除最后一个
 
