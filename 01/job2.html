@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>job.2</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <script>
+        a = 100;
+
+        function demo(e) {
+            function e() {} //  在提升 
+            console.log(e) //  
+            arguments[0] = 2; //
+            console.log(e); // 2
+            if (a) {
+                var b = 123;
+
+                function c() {}
+            }
+            var c = 0;
+            a = 10;
+            var a;
+            console.log(b); // unfined
+            f = 123;
+            console.log(c); //unfined   0 
+            console.log(a); // 10
+
+
+
+        }
+        var a;
+        demo(1);
+        console.log(a); // 100
+        console.log(f); //123
+
+
+
+        var str = false + 1;
+        console.log(str); // 1
+        var demo1 = false == 1;
+        console.log(demo1); //false
+        if (typeof (a) && -true + (+undefined) + "") { // undefined  拼接成为字符串
+            console.log("正确");
+
+        }
+        if (11 + "11" * 2 == 33) {
+            console.log("正确");
+        };
+        !!" " + 11 + "" - false || console.log("打印不出来");
+
+        // 经典题
+        window.foo || (window.foo = "bar"); //  先算括号,
+        console.log(window.foo)
+    </script>
+</body>
+
+</html>

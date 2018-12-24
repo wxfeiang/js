@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="rest.css">
+    <title>3d轮播</title>
+    <style>
+        .carousel {
+            margin: 80px 0;
+            width: 1200;
+            height: 367px;
+
+        }
+
+        .imgBox {
+            width: 1200px;
+            height: 336px;
+            margin: 0 auto;
+
+        }
+
+        .linebar {
+            width: 1200px;
+            margin: 0 auto;
+            height: 30px;
+            line-height: 30px;
+
+            text-align: center;
+
+        }
+
+        .linebar span {
+            display: inline-block;
+            width: 60px;
+            height: 6px;
+
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        /* 定位元素  偏移 transform  节省性能 */
+
+        .ulbox {
+            position: relative;
+            height: 336px;
+            overflow: hidden;
+
+        }
+
+        .ulbox li {
+            position: absolute;
+            width: 730px;
+            height: 336px;
+            transition: 0.5s;
+
+        }
+
+        .ulbox li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .list1 {
+            z-index: 1;
+            transform: scale(0.80);
+            /* 变换原点 */
+            transform-origin: 0 100%;
+        }
+
+        .list2 {
+            transform: translate(235px);
+            z-index: 2;
+        }
+
+        .list3 {
+            transform: translate(730px) scale(0.81);
+            z-index: 1;
+
+            transform-origin: 100% 100%;
+
+        }
+
+        .list4 {
+            transform: translate(956px) scale(0.81);
+            transform-origin: 100% 100%;
+        }
+
+        .list5 {
+            transform: translate(1200px) scale(0.81);
+            transform-origin: 100% 100%;
+        }
+
+        .list6 {
+            transform: translate(1435px) scale(0.81);
+            transform-origin: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="imgBox">
+            <ul class="clearfix ulbox">
+                <li class="list1">
+                    <img src="img/img (4).jpg" alt="">
+                </li>
+                <li class="list2">
+                    <img src="img/img (2).jpg" alt="">
+                </li>
+                <li class="list3">
+                    <img src="img/img (3).jpg" alt="">
+                </li>
+                <li class="list4">
+                    <img src="img/img (1).jpg" alt="">
+                </li>
+                <li class="list5">
+                    <img src="img/img (5).jpg" alt="">
+                </li>
+                <li class="list6">
+                    <img src="img/img (6).jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="linebar">
+
+        </div>
+    </div>
+
+
+</body>
+<script>
+    //  es6  语法
+    // 切换原理   动态 改变 类名  层级
+    //  获取所有 li  获取类名
+    var aLi = document.querySelectorAll("li");
+
+    var aName = [];
+    var index = 0; // 初始状态
+    var oImgbox = document.querySelector(".imgBox");
+    var len = aLi.length;
+    // console.log(aLi.length)
+    //生成底部按钮
+    for (var i = 0; i < len; i++) {
+        document.getElementsByClassName("linebar")[0].innerHTML += '<span style="margin-right:5px;"></span>';
+    }
+    var aSpan = document.querySelectorAll("span");
+    setColor();
+    for (var item of aLi) {
+        //console.log(item) // 数组的每一个元素
+        aName.push(item.classList[0])
+
+    }
+    console.log(aName)
+
+    function nextPic() { //  向下翻页   把数组的最后一个 拿到第一个位置  在删除
+        aName.unshift(aName[5]);
+        // 第一个位置
+        aName.pop(); // 在删除最后一个
+
+        for (var i = 0; i < len; i++) {
+            aLi[i].setAttribute("class", aName[i]);
+        }
+        index++;
+        //console.log(index)
+        if (index > aLi.length - 1) {
+            index = 0;
+        }
+        setColor();
+    }
+
+    function prePic() { //  向上翻页   把数组第一个 拿到最后位置  在删除
+        aName.push(aName[0]);
+        // 第一个位置
+        aName.shift(); // 在删除第一个
+        for (var i = 0, len = aLi.length; i < len; i++) {
+            aLi[i].setAttribute("class", aName[i]);
+        }
+        index--;
+        if (index < 0) {
+            index = aLi.length - 1;
+        }
+        setColor();
+    }
+    // 按钮颜色变换
+    function setColor() {
+        for (var item of aSpan) {
+            item.style.background = "#ccc";
+        }
+        aSpan[index].style.background = "#45c17c"
+    }
+    // 点击事件 
+    // document.querySelector(".list1").onclick = prePic;
+    // document.querySelector(".list3").onclick = nextPic;
+    //  做事件监听 事件代理  imgbox
+
+    oImgbox.addEventListener("click", function (ev) {
+        // 判断当前点击元素   鼠标事件  
+        //  console.log(window.event)
+        ev = ev || window.event;
+        console.log(ev.target.parentNode)
+        // 点中的 li 
+        var ele = ev.target.parentNode;
+        var elename = ele.classList[0];
+        switch (ele.classList[0]) {
+            case "list1":
+                prePic();
+                break;
+            case "list3":
+                nextPic();
+                break;
+        }
+
+    })
+    //  点击每一个span 按
+
+
+
+    // 定时任务
+    var timer = setInterval(function () {
+        nextPic();
+
+    }, 1500)
+</script>
+
+</html>

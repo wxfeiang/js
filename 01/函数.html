@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数</title>
+</head>
+
+<body>
+    变量声明:
+    <br> HTML 特殊字符 &yen; &#8672;&#9650;&#9803;100m&sup2;
+
+</body>
+<script>
+    var num = 132.1451846;
+    //   小驼峰 命名规则
+    // 函数声明
+    function text(a, b) { //   形参 
+
+        // console.log(a+b)
+        /*  if(a>10){
+             console.log(a-b)
+
+         }else{
+             console.log(b-a)
+         } */
+        console.log(arguments); // 实参列表
+        var ss = null;
+        // 
+        /* for(var i=0; i<arguments.slength;i++){
+             ss += arguments[i];
+        }
+        console.log(ss) */
+        console.log(text.length + "=============" + "形参长度  函数名的length") // 形参长度  函数名的length
+
+        var a = 3;
+        arguments[0] = 5;
+
+        console.log(a)
+
+        var b = 5;
+        arguments[1] = 10;
+        console.log(b)
+
+        //  终止函数并且  加 返回值  return 
+
+    }
+
+    text(2) // 实参
+
+    // 定义一个方法  任意个数 求和   arguments
+    /* var text = function abc() { // 函数表达式
+
+    } */
+    // text.name = abc
+    // 匿名函数表达式 --------->函数表达式
+    var demo = function () {}
+
+    function myNumber(tager) {
+        return +tager;
+    }
+    //接受返回值
+    var num = myNumber("123");
+    console.log(typeof (num) + "类型的" + num)
+    //typeof   功能一样
+    typeof 123;
+</script>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数作业1</title>
+</head>
+
+<body>
+    <script>
+        //1 写一个函数  功能是告知你所选定的小动物的叫声
+        function scream(anmial) {
+            switch (anmial) {
+                case "dog":
+                    console.log("wang");
+                    break;
+                case "cat":
+                    console.log("miao");
+                    break;
+                case "feech":
+                    console.log("tupao");
+                    break;
+            }
+
+        }
+        //2 写一个函数  实现加法计算器
+        function jia() {
+            var num = null;
+            for (var i = 0; i < arguments.length; i++) {
+                num += arguments[i]
+            }
+            console.log(num)
+        }
+        //3 定义一组函数  输入数字  逆转病输出汉字形式 
+        function reverse() {
+            var num2 = window.prompt("input");
+            var str = "";
+            for (var i = num2.length - 1; i >= 0; i--) {
+                str += tranform(num2[i]);
+
+            }
+            document.write(str)
+
+            function tranform(target) {
+                switch (target) {
+                    case "1":
+                        return "壹";
+                    case "2":
+                        return "俩"
+                }
+            }
+        }
+        //4 实现 N 的阶乘
+        //  递归方法实现  规律  出口
+        function jc(n) {
+            if (n == 1 || n == 0) { //  系能不好  先执行的最后执行完
+                return 1;
+            }
+            return n * jc(n - 1);
+        }
+
+        // 函数作用方法实现
+        // 5  输入一个低于10 位 的数字 输出这串数字的中文大写 
+        /*  function upper() {
+             var num3 = window.prompt("input");
+             document.write(num3)
+
+             function uppers(num3) {
+                 return
+
+             }
+         } */
+        // 函数预编译
+
+        function test5() {
+            console.log(b); // unfined
+            console.log(a);
+            if (a) {
+                var b = 100;
+
+            }
+            c = 234; //  暗示提升全局
+            console.log(c); // 234
+
+        }
+        var a;
+        test5(); //  函数执行顺序
+
+        a = 10;
+        console.log(a);
+
+
+
+
+        function bar() {
+            return foo; // 有函数 返回
+
+            foo = 10;
+
+            function foo() {
+
+            }
+            var foo = 11;
+        }
+        console.log(bar());
+    </script>
+</body>
+
+</html>

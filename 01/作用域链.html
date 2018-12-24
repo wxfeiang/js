@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域链</title>
+</head>
+
+<body>
+    <script>
+        //  作用域精准
+        // 一切对象都有属性
+        //   [[scope]]  隐示属性
+        //  多次执行 Ao 临时存储销毁
+        function test() {
+            var tt = 123;
+            //console.log(tt);
+
+        }
+        test();
+        // console.log(test.name);
+        //  在那个函数里面查找变量 在该函数的作用域链顶端开始查找\ 
+        function a() {
+            function b() {
+                var bb = 123;
+                aa = 0;
+            }
+            var aa = 123;
+            b();
+            console.log(aa)
+        }
+        a();
+        // 注解
+    </script>
+</body>
+
+</html>
