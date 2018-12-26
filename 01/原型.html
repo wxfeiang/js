@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型原型链</title>
+</head>
+<h3>原型原型链</h3>
+<p>原型是functinon 对象的一个属性,他定义构造函数制造出的对象的公共祖先,
+    <br> 通过改构造函数产生的对象,可以继承属性和方法,原型也是一种对象.
+</p>
+<p>利用原型的特点和概念,可以提取共有的属性.</p>
+<p>对象查看原型,__potytype</p>
+<p>对象如何查看对象的构造函数 ___ consturctor{构造器} 手动更改</p>
+
+<body>
+
+</body>
+<script>
+    // 构造函数  一般用 大驼峰标识
+    function Person() {
+        // 自带 Person.protype   -- 原型
+        //  protype= {}  // 原型对象  可用于继承
+        Person.prototype.name = "Mrwang";
+
+    }
+    var person = new Person();
+    console.log(person.name) // 继承
+    // person.lastname   修改的是自己属性 没有 访问的是原型属性  后代不能改动祖先 (增 删 改 查 )
+
+    //  再次简化原型
+    Car.prototype = {
+        height: 1400,
+        name: "BMW",
+        long: "1900",
+    }
+
+    function Car() {
+
+    }
+    car1 = new Car();
+</script>
+
+</html>

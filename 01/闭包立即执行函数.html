@@ -21,6 +21,8 @@
     <p>不想用函数声明(初始化只执行一次的函数)</p>
     <p>(匿名函数()); 执行玩以后释放</p>
     <p>只有表达式才能被执行符号执行(),函数声明不能被直接执行</p>
+    <h3>,操作符</h3>
+    <p>先看前面,再看后面 并返回结果</p>
 
 </body>
 <script>
@@ -115,6 +117,26 @@
     function aa(a, b, c) {
         console.log(a, b, c)
     }(1, 2, 3); //  不执行 也不报错;
+
+
+    // 例5
+    var f = (
+        function f() {
+            return "1";
+        },
+        function g() {
+            return 2;
+        }
+    )();
+    console.log(typeof (f)); //   ,返回最后一个值  number
+
+    // 例6
+    var x = 1;
+    if (function cc() {}) { // 表达式  非函数定义 
+        x += typeof cc //未经声明的变量 只有在 typeof 里不不会报错 并返回 字符串类型undefined
+    }
+
+    console.log(x) // 1undefined
 </script>
 
 </html>

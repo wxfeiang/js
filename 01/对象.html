@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象</title>
+</head>
+
+<body>
+    <h3>对象(引用值,</h3>
+    <p>属性的增,删,改,查</p>
+    <p>对象的创建方法</p>
+    <p>字面量</p>
+    <p>构造函数隐示 通过 new 关键字 var this= {} 在最后返回 this </p>
+    <p>原始值 不能才做操作属性</p>
+
+</body>
+<script>
+    var wang = {
+        name: "Mrwang",
+        age: 18,
+        sex: "melode",
+        health: 100,
+        smoke: function () {
+            console.log("i am smoking !!!");
+            this.health--;
+        }
+
+    }
+    console.log(wang.smoke)
+    console.log(wang.smoke())
+
+    wang.wife = "tt"; // 增加一个属性  查
+    console.log(wang)
+
+    wang.sex = "111"; // 改
+    console.log(wang)
+
+    delete wang.sex //  删除
+    console.log(wang)
+    console.log(wang.sex) // 对象没有属性 访问返回 undfined
+
+
+    var va = {
+        name: "wang",
+        age: "",
+        sex: "melode",
+        health: 100,
+        smoke: function () {
+
+            this.age = this.sex;
+            console.log("1111")
+        }
+
+    }
+    console.log(va.smoke())
+    console.log(va)
+    // 对象字面量/对象直接量 plainobject 
+    // 构造函数  object, 自定义方法   new object(); 
+    //
+    var obj = new Object();
+    obj.sex = 'sss';
+    console.log(obj)
+    //  构造函数和函数结构上没有区别  new 关键字生成对象  命名大驼峰标识维护方便
+    function Car(color) {
+        // 构造函数 
+        this.name = "BMW";
+        this.height = "1400";
+        this.lang = "4900";
+        this.wight = "1000";
+        this.health = '100';
+        // 变量
+        this.color = color;
+        this.run = function () {
+            this.health--;
+        }
+
+
+    }
+    //  拥有同样的属性  但是不公用
+    var car = new Car("red");
+    // car.name = "1";
+    console.log(car)
+    //car.health = 100;
+    // console.log(car.run())
+    // console.log(car.health)
+    var car2 = new Car();
+    // car2.name = "2";
+    //console.log(car2)
+
+    //student
+    function Student(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.grid = "2017";
+    }
+    var student = new Student("张三", "18", "男");
+    console.log(student)
+
+    //原始值  没有属性不能访问
+    // 包装类
+
+    var str = "1234";
+    str.length = 2;
+    //  new str.length= 2;
+    console.log(str) // 1234
+
+
+    // 例3
+    var strs = "abc";
+    strs += 1;
+    var tests = typeof (str); // String
+    if (tests.length == 6) {
+        tests.sign = "typeof  返回的结果可能为 String"
+        //  原始值  赋值后销毁
+    }
+    console.log(tests.sign)
+
+    var x = 1,
+        y = z = 0;
+
+    function add(n) {
+        return n = n + 1;
+    }
+    y = add(x);
+
+    function add(n) {
+        return n = n + 3;
+    }
+    z = add(x);
+    console.log(x, y, z) // 1 4 4
+    //  监听窗口切换事件
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState == 'hidden') {
+            if (ws) {
+                ws.close(); //关闭websocket
+            }
+        } else {
+
+            location.reload(); //刷新页面
+        }
+    });
+
+    // 给定一个字符串  求其字节长度
+    // 当前 字符为的  unicode  >255  则改字符的长度为2
+    var str = "abcd灯";
+
+    function bytestlength(str) {
+        var cont = str.length;
+        for (var i = 0, len = cont; i < cont; i++) {
+            if (str.charCodeAt(i) > 255) {
+                cont++;
+            }
+        }
+
+        console.log(cont)
+    }
+    bytestlength(str);
+</script>
+
+</html>
