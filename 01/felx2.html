@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="rest.css">
+    <title>测试顶部通栏</title>
+    <style>
+        header {
+            background: #ccc;
+            text-align: center;
+            display: flex;
+            height: 30px;
+            flex-direction: column;
+            line-height: 30px;
+
+        }
+
+        header span:first-child {
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            color: red;
+
+        }
+
+        header span:last-child {
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            color: blue;
+
+        }
+
+        .tab {
+            display: flex;
+
+
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+
+        }
+
+        .tab .items {
+            /* flex: 1; */
+            /* flex: 0 0 33.333333%; */
+            width: 33.33%;
+            flex-grow: 1;
+            /* 定义放大比例 */
+            text-align: center;
+            height: 80px;
+            line-height: 80px;
+            border: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            margin-right: -1px;
+            margin-top: -1px;
+            box-sizing: border-box;
+
+        }
+
+        /* .tab .items:last-child {
+            flex: 1;
+
+        } */
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <span class="back">返回按钮 </span>
+        顶部标题
+        <span class="back">产看更多 </span>
+    </header>
+    <div class="tab">
+        <div class="items">切换一 </div>
+        <div class="items">切换2</div>
+        <div class="items">切3</div>
+        <div class="items">切换一 </div>
+        <div class="items">切换2</div>
+        <div class="items">切3</div>
+        <div class="items">切换一 </div>
+        <div class="items">切换2</div>
+        <div class="items">切3</div>
+
+        <div class="items">切3</div>
+    </div>
+</body>
+
+</html>

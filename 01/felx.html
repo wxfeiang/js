@@ -1,51 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>felx</title>
+    <title>Document</title>
     <link rel="stylesheet" href="rest.css">
     <style>
         ul {
+            height: 100vh;
             display: flex;
-            margin: 50px auto;
-            width: 500px;
-            height: 200px;
-            background: #ccc;
-            justify-content: space-between;
+            /*设置为flex布局*/
+            justify-content: center;
+            /*水平居中*/
+            align-items: center;
+            /*垂直居中*/
+            flex-flow: wrap;
 
+            align-content: center
         }
 
-        .items {
-
-            background: pink;
+        li {
+            width: 100%;
+            margin-bottom: 10px;
+            line-height: 30px;
+            text-align: center
         }
 
-        .item1 {
-            width: 20px;
-            flex: 1;
+        li span {
+            display: inline-block;
+            width: 50px;
+            text-align: right;
         }
 
-        .item2 {
-            width: 50px
-        }
-
-        .item3 {
-            width: 100px
+        li input {
+            border: 1px solid #CCC;
+            border-radius: 4px;
         }
     </style>
 </head>
 
 <body>
     <ul>
-        <li class="items  item1"></li>
-        <li class="items  item2"></li>
-        <li class="items item3"></li>
+        <li>
+            <span>用户名:</span>
+            <input type="text" value="" placeholder="请输入用户名">
+        </li>
+        <li>
+            <span>密码:</span>
+            <input type="password" value="" placeholder="请输入用户名">
+        </li>
+
     </ul>
+
 </body>
-<script>
-</script>
+
+
 
 </html>
