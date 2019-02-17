@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>改变构造this的指向</h3>
+    <img src="img/call.jpg" alt="" width="600" />
+    <h3>共享原型</h3>
+    <img src="img/yuan.png" alt="" width="600" />
+    <h3>圣杯模式</h3>
+    <img src="img/shenbei.png" alt="" width="600" />
+    <h3>私有属性,闭包</h3>
+    <img src="img/siyou.png" alt="" width="600" />
+
+  </body>
+  <script>
+    //  call  应用
+    // 把实参按照形参的个数传进去
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    var person = new Person("wang", "100");
+    var obj = {};
+    Person.call(obj, "aaaa", "100"); // 改变 Persona 的this指向  借用方法
+    console.log(obj);
+    // apply   (传参列表不一样) 传数组进入 argumentes
+    // 继承的发展史
+    // 传统形式  原型链
+    // 借用构造函数  不能继承构造函数的原型 call
+    //  共有原型
+  </script>
+</html>

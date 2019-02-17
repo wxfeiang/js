@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>fatch 测试易源数据接口</title>
+    <link rel="stylesheet" href="rest.css" />
+    <style></style>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+      img {
+        width: 100px;
+        height: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" id="Iput" />
+      <button id="btn" @click="click">featch 测试</button>
+      <h3>数据展示</h3>
+      <ul id="show" style="width: 1000px;">
+        <li v-for="msg in message"></li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // var btn = document.getElementById("btn");
+    var URL = "http://route.showapi.com/883-1 ";
+    var showapi_appid = "53737";
+    var showapi_sign = "a38674f83f404998bd6ac8c4b4a0f62f";
+    new Vue({
+      el: "#app",
+
+      data() {
+        return {
+          showapi_appid: 53737,
+          showapi_sign: "a38674f83f404998bd6ac8c4b4a0f62f",
+          url: "http://news.yesky.com/112/99481112.shtml",
+          needHtml: 0,
+          needContent: 0,
+          needAll_list: 1,
+          message: "",
+          img_list: {}
+        };
+      },
+      methods: {
+        click() {
+          var keyword = Iput.value;
+          fetch(
+            `${URL}?showapi_appid=${this.showapi_appid}&showapi_sign=${
+              this.showapi_sign
+            }&url=${this.url}&needHtml=${this.needHtml}&needContent=${
+              this.needContent
+            }&needAll_list=${this.needAll_list}`
+          )
+            .then(res => res.json())
+            .then(data => {
+              // this.message = data.showapi_res_body.contentlist;
+              this.message = data.showapi_res_body.all_list;
+              this.img_list = data.showapi_res_body.img_list;
+              console.log(this.img_list);
+            })
+            .catch(data => console.log(data));
+        }
+      }
+    });
+  </script>
+</html>

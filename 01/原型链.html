@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
     />
     <meta name="author" content="王鹏" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>原型链</title>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <h3>原型链</h3>
     <p>如何构成原型链</p>
-</body>
-<script>
-    Person.prototype.name = "ABC"
+  </body>
+  <script>
+    Person.prototype.name = "ABC";
 
     function Person() {
-        // __protop__  : prototype  对象的原型
+      // __protop__  : prototype  对象的原型
     }
     var obj = {
-        name: "wang"
-    }
+      name: "wang"
+    };
     var person = new Person();
-    console.log(person.name)
+    console.log(person.name); // 先找自己得 没有 上原型上找
     person.__proto__ = obj;
-    console.log(person.name) //  改变继承原型的指向
+    console.log(person.name); //  改变继承原型的指向
     // 原型链上的 增删改查  都不能操作  可以给原型链上的  添加 属性
-</script>
+    //数组 对象 最好直接用自变量得写法 ,尽量避免使用NEW关键字
+    //constructor 函数构造器
+    // object  creat  (系统规定写入原型)
+    // 绝大多数对象最终都会继承自 Object.proto
 
+    // javascript   toFlexd()对数值取值会有偏差
+    // 可正常操作得 数得范围  前16位,
+  </script>
 </html>

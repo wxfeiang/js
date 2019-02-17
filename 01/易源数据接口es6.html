@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>fatch 测试易源数据接口</title>
+    <link rel="stylesheet" href="rest.css" />
+    <style></style>
+  </head>
+  <body>
+    <input type="text" id="Iput" /> <button id="btn">featch 测试</button>
+    <h3>数据展示</h3>
+    <ul id="show" style="width: 1000px;">
+      <li>
+        <p>标题 : 致青春毕业季美女模特宽屏壁纸</p>
+
+        <div class="imgbox"></div>
+
+        <p>图片类型 : 清纯</p>
+        <p>时间:2019-01-31 12:06:14.591</p>
+      </li>
+    </ul>
+  </body>
+  <script>
+    var btn = document.getElementById("btn");
+    var URL = "http://route.showapi.com/852-2";
+    var showapi_appid = "53737";
+    var showapi_sign = "a38674f83f404998bd6ac8c4b4a0f62f";
+
+    //var params = [];
+
+    // var sendData = {
+    //   showapi_appid: 53737,
+    //   showapi_sign: "a38674f83f404998bd6ac8c4b4a0f62f",
+    //   keyword: "地球",
+    //   page: "1"
+    // };
+    // for (var key in sendData) {
+    //   //数组添加
+    //   params.push(key + "=" + sendData[key]);
+    // }
+    //  http://route.showapi.com/1706-1?showapi_appid=53737&showapi_sign=a38674f83f404998bd6ac8c4b4a0f62f&keyword=地球&page=1
+    // console.log(params);
+    // postData = params.join("&");
+    // console.log(postData);
+    var page = 1;
+    var type = 4001;
+    btn.onclick = function() {
+      var keyword = Iput.value;
+      fetch(
+        `${URL}?showapi_appid=${showapi_appid}&showapi_sign=${showapi_sign}&type=${type}&page=${page}`
+      )
+        .then(res => res.json())
+        .then(data => {
+          //console.log(data.showapi_res_body);
+          var mgs = data.showapi_res_body.pagebean.contentlist;
+          var str = "";
+          //console.log(mgs);
+          for (attr in mgs) {
+            str += `
+                <li >
+                        <p >标题 : ${mgs[attr].title}</p>
+                   
+                        <p>图片类型 : ${mgs[attr].typeName}</p>
+                        <p>时间: ${mgs[attr].ct}</p>
+                    </li>
+              `;
+          }
+          show.innerHTML = str;
+        })
+        .catch(data => console.log(data));
+
+      page++;
+      type++;
+    };
+  </script>
+</html>

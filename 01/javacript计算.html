@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="rest.css" />
+    <title>计算器</title>
+    <style>
+      .bgbox {
+        width: 500px;
+        height: 500px;
+        background: aquamarine;
+        margin: 0 auto;
+      }
+      .cont-box h3 {
+        font-size: 20px;
+      }
+      .cont-box h3 input {
+        margin: 0 auto;
+        text-align: right;
+        width: 90%;
+        height: 50px;
+        line-height: 50px;
+        border: none;
+        background: pink;
+        color: #fff;
+      }
+      .cont-box ul {
+        margin: 20px auto;
+        height: 250px;
+      }
+      .cont-box ul li {
+        float: left;
+        width: 20%;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        background: orangered;
+        margin: 0 10px 10px 0;
+        cursor: pointer;
+      }
+      .cont-box ul li:hover {
+        background: chartreuse;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bgbox">
+      <div class="cont-box">
+        <h3><input type="text" placeholder="简易的计算器" id="oinput" /></h3>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>+</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>-</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>*</li>
+          <li>0</li>
+          <li>C</li>
+          <li>=</li>
+          <li>/</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    //   js 简单计算器的应用
+    //  鼠标划过 对应得按钮  高亮
+    //  按下当前得按钮
+    // 做不同得事
+    // 做运算
+    // 数字一   运算符  数字二 结果
+    // 文本框中 得内容事拼接还是替换
+
+    var oLi = document.getElementsByTagName("li");
+    var oinput = document.getElementById("oinput");
+    var needClear = true; // 开关
+    var num1 = ""; // 数字一
+    var sOpr = ""; // 运算符
+    var num2 = ""; // 数字2
+    Array.prototype.forEach.call(oLi, (el, index, self) => {
+      //  借用数组对象  原型链
+      // es6
+      // console.log(el);
+      // console.log(index);
+      //  console.log(self);
+      el.onmousedown = doIput; // 按钮按下以后得操作
+    });
+    function doIput() {
+      // 获取 按下得键值
+      var keyValue = this.innerHTML;
+      // console.log(keyValue);
+      // 做区分
+      switch (
+        keyValue //  判断每一个键值
+      ) {
+        case "=":
+          // 运算
+          // 获取第二哥数字
+          num2 = oinput.value;
+          oinput.value = calc(num1, num2, sOpr);
+          num = "";
+          break;
+        case "C":
+          // 重置
+          oinput.value = "0";
+          needClear = true;
+          break;
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+          //
+          if (num1.length != 0) {
+            // 直接运算
+
+            num2 = oinput.value;
+            oinput.value = calc(num1, num2, sOpr);
+            num = "";
+          }
+          // 确定运算符
+          // 确定第一个数字
+          num1 = oinput.value;
+          sOpr = keyValue; // 当前的运算符
+          // 拼接结束
+          needClear = true;
+          break;
+        default:
+          // 默认数字得情况下
+          if (needClear) {
+            // 按下替换
+            oinput.value = keyValue;
+            needClear = false;
+          } else {
+            // 拼接
+            oinput.value += keyValue;
+          }
+      }
+    }
+    // 运算公式
+    function calc(num1, num2, sOpr) {
+      var reslut = 0; // 初始
+      switch (sOpr) {
+        case "+":
+          reslut = num1 * 1 + num2 * 1; // *1 处理成为数字
+          break;
+        case "-":
+          reslut = num1 * 1 - num2 * 1;
+          break;
+        case "*":
+          reslut = num1 * 1 * num2 * 1;
+          break;
+        case "/":
+          break;
+          reslut = num1 / num2;
+        default:
+          reslut = num2; // 默认
+          break;
+      }
+
+      return reslut;
+    }
+  </script>
+</html>

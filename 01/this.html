@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>this</title>
+  </head>
+
+  <body></body>
+  <script>
+    // this 问题
+    // (,) 逗号运算符   执行后面得一个
+    //1  预编译阶段  this == window
+    // 2 全局作用域里  this  ==  window
+    // 3 call/ apply   改变函数运行时 this 指向
+    // 4 boj.function();  fun 里面 this 指 obj
+
+    var foo = 123;
+    function print() {
+      this.foo = 234;
+      console.log(foo);
+    }
+    print();  // 234 
+    new print();
+  </script>
+</html>
