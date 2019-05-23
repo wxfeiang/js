@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>demo</title>
+    <style>
+      .clearfix:after {
+        clear: both;
+        visibility: hidden;
+        content: "";
+      }
+      .clearfix {
+        zoom: 1;
+      }
+      ul {
+        list-style: none;
+        background: #ccc;
+      }
+      ul li {
+        float: left;
+        line-height: 30px;
+      }
+      .clearfix:after {
+        content: "";
+        clear: both;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="clearfix">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </body>
+</html>
