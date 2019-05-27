@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>filter</title>
+  </head>
+  <body>
+    <script>
+      //对象数组A   获取数组中指定类型的对像  放到B数组中
+      var products = [
+        { name: "王鹏", age: "16" },
+        { name: "李飒", age: "16" },
+        { name: "王先生", age: "17" },
+        { name: "李先生", age: "18" }
+      ];
+
+      //  把16 的放到 新数组中
+      //es5
+
+      var product1 = [];
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].age == 16) {
+          product1.push(products[i]);
+        }
+      }
+      console.log(product1);
+      //es6
+
+      var products2 = products.filter((pro, index) => {
+        console.log(pro, index);
+        return pro.age == 16;
+      });
+      console.log(products2);
+
+      //  一个对象数组,  过滤条件  age=16 && <10
+
+      var user = [
+        { name: "王鹏", age: "16", type: "1" },
+        { name: "李飒", age: "16", type: "15" },
+        { name: "王先生", age: "17", type: "90" },
+        { name: "李先生", age: "18", type: "9" }
+      ];
+      arr_user = user.filter((us, index) => {
+        return us.age == 16 && us.type > 10;
+      });
+      console.log(arr_user);
+
+
+      // 两个数组  根据A 的Id 过滤不符合B中数据
+      var  post={
+          id:"4",title:"javascript"
+      }
+      var comn = [
+          {postId: "4",cont:"angrue"},
+          {postId: "2",cont:"reaxt"},
+
+          {postId: "4",cont:"vue"},
+          {postId: "2",cont:"lisa"},
+          
+      ]
+      function comst(post,comn){
+          return   comn.filter((c,index)=>{
+              return  c.postId ==post.id
+          })
+
+      }
+      console.log(comst(post,comn))
+    </script>
+  </body>
+</html>
