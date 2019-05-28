@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>some And every</title>
+  </head>
+  <body>
+    <script>
+      //计算数组对象的某个属性 是否否和
+      var conmpuer = [
+        { name: "apple", ram: 16 },
+        { name: "windos", ram: 4 },
+        { name: "Acer", ram: 32 }
+      ];
+      var everyRam = true;
+      var someRam = false;
+      for (var i = 0; i < conmpuer.length; i++) {
+        var comput = conmpuer[i];
+        if (comput.ram < 10) {
+          everyRam = false;
+          break; //  跳出
+        } else {
+          someRam = true;
+          break;
+        }
+      }
+      console.log(everyRam, someRam);
+
+      //  some 一真为真
+      //  every 全真为真
+      //  与filter 只找一个  唯一
+
+      //es6
+
+      var every = conmpuer.every(com => {
+        return com.ram > 16;
+      });
+      console.log(every);
+      var some = conmpuer.some(com => {
+        return com.ram > 16;
+      });
+      console.log(some);
+
+      //判断登录页面 input的value 所有长度>0
+      function Filed(value) {
+        this.value = value;
+      }
+      Filed.prototype.valitate = function() {
+        return this.value.length > 6;
+      };
+      var username = new Filed("wanpeng");
+      var password = new Filed("nga");
+      console.log(username.valitate());
+      console.log(password.valitate());
+
+      //  2
+      var fileds = [username, password];
+      var everyform = fileds.every(fil => {
+        return fil.valitate();
+      });
+      console.log(everyform);
+      if (everyform) {
+        // 注册成功
+      }
+    </script>
+  </body>
+</html>
