@@ -55,6 +55,26 @@
         }, 0);
       }
       console.log(banpaers(")()"));
+
+      // 详细
+      var arr = [1, 2, 3];
+      var sum = arr.reduce((accumulator, currentValue, currentIndex, array) => {
+        // accumulator 累计器
+        // currentValue 当前值
+        // currentIndex 当前索引
+        // array 数组
+        console.log(
+          accumulator +
+            "+++++++++++++" +
+            currentValue +
+            "+++++++++++++" +
+            currentIndex,
+          array
+        );
+        // console.log(accumulator + currentValue);
+        return accumulator + currentValue;
+      });
+      console.log(sum);
     </script>
   </body>
 </html>
