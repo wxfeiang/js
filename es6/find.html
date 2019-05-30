@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>find</title>
+  </head>
+  <body>
+    <script>
+      //  数组匹配对应的一个 返回
+      var ages = [3, 10, 18, 20];
+
+      function checkAdult(age) {
+        // 只查找符合条件的第一个
+        return age > 18;
+      }
+      console.log(ages.find(checkAdult));
+
+      var products = [
+        { name: "wang", age: "16" },
+        { name: "li", age: "16" },
+        { name: "liu", age: "17" },
+        { name: "song", age: "18" }
+      ];
+      var products2 = products.find((pro, index) => {
+        //   console.log(pro, index);
+        return pro.age == 16;
+      });
+      console.log(products2);
+    </script>
+  </body>
+</html>

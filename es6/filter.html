@@ -47,26 +47,24 @@
       });
       console.log(arr_user);
 
-
       // 两个数组  根据A 的Id 过滤不符合B中数据
-      var  post={
-          id:"4",title:"javascript"
-      }
+      var post = {
+        id: "4",
+        title: "javascript"
+      };
       var comn = [
-          {postId: "4",cont:"angrue"},
-          {postId: "2",cont:"reaxt"},
+        { postId: "4", cont: "angrue" },
+        { postId: "2", cont: "reaxt" },
 
-          {postId: "4",cont:"vue"},
-          {postId: "2",cont:"lisa"},
-          
-      ]
-      function comst(post,comn){
-          return   comn.filter((c,index)=>{
-              return  c.postId ==post.id
-          })
-
+        { postId: "4", cont: "vue" },
+        { postId: "2", cont: "lisa" }
+      ];
+      function comst(post, comn) {
+        return comn.filter((c, index) => {
+          return c.postId == post.id;
+        });
       }
-      console.log(comst(post,comn))
+      console.log(comst(post, comn));
     </script>
   </body>
 </html>
