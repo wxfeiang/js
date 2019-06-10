@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="layui/layui.all.js"></script>
+    <style>
+        .dy-span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-form">
+        日期
+        <input type="text" class="layui-input" id="test1">
+        <div id="box1"></div>
+        <div id="box2">
+            <input type="text">
+        </div>
+    </div>
+
+    <script id="demo1" type="text/html">
+        <h3>{{ d.title }}</h3>
+
+        <!-- <div> {{! <span>这里面的模板不会被解析<span>  !}}</div> -->
+    </script>
+    <script id="demo2" type="text/html">
+        <input type="text" value=" 
+      
+    {{ d.title.slice(3) }}
+
+    ">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="      
+                {{ d.title.slice(3) }}" title="      
+                {{ d.title.slice(3) }}  <span class='dy-span'>12.1212</span> ">
+                <!-- <span class="layui-form">12.1212</span> -->
+            </div>
+        </div>
+    </script>
+
+    <script>
+        var form = layui.form,
+            layer = layui.layer;
+        var laytpl = layui.laytpl;
+        var laydate = layui.laydate;
+
+
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1', //指定元素
+            value: new Date(),
+            max: 0,
+            ready: function (date) {
+
+                console.log(
+                    date); //得到初始的日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+            },
+
+            // done: function (value, date, endDate) {
+            //     console.log(value); //得到日期生成的值，如：2017-08-18
+
+            //     // console.log(
+            //     //     date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+            //     // console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+            // }
+        });
+
+
+        //第三步：渲染模版
+        var data = { //数据
+            "title": "Layui常用模块",
+            "list": [{
+                "modname": "弹层",
+                "alias": "layer",
+                "site": "layer.layui.com"
+            }, {
+                "modname": "表单",
+                "alias": "form"
+            }]
+        }
+        var getTpl = demo1.innerHTML,
+            view = document.getElementById('box1');
+        laytpl(getTpl).render(data, function (html) {
+            view.innerHTML = html;
+        });
+        var getTpl2 = demo2.innerHTML,
+            view = document.getElementById('box2');
+        laytpl(getTpl2).render(data, function (html) {
+            view.innerHTML = html;
+        });
+        form.render(); //更新全部
+    </script>
+
+</body>
+
+</html>

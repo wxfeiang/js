@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>测试</title>
-    <style>
-      #box {
-        margin: 0 auto;
-        width: 1000px;
-      }
 
-      h3 {
-        color: aqua;
-      }
-
-      ul {
-        list-style: none;
-      }
-
-      li {
-        color: brown;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="box">
-      <div>
-        <h3>id shi</h3>
-        <ul>
-          <li>数组</li>
-          <li>数组</li>
-          <li>数组</li>
-        </ul>
-      </div>
-    </div>
-  </body>
-  <script>
-    var str = "";
-    var shu = [
-      {
-        id: 1,
-        address: ["aa", 2, "f", "d"]
-      },
-      {
-        id: 2,
-        address: ["aa", "d"]
-      },
-      {
-        id: 3,
-        address: ["bb", 2]
-      }
-    ];
-    for (var i = 0; i < shu.length; i++) {
-      //console.log(shu[i].id);
-      var ad = shu[i].address;
-      str += "<div>" + "<h3>" + shu[i].id + "</h3><ul>";
-
-      for (var j = 0; j < ad.length; j++) {
-        str += "<li>" + shu[i].address[j] + "</li>";
-      }
-      str += "</ul></div>";
-      box.innerHTML = str;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>测试</title>
+  <style>
+    #box {
+      margin: 0 auto;
+      width: 1000px;
     }
-  </script>
+
+    h3 {
+      color: aqua
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      color: brown;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div>
+      <h3>id shi</h3>
+      <ul>
+        <li>数组</li>
+        <li>数组</li>
+        <li>数组</li>
+        <div></div>
+      </ul>
+    </div>
+  </div>
+</body>
+<script>
+  var str = "";
+  var shu = [{
+      id: 1,
+      address: ["aa", 2, "f", "d"]
+    },
+    {
+      id: 2,
+      address: ["aa", "d"]
+    },
+    {
+      id: 3,
+      address: ["bb", 2]
+    }
+  ];
+  for (var i = 0; i < shu.length; i++) {
+    //console.log(shu[i].id);
+    var ad = shu[i].address;
+    str += "<div>" + "<h3>" + shu[i].id + "</h3><ul>";
+
+    for (var j = 0; j < ad.length; j++) {
+      str += "<li>" + shu[i].address[j] + "</li>";
+    }
+    str += "</ul></div>";
+    box.innerHTML = str;
+  }
+</script>
+
 </html>
