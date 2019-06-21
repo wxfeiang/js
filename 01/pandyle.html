@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>pandyle.js应用</title>
+    </head>
+
+    <body>
+        <h3>jq MVVM</h3>
+        <div class="main">{{ message }}</div>
+
+        <div class="calback">显示处理过的message属性：{{ foo(message) }}</div>
+
+        <img
+            p-bind="class:round {{ myClass }} ^ src:{{ mySrc }}"
+            width="200px"
+        />
+
+        <div p-each="list" class="p_for">
+            <p>{{ modname }}</p>
+        </div>
+        <ul class="p_for2" p-each="list">
+            <li>{{@index}}: {{@self.modname}}</li>
+        </ul>
+        <div class="data3" p-each="@self">
+            <p>{{@self.modname}}</p>
+        </div>
+
+        <select>
+            <option value="0">请选择</option>
+            <option p-for="list" p-bind="value: {{ alias }}">{{ site }}</option>
+        </select>
+
+        <div class="div_if" p-if="{{ show }}">hello world</div>
+        <button onclick="toggle()">切换</button>
+
+        <h4>渲染请请求到得真实数据</h4>
+        <ul class="apples" p-each="data"></ul>
+    </body>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../pandyle.min.js"></script>
+    <script>
+        var data = {
+            message: "hello world"
+        };
+        var data2 = {
+            //数据
+            title: "Layui常用模块",
+            list: [
+                {
+                    modname: "弹层",
+                    alias: "layer",
+                    site: "layer.layui.com"
+                },
+                {
+                    modname: "表单",
+                    alias: "form"
+                }
+            ]
+        };
+
+        $(".main").vm(data); // 直接赋值
+        var vm = $(".main").vm(data);
+        vm.set({
+            message: "goodbye!"
+        });
+        // 重新赋值
+        //  处理回调
+        $(".calback").vm({
+            message: "hello world"
+        });
+
+        function foo(s) {
+            return s + " ha ha!";
+        }
+        // p-band 绑定
+        //使用p-bind对元素的属性进行绑定，多个属性之间使用^分隔。属性名称与属性值之间使用英文冒号:分隔，属性值里面使用{{}}进行文本插值绑定。
+        $("img").vm({
+            myClass: "border",
+            mySrc: "../es6/2.gif"
+        });
+        // 使用p-each进行循环操作  data2
+        var data3 = {
+            list: [
+                {
+                    name: "张三"
+                },
+                {
+                    name: "李四"
+                }
+            ]
+        };
+        $(".p_for").vm(data2);
+        $(".p_for2").vm(data2);
+
+        // p-for
+        $("select").vm(data2);
+        var data3 = [
+            //数据
+            {
+                modname: "弹层",
+                alias: "layer",
+                site: "layer.layui.com"
+            },
+            {
+                modname: "表单",
+                alias: "form"
+            }
+        ];
+        $(".data3").vm(data3);
+
+        // p-if
+
+        var vm = $(".div_if").vm({
+            show: true
+        });
+
+        function toggle() {
+            var isShow = vm.get("show");
+            vm.set({
+                show: !isShow
+            });
+        }
+
+        // 请求 json  http://jsonplaceholder.typicode.com/posts
+        $.ajax({
+            type: "get",
+            datatype: "json",
+            url: "http://jsonplaceholder.typicode.com/posts",
+            success: function(data) {
+                console.log(data);
+            }
+        });
+
+        var applys = function() {
+            var data = data;
+            $(".apples").vm = data;
+        };
+    </script>
+</html>

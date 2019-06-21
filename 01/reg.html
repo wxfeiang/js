@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则</title>
+</head>
+
+<body>
+    <script>
+        var str = "abc12345"
+        var reg = /[0-9]+/;
+        console.log(str.match(reg))
+        var reg1 = /^[0-9]+${3-15}$/;
+        /*
+        ^ 开始
+        $ 结尾
+        + 出现一次或者多次
+        * 0 1 多次
+        ?  最多出现一次或者0 次
+        \ 转义字符 匹配特殊字符
+        . 匹配除\n 之外的任何单字符
+        [ 开始位置]
+        {限定开始位置}
+        | 或
+        */
+        //  匹配特殊字符
+        var str2 = "#$";
+        var reg2 = /[%|\$|@|]{1}/;
+        console.log(reg2.test(str2))
+        if (!reg2.test(str2)) {
+            console.log("没有匹配到")
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layui二级联动数据</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="layui/layui.js"></script>
+    <style>
+        .layuout {
+            margin: 100px auto;
+            width: 306px;
+            height: 92px;
+
+            border: 1px solid #ccc;
+
+        }
+
+        .box {
+            width: 306px;
+            height: 92px;
+        }
+
+        .layui-form-label {
+            width: 40px;
+            float: left;
+            display: block;
+            padding: 0px;
+            font-weight: 400;
+            line-height: 30px;
+            text-align: left;
+        }
+
+        .layui-form-item .layui-input-inline {
+            float: left;
+            width: 104px;
+
+            margin-right: 0;
+        }
+
+        .layui-input,
+        .layui-textarea {
+            display: block;
+            width: 100%;
+            padding-left: 2px;
+            height: 30px;
+            line-height: 30px;
+
+        }
+
+        .layui-form-item .layui-inline {
+
+            margin: 10px 0 5px 0;
+        }
+
+        .w_140 {
+            width: 130px !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="layuout">
+        <div class="box">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="name" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">单位</label>
+                        <div class="layui-input-inline">
+                            <select name="unit" id="unit" lay-filter="unit"></select>
+                        </div>
+                    </div>
+                    <div class="layui-inline ">
+                        <label class="layui-form-label">部门</label>
+                        <div class="layui-input-inline w_140 ">
+                            <select name="department" id="department" lay-filter="department"></select>
+                        </div>
+                    </div>
+                    <div class="layui-inline ">
+                        <button class="layui-btn layui-btn-sm" lay-submit lay-filter="*" type="button">提交</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+<script>
+    var data = {
+        "dataList": [{
+            "Id": 133,
+            "Names": "合肥"
+        }, {
+            "Id": 134,
+            "Names": "黄山"
+        }, {
+            "Id": 135,
+            "Names": "铜陵"
+        }, {
+            "Id": 136,
+            "Names": "芜湖"
+        }, {
+            "Id": 137,
+            "Names": "马鞍山"
+        }, {
+            "Id": 138,
+            "Names": "安庆"
+        }, {
+            "Id": 139,
+            "Names": "蚌埠"
+        }, {
+            "Id": 140,
+            "Names": "宣城"
+        }, {
+            "Id": 141,
+            "Names": "巢湖"
+        }, {
+            "Id": 142,
+            "Names": "滁州"
+        }, {
+            "Id": 143,
+            "Names": "淮南"
+        }, {
+            "Id": 144,
+            "Names": "阜阳"
+        }, {
+            "Id": 145,
+            "Names": "六安"
+        }, {
+            "Id": 146,
+            "Names": "亳州"
+        }, {
+            "Id": 147,
+            "Names": "淮北"
+        }, {
+            "Id": 148,
+            "Names": "池州"
+        }, {
+            "Id": 149,
+            "Names": "宿州"
+        }]
+    }
+    layui.use(['layer', 'form'], function () {
+        var layer = layui.layer,
+            form = layui.form;
+        var selDate = {
+            "area": [{
+                    "regionName": '成华区',
+                    "regionCode": "001"
+                },
+                {
+                    "regionName": '武侯区',
+                    "regionCode": "002"
+                },
+                {
+                    "regionName": '青羊区',
+                    "regionCode": "003"
+                },
+                {
+                    "regionName": '高新区',
+                    "regionCode": "004"
+                },
+                {
+                    "regionName": '锦江区',
+                    "regionCode": "005"
+                }
+            ],
+            "street": [{
+                    "regionName": '成华区1',
+                    "regionCode": "001"
+                },
+                {
+                    "regionName": '成华区2',
+                    "regionCode": "002"
+                },
+                {
+                    "regionName": '成华区3',
+                    "regionCode": "003"
+                },
+                {
+                    "regionName": '成华区4',
+                    "regionCode": "004"
+                },
+                {
+                    "regionName": '成华区5',
+                    "regionCode": "005"
+                }
+            ],
+
+        };
+        //form.render();
+        // 一级联动事件触发
+        form.on('select(unit)', function (data) {
+            var value = data.value;
+            //areaState.area.fn(value);
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象
+        });
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var str = "20180610T121433";
+        // 121433
+        //console.log(str.substring(-5))
+        //console.log(str.slice(-6))
+        var arry = str.slice(-6).split("")
+        //console.log(arry)
+        var hocer = arry[0] + arry[1] + ":" + arry[2] + arry[3] + ":" + arry[4] + arry[5]
+        console.log(hocer)
+
+        //  把 str 最后面得时间变成 12:14:33
+    </script>
+</body>
+
+</html>
