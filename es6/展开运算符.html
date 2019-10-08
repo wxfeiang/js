@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>展开运算符</title>
+</head>
+
+<body>
+    <script>
+        //    点点点 ... 展开运算符
+        //  计算和
+        function addNumbers(Arrys) {
+            return arrys.reduce((item, arry) => {
+                return item + arry;
+            }, 0);
+        }
+        const arrys = [1, 2, 3, 4, 5];
+        console.log(addNumbers(arrys));
+
+        //
+
+        function addNumbers2(a, b, c, d, e) {
+            //   var arrys = arguments;
+            //   console.log(arguments);
+            var arrys = [a, b, c, d, e];
+            return arrys.reduce((item, arry) => {
+                return item + arry;
+            }, 0);
+        }
+        console.log(addNumbers2(1, 2, 3, 4, 5));
+        //  展开运算符
+        function addNumbers3(...arrys) {
+            return arrys.reduce((item, arry) => {
+                return item + arry;
+            }, 0);
+        }
+        console.log(addNumbers3(1, 2, 3, 4, 5, 6, 7, 8));
+        // 合并数组  代替 push
+        let a = [1, 2, 3];
+        let b = [4, 5, 6];
+        let c = [...a, ...b, 777777]; // [1,2,3,4,5,6]
+        console.log(c);
+        console.log(a.concat(b));
+        //替代apply]
+        // 练习
+        function shop(...items) {
+            // items.indexOf("mulik") < 0 ? ['mulik', ...items] : items
+            if (items.indexOf('milk') < 0) {
+                return ['milk', ...items];
+            }
+            return items;
+        }
+        console.log(shop('1', '2', '2'));
+    </script>
+</body>
+
+</html>
