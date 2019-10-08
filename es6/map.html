@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <script>
-      // 第一个参数值  第二个参数 下标
+        // 第一个参数值  第二个参数 下标
 
-      //数组A 中的值  乘以2  放到另一个数组
-      var arr = [1, 2, 3, 4];
-      var arr2 = [];
-      // es5
-      for (let i = 0; i < arr.length; i++) {
-        arr2.push(arr[i] * 2);
-      }
-      console.log(arr2);
+        //数组A 中的值  乘以2  放到另一个数组
+        var arr = [1, 2, 3, 4];
+        var arr2 = [];
+        // es5
+        for (let i = 0; i < arr.length; i++) {
+            arr2.push(arr[i] * 2);
+        }
+        console.log(arr2);
 
-      //es6  map  返回新数组
-      var arr3 = arr.map((nums, index) => {
-        console.log(nums, index);
-        return index * 2;
-      });
-      console.log(arr3);
+        //es6  map  返回新数组
+        var arr3 = arr.map((nums, index) => {
+            console.log(nums, index);
+            return index * 2;
+        });
+        console.log(arr3);
 
-      // 数组对象  对象的牧歌属性值存到By数组中
+        // 数组对象  对象的牧歌属性值存到By数组中
 
-      var cars = [
-        { model: "bulis", pice: "16px" },
-        { model: "red", pice: "22px" }
-      ];
+        var cars = [{
+            model: "bulis",
+            pice: "16px"
+        }, {
+            model: "red",
+            pice: "22px"
+        }];
 
-      var prices = cars.map((car, index) => {
-        return car.model;
-      });
-      console.log(prices);
+        var prices = cars.map((car, index) => {
+            return car.model;
+        });
+        console.log(prices);
 
-      var pros = [
-        { id: 1, name: "wamgpemg" },
-        { id: "2", name: "lisa" },
-        { id: "2", name: "tag" }
-      ];
+        var pros = [{
+            id: 1,
+            name: "wamgpemg"
+        }, {
+            id: "2",
+            name: "lisa"
+        }, {
+            id: "2",
+            name: "tag"
+        }];
 
-      var rindex = pros
-        .map(item => {
-          return item.id;
-          // console.log(item.id);
-        })
-        .indexOf(1);
+        var rindex = pros
+            .map(item => {
+                return item.id;
+                // console.log(item.id);
+            })
+            .indexOf("2");
+        //  查找当前需要得id  与数组中 id  匹配下标 
 
-      console.log(rindex);
-      pros.splice(rindex, 1);
-      console.log(pros);
+        console.log(rindex);
+        pros.splice(rindex, 1);
+        console.log(pros);
     </script>
-  </body>
+</body>
+
 </html>
