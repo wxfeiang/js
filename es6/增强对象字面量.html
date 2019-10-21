@@ -13,10 +13,10 @@
         // 增强对象字面量
         // 键和值一样的时候  只写一个;
         //  new Object    //  创建对象
-        //  new Array  //  创建数组 
+        //  new Array  //  创建数组
         function Creat(inventory) {
             return {
-                // inventory: inventory,  //  相同  写一个 
+                // inventory: inventory,  //  相同  写一个
                 inventory,
                 // inventoryVlaue: function() {
                 //     //  相加
@@ -25,26 +25,27 @@
 
                 // },
                 inventoryVlaue() {
-                    return this.inventory.reduce((total, book) => total + book.price, 0);
+                    return this.inventory.reduce(
+                        (total, book) => total + book.price,
+                        0
+                    );
                 },
                 priceTitle: function(title) {
                     //  找到对应标题得  价格
-                    return this.inventory.find(book => book.title == title).price
-
+                    return this.inventory.find(book => book.title == title).price;
                 }
-            }
-
+            };
         }
         const inventory = [{
-            title: "Vue",
+            title: 'Vue',
             price: 10
         }, {
-            title: "Angular",
+            title: 'Angular',
             price: 20
-        }]
-        const bookshop = Creat(inventory)
-        console.log(bookshop.inventoryVlaue())
-        console.log(bookshop.priceTitle("Angular"));
+        }];
+        const bookshop = Creat(inventory);
+        console.log(bookshop.inventoryVlaue());
+        console.log(bookshop.priceTitle('Angular'));
         //  案例  模拟假数据  $ajax 没有引入
 
         function saveFile(url, data) {
@@ -53,15 +54,15 @@
             //   url: url,
             //   data: data
             // });
-            $.ajax({ //  简写
-                method: "POST",
+            $.ajax({
+                //  简写//
+                method: 'POST',
                 url,
                 data
             });
-
         }
-        const url = "http//ww.baidu.com"
-        saveFile(url, data)
+        const url = 'http//ww.baidu.com';
+        saveFile(url, data);
     </script>
 </body>
 

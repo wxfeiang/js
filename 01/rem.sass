@@ -1,0 +1,72 @@
+//  测试各种语法
+//  变量之间不能直接加法运算   可以数值相加
+  //  @import "rem.sass"
+//  #{} 里面在写变量  #{$1}
+
+// 0 变量
+$width: 5em
+// 1 方法类
+@function rem($px)
+    $rem: 37.5
+    @return ($px/ $rem)+rem
+// 2 判断类
+
+@mixin band($af)
+  @if $af ==5
+    color: red
+  @else if  $af ==4
+    color: #111111
+  @else
+    color: #222
+.a
+  @include band(5)
+
+$type: monster
+p
+  @if $type == ocean
+    color: blue
+  @else if $type == matador
+    color: red
+  @else if $type == monster
+    color: green
+  @else
+    color: black
+
+// 3  继承(直接)
+.error
+  border: 1px #f00
+  background-color: #fdd
+.seriousError
+  @extend .error
+  border-width: 3px
+//  方法
+@mixin large-text
+  font-
+  family: Arial
+  size: 20px
+  weight: bold
+
+  color: #ff0000
+
+.page-title
+  @include large-text
+  padding: 4px
+  margin-top: 10px
+
+@mixin band($f)
+  font-size: $f +px
+.a3
+  @include band(30)
+
+//  for  遍历图片地址    1-3
+@for $i from 1 through 3
+  .item-#{$i}
+    width: 2em * $i
+@each $animal in puma, sea-slug, egret, salamander
+  .#{$animal}-icon
+    background-image: url('/images/#{$animal}.png')
+$i: 6
+@while $i > 0
+  .item-#{$i}
+    width: 2em * $i
+  $i: $i - 2

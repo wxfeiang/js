@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>结构</title>
+</head>
+
+<body>
+    <script>
+        //  解构
+
+        var expense = {
+            type: 'es6',
+            amount: '45'
+        };
+
+        // var type = expense.type;
+        // var amount = expense.amount;
+        // console.log(type, amount);
+
+        const {
+            type,
+            amount,
+            abc
+        } = expense;
+        console.log(type, amount, abc);
+
+        var saveFiled = {
+            extension: 'jpg',
+            name: 'girl',
+            size: 14040
+        };
+        // es5
+        // function fileSammary(file) {
+        //     return `${file.name}.${file.extension}的总大小是${file.size}`;
+        // }
+
+        function fileSammary({
+            name,
+            extension,
+            size
+        }) {
+            return `${name}.${extension}的总大小是${size}`;
+        }
+
+        console.log(fileSammary(saveFiled));
+        // 解构 数组
+
+        const names = ['Henry', 'Bucky', 'Emily'];
+        // 解构
+        const [name1, name2, name3] = names;
+        console.log(name1, name2, name3);
+
+        // 返回数组个数
+        const {
+            length
+        } = names;
+        console.log(length);
+
+        // 结合展开运算符
+        const [name, ...rest] = names;
+        console.log(name);
+
+        let a, b;
+
+        [a, b] = [100, 200];
+
+        console.log(b);
+
+        // 对象数组
+        const people = [{
+            name: 'Henry',
+            age: 20
+        }, {
+            name: 'Bucky',
+            age: 25
+        }, {
+            name: 'Emily',
+            age: 30
+        }];
+
+        // es5
+        var age = people[0].age;
+        console.log(age);
+
+        // es6 解构
+        // const [age] = people;
+        // console.log(age);
+        // const [{
+        //     age
+        // }] = people;
+    </script>
+</body>
+
+</html>

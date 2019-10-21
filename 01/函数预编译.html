@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>函数预编译</title>
     <style>
         h1 {
@@ -20,18 +20,16 @@
     <script>
         // 函数声明 整体提升
         // 变量 声明提升
-        //全局变量   任何变量  如果未经声明就赋值   此变量就为全局对象所有  window  
+        //全局变量   任何变量  如果未经声明就赋值   此变量就为全局对象所有  window
         //  全局声明的变量  也 是window
-        // 一切声明的变量就是 window 全局的域 
+        // 一切声明的变量就是 window 全局的域
 
         // 一切声明的全局变量 都是 window 属性
         //  windown  就是全局
 
-
         // 语法分析
 
-
-        //  预编译 
+        //  预编译
         // a = 10;
         // console.log(a) // a
         // function test() {
@@ -45,23 +43,21 @@
             var a = 123;
             console.log(a); //  123
 
-            function a() {}; // 函数声明
+            function a() {} // 函数声明
             console.log(a); // 123
-            var b = function b() {}
+            var b = function b() {};
             console.log(b); // function(){}
 
             function d() {}
-
         }
         fn(1);
         // 预编译4部曲
         //  创建  AO对象  执行期上下文
         //  找形参和变量声明  将变量 和形参名作为Ao 的属性名  值 为 undefind
-        //  将实参值和形参值统一 
-        //  在函数体找函数声明 值赋给函数体 
+        //  将实参值和形参值统一
+        //  在函数体找函数声明 值赋给函数体
 
-
-        //  有自己的先找自己的 
+        //  有自己的先找自己的
         function test(a, b) {
             console.log(a); // 1
             console.log(b); // function b(){}
@@ -70,14 +66,13 @@
             a = 3;
             b = 2;
 
-            console.log(a) // 3
-            function b() {};
+            console.log(a); // 3
+            function b() {}
 
             function d() {}
             console.log(b); // 2
         }
         test(1);
-
 
         function test2(a, b) {
             console.log(a); // function a(){}
@@ -87,28 +82,28 @@
             a = 123;
             console.log(a); //123
 
-            function a() {};
+            function a() {}
             var a;
-            var b = function () {};
+            var b = function() {};
             console.log(a); //123
-            console.log(b); //function () {};   函数 
+            console.log(b); //function () {};   函数
         }
-        test2(1)
-        // 全局函数预编译 
+        test2(1);
+        // 全局函数预编译
         //  Go === window
         function test3() {
-            var a = b = 123;
+            var a = (b = 123);
             console.log(window.a);
-            console.log(window.b); // 变量提升 全局变量 
+            console.log(window.b); // 变量提升 全局变量
         }
         test3();
 
-        console.log(tests)
+        console.log(tests);
 
         function tests(tests) {
-            console.log(tests)
+            console.log(tests);
             tests = 234;
-            console.log(tests)
+            console.log(tests);
 
             function tests() {}
         }
@@ -116,42 +111,31 @@
         var tests = 123;
         console.log(tests);
 
-
         var global = 100;
 
         function fn() {
-            console.log(global) // undefined
+            console.log(global); // undefined
             global = 200;
-            console.log(global) // 200
+            console.log(global); // 200
             var global = 300;
-            console.log(global) // 300
+            console.log(global); // 300
         }
         fn();
         var global; //  先执行
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // 解释每一行
-    </script>
+        var bar = 2;
 
+        function too(bar) {
+            bar = 1;
+            console.log(bar);
+
+            ///  bar 开始  unfind  /  2  /  声明 1
+        }
+        too(bar);
+        console.log(bar);
+        //  window . 可以访问到
+    </script>
 </body>
 
 </html>
