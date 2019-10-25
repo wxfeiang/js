@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shuju ceshi </title>
+</head>
+
+<body>
+    <script>
+        var data = [{
+            x: "1",
+            y: 119
+        }, {
+            x: "2",
+            y: 77
+        }, {
+            x: "6",
+            y: 107
+        }, {
+            x: "8",
+            y: 91
+        }]
+        var newdata = []
+        console.log(newdata)
+        console.log(data)
+        for (let i = 0; i < 30; i++) {
+            newdata.push({
+                x: String(i + 1),
+                y: 0,
+            })
+            data.forEach(item => {
+                if (item.x == i) {
+                    console.log(item.x)
+
+                    newData.splice(Number(item.x), 1, {
+                        x: String(item.x),
+                        y: item.y
+                    })
+
+                }
+            })
+
+        }
+
+
+        //  biali newdata
+
+        // for (let i = 0; i < newdata.length; i++) {
+        //     if (dada.indexOf(newdata[i]) == i) {
+        //         console.log(i)
+        //     }
+
+
+
+        // }
+
+        // function unique(arr) {
+        //     let newArr = [];
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (arr.indexOf(arr[i]) == i) {
+        //             newArr.push(arr[i]);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+
+
+
+
+
+        // console.log(newdata)
+    </script>
+
+</body>
+
+</html>

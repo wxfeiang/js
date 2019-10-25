@@ -1,0 +1,284 @@
+
+IP地址
+
+94.191.119.191（公）
+
+172.30.0.4（内）
+
+
+
+ssh root@94.191.119.191
+
+cd  /                         跟路径
+                                查看当前的目录   
+  ls                            查看文件所有
+ cd ~   home              默认路径
+vim   后面 要 找到的路径  进入了编辑   esc  :wq
+创建秘钥    更快链接服务器    固定好的用户名
+ ls  -al  获取所有的文件  
+cd  .ssh
+ssh-keygen -t rsa -f wxfeiang   创建秘钥    生成  .pub 文件   scp  拷贝  (rm -f 文件名将会强行删除文件，且无提示)  rm -rf dirname  删除文件夹
+
+scrp   文件名   root@94.191.119.191: .   (给服务器跟路径复制文件)
+
+在 .ssh 文件下  把复制的文件追加进来    au  文件里面
+cat  ~/wxfeiang.pub  >> ~/.ssh
+  
+systemctl   restart  sshd    重启 ssh 
+
+
+//  配置好  直接链接服务器   ssh   wxfeiang 
+
+在本地新建 config     写入内容
+
+
+
+服务器操作
+更新软件 yum update -y 
+yum install -y nodejs     版本 可能过低
+
+执行脚本
+yun  remove -y  nodejs   删除安装得版本
+
+安装  nvm  管理  node    
+
+
+
+
+linux   服务器安装 node 环境   本服务器没有 sudo  和  app-agt     用yum
+
+ yum  install vim openssl build-essential  libssl-dev wgt curl git 
+
+sudo   apt-get install vim openssl build-essential  libssl-dev wgt curl git 
+
+
+//  nvm   在git 找到   https://github.com/nvm-sh/nvm  
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash  
+完成以后  在新打开一个 命令行工具   链接服务器     nvm  查看   
+nvm install  v10.16.0  版本  
+安装好以后  指定系统版本为    v10.16.0    为默认版本  nvm use v10.16.0    nvm alias default  10.16.0 
+
+
+
+
+********************************************************************************************************
+
+1,nvm nvm list 是查找本电脑上所有的node版本
+
+- nvm list 查看已经安装的版本
+- nvm list installed 查看已经安装的版本
+- nvm list available 查看网络可以安装的版本
+
+2,nvm install 安装最新版本nvm
+
+3,nvm use <version> ## 切换使用指定的版本node
+
+4,nvm ls 列出所有版本
+
+5,nvm current显示当前版本
+
+6,nvm alias <name> <version> ## 给不同的版本号添加别名
+
+7,nvm unalias <name> ## 删除已定义的别名
+
+8,nvm reinstall-packages <version> ## 在当前版本node环境下，重新全局安装指定版本号的npm包
+
+9,nvm on 打开nodejs控制
+
+10,nvm off 关闭nodejs控制
+
+11,nvm proxy 查看设置与代理
+
+12,nvm node_mirror [url] 设置或者查看setting.txt中的node_mirror，如果不设置的默认是 https://nodejs.org/dist/
+　　nvm npm_mirror [url] 设置或者查看setting.txt中的npm_mirror,如果不设置的话默认的是： https://github.com/npm/npm/archive/.
+
+13,nvm uninstall <version> 卸载制定的版本
+
+14,nvm use [version] [arch] 切换制定的node版本和位数
+
+15,nvm root [path] 设置和查看root路径
+
+16,nvm version 查看当前的版本
+
+
+********************************************************************************************************
+
+//  速度太慢安装淘宝镜像
+
+npm config set registry http://registry.npm.taobao.org/
+
+//   vscode  SFTP  插件 安装 
+配置链接服务器    最上面  ctlr + shift  P    (  ＳＦＴＰ．　config )
+{
+    "name": "wxfeiang",
+    "host": "94.191.119.191",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "root",
+    "remotePath": "/home",
+    "uploadOnSave": true,
+    "ignore": [
+        ".vscode",
+        ".git",
+        ".DS_Store"
+    ],
+    "syncOption": {
+        "files": "**/*",
+        "delete": true,
+        "autoUpload": true,
+        "autoDelete": true
+    },
+    "privateKeyPath": "~/.ssh/wxfeiang"
+}
+
+//  安装nignx 
+yum  install -y nginx
+
+etc /nginx/nginx.conf   打开编辑    
+
+cp  etc/nginx/nginx.conf    /home/object/   复制到某个文件  在拷贝回去 cp home/object/nginx.conf   /etc/nginx/nginx.conf   (yes)  
+重启   systemctl  restart nginx
+
+
+文件  
+/***************************/
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+   
+   
+
+    server {
+        listen       80 default_server;
+        server_name  localhost;
+
+        location / {
+            proxy_pass http://127.0.0.1:5000;
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }
+}
+
+/***************************/
+nodemon    forver 
+开始搭建 node 服务器   本地最好不要安装模块    免得版本不一致 
+ 在当前需要得目录下 安装  express 
+
+npm install express -S
+
+nodemon    forver    安装完以后创建 软连接    才可以使用
+npm  install  pm2 -g 
+
+
+配置 git   和本地配置得流程 一样
+
+pm2  得一些操作  pm2  一键部署  
+在项目里新建 json  文件  ecosysytem.json 
+{
+ "apps": [
+  {
+   "name": "ant-help-center",
+   "script": "./bin/www", //启动脚本
+   "env": {
+    "COMMON_VARIABLE": "true"
+   },
+   // 测试服务器
+   "env_development": {
+    "NODE_ENV": "development",
+    "PORT": 8087
+   },
+   // 生产环境
+   "env_production": {
+    "NODE_ENV": "production",
+    "PORT": 8087
+   }
+  }
+ ],
+ "deploy": {
+  // 生产环境
+  "production": {
+   "user": "root", //Nginx服务器上的username
+   "host": ["xxx.xxx.xxx.xxx"], // 服务器地址
+   "port": "22",
+   "ref": "origin/master", //从指定的分支拉取代码
+   "repo": "git@gitee.com:xxx/xxxx.git", // 使用
+   "path": "/www/website/production", //发布到服务器指定的目录下
+   "ssh_options": "StrictHostKeyChecking=no",
+   //构建在发布
+   "post-deploy":
+    "npm install && pm2 startOrRestart ecosystem.json --env production",
+   "env": {
+    "NODE_ENV": "production"
+   }
+  },
+  // 测试环境
+  "development": {
+   "user": "root", //Nginx服务器上的username
+   "host": ["xxx.xxx.xxx.xxx"], // 服务器地址
+   "port": "22",
+   "ref": "origin/master", //从指定的分支拉取代码
+   "repo": "git@gitee.com:xxx/xxxx.git",
+   "path": "/www/website/development", //发布到服务器指定的目录下
+   "ssh_options": "StrictHostKeyChecking=no",
+   //构建在发布
+   "post-deploy":
+    "npm install && pm2 startOrRestart ecosystem.json --env development",
+   "env": {
+    "NODE_ENV": "development"
+   }
+  }
+ }
+}
+
+
+
+//  服务器配置 mongdb     菜鸟教程   /usr/local/mongodb/bin 
+//  修改默认得端口 
+export PATH=<mongodb-install- /usr/local/mongodb >/bin:$PATH
+export PATH=/usr/local/mongodb/bin:${PATH}
+
+export PATH=/usr/local/mongodb/bin:$PATH
+
+
+
+
+
+
+
+

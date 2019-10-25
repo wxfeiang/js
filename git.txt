@@ -1,0 +1,58 @@
+删除远程分支: git push origin --delete [branchname] 
+提交分支到远程分支: git push origin branch:branch
+通过git stash将工作区恢复到上次提交的内容，同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，执行git stash pop将之前本地做的修改应用到当前工作区。
+git stash
+git pull
+git stash pop
+
+
+把本地tag推送到远程
+git push --tags
+
+获取远程tag
+git fetch origin tag <tagname>
+
+2.查看标签
+查看本地某个 tag 的详细信息：
+
+git show <tagName>
+
+查看本地所有 tag：
+
+git tag 或者 git tag -l
+
+查看远程所有 tag：
+
+git ls-remote --tags origin
+
+3.删除标签
+本地 tag 的删除：
+
+git tag -d <tagName>
+
+远程 tag 的删除：
+
+git push origin :<tagName>
+
+4.检出标签
+git checkout -b <branchName> <tagName>
+
+
+
+mongod --dbpath  "C:\Program Files\MongoDB\Server\4.0\data\db"   
+
+
+————————————————
+分支相关命令
+ git branch                  查看本地分支； 
+ git branch -r              查看远程分支； 
+ git branch -a                     查看本地和远程分支； 
+ git branch -d branchName              删除本地分支； 
+ git branch -d -r branchName                删除远程分支； 
+ git branch -D branchName                   强制删除branchName分支； 
+ git branch -v                      查看本地分支信息； 
+ git branch -vv                      查看更多本地分支信息； 
+ git branch -av                     查看所有分支信息； 
+ git branch -m oldbranch newbranch                      重命名分支； 
+ git branch -M oldbranch newbranch                     强制重命名分支（如果newbranch分支已存在，那么采用-M强制重命名为newbranch）
+————————————————
