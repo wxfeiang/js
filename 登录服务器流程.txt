@@ -275,6 +275,11 @@ export PATH=/usr/local/mongodb/bin:${PATH}
 
 export PATH=/usr/local/mongodb/bin:$PATH
 
+//  服务器得mongodb  必须有权限验证
+https://blog.csdn.net/weixin_34112900/article/details/92066039
+
+
+
 
 
 
