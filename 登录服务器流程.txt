@@ -278,7 +278,12 @@ export PATH=/usr/local/mongodb/bin:$PATH
 //  服务器得mongodb  必须有权限验证
 https://blog.csdn.net/weixin_34112900/article/details/92066039
 
-
+//  创建软连接  使用 mongod 和mongo
+//  配置好 db  和log 
+//配置服务器常驻  
+将mongodb启动项加入rc.local保证开机启动mongodb
+                        echo "/usr/local/mongodb/bin/mongod --dbpath=/data/db" >> /etc/rc.local
+重启远程计算机即可
 
 
 
