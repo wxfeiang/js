@@ -59,4 +59,6 @@ mongod --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --dbpath "
  git branch -av                     查看所有分支信息； 
  git branch -m oldbranch newbranch                      重命名分支； 
  git branch -M oldbranch newbranch                     强制重命名分支（如果newbranch分支已存在，那么采用-M强制重命名为newbranch）
+
+git push -u origin dev         (远程分支名)，  首次提交分支 
 ————————————————
