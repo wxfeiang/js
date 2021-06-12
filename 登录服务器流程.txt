@@ -1,4 +1,4 @@
-
+﻿
 IP地址
 
 94.191.119.191（公）
@@ -47,13 +47,13 @@ yun  remove -y  nodejs   删除安装得版本
 
 linux   服务器安装 node 环境   本服务器没有 sudo  和  app-agt     用yum
 
- yum  install vim openssl build-essential  libssl-dev wgt curl git 
 
-sudo   apt-get install vim openssl build-essential  libssl-dev wgt curl git 
 
 
 //  nvm   在git 找到   https://github.com/nvm-sh/nvm  
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash  
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash 
+
+ 
 完成以后  在新打开一个 命令行工具   链接服务器     nvm  查看   
 nvm install  v10.16.0  版本  
 安装好以后  指定系统版本为    v10.16.0    为默认版本  nvm use v10.16.0    nvm alias default  10.16.0 
@@ -287,7 +287,9 @@ https://blog.csdn.net/weixin_34112900/article/details/92066039
 
 
 
-
+git --version  #验证git是否安装成功，输出版本号就代表安装成功
+git config --global user.name "自定义用户名"
+git config --global user.email "邮箱"
 
 
 
