@@ -16,13 +16,17 @@ cd  /                         跟路径
 vim   后面 要 找到的路径  进入了编辑   esc  :wq
 创建秘钥    更快链接服务器    固定好的用户名
  ls  -al  获取所有的文件  
+-----------------------配置ssh 免密登陆-----------------------
 cd  .ssh
-ssh-keygen -t rsa -f wxfeiang   创建秘钥    生成  .pub 文件   scp  拷贝  (rm -f 文件名将会强行删除文件，且无提示)  rm -rf dirname  删除文件夹
+ssh-keygen -t rsa -f wxfeiang  
 
-scrp   文件名   root@94.191.119.191: .   (给服务器跟路径复制文件)
+创建秘钥    生成  .pub 文件   scp  拷贝  (rm -f 文件名将会强行删除文件，且无提示)  rm -rf dirname  删除文件夹
 
+scrp   文件名   root@94.191.119.191:.   (给服务器跟路径复制文件)
+
+// 登陆服务器操作
 在 .ssh 文件下  把复制的文件追加进来    au  文件里面
-cat  ~/wxfeiang.pub  >> ~/.ssh
+cat  ~/wxfeiang.pub  >> ~/.ssh  authorized_keys
   
 systemctl   restart  sshd    重启 ssh 
 
@@ -31,7 +35,14 @@ systemctl   restart  sshd    重启 ssh
 
 在本地新建 config     写入内容
 
+Host wxfeiang
+    HostName 47.99.93.97
+    port 22
+    User root
+    IdentityFile ~/.ssh/wxfeiang
 
+
+-----------------------over-----------------------
 
 服务器操作
 更新软件 yum update -y 

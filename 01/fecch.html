@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch 测试</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script>
+
+</head>
+
+<body>
+    <button id="btn">
+        点击测试重定向请求
+    </button>
+    <script>
+        var btn = document.getElementById("btn")
+        btn.onclick = function () {
+            console.log("点击了")
+            // 为给定 ID 的 user 创建请求
+            var url = 'https://www.gsbankmall.com/index.php/Wap/index/loginout'
+            axios.get(url)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+
+    </script>
+
+</body>
+
+</html>

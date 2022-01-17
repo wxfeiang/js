@@ -63,3 +63,6 @@ mongod --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --dbpath "
 git push -u origin dev         (远程分支名)，  首次提交分支 
 ————————————————
 git checkout -- *    撤销上次提交后的所有修改
+
+
+
