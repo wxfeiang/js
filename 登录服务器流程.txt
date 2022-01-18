@@ -37,7 +37,17 @@ Host wxfeiang
 
  yum -y install git
 
- git  --version
+git --version  #验证git是否安装成功，输出版本号就代表安装成功
+git config --global user.name "自定义用户名"
+git config --global user.email "邮箱"
+ssh-keygen -t rsa -C "email@example.com"
+# 查看你的公钥
+
+cat ~/.git/id_rsa.pub
+
+测试是否能连接
+
+ssh -vT git@github.com
 
 
 
@@ -273,14 +283,14 @@ pm2  得一些操作  pm2  一键部署
  }
 }
 
-
+-----------------------  mongodb  -----------------------
 
 //  服务器配置 mongdb     菜鸟教程   /usr/local/mongodb/bin 
 //  修改默认得端口 
-export PATH=<mongodb-install- /usr/local/mongodb >/bin:$PATH
+
+// 配置软链接
 export PATH=/usr/local/mongodb/bin:${PATH}
 
-export PATH=/usr/local/mongodb/bin:$PATH
 
 //  服务器得mongodb  必须有权限验证
 https://blog.csdn.net/weixin_34112900/article/details/92066039
@@ -294,9 +304,7 @@ https://blog.csdn.net/weixin_34112900/article/details/92066039
 
 
 
-git --version  #验证git是否安装成功，输出版本号就代表安装成功
-git config --global user.name "自定义用户名"
-git config --global user.email "邮箱"
+
 
 
 
