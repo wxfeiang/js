@@ -7,7 +7,7 @@ ssh-keygen -t rsa -f wxfeiang
 
 创建秘钥    生成  .pub 文件   scp  拷贝  (rm -f 文件名将会强行删除文件，且无提示)  rm -rf dirname  删除文件夹
 
-scrp   文件名   root@94.191.119.191:.   (给服务器跟路径复制文件)
+scp   文件名   root@94.191.119.191:.   (给服务器跟路径复制文件)
 
 // 登陆服务器操作
 在 .ssh 文件下  把复制的文件追加进来    au  文件里面
@@ -303,9 +303,24 @@ https://blog.csdn.net/weixin_34112900/article/details/92066039
 重启远程计算机即可
 
 
+dbpath=/var/lib/mongodb/data
+logpath=/var/log/mongodb/mongod.log
+logappend = true 
+port = 27017 
+fork = true 
+auth= true
 
 
 
+
+
+服务器端口未开放-----  防火墙开启
+
+mysql  
+root@localhost: rm3V5+sft+b9
+
+set password for root@localhost = password('123456');
+修改密码家 ；  必须加分号
 
 
 
