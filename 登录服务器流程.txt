@@ -156,7 +156,7 @@ etc /nginx/nginx.conf   打开编辑
 cp  etc/nginx/nginx.conf    /home/object/   复制到某个文件  在拷贝回去 cp home/object/nginx.conf   /etc/nginx/nginx.conf   (yes)  
 重启   systemctl  restart nginx
 
-
+·
 文件  
 /***************************/
 # For more information on configuration, see:

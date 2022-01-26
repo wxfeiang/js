@@ -100,3 +100,20 @@ Mac 电脑查看 占用端口
 lsof -i 
 lsof -i:端口号
 kill -9 端口 杀死
+
+
+##  nginx  
+
+`
+nginx -t   检查 配置文件是否有问题
+
+netstat -tnlp   端口是否被占用
+
+ps -aux | grep nginx   检查是否已经启动
+
+pkill -9 nginx      结束进程
+
+systemctl  restart nginx      重启nginx
+
+
+`
