@@ -320,7 +320,7 @@ mysql
 root@localhost: rm3V5+sft+b9
 
 set password for root@localhost = password('123456');
-修改密码家 ；  必须加分号
+修改密码家 ;   必须加分号
 
 
 
