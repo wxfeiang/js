@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [
+            { id: 56, parentId: 62 },
+            { id: 81, parentId: 80 },
+            { id: 74, parentId: null },
+            { id: 76, parentId: 80 },
+            { id: 63, parentId: 62 },
+            { id: 80, parentId: 86 },
+            { id: 87, parentId: 86 },
+            { id: 62, parentId: 74 },
+            { id: 86, parentId: 74 },
+            { id: 00, parentId: null },
+            { id: 44, parentId: 00 },
+            { id: 00, parentId: 11 },
+
+        ];
+
+        function gettree(arr, id, list) {
+            for (let item of arr) {
+                if (item.parentId == id) {
+                    list.push(item)
+                }
+
+
+
+
+            }
+            for (let i of list) {
+                i.children = []
+                gettree(arr, i.id, i.children)
+                if (i.children.length == 0) {
+                    delete i.children
+
+                }
+            }
+
+            return list
+
+        }
+
+        var res = gettree(arr, null, [])
+        console.log(res)
+
+
+
+
+        //tree(arr)
+
+        function tree(data) {
+
+            const idMapping = data.reduce((acc, el, i) => {
+                //console.log(acc, "-----", el, "------", i)
+                acc[el.id] = i;
+                return acc;
+            }, {});
+            // console.log(idMapping)
+
+            let root;
+            data.forEach(el => {
+                // 判断根节点
+                if (el.parentId === '') {
+                    root = el;
+                    return;
+                }
+                // 用映射表找到父元素
+                const parentEl = data[idMapping[el.parentId]];
+                // 把当前元素添加到父元素的`children`数组中
+
+                console.log(parentEl)
+
+                parentEl.children = [...(parentEl.children || []), el];
+            });
+            //  console.log(root);
+
+        }
+
+
+        var treedata = arr.reduce((init, nextVal) => {
+
+            if (nextVal.parentId == null) {
+                nextVal.children = []
+                init.push(nextVal);
+            } else {
+                for (item of init) {
+                    let itemid = nextVal.id.toString().slice(0, 1)
+                    if (item.id == parseInt(itemid)) {
+                        item.children.push(nextVal)
+                    }
+                }
+            }
+            return init
+
+        }, []);
+
+        console.log(treedata, "--")
+    </script>
+</body>
+
+</html>

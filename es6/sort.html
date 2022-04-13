@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sort </title>
+</head>
+
+<body>
+    <script>
+
+
+
+
+
+        let arr = [   //创建一个数组对象
+            {
+                name: '张三',
+                age: 66
+            },
+            {
+                name: '李四',
+                age: 88
+            },
+            {
+                name: '王五',
+                age: 55
+            },
+            {
+                name: '赵六',
+                age: 99
+            },
+            {
+                name: '赖八',
+                age: 7
+            }
+        ]
+
+
+        //第一种方法  
+        let compare = function (k) {
+            return function (a, b) {
+                var M = a[k];
+                var N = b[k];
+                return M - N;      // 从低向高排
+                // return N - M;   // 从高向低排
+            }
+        }
+        console.log(arr.sort(compare('age')))
+
+
+
+
+    </script>
+
+</body>
+
+</html>
