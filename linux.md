@@ -106,3 +106,10 @@ systemctl  restart nginx      重启nginx
 
 
 `
+
+ssh-copy-id   服务器名
+
+
+
+
+

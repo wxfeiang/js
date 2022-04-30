@@ -1,11 +1,17 @@
-删除远程分支: git push origin --delete [branchname] 
-提交分支到远程分支: git push origin branch:branch
-通过git stash将工作区恢复到上次提交的内容，同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，执行git stash pop将之前本地做的修改应用到当前工作区。
+
+
+通过git stash将工作区恢复到上次提交的内容，
+同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，
+执行git stash pop将之前本地做的修改应用到当前工作区。
+
+
 git stash
 git pull
 git stash pop
 
 
+
+------  tags 
 把本地tag推送到远程
 git push --tags
 
@@ -38,23 +44,14 @@ git push origin :<tagName>
 git checkout -b <branchName> <tagName>
 
 
-
+------------------
 5. git  删除后紧急操作
 查看提交日志 ：  git log   
 
 回退某次版本   git reset --hard XXX   (XXXX  对应的指针)
 
 
---------------
 
-mongod.exe --config "C:\Program Files\MongoDB\Server\4.0\mongod.cfg" --install    //  添加到本地电脑服务 
-  
-mongod --dbpath  "C:\Program Files\MongoDB\Server\4.0\data\db"   
-mongod --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --dbpath "C:\Program Files\MongoDB\data\db" --directoryperdb --serviceName "MongoDB" --serviceDisplayName "MongoDB" --remove 
-
-————————————————
-
-mongod --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --dbpath "C:\Program Files\MongoDB\data\db" --directoryperdb --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install
 
 ————————————————
 分支相关命令
@@ -75,8 +72,20 @@ git push -u origin dev         (远程分支名)，  首次提交分支
 git checkout -- *    撤销上次提交后的所有修改
 
 
-
+删除远程分支: git push origin --delete [branchname] 
+提交分支到远程分支: git push origin branch:branch
 ------
 
+---- mac git提交失败
 
-
+Host wxfeiang
+    HostName 47.99.93.97
+    port 22
+    User root
+    IdentityFile ~/.ssh/wxfeiang
+Host github.com
+	port 443 # 默认是22端口
+	HostName ssh.github.com
+	IdentityFile ~/.ssh/id_rsa
+ServerAliveInterval 60
+ServerAliveCountMax 60
