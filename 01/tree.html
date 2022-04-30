@@ -20,9 +20,9 @@
             { id: 87, parentId: 86 },
             { id: 62, parentId: 74 },
             { id: 86, parentId: 74 },
-            { id: 00, parentId: null },
-            { id: 44, parentId: 00 },
-            { id: 00, parentId: 11 },
+            { id: 12, parentId: null },
+            { id: 44, parentId: 12 },
+            { id: 13, parentId: 12 },
 
         ];
 
@@ -32,16 +32,12 @@
                     list.push(item)
                 }
 
-
-
-
             }
             for (let i of list) {
                 i.children = []
                 gettree(arr, i.id, i.children)
                 if (i.children.length == 0) {
                     delete i.children
-
                 }
             }
 
@@ -57,53 +53,53 @@
 
         //tree(arr)
 
-        function tree(data) {
+        // function tree(data) {
 
-            const idMapping = data.reduce((acc, el, i) => {
-                //console.log(acc, "-----", el, "------", i)
-                acc[el.id] = i;
-                return acc;
-            }, {});
-            // console.log(idMapping)
+        //     const idMapping = data.reduce((acc, el, i) => {
+        //         //console.log(acc, "-----", el, "------", i)
+        //         acc[el.id] = i;
+        //         return acc;
+        //     }, {});
+        //     // console.log(idMapping)
 
-            let root;
-            data.forEach(el => {
-                // 判断根节点
-                if (el.parentId === '') {
-                    root = el;
-                    return;
-                }
-                // 用映射表找到父元素
-                const parentEl = data[idMapping[el.parentId]];
-                // 把当前元素添加到父元素的`children`数组中
+        //     let root;
+        //     data.forEach(el => {
+        //         // 判断根节点
+        //         if (el.parentId === '') {
+        //             root = el;
+        //             return;
+        //         }
+        //         // 用映射表找到父元素
+        //         const parentEl = data[idMapping[el.parentId]];
+        //         // 把当前元素添加到父元素的`children`数组中
 
-                console.log(parentEl)
+        //         console.log(parentEl)
 
-                parentEl.children = [...(parentEl.children || []), el];
-            });
-            //  console.log(root);
+        //         parentEl.children = [...(parentEl.children || []), el];
+        //     });
+        //     //  console.log(root);
 
-        }
+        // }
 
 
-        var treedata = arr.reduce((init, nextVal) => {
+        // var treedata = arr.reduce((init, nextVal) => {
 
-            if (nextVal.parentId == null) {
-                nextVal.children = []
-                init.push(nextVal);
-            } else {
-                for (item of init) {
-                    let itemid = nextVal.id.toString().slice(0, 1)
-                    if (item.id == parseInt(itemid)) {
-                        item.children.push(nextVal)
-                    }
-                }
-            }
-            return init
+        //     if (nextVal.parentId == null) {
+        //         nextVal.children = []
+        //         init.push(nextVal);
+        //     } else {
+        //         for (item of init) {
+        //             let itemid = nextVal.id.toString().slice(0, 1)
+        //             if (item.id == parseInt(itemid)) {
+        //                 item.children.push(nextVal)
+        //             }
+        //         }
+        //     }
+        //     return init
 
-        }, []);
+        // }, []);
 
-        console.log(treedata, "--")
+        // console.log(treedata, "--")
     </script>
 </body>
 

@@ -37,6 +37,16 @@ git push origin :<tagName>
 4.检出标签
 git checkout -b <branchName> <tagName>
 
+
+
+5. git  删除后紧急操作
+查看提交日志 ：  git log   
+
+回退某次版本   git reset --hard XXX   (XXXX  对应的指针)
+
+
+--------------
+
 mongod.exe --config "C:\Program Files\MongoDB\Server\4.0\mongod.cfg" --install    //  添加到本地电脑服务 
   
 mongod --dbpath  "C:\Program Files\MongoDB\Server\4.0\data\db"   
@@ -63,6 +73,10 @@ mongod --logpath "C:\Program Files\MongoDB\log\mongo.log" --logappend --dbpath "
 git push -u origin dev         (远程分支名)，  首次提交分支 
 ————————————————
 git checkout -- *    撤销上次提交后的所有修改
+
+
+
+------
 
 
 
