@@ -1,128 +1,127 @@
 {
-    "editor.wordWrap": "on",
-    "easysass.compileAfterSave": true,
-    "easysass.formats": [{
-        "format": "expanded",
-        "extension": ".css"
-    }],
-    "easysass.targetDir": "css/",
-    "gitlens.advanced.messages": {
-        "suppressShowKeyBindingsNotice": true
-    },
-    "editor.fontSize": 18,
-    //  vue 指令报错
-    "vetur.validation.template": false,
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-    "vsicons.dontShowNewVersionMessage": true,
-    "liveServer.settings.CustomBrowser": "chrome",
-    //  保存后自动刷新
-    "editor.formatOnType": true,
-    "editor.formatOnSave": true,
-    // 以下为stylus配置
-    "stylusSupremacy.insertColons": false, // 是否插入冒号
-    "stylusSupremacy.insertSemicolons": false, // 是否插入分好
-    "stylusSupremacy.insertBraces": false, // 是否插入大括号
-    "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
-    "stylusSupremacy.insertNewLineAroundBlocks": false,
-    "workbench.editor.showTabs": true // 两个选择器中是
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#d40c2d3d", //修改光标所在行的背景色
+    "editor.lineHighlightBorder": "#1daf5f42" //修改光标所在行的边框色
+  },
 
-    //  补充
+  "easysass.formats": [
+    //nested：嵌套缩进的 css 代码。
+    //expanded：没有缩进的、扩展的css代码。
+    //compact：简洁格式的 css 代码。
+    //compressed：压缩后的 css 代码
 
-     "editor.fontSize": 12,
-    // tab 大小为2个空格
-    "editor.tabSize": 2,
-    // 100 列后换行
-    "editor.wordWrapColumn": 200,
-    // 保存时格式化
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": false,
-    // 使用 ctrl 或 command 多选
-    "editor.multiCursorModifier": "alt",
-    "editor.renderIndentGuides": false,
-    "editor.detectIndentation": false,
-    "editor.insertSpaces": true,
-    "editor.renderWhitespace": "all",
-    "editor.mouseWheelZoom": true,
-    "editor.lineHeight": 23,
-    "eslint.alwaysShowStatus": true,
-    // 开启 vscode 文件路径导航
-    "breadcrumbs.enabled": true,
-    // prettier 设置语句末尾不加分号
-    "prettier.semi": true,
-    // prettier 设置强制单引号
-    "prettier.singleQuote": true,
-    // 显示 markdown 中英文切换时产生的特殊字符
-    "editor.renderControlCharacters": true,
-    // 设置 eslint 保存时自动修复
-    "eslint.autoFixOnSave": true,
-    // eslint 检测文件类型
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        {
-            "language": "html",
-            "autoFix": true
-        }, {
-            "language": "vue",
-            "autoFix": true
-        }
-    ],
-    // 选择 vue 文件中 template 的格式化工具
-    "vetur.format.defaultFormatter.html": "prettyhtml",
-    // vetur 的自定义设置
-    "vetur.format.defaultFormatterOptions": {
-        "prettier": {
-            "singleQuote": true,
-            "semi": false
-        }
+    {
+      "format": "expanded",
+      "extension": ".css" //设置编译输出的文件名
+    }
+  ],
+  "easysass.targetDir": "./css/", //提供 css 输出路径的设置（可以是绝对路径或者相对路径）
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "wxml": "html"
+  },
+
+  // #每次保存的时候自动格式化
+  "editor.formatOnSave": true,
+
+  //编辑器默认的代码检查规则关闭
+
+  "javascript.format.enable": true,
+
+  "emmet.triggerExpansionOnTab": true,
+
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
+  },
+  // 每行在这个字符数内整合代码,根据自己屏幕情况设定
+  "prettier.printWidth": 120,
+  // 是否在每行末尾加上分号
+  "prettier.semi": false,
+  // 如果为true，将使用 单引号否则使用双引号
+  "prettier.singleQuote": true,
+  //  在末尾行不要，
+  "prettier.trailingComma": "none",
+  // 对html的内容使用js-beautify-html
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  "svn.path": "D:\\Program Files\\TortoiseSVN\\bin",
+
+  "svn.sourceControl.ignoreOnCommit": ["ignore-on-commit"],
+  "TortoiseSVN.showPath.exclude": ["**/{node_modules,bower_components}/**"],
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "files.autoGuessEncoding": true,
+  "sync.quietSync": false,
+  "editor.fontSize": 16,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "cssrem.autoRemovePrefixZero": false,
+  "css.remoteStyleSheets": [],
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "terminal.integrated.tabs.enabled": true,
+  // #每次保存的时候自动格式化
+  "editor.formatOnSave": true,
+  // #每次保存的时候将代码按eslint格式进行修复
+  "eslint.autoFixOnSave": true,
+  // 添加 vue 支持
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "todo-tree.tree.showScanModeButton": true,
+  "todohighlight.keywords": [
+    {
+      "text": "TODO:",
+      "color": "#0000ff",
+      "backgroundColor": "#ff0000"
     },
-    "vetur.validation.template": false,
-    "minapp-vscode.disableAutoConfig": true,
-    "todohighlight.isEnable": true,
-    "git.autofetch": true,
-    "gitlens.defaultDateStyle": "absolute",
-    "gitlens.defaultDateFormat": "YYYY-MM-DD HH:mm:ss",
-    "files.autoSave": "off",
-    "files.autoSaveDelay": 5000,
-    "files.associations": {
-        "*.vue": "vue",
-        "*.wpy": "vue",
-        "*.wxml": "html",
-        "*.wxss": "css",
-        "*.cjson": "jsonc",
-        "*.wxs": "javascript"
-    },
-    "window.zoomLevel": 1,
-    "emmet.syntaxProfiles": {
-        "vue-html": "html",
-        "vue": "html"
-    },
-    // 格式化stylus, 需安装Manta's Stylus Supremacy插件
-    "stylusSupremacy.insertColons": false, // 是否插入冒号
-    "stylusSupremacy.insertSemicolons": false, // 是否插入分好
-    "stylusSupremacy.insertBraces": false, // 是否插入大括号
-    "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
-    "stylusSupremacy.insertNewLineAroundBlocks": false,
-    "[json]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "git.enableSmartCommit": true,
-    "sync.gist": "b3982bf7524c3f5cc426ef6873ffdefc",
-    "[markdown]": {
-      "editor.defaultFormatter": "yzhang.markdown-all-in-one"
-    },
-    "git.confirmSync": false,
-    "gitlens.advanced.messages": {
-      "suppressLineUncommittedWarning": true
-    },
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "One Dark Pro Vivid",
-    "python.jediEnabled": false // 两个选择器中是否换行
+    {
+      "text": "DOING",
+      "color": "#0000ff",
+      "backgroundColor": "#33ff33"
+    }
+  ],
+  "security.workspace.trust.untrustedFiles": "open",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "terminal.integrated.allowMnemonics": true,
+  "sync.gist": "a7057f84057589ff0f64b4eb0c9861d3",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
+  },
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  // 文件名别名跳转
+  "alias-skip.mappings": {
+    "~@/": "/src",
+    "views": "/src/views",
+    "assets": "/src/assets",
+    "network": "/src/network",
+    "common": "/src/common"
+  },
+  "projectManager.git.baseFolders": ["/Users/wangpeng/project/"],
+  "workbench.editor.autoLockGroups": {}
 }
