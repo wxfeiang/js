@@ -1,0 +1,57 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2022-06-30 18:15:02
+ * @LastEditTime: 2022-06-30 23:27:14
+ * @FilePath: /js/es6/取余数数组.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两种切割数组的方法 </title>
+</head>
+
+<body>
+    <script>
+
+        var demo = [
+            { a: 1 },
+            { b: 1 },
+            { c: 1 },
+            { d: 1 }
+        ]
+        function aers(data, limt) {
+            //  当前下标应该在那个组
+            var newArr = []
+            data.forEach((item, index) => {
+                const page = Math.floor(index / limt)
+                if (!newArr[page]) {
+                    newArr[page] = []  //  确定分组
+                }
+                newArr[page].push(item)
+            });
+
+            return newArr
+        }
+
+        console.log(aers(demo, 3))
+
+        function sliceIntoChunks(arr, chunkSize) {
+            const res = [];
+            for (let i = 0; i < arr.length; i += chunkSize) {
+                const chunk = arr.slice(i, i + chunkSize);
+                res.push(chunk);
+            }
+            return res;
+        }
+
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        console.log(sliceIntoChunks(demo, 3));
+    </script>
+</body>
+
+</html>

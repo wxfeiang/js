@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var json = [
+            { "id": "1257", "value": "0.39", "time": "2018/9/3 10:40:30", "name": "临东压力" },
+            { "id": "1258", "value": "0.313", "time": "2018/9/3 10:40:30", "name": "临东水位" },
+            { "id": "1259", "value": "0.382", "time": "2018/9/3 10:40:30", "name": "龙划压力" },
+            { "id": "1260", "value": "0.176", "time": "2018/9/3 10:40:30", "name": "龙划水位" },
+            { "id": "1261", "value": "0.36", "time": "2018/9/3 10:40:30", "name": "平乐压力" },
+            { "id": "1262", "value": "0.27", "time": "2018/9/3 10:40:30", "name": "平乐水位" },
+            { "id": "1263", "value": "0.266", "time": "2018/9/3 10:40:30", "name": "圆岭小区泵前" },
+            { "id": "1264", "value": "0.36", "time": "2018/9/3 10:40:30", "name": "圆岭小区泵后" },
+
+        ]
+        var allOverlay = [
+            { "name": "临东", "leixing": "厂", "coordinate": "110.344492,21.137511" },
+            { "name": "龙6", "leixing": "厂", "coordinate": "110.407909,21.245864" },
+            { "name": "圆岭小区", "leixing": "小区", "coordinate": "110.420287,21.232615" },
+            { "name": "海滨", "leixing": "厂", "coordinate": "110.420588,21.219622" },
+            { "name": "龙划", "leixing": "厂", "coordinate": "110.402404,21.1814697" }
+
+
+        ];
+
+        // var ss = json.filter(function (item, index) {
+        //     return item.name.indexOf(allOverlay[index].name) > -1
+        // })
+        // console.log(ss)
+        var arr = []
+        function fit(keyWord) {
+
+            for (var i = 0; i < 5; i++) {
+                //如果字符串中不包含目标字符会返回-1
+                if (allOverlay[i].name.indexOf(keyWord) >= 0) {
+                    arr.push(allOverlay[i]);
+                }
+            }
+        }
+
+
+        function input(val) {
+            var List = []
+            allOverlay.forEach(item => {
+                if (JSON.stringify(item).search(val) != -1) {
+                    List.push(item.name)
+                }
+            })
+            return List
+
+        }
+
+        function ch(arr) {
+            var n = []
+            arr.forEach(item => {
+                n.push({
+                    ss: item.name
+                })
+            })
+            return n
+        }
+
+        console.log(ch(allOverlay))
+        function ch2(arr) {
+            arr.map(item => {
+                return { ss: item.name }
+            })
+
+        }
+        console.log(ch2(allOverlay))
+
+
+        var ss2 = allOverlay.map(item => {
+
+            return {
+                ss: item.name,
+                time: item.coordinate
+            }
+        })
+
+        console.log(ss2)
+
+    </script>
+</body>
+
+</html>

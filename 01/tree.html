@@ -109,7 +109,145 @@
 
         console.log('------')
         console.log(arrayToTree(arr3))
-        console.log(arrayToTree(arr4))
+        var res0 = arrayToTree(arr4)
+        console.log(arrayToTree(arr4), res0)
+
+        var res0 = arrayToTree(arr4)
+        var res1 = arrayToTree(arr4)
+        console.log(res1)
+        function fitdata(data) {
+
+            var neList = []
+            data.forEach(element => {
+
+                if (element.children) {
+                    fitdata(element.children)
+
+                } else {
+
+                    neList.push(element)
+                }
+
+            });
+
+            return neList
+
+        }
+        console.log(fitdata(res0))
+
+
+        var newArr = [] //新建一个数据，用于存储扁平化化后的数组
+        function flatData(arr) {
+            arr.forEach(item => {
+                newArr.push(item)
+                item.children && item.children.length > 0 ? flatData(item.children) : ""
+                delete item.children
+                //  item.children = ''    //若是扁平化后的数组须要显示父子层级，能够把这一项删除
+            })
+        }
+        var naar2 = []
+        function flatData2(arr) {
+            arr.forEach(item => {
+                if (item.children && item.children.length > 0) {
+                    flatData2(item)
+                } else {
+                    naar2.push(item)
+                }
+
+
+            })
+        }
+
+        flatData(res0)
+
+        console.log(newArr, "newArr", naar2)
+
+
+
+
+        const treeObj = [{
+            id: '0',
+            name: '中国',
+            children: [
+                {
+                    id: '1',
+                    name: '湖北省',
+                    children: [
+                        {
+                            id: '1-1',
+                            name: '武汉市',
+                            children: [
+                                {
+                                    id: '1-1-1',
+                                    name: '武昌区',
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id: '2',
+                    name: '江苏省',
+                    children: [
+                        {
+                            id: '2-1',
+                            name: '南京市',
+                            children: [
+                                {
+                                    id: '2-1-1',
+                                    name: '玄武区',
+                                }
+                            ]
+                        },
+                        {
+                            id: '2-2',
+                            name: '镇江市',
+                            children: [
+                                {
+                                    id: '2-2-1',
+                                    name: '句容市',
+                                    children: [
+                                        {
+                                            id: '2-2-1-1',
+                                            name: '下蜀镇'
+                                        },
+                                    ]
+                                },
+                                {
+                                    id: '2-2-2',
+                                    name: '京口区'
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    id: '3',
+                    name: '浙江省',
+                }
+            ]
+        }]
+        function getMaxlevel(treeData) {
+            let level = 0
+            let v = this
+            let maxLevel = 0
+            function loop(data, level) {
+                data.forEach(item => {
+                    item.level = level
+                    if (level > maxLevel) {
+                        maxLevel = level
+                    }
+                    if ('children' in item) {
+                        if (item.children.length > 0) {
+                            loop(item.children, level + 1)
+                        }
+                    }
+                })
+            }
+            loop(treeData, 1)
+            console.log(maxLevel)
+        }
+        console.log(getMaxlevel(treeObj))
 
     </script>
 </body>
