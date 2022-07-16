@@ -11,24 +11,24 @@
 <body>
     <script>
         var arr = [
-            { id: 56, parentId: 62, name: "sssss" },
-            { id: 81, parentId: 80 },
-            { id: 74, parentId: null },
-            { id: 76, parentId: 80 },
-            { id: 63, parentId: 62 },
-            { id: 80, parentId: 86 },
-            { id: 87, parentId: 86 },
-            { id: 62, parentId: 74 },
-            { id: 86, parentId: 74 },
-            { id: 12, parentId: null },
-            { id: 44, parentId: 12 },
-            { id: 13, parentId: 12 },
+            { id: 56, pid: 62, name: "sssss" },
+            { id: 81, pid: 80 },
+            { id: 74, pid: null },
+            { id: 76, pid: 80 },
+            { id: 63, pid: 62 },
+            { id: 80, pid: 86 },
+            { id: 87, pid: 86 },
+            { id: 62, pid: 74 },
+            { id: 86, pid: 74 },
+            { id: 12, pid: null },
+            { id: 44, pid: 12 },
+            { id: 13, pid: 12 },
 
         ];
-
+        //  第一次 改变成树
         function gettree(arr, id, list) {
             for (let item of arr) {
-                if (item.parentId == id) {
+                if (item.pid == id) {
                     list.push(item)
                 }
 
@@ -50,34 +50,34 @@
 
         //  更优
         let arr3 = [
-            { id: 1, name: '部门1', parentId: 0 },
-            { id: 2, name: '部门2', parentId: 1 },
-            { id: 3, name: '部门3', parentId: 1 },
-            { id: 4, name: '部门4', parentId: 3 },
-            { id: 5, name: '部门5', parentId: 4 },
+            { id: 1, name: '部门1', pid: 0 },
+            { id: 2, name: '部门2', pid: 1 },
+            { id: 3, name: '部门3', pid: 1 },
+            { id: 4, name: '部门4', pid: 3 },
+            { id: 5, name: '部门5', pid: 4 },
         ]
         var arr4 = [
-            { id: 56, parentId: 62 },
-            { id: 81, parentId: 80 },
-            { id: 74, parentId: null },
-            { id: 76, parentId: 80 },
-            { id: 63, parentId: 62 },
-            { id: 80, parentId: 86 },
-            { id: 87, parentId: 86 },
-            { id: 62, parentId: 74 },
-            { id: 86, parentId: 74 },
-            { id: 12, parentId: null },
-            { id: 44, parentId: 12 },
-            { id: 13, parentId: 12 },
+            { id: 56, pid: 62 },
+            { id: 81, pid: 80 },
+            { id: 74, pid: null },
+            { id: 76, pid: 80 },
+            { id: 63, pid: 62 },
+            { id: 80, pid: 86 },
+            { id: 87, pid: 86 },
+            { id: 62, pid: 74 },
+            { id: 86, pid: 74 },
+            { id: 12, pid: null },
+            { id: 44, pid: 12 },
+            { id: 13, pid: 12 },
 
         ];
 
         function arrayToTree(items) {
             const result = [];   // 存放结果集
-            const itemMap = {};  // 
+            const itemMap = {};  //
             for (const item of items) {
                 const id = item.id;
-                const pid = item.parentId;
+                const pid = item.pid;
 
                 if (!itemMap[id]) {
                     itemMap[id] = {
@@ -107,34 +107,13 @@
             return result;
         }
 
-        console.log('------')
+        console.log('……………………^_^……………………')
         console.log(arrayToTree(arr3))
         var res0 = arrayToTree(arr4)
-        console.log(arrayToTree(arr4), res0)
+        console.log(res0, "res0----")
 
-        var res0 = arrayToTree(arr4)
-        var res1 = arrayToTree(arr4)
-        console.log(res1)
-        function fitdata(data) {
 
-            var neList = []
-            data.forEach(element => {
-
-                if (element.children) {
-                    fitdata(element.children)
-
-                } else {
-
-                    neList.push(element)
-                }
-
-            });
-
-            return neList
-
-        }
-        console.log(fitdata(res0))
-
+        //  还原扁平化
 
         var newArr = [] //新建一个数据，用于存储扁平化化后的数组
         function flatData(arr) {
@@ -157,98 +136,8 @@
 
             })
         }
-
         flatData(res0)
-
         console.log(newArr, "newArr", naar2)
-
-
-
-
-        const treeObj = [{
-            id: '0',
-            name: '中国',
-            children: [
-                {
-                    id: '1',
-                    name: '湖北省',
-                    children: [
-                        {
-                            id: '1-1',
-                            name: '武汉市',
-                            children: [
-                                {
-                                    id: '1-1-1',
-                                    name: '武昌区',
-                                },
-                            ]
-                        },
-                    ]
-                },
-                {
-                    id: '2',
-                    name: '江苏省',
-                    children: [
-                        {
-                            id: '2-1',
-                            name: '南京市',
-                            children: [
-                                {
-                                    id: '2-1-1',
-                                    name: '玄武区',
-                                }
-                            ]
-                        },
-                        {
-                            id: '2-2',
-                            name: '镇江市',
-                            children: [
-                                {
-                                    id: '2-2-1',
-                                    name: '句容市',
-                                    children: [
-                                        {
-                                            id: '2-2-1-1',
-                                            name: '下蜀镇'
-                                        },
-                                    ]
-                                },
-                                {
-                                    id: '2-2-2',
-                                    name: '京口区'
-                                },
-                            ]
-                        },
-                    ]
-                },
-                {
-                    id: '3',
-                    name: '浙江省',
-                }
-            ]
-        }]
-        function getMaxlevel(treeData) {
-            let level = 0
-            let v = this
-            let maxLevel = 0
-            function loop(data, level) {
-                data.forEach(item => {
-                    item.level = level
-                    if (level > maxLevel) {
-                        maxLevel = level
-                    }
-                    if ('children' in item) {
-                        if (item.children.length > 0) {
-                            loop(item.children, level + 1)
-                        }
-                    }
-                })
-            }
-            loop(treeData, 1)
-            console.log(maxLevel)
-        }
-        console.log(getMaxlevel(treeObj))
-
     </script>
 </body>
 

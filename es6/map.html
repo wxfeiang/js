@@ -106,7 +106,15 @@
       return item.id == arr5
     }).map(item => item.id)
     console.log(arr6)
+    // map  可以
+    let nSArr = []
+    arr3.map(item => {
+      if (item.id == 5) {
+        nSArr.push({ ss: item.id })
+      }
+    })
 
+    console.log(nSArr, 'nSArr')
 
 
   </script>
