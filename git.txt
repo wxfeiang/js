@@ -91,7 +91,10 @@ git config --global init.defaultBranch main
 
 使用   git branch -M main    命令, 把当前master分支改名为main, 其中-M的意思是移动或者重命名当前分支
 
+//  git  合并分支 单文件
+1  git checkout   master   切换到当前分支
 
+2 git checkout --patch 来源分支名称 文件路径（比如/app/view/activity.java）
 
 
 
