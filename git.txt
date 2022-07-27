@@ -76,6 +76,25 @@ git checkout -- *    撤销上次提交后的所有修改
 提交分支到远程分支: git push origin branch:branch
 ------
 
+更新 分支
+git pull --rebase origin master
+
+
+// git  2.28 版本以上配和  github   修改主分支 为 main
+
+//  配置本地初始化为 main
+git config --global init.defaultBranch main
+
+
+//修改已创建项目的主分支为main
+//切换到主分支master
+
+使用   git branch -M main    命令, 把当前master分支改名为main, 其中-M的意思是移动或者重命名当前分支
+
+
+
+
+
 ---- mac git提交失败
 
 Host wxfeiang
