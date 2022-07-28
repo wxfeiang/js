@@ -67,13 +67,15 @@ git checkout -b <branchName> <tagName>
  git branch -m oldbranch newbranch                      重命名分支； 
  git branch -M oldbranch newbranch                     强制重命名分支（如果newbranch分支已存在，那么采用-M强制重命名为newbranch）
 
-git push -u origin dev         (远程分支名)，  首次提交分支 
+
 ————————————————
 git checkout -- *    撤销上次提交后的所有修改
 
 
 删除远程分支: git push origin --delete [branchname] 
-提交分支到远程分支: git push origin branch:branch
+提交分支到远程分支: git push origin branch:branch   // 每次都会输入
+
+git push -u origin branch         (远程分支名)，  首次提交分支   一直提交当前分支
 ------
 
 更新 分支
