@@ -50,7 +50,7 @@ git checkout -b <branchName> <tagName>
 
 回退某次版本   git reset --hard XXX   (XXXX  对应的指针)
 
-
+git push --force  本地会退 后  强制更新远程库
 
 
 ————————————————
@@ -113,3 +113,27 @@ Host github.com
 	IdentityFile ~/.ssh/id_rsa
 ServerAliveInterval 60
 ServerAliveCountMax 60
+
+git修改远程仓库地址
+方法有三种：
+1.修改命令
+git remote origin set-url [url]
+
+2.先删后加（这种操作不会保持历史记录）
+git remote rm origin
+git remote add origin [url]
+
+3.直接修改config文件(打开.git文件夹找到config文件，替换远程地址)
+
+----- 多个KEY 时候
+已经添加好了Key 
+
+
+尝试 git  https 克隆  （需要用户名和密码）
+
+配置本项目 的用户名和  邮箱
+
+切换  远程地址
+
+
+
