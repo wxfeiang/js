@@ -1,0 +1,56 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2022-08-13 14:47:58
+ * @LastEditTime: 2022-08-13 15:20:48
+ * @FilePath: /js/es6/intArr.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var arr = [
+            {
+                name: 1,
+                id: 'id1'
+            },
+            {
+                name: 2,
+                id: 'id2'
+            }
+        ]
+        var props = {
+            lable: 'name',
+            value: 'id'
+        }
+        initNarr(arr, props);
+        function initNarr(arr, props) {
+            const nearr = []
+            // 获取默认值的key
+            const keys = Object.keys(props)
+            for (var a in props) {
+                console.log(a)
+                nearr.push(
+                    {
+                        [a]: 1
+                    }
+                )
+            }
+            console.log(nearr)
+
+
+        }
+
+    </script>
+</body>
+
+</html>

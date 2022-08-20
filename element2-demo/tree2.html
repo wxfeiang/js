@@ -1,0 +1,1907 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2022-08-18 11:32:44
+ * @LastEditTime: 2022-08-20 01:40:04
+ * @FilePath: /js/01/tree2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [],
+            arr2 = []
+        arr3 = [{
+            a: 1
+        },
+        {
+            b: 1
+        },
+
+        ]
+        console.log(...arr3, arr2, "---")
+        var datas = [
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 13:43:52",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "2434534634634",
+                "titleName": "您对食堂就餐秩序评价如何？",
+                "modelType": "1",
+                "state": "1",
+                "sort": 1,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885198540054530",
+                        "titleId": 2434534634634,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885198569414657",
+                        "titleId": 2434534634634,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539890876130332673",
+                                "titleId": "2434534634634",
+                                "replyName": "排队拥挤",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876767866882",
+                                "titleId": "2434534634634",
+                                "replyName": "扎堆就餐",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876784644098",
+                                "titleId": "2434534634634",
+                                "replyName": "付款速度慢",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876814004225",
+                                "titleId": "2434534634634",
+                                "replyName": "取菜拥挤",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198590386177",
+                        "titleId": 2434534634634,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539890876130332673",
+                                "titleId": "2434534634634",
+                                "replyName": "排队拥挤",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876767866882",
+                                "titleId": "2434534634634",
+                                "replyName": "扎堆就餐",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876784644098",
+                                "titleId": "2434534634634",
+                                "replyName": "付款速度慢",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876814004225",
+                                "titleId": "2434534634634",
+                                "replyName": "取菜拥挤",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198611357697",
+                        "titleId": 2434534634634,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539890876130332673",
+                                "titleId": "2434534634634",
+                                "replyName": "排队拥挤",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876767866882",
+                                "titleId": "2434534634634",
+                                "replyName": "扎堆就餐",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876784644098",
+                                "titleId": "2434534634634",
+                                "replyName": "付款速度慢",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876814004225",
+                                "titleId": "2434534634634",
+                                "replyName": "取菜拥挤",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198623940609",
+                        "titleId": 2434534634634,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539890876130332673",
+                                "titleId": "2434534634634",
+                                "replyName": "排队拥挤",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876767866882",
+                                "titleId": "2434534634634",
+                                "replyName": "扎堆就餐",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876784644098",
+                                "titleId": "2434534634634",
+                                "replyName": "付款速度慢",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539890876814004225",
+                                "titleId": "2434534634634",
+                                "replyName": "取菜拥挤",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 14:34:27",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "2566265626965",
+                "titleName": "您对食堂就餐环境评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 2,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885198649106434",
+                        "titleId": 2566265626965,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885198665883649",
+                        "titleId": 2566265626965,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539891499424878593",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具摆放地点不方便使用",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499504570369",
+                                "titleId": "2566265626965",
+                                "replyName": "环境卫生差",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499525541890",
+                                "titleId": "2566265626965",
+                                "replyName": "餐椅餐具破损、更换不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499542319106",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具消毒不到位",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198686855170",
+                        "titleId": 2566265626965,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539891499424878593",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具摆放地点不方便使用",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499504570369",
+                                "titleId": "2566265626965",
+                                "replyName": "环境卫生差",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499525541890",
+                                "titleId": "2566265626965",
+                                "replyName": "餐椅餐具破损、更换不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499542319106",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具消毒不到位",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198712020993",
+                        "titleId": 2566265626965,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539891499424878593",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具摆放地点不方便使用",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499504570369",
+                                "titleId": "2566265626965",
+                                "replyName": "环境卫生差",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499525541890",
+                                "titleId": "2566265626965",
+                                "replyName": "餐椅餐具破损、更换不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499542319106",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具消毒不到位",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198728798210",
+                        "titleId": 2566265626965,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539891499424878593",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具摆放地点不方便使用",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499504570369",
+                                "titleId": "2566265626965",
+                                "replyName": "环境卫生差",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499525541890",
+                                "titleId": "2566265626965",
+                                "replyName": "餐椅餐具破损、更换不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539891499542319106",
+                                "titleId": "2566265626965",
+                                "replyName": "餐具消毒不到位",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 14:39:03",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5649265626685",
+                "titleName": "您对食堂早餐评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 3,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885198745575426",
+                        "titleId": 5649265626685,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885198758158337",
+                        "titleId": 5649265626685,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892228529131522",
+                                "titleId": "5649265626685",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228566880257",
+                                "titleId": "5649265626685",
+                                "replyName": "汤种类太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228583657474",
+                                "titleId": "5649265626685",
+                                "replyName": "供应补充不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228608823298",
+                                "titleId": "5649265626685",
+                                "replyName": "供应时间短",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198774935554",
+                        "titleId": 5649265626685,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892228529131522",
+                                "titleId": "5649265626685",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228566880257",
+                                "titleId": "5649265626685",
+                                "replyName": "汤种类太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228583657474",
+                                "titleId": "5649265626685",
+                                "replyName": "供应补充不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228608823298",
+                                "titleId": "5649265626685",
+                                "replyName": "供应时间短",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198800101378",
+                        "titleId": 5649265626685,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892228529131522",
+                                "titleId": "5649265626685",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228566880257",
+                                "titleId": "5649265626685",
+                                "replyName": "汤种类太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228583657474",
+                                "titleId": "5649265626685",
+                                "replyName": "供应补充不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228608823298",
+                                "titleId": "5649265626685",
+                                "replyName": "供应时间短",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198816878594",
+                        "titleId": 5649265626685,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892228529131522",
+                                "titleId": "5649265626685",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228566880257",
+                                "titleId": "5649265626685",
+                                "replyName": "汤种类太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228583657474",
+                                "titleId": "5649265626685",
+                                "replyName": "供应补充不及时",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892228608823298",
+                                "titleId": "5649265626685",
+                                "replyName": "供应时间短",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 14:45:02",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5649265628877",
+                "titleName": "您对食堂午餐评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 4,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885198842044418",
+                        "titleId": 5649265628877,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885198863015937",
+                        "titleId": 5649265628877,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892429952192514",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429977358337",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品过于油腻、味道偏重或偏淡",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429998329858",
+                                "titleId": "5649265628877",
+                                "replyName": "陪餐汤不好喝",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892430019301377",
+                                "titleId": "5649265628877",
+                                "replyName": "饭后水果不新鲜",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198879793154",
+                        "titleId": 5649265628877,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892429952192514",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429977358337",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品过于油腻、味道偏重或偏淡",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429998329858",
+                                "titleId": "5649265628877",
+                                "replyName": "陪餐汤不好喝",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892430019301377",
+                                "titleId": "5649265628877",
+                                "replyName": "饭后水果不新鲜",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198896570369",
+                        "titleId": 5649265628877,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892429952192514",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429977358337",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品过于油腻、味道偏重或偏淡",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429998329858",
+                                "titleId": "5649265628877",
+                                "replyName": "陪餐汤不好喝",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892430019301377",
+                                "titleId": "5649265628877",
+                                "replyName": "饭后水果不新鲜",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198904958978",
+                        "titleId": 5649265628877,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892429952192514",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品固定、品种少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429977358337",
+                                "titleId": "5649265628877",
+                                "replyName": "菜品过于油腻、味道偏重或偏淡",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892429998329858",
+                                "titleId": "5649265628877",
+                                "replyName": "陪餐汤不好喝",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892430019301377",
+                                "titleId": "5649265628877",
+                                "replyName": "饭后水果不新鲜",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 14:56:54",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5656126626232",
+                "titleName": "您对食堂饭菜种类和营养搭配评价如何？",
+                "modelType": "1",
+                "state": "1",
+                "sort": 5,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885198925930498",
+                        "titleId": 5656126626232,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885198946902018",
+                        "titleId": 5656126626232,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892589004394497",
+                                "titleId": "5656126626232",
+                                "replyName": "荤素搭配不均衡",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589033754625",
+                                "titleId": "5656126626232",
+                                "replyName": "营养搭配不科学",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589050531842",
+                                "titleId": "5656126626232",
+                                "replyName": "菜品种类过于守旧",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589071503361",
+                                "titleId": "5656126626232",
+                                "replyName": "菜单搭配相对单一",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198959484930",
+                        "titleId": 5656126626232,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892589004394497",
+                                "titleId": "5656126626232",
+                                "replyName": "荤素搭配不均衡",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589033754625",
+                                "titleId": "5656126626232",
+                                "replyName": "营养搭配不科学",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589050531842",
+                                "titleId": "5656126626232",
+                                "replyName": "菜品种类过于守旧",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589071503361",
+                                "titleId": "5656126626232",
+                                "replyName": "菜单搭配相对单一",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198980456450",
+                        "titleId": 5656126626232,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892589004394497",
+                                "titleId": "5656126626232",
+                                "replyName": "荤素搭配不均衡",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589033754625",
+                                "titleId": "5656126626232",
+                                "replyName": "营养搭配不科学",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589050531842",
+                                "titleId": "5656126626232",
+                                "replyName": "菜品种类过于守旧",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589071503361",
+                                "titleId": "5656126626232",
+                                "replyName": "菜单搭配相对单一",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885198997233665",
+                        "titleId": 5656126626232,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892589004394497",
+                                "titleId": "5656126626232",
+                                "replyName": "荤素搭配不均衡",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589033754625",
+                                "titleId": "5656126626232",
+                                "replyName": "营养搭配不科学",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589050531842",
+                                "titleId": "5656126626232",
+                                "replyName": "菜品种类过于守旧",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892589071503361",
+                                "titleId": "5656126626232",
+                                "replyName": "菜单搭配相对单一",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 15:05:47",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5656126626600",
+                "titleName": "您对食堂人员服务态度评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 6,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885199018205186",
+                        "titleId": 5656126626600,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885199034982402",
+                        "titleId": 5656126626600,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892752997486593",
+                                "titleId": "5656126626600",
+                                "replyName": "服务态度较恶劣",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753014263809",
+                                "titleId": "5656126626600",
+                                "replyName": "行为举止不规范",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753035235329",
+                                "titleId": "5656126626600",
+                                "replyName": "语言冷漠不热情",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199055953922",
+                        "titleId": 5656126626600,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892752997486593",
+                                "titleId": "5656126626600",
+                                "replyName": "服务态度较恶劣",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753014263809",
+                                "titleId": "5656126626600",
+                                "replyName": "行为举止不规范",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753035235329",
+                                "titleId": "5656126626600",
+                                "replyName": "语言冷漠不热情",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199072731137",
+                        "titleId": 5656126626600,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892752997486593",
+                                "titleId": "5656126626600",
+                                "replyName": "服务态度较恶劣",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753014263809",
+                                "titleId": "5656126626600",
+                                "replyName": "行为举止不规范",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753035235329",
+                                "titleId": "5656126626600",
+                                "replyName": "语言冷漠不热情",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199089508354",
+                        "titleId": 5656126626600,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892752997486593",
+                                "titleId": "5656126626600",
+                                "replyName": "服务态度较恶劣",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753014263809",
+                                "titleId": "5656126626600",
+                                "replyName": "行为举止不规范",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892753035235329",
+                                "titleId": "5656126626600",
+                                "replyName": "语言冷漠不热情",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 14:59:52",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5656126626666",
+                "titleName": "您对食堂饭菜分量评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 7,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885199106285569",
+                        "titleId": 5656126626666,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885199123062785",
+                        "titleId": 5656126626666,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892854906490881",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太多",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854923268097",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854948433922",
+                                "titleId": "5656126626666",
+                                "replyName": "分量选择性少，无法满足个性化需求",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199148228609",
+                        "titleId": 5656126626666,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892854906490881",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太多",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854923268097",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854948433922",
+                                "titleId": "5656126626666",
+                                "replyName": "分量选择性少，无法满足个性化需求",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199177588738",
+                        "titleId": 5656126626666,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892854906490881",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太多",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854923268097",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854948433922",
+                                "titleId": "5656126626666",
+                                "replyName": "分量选择性少，无法满足个性化需求",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199190171649",
+                        "titleId": 5656126626666,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892854906490881",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太多",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854923268097",
+                                "titleId": "5656126626666",
+                                "replyName": "分量太少",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892854948433922",
+                                "titleId": "5656126626666",
+                                "replyName": "分量选择性少，无法满足个性化需求",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 15:07:46",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5656126626670",
+                "titleName": "您对食堂菜品更新频率评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 8,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885199215337474",
+                        "titleId": 5656126626670,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885199232114689",
+                        "titleId": 5656126626670,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892978307108865",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品口味更新少，多样性不足□创新菜、营养餐较少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978328080386",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新公示渠道窄",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978349051905",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新周期太长",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199248891905",
+                        "titleId": 5656126626670,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892978307108865",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品口味更新少，多样性不足□创新菜、营养餐较少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978328080386",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新公示渠道窄",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978349051905",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新周期太长",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199265669121",
+                        "titleId": 5656126626670,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892978307108865",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品口味更新少，多样性不足□创新菜、营养餐较少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978328080386",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新公示渠道窄",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978349051905",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新周期太长",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199290834945",
+                        "titleId": 5656126626670,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539892978307108865",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品口味更新少，多样性不足□创新菜、营养餐较少",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978328080386",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新公示渠道窄",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539892978349051905",
+                                "titleId": "5656126626670",
+                                "replyName": "菜品更新周期太长",
+                                "sort": 3,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 15:10:37",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5656126626671",
+                "titleName": "您对菜品价格评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 9,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885199299223554",
+                        "titleId": 5656126626671,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885199320195074",
+                        "titleId": 5656126626671,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893628378091522",
+                                "titleId": "5656126626671",
+                                "replyName": "价格总体不实惠",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628420034562",
+                                "titleId": "5656126626671",
+                                "replyName": "早餐价格偏高",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628436811777",
+                                "titleId": "5656126626671",
+                                "replyName": "午餐价格偏高",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628453588994",
+                                "titleId": "5656126626671",
+                                "replyName": "晚餐价格偏高",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199336972289",
+                        "titleId": 5656126626671,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893628378091522",
+                                "titleId": "5656126626671",
+                                "replyName": "价格总体不实惠",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628420034562",
+                                "titleId": "5656126626671",
+                                "replyName": "早餐价格偏高",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628436811777",
+                                "titleId": "5656126626671",
+                                "replyName": "午餐价格偏高",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628453588994",
+                                "titleId": "5656126626671",
+                                "replyName": "晚餐价格偏高",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199357943810",
+                        "titleId": 5656126626671,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893628378091522",
+                                "titleId": "5656126626671",
+                                "replyName": "价格总体不实惠",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628420034562",
+                                "titleId": "5656126626671",
+                                "replyName": "早餐价格偏高",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628436811777",
+                                "titleId": "5656126626671",
+                                "replyName": "午餐价格偏高",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628453588994",
+                                "titleId": "5656126626671",
+                                "replyName": "晚餐价格偏高",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199374721026",
+                        "titleId": 5656126626671,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893628378091522",
+                                "titleId": "5656126626671",
+                                "replyName": "价格总体不实惠",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628420034562",
+                                "titleId": "5656126626671",
+                                "replyName": "早餐价格偏高",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628436811777",
+                                "titleId": "5656126626671",
+                                "replyName": "午餐价格偏高",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893628453588994",
+                                "titleId": "5656126626671",
+                                "replyName": "晚餐价格偏高",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            },
+            {
+                "searchValue": null,
+                "createBy": null,
+                "createTime": "2022-03-16 15:03:37",
+                "updateBy": null,
+                "updateTime": null,
+                "params": {},
+                "id": "5656126626699",
+                "titleName": "您对食堂设施设备安全管理和规范使用评价如何?",
+                "modelType": "1",
+                "state": "1",
+                "sort": 10,
+                "areaId": "468626563132363",
+                "children": [
+                    {
+                        "id": "1539885199391498242",
+                        "titleId": 5656126626699,
+                        "titleReply": "满意",
+                        "sort": "1",
+                        "sortNum": "A",
+                        "state": "1",
+                        "sonOrNot": "2",
+                        "answerNum": 1,
+                        "children": null
+                    },
+                    {
+                        "id": "1539885199412469762",
+                        "titleId": 5656126626699,
+                        "titleReply": "较满意",
+                        "sort": "2",
+                        "sortNum": "B",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893835941613570",
+                                "titleId": "5656126626699",
+                                "replyName": "安全管控不透明，安全设施使用不规范",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835966779393",
+                                "titleId": "5656126626699",
+                                "replyName": "安全隐患排查治理不及时、不彻底",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835987750914",
+                                "titleId": "5656126626699",
+                                "replyName": "未按规范使用、操作设施设备",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893836008722433",
+                                "titleId": "5656126626699",
+                                "replyName": "天然气漏气检测不到位、不规范",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199425052673",
+                        "titleId": 5656126626699,
+                        "titleReply": "一般",
+                        "sort": "3",
+                        "sortNum": "C",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893835941613570",
+                                "titleId": "5656126626699",
+                                "replyName": "安全管控不透明，安全设施使用不规范",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835966779393",
+                                "titleId": "5656126626699",
+                                "replyName": "安全隐患排查治理不及时、不彻底",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835987750914",
+                                "titleId": "5656126626699",
+                                "replyName": "未按规范使用、操作设施设备",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893836008722433",
+                                "titleId": "5656126626699",
+                                "replyName": "天然气漏气检测不到位、不规范",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199441829890",
+                        "titleId": 5656126626699,
+                        "titleReply": "不满意",
+                        "sort": "4",
+                        "sortNum": "D",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893835941613570",
+                                "titleId": "5656126626699",
+                                "replyName": "安全管控不透明，安全设施使用不规范",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835966779393",
+                                "titleId": "5656126626699",
+                                "replyName": "安全隐患排查治理不及时、不彻底",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835987750914",
+                                "titleId": "5656126626699",
+                                "replyName": "未按规范使用、操作设施设备",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893836008722433",
+                                "titleId": "5656126626699",
+                                "replyName": "天然气漏气检测不到位、不规范",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1539885199462801410",
+                        "titleId": 5656126626699,
+                        "titleReply": "很不满意",
+                        "sort": "5",
+                        "sortNum": "E",
+                        "state": "1",
+                        "sonOrNot": "1",
+                        "answerNum": null,
+                        "children": [
+                            {
+                                "id": "1539893835941613570",
+                                "titleId": "5656126626699",
+                                "replyName": "安全管控不透明，安全设施使用不规范",
+                                "sort": 1,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835966779393",
+                                "titleId": "5656126626699",
+                                "replyName": "安全隐患排查治理不及时、不彻底",
+                                "sort": 2,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893835987750914",
+                                "titleId": "5656126626699",
+                                "replyName": "未按规范使用、操作设施设备",
+                                "sort": 3,
+                                "personNum": 0
+                            },
+                            {
+                                "id": "1539893836008722433",
+                                "titleId": "5656126626699",
+                                "replyName": "天然气漏气检测不到位、不规范",
+                                "sort": 4,
+                                "personNum": 0
+                            }
+                        ]
+                    }
+                ],
+                "secondAnswers": null,
+                "oneLevelAnswer": null
+            }
+        ]
+
+        // function tree(data) {
+        //     data.forEach((item) => {
+
+        //         if (!item.children || !item.children) {
+        //             item.children = []
+        //             item.children = []
+        //         } {
+        //             tree(item.children || item.children)
+        //         }
+        //     })
+        //     return data
+
+        // }
+
+
+
+        // function chengeData(arr) {
+
+        //     let _list = arr.reduce(
+        //         (list, cur) => {
+        //             if (cur.children) {
+        //                 return [...list, ...cur.children.reduce(
+        //                     (l, c) => {
+        //                         console.log(l)
+        //                         if (c.children) {
+        //                             return [
+        //                                 ...l,
+        //                                 ...children.reduce((i, n) => [
+        //                                     ...i,
+        //                                     {
+        //                                         ...cur,
+        //                                         ...c,
+        //                                         ...n,
+        //                                     },
+        //                                 ], [])
+        //                             ]
+        //                         }
+
+
+        //                     }, []
+        //                 ),]
+        //             }
+        //         },
+        //         []
+        //     );
+        //     console.log(_list);
+        //     return _list;
+        // }
+        // chengeData(datas)
+
+
+        var newArr = [] //新建一个数据，用于存储扁平化化后的数组
+        function flatData(arr) {
+            arr.forEach(item => {
+                newArr.push(item)
+                item.children && item.children.length > 0 ? flatData(item.children) : ""
+                delete item.children
+                //  item.children = ''    //若是扁平化后的数组须要显示父子层级，能够把这一项删除
+            })
+        }
+        flatData(datas)
+        console.log(newArr, "newArr")
+
+
+    </script>
+</body>
+
+</html>
