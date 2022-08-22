@@ -110,25 +110,29 @@
                 })
                 //resultArr数组的值必须是promise对象才能使用Promise.all，在checkForm做了这一步
                 Promise.all(_self.resultArr).then(function () { //都通过了
-                    let datas = _self.chaagrr(_self.moring.food)
-                    console.log('所有表单验证通过', datas)
+                    _self.subData()
+                    console.log('所有表单验证通过')
                     // TODO:可直接执行你的提交 数据 
                     // 该区域使用this无效，promise内面的this表示局部，并不代表VueComponet实例
                 }).catch(function () {
                     console.log("err");
                 });
             },
+            subData() {
+                let data = {
+                    week: this.moring.week,
+                    moring: this.chaagrr(this.moring.food)
+                }
+                console.log(data)
 
-
-
-
+            },
             chaagrr(array) {
                 var json = {}
                 array.forEach(item => {
                     json[item.name] = item.tag
 
                 });
-                return json
+                return JSON.stringify(json)
             },
 
 
