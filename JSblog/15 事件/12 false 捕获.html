@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{padding: 30px;}
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv1 = document.getElementById("box1");
+            var oDiv2 = document.getElementById("box2");
+            var oDiv3 = document.getElementById("box3");
+            function  fun() {
+                alert(this.id);
+            }
+            //冒泡，点击事件在子元素发生，子元素先处理，然后子元素传递到父元素
+            //捕获，点击事件在子元素发生，先传递到父元素，父元素先处理，在分发到子元素
+            //  turn  捕获  false：冒泡   默认就 false
+            oDiv1.addEventListener("click",fun,true);
+            oDiv2.addEventListener("click",fun,true);
+            oDiv3.addEventListener("click",fun,true);
+        }
+    </script>
+</head>
+<body>
+<div style="background: red;" id="box1">
+    <div style="background: rosybrown;" id="box2">
+        <div style="background: pink;position: absolute;top:500px" id="box3"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+//          var oLi =  document.getElementsByTagName("li");
+            var oUl = document.getElementsByTagName("ul");  //2
+            //循环父元素     双重for循环   外循环一次，内循环一圈
+            for(var i = 0;i<oUl.length-1;i = i + 1){
+                var oLi = oUl[i].getElementsByTagName("li");
+               for(var j = 0; j < oLi.length;j = j + 1){
+                   oLi[j].style.border = "1px solid red";
+               }
+            }
+
+
+            //有很多元素（但不是全部），要操作元素里面的子元素
+            //1.获取元素，循环（要操作多少）
+            //在循环体里面    获取到子元素，操作
+        }
+    </script>
+</head>
+<body>
+<!--加一个边框
+    ul0--》li
+    ul1--》li
+-->
+    <ul>
+        <h2>喜欢玩的游戏</h2>
+        <li>lol</li>
+        <li>王者荣耀</li>
+        <li>魔兽</li>
+    </ul>
+    <ul>
+        <h2>喜欢吃的食物</h2>
+        <li>鲍鱼</li>
+        <li>龙虾</li>
+        <li>火锅</li>
+    </ul>
+    <ul>
+        <h2>不喜欢的</h2>
+        <li>做作业</li>
+        <li>敲代码</li>
+        <li>考试</li>
+        <li>听写</li>
+    </ul>
+</body>
+</html>

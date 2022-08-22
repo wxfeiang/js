@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        th,td{
+            width: 150px;
+        }
+        tr{display: block;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            var tab = document.getElementsByTagName("table")[0];
+
+
+            //点击在表格后面添加一行
+            but.onclick = function () {
+                //姓名搜索 1.先获取到要搜索的值  变小写
+                var seach = input.value.toLowerCase();
+
+                //2.遍历比较
+                for (var i = 0; i < tab.tBodies[0].rows.length; i++) {
+                    var cellValue = tab.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+                    //3.再一次查找，把之前的样式清空
+                    tab.tBodies[0].rows[i].style.display = "none";
+                    //被匹配的字符.search(要匹配的字符)
+                    if (cellValue.search(seach) != -1) {  //找到返回下标，找不到返回-1
+                        tab.tBodies[0].rows[i].style.display = "block";
+                    }
+                    input.value = "";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" placeholder="请输入搜索的值">
+<button>搜索</button>
+<table border="1" width="600">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Jom</td>
+        <td>23</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>张三</td>
+        <td>70</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>吃饭</td>
+        <td>90</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>jury</td>
+        <td>18</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>sfdkf</td>
+        <td>18</td>
+        <td></td>
+    </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>
+<style>
+    a{color: red;}
+</style>
+</body>
+</html>

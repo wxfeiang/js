@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //console.log($("div").offset().top);
+            var divTop = $("div").offset().top;
+            $(document).scroll(function () {
+
+                //滚动距离
+                //console.log($(document).scrollTop());
+                if($(document).scrollTop() >= divTop){
+                    $("div").addClass("active");
+                }else {
+                    $("div").removeClass("active");
+                }
+            });
+        })
+    </script>
+</head>
+<body style="height: 2000px;">
+
+    <div></div>
+    <style>
+        div{width: 1000px;height: 35px;background: red;margin-top:1000px;}
+        .active{position: fixed;top: 0;margin-top:0;width:100%;}
+    </style>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            function  Student(name) {
+                this.name = name;
+                this.eat = function () {
+                    console.log("吃饭");
+                }
+            }
+            function s() {
+
+            }
+            //实例对象
+            var s1 = new Student("mm");
+            var s2 = new Student("mm");
+
+            console.log(s == s); //turn  内存地址
+            console.log(s1.eat == s2.eat) //false
+
+            var str1 = new String("fd");
+            var str2 = new String("fd");
+            console.log(str1.split == str2.split); //10 true
+
+            //protoType 原型 原型：通过某个对象创建的实例对象，这个对象的所以方法和属性都共享的，每一个实例对象都能够使用
+            console.log( String.prototype);
+           //复写String的split方法
+           String.prototype.split = function (name) {
+               alert(name);
+           }
+            var str3 = new String("ha=he");
+            console.log(str3.split("="));
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

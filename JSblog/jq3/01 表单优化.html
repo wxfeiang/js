@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{display: none}
+        label{background: url("default.jpg")no-repeat left center;padding-left: 26px;}
+        .active{background: url("active.jpg")no-repeat left center;}
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("label").click(function () {
+             /*console.log(   $("input:checked"));
+             //设置选中的和没选中的背景
+                $("input:checked").parent().css("background","url('active.jpg')no-repeat left center");
+                $("input").not(":checked").parent().css("background","url('default.jpg')no-repeat left center");*/
+               console.log($(this))
+               $(this).toggleClass("active");
+            })
+
+            $("div").click(function () {
+                $(this).toggleClass("active");
+            })
+        })
+    </script>
+</head>
+<body>
+<div>fds</div>
+<input type="checkbox"><label>男</label><br>
+<input type="checkbox"><label>女</label><br>
+<input type="checkbox"><label>保密</label>
+</body>
+</html>

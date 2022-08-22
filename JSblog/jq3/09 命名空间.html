@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            function fun(){
+                alert("fafa");
+            }
+            function fun1() {
+                alert("fdfd");
+            }
+            $("div").bind("click.abc",fun1);
+            $("div").bind("click.xyz",fun);
+            $("div").bind("mouseout.abc",fun);
+
+//            $("div").unbind("click.abc");  //移除click.abc
+//            $("div").unbind(".abc");  //所有二级域名为abc的有移除
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background: pink"></div>
+</body>
+</html>

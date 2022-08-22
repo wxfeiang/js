@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        ul {list-style: none;padding: 0;}
+        #list{width:300px;margin:50px auto; }
+        p{background: peachpuff;height: 40px;line-height: 40px;}
+        p img{margin: 0 5px;}
+        .box{display: none;}
+        .box li{background: floralwhite;}
+        .box li:hover{
+            background: cornflowerblue;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            //
+            var list = document.getElementById("list");
+            var title = list.getElementsByTagName("p");
+            var oUl = list.getElementsByTagName("ul");
+
+            for (var i = 0;i < title.length; i = i + 1){
+                title[i].onOff = 0;  //收起
+                title[i].index = i;
+                title[i].onclick = function () {
+                    if(this.onOff == 0){
+                        //小图片
+                        this.getElementsByTagName("img")[0].src = "img/ico2.gif";
+                        //展开
+                        oUl[this.index].style.display = "block";
+                        this.onOff = 1;
+                    }else {
+                        this.getElementsByTagName("img")[0].src = "img/ico1.gif";
+                        oUl[this.index].style.display = "none";
+                        this.onOff = 0;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li>
+            <!--//标题-->
+            <p><img src="img/ico1.gif" alt="">朋友</p>
+            <ul class="box">
+                <li>张山</li>
+                <li>张山</li>
+                <li>张山</li>
+            </ul>
+        </li>
+        <li>
+            <!--//标题-->
+            <p><img src="img/ico1.gif" alt="">家人</p>
+            <ul class="box">
+                <li>发动机</li>
+                <li>发动机</li>
+                <li>发动机</li>
+            </ul>
+        </li>
+        <li>
+            <!--//标题-->
+            <p><img src="img/ico1.gif" alt="">陌生人</p>
+            <ul class="box">
+                <li>五谷丰登</li>
+                <li>五谷丰登</li>
+                <li>五谷丰登</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

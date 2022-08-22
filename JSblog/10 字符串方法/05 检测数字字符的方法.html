@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //charCodeAt
+            var str = "w90705web";
+            console.log(str.charCodeAt(0)); //119
+            console.log(dateNume(str));
+            function dateNume(str) {
+                //只要有不是数字的字符，返回false 结束函数
+                for(var i = 0;i<str.length;i++){
+                    var n = str.charCodeAt(i);
+                    if(n < 48 || n > 57){ return false; } //在函数里面只要执行了return 函数结束
+                }
+                return true;
+            }
+           /* function dateNume(str) {
+                var num = 0;
+                for(var i = 0;i<str.length;i++){
+                    var n = str.charCodeAt(i);
+                    if(n>=48 && n <= 57){
+                        num++;
+                    }
+                }
+                if(num == str.length){
+                    return true;
+                }else {
+                    return false;
+                }
+            }*/
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

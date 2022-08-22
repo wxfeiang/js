@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{width:100%;background: pink;line-height: 40px;}
+        #new{background: #FFFFCC;}
+    </style>
+    <script>
+        window.onload = function () {
+            var old = document.getElementById("old");
+            var newText = document.getElementById("new");
+
+           var timer =  setInterval(autoPlay,300);
+
+            function autoPlay() {
+                var str = old.innerHTML;  //获取old 内容
+                if(str.length == 0){
+                    clearInterval(timer);
+                }
+                newText.innerHTML += str.substring(0,1);
+                old.innerHTML = str.substring(1);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<p id="old">优就业为每一位学员定制个性化求职方案及职业规划，提供一对一修改简历、培训面试技巧、模拟真实面试场景、推荐合作企业就业等服务。。优就业为每一位学员定制个性化求职方案及职业规划，提供一对一修改简历、培训面试技巧、模拟真实面试场景、推荐合作企业就业等服务。。</p>
+<p id="new"></p>
+</body>
+</html>

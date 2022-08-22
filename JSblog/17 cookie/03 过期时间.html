@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //创建时间对象
+            var date = new Date();
+            date.setSeconds(date.getSeconds()+10);
+            document.cookie = "user=123;expires="+date; //expires=时间  过期时间
+            setInterval(function () {
+                console.log(document.cookie);  //用ff浏览器查看
+            },1000)
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*
+            1.面向对象 : 关注功能，不关注内部细节
+            2.面向过程 ：具体的实现
+
+            js 基于对象  java ios
+                对象的组成：属性------变量  基本特征  静态的
+                            方法------函数  行为  过程
+            * */
+            //1.字面量创建
+            var  person = {
+                name : "web",  //属性
+                age:18,
+                run:function () {
+                    console.log("跑")
+                }
+            }
+
+
+            var a = 10; //不属于任何人,
+            person.name; //只属于person对象
+
+
+//            var obj1 = new Object();
+//            obj1.name = "txf";
+//
+//            var obj2 = new Object();
+//            obj2.name = "mm";
+
+            //2.构造函数创建   //student  类型
+            /*function Student() {
+                this.name = "小明";
+                this.age = 18;
+
+            }
+
+            var s1 = new Student();  //实例对象
+            console.log(s1.name);*/
+
+
+            //传入参数
+            function Student(name,age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            var s1 = new Student("小明",8); //实例对象
+            var s2 = new Student("小红",9); //实例对象
+            console.log(s1.name,s2.name);
+
+//            function Student(name,age){
+//                var obj = new Object();
+//                obj.name = name;
+//                obj.age = age;
+//                return obj;
+//            }
+
+            //  person   name age  h  eat
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

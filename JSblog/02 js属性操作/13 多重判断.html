@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*
+        *
+        大于90  优秀
+        大于80  良好
+        大于70 还行
+        大于60 结果
+        小于60 不及格
+        * */
+        window.onload = function () {
+            var c = document.getElementById("text");
+            var but = document.getElementById("but");
+            but.onclick = function () {
+                /*
+                 一个输入框，一个提交框
+                 输入css   提示，恭喜您：css课程完成！
+                 输入html    提示，恭喜您：html课程完成！
+                 输入js   提示，恭喜您：js课程完成！
+                 输入其他    提示，你输入的内容不是我想要的！
+                 */
+
+                //1.拿到用户数据,
+                var value = c.value;
+                if(value == "css"){
+                    alert("恭喜您：css课程完成！");
+                }else if(value == "html"){
+                    alert("恭喜您：html课程完成！");
+                }else if(value == "js"){
+                    alert("恭喜您：js课程完成！");
+                }else {
+                    alert("你输入的内容不是我想要的！");
+                }
+            }
+        }
+
+
+//        if的嵌套  80 优秀  60 及格   0-60   60-80
+        /*
+        1.if（条件）{条件成立执行}
+        2.if(条件){条件成立执行}else{条件不成立执行}
+        3.if（条件）{条件成立执行}else if(条件){成立执行}else{不成立}
+        if和else是一对的，else跟前面最近的if配对
+        * */
+        /*var a = 54;
+        if (a > 80){
+            alert("优秀")
+        }else if(a > 60){
+            alert("及格");
+        }else {
+            alert("不及格");
+        }*/
+
+
+    </script>
+</head>
+<body>
+<!--判断等级-->
+<!--<input type="text" id="text">-->
+<!--<button id="but">输出等级</button>-->
+
+<!--判断课程-->
+<input type="text" id="text">
+<button id="but">输出等级</button>
+</body>
+</html>

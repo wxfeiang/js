@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;background: red;position: absolute;}
+    </style>
+    <script>
+        window.onload = function () {
+            /*
+             1.把主要代码放在函数中
+             2.找到可变的量   A.运动终止值  B.步长（speed） C.要运动的元素
+             3.把可变的量变成参数，
+             4.代入参数，检测
+
+             */
+            var but = document.getElementsByTagName("button")[0];
+            var oDiv = document.getElementsByTagName("div")[0];
+
+            but.onclick = function () {
+                //回调函数  动作结束之后，要做的操作
+                move(oDiv,10,700,"left",function () {
+                    move(oDiv,10,700,"top",function () {
+                        move(oDiv,10,30,"left",function () {
+                            move(oDiv,10,30,"top");
+                        });
+                    });
+                });
+            };
+
+        };
+        function move(obj,tag,stopValue,attr,fun) {
+            tag = stopValue > parseInt(getStyle(obj,attr)) ? tag : -tag;
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var speed = parseInt(getStyle(obj,attr)) + tag;
+                if(speed<=stopValue&&tag<0||speed>=stopValue&&tag>0){
+                    speed = stopValue;
+                }
+                obj.style[attr] = speed + "px";
+                if(speed == stopValue){
+                    clearInterval(obj.timer);
+                    //有回调函数调用 && 全真为真，第一个为假，不会往下执行
+                   fun && fun();//当运动完成以后执行的函数
+                }
+            },30);
+        }
+
+        function  getStyle(obj,attr) {
+            return  obj.currentStyle ?  obj.currentStyle[attr] :  getComputedStyle(obj)[attr];
+        }
+    </script>
+</head>
+<body>
+<button>走</button>
+<div></div>
+</body>
+</html>
+</body>
+</html>

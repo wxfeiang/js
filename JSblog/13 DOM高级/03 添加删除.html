@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+
+            //1.添加  input.value
+            but.onclick = function () {
+
+                var value = input.value;
+                var li = document.createElement("li");
+                var textNode = document.createTextNode(value);
+                li.appendChild(textNode);
+
+                var a = document.createElement("a");
+                a.appendChild(document.createTextNode("删除"));
+                a.onclick = function () {
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                };
+                li.appendChild(a);
+
+                oUl.insertBefore(li,oUl.firstElementChild);
+
+                input.value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text"><button>添加</button>
+    <ul>
+    </ul>
+<style>
+    a{margin-left: 10px;cursor: pointer;}
+</style>
+</body>
+</html>

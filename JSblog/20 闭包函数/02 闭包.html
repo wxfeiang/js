@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+//        var sa = 10;
+        window.onload = function (){
+
+
+            //闭包 函数里面放函数
+            /*
+               1.变量会长期存储在内存当中（类似变量）;
+               2.私有成员的存在
+               3.模块化
+               4.避免全局污染
+            */
+            var a = 10;
+            function txf() {
+                var a = 10;
+                return function () {
+                    console.log(++a);
+                }
+               /* function f() {
+                    console.log(++a);
+                }
+                f();*/
+            }
+
+
+
+            var s = txf();
+//            var s = txf();
+//            var s = txf();
+//            var s = txf();
+            s(); //11
+            s(); //12
+            s(); //13
+            s = null;
+            //s();
+            console.log();  //a is not defined
+
+
+
+            function fun2() {
+                var a = 10;
+                function aaa() {
+                    console.log(a++);
+                }
+                function bbb() {
+                    console.log(a++)
+                }
+                function ccc() {
+                    console.log(a++)
+                }
+
+                return {"aaa":aaa,"bbb":bbb,"ccc":ccc}
+            }
+
+            var fusn = fun2();
+            fusn.aaa();  //10
+            fusn.bbb();  //11
+            fusn.ccc();  //12
+            console.log(fusn);
+
+            function aa() {
+                function b() {
+                    var sa = 100;
+                }
+                b();
+                console.log(sa);  //sa is not defined
+            }
+
+            aa();
+
+
+
+        }
+    </script>
+    <script>
+        var sa = 10;
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 200px;height: 200px;background: pink;}
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("box");
+//            oDiv.style.float = "right";     标准和ie都支持
+//            oDiv.style.styleFloat = "right";  支持ie
+            oDiv.style.cssFloat = "right";   //支持标准
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

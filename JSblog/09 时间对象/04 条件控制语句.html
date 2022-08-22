@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //条件控制语句 if-else    switch     for  while  do-while
+            //90  A  80-90 B 70-80 c  60-70 D
+
+         /*   var s = 78;
+            if(s > 90){
+                alert("A");
+            }else  if(s > 80){
+                alert("B");
+            }else  if(s > 70){
+                alert("c");
+            }else  if(s > 60){
+                alert("D");
+            }else {
+                alert("不及格");
+            }*/
+
+            //switch（匹配值）{
+            //     case 8 ： 匹配到后开始执行的代码
+            //
+            // }
+
+            //
+            var a = 10,b = 100;  //+ - * /
+            var c = 0;
+            switch ("-"){  //如果switch没有break 找到之前就不会再进行匹配，直接执行
+                case "+" : c = a + b;console.log(c); break;
+                case "-" : c = a - b;console.log(c);break
+                case "*" : c = a * b;console.log(c);break
+                case "/" : c = a / b;break
+                default:alert("不知道你干啥");
+            }
+
+            console.log(c);
+
+
+            //while   while(结束条件){循环}
+            //do-while  do{循环体}while(结束条件)
+            var a = 1;
+            var sum = 0;
+            //1-100
+//            for (;a<=100;){
+//
+//            }
+
+
+            /*while (a <= 100){
+                sum += a;
+                a++;
+            }
+            console.log(sum);*/
+
+            do{
+                sum += a;
+                a++;
+            }while (a <= 100);
+            console.log(sum);
+
+
+            //while先判断条件，然后再执行，do-while 先执行，后判断条件
+            var a = 101;
+            while (a <= 100){
+                alert("a");
+            }
+            do {
+                alert("a");
+            }while (a <= 10);
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

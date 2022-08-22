@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <style>
+        div{width: 100px;height: 100px;}
+    </style>
+    <script>
+        $(function () {
+            //jquery  //concat = merge
+           console.log($("div"));  //jquery
+           console.log($("div")[1]);  //DOM
+            //多个  通过下标获取dom元素
+            $("div")[1].style.background = "pink";
+
+
+        });
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+</body>
+</html>

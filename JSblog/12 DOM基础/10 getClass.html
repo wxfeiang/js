@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //第三种获取元素的方法   获取文档中所用类名为active的元素
+            var oLi = document.getElementsByClassName("active");
+            console.log(oLi);
+            for(var i = 0; i<oLi.length;i++){
+                oLi[i].style.background = "#fedcba";
+            }
+            //给类名为active的所有元素设置背景颜色
+            var oLi = document.getElementsByTagName("li");
+            for(var i = 0; i<oLi.length;i++){
+                if(oLi[i].getAttribute('class') == "active"){
+                     oLi[i].style.background = "#fedcba";
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li class="active"></li>
+        <li class="active"></li>
+        <li></li>
+    </ul>
+    <p class="active"></p>
+</body>
+</html>

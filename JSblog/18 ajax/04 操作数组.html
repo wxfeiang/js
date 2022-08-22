@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function (){
+            ajax("arr.txt",function (str) {
+                //alert(str);//[3]  eval  参数是字符串，如果是字符串，执行js代码,返回一个数组
+                var arr = eval(str);
+                console.log(str);
+                console.log(arr);
+                console.log(arr[3]);
+            })
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

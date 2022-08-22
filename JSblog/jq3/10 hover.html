@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;background: red}
+        /*div:hover{background: pink}*/
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+                //$(selector).hover(移入的时候调用的函数，离开的时候调用的函数)
+              $("div").hover(function () {
+                  //进入
+                  $(this).css("background","pink");
+              },function () {
+                  //离开
+                  $(this).css("background","red");
+              });
+
+
+            function hover(obj,fun1,fun2) {
+                obj.onmouseover = function () {
+                    fun1();
+                };
+                obj.onmouseout = function () {
+                    fun2 ? fun2() : fun1();         //  fun2 成立 回调 fun2  不成立 用 fun1
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

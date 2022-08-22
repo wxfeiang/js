@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box{
+            width: 100px;height: 100px;background: red;position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("box");
+            var w = document.documentElement.clientWidth;  //屏幕宽
+            var h = document.documentElement.clientHeight;
+            var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+//            console.log(oDiv.offsetWidth/2);
+            oDiv.style.left = w - oDiv.offsetWidth + "px";
+            oDiv.style.top =  scrollTop + h - oDiv.offsetHeight + "px";
+
+            document.body.onscroll = function () {
+                var w = document.documentElement.clientWidth;  //屏幕宽
+                var h = document.documentElement.clientHeight;
+                var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+//            console.log(oDiv.offsetWidth/2);
+                oDiv.style.left = w - oDiv.offsetWidth + "px";
+                oDiv.style.top =  scrollTop + h - oDiv.offsetHeight + "px";
+            }
+        }
+    </script>
+</head>
+<body style="height: 2000px;">
+    <div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input");
+            var but = document.getElementsByTagName("button")[0];
+            alert(input[1].checked);  //选中的true   没选中false
+            but.onclick = function () {
+
+                //反选  选中--取消     没选择-选中
+                for (var i = 0;i < input.length;i++){
+                   /* if(input[i].checked){  //true
+                        input[i].checked = false;
+                    }else {
+                        input[i].checked = true;
+                    }*/
+
+                   //input[i].checked ? input[i].checked = false :input[i].checked = true;
+                    input[i].checked = !input[i].checked;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="checkbox" checked="checked">
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<input type="checkbox" >
+<button>反选</button>
+</body>
+</html>

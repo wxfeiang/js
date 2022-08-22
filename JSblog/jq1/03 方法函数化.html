@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{background: red;}
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        window.onload = function (){
+            //取值赋值合体
+            console.log($("div").css("background"));  //取值
+            $("div").css("background","blue");  //赋值
+            console.log(css("box","background"));
+            css("box","background","yellow");
+
+
+            function css(id,attr,value) {
+                var obj = document.getElementById(id);
+                if(arguments.length == 2){  //取值
+                    return obj.currentStyle ?  obj.currentStyle[attr]: getComputedStyle(obj)[attr];
+                }else  if(arguments.length == 3){
+                    obj.style[attr] = value;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;" id="box"></div>
+</body>
+</html>

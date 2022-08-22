@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+           /* //1找元素
+            var oLi = document.getElementsByTagName("LI");   //数据集合  4
+            for(var i = 0; i < oLi.length;i = i + 1){
+                //2.点击事件
+                oLi[i].onclick = function () {
+                    alert("被点击了");
+                }
+            }*/
+
+          console.log(document.body);
+          document.body.innerHTML = "<div>1</div>"  //可以识别标签
+
+            //4   生成按钮  不要用循环执行大量的生成标签，性能有问题
+            for(var i = 0;i < 400;i = i + 1){
+              //生成按钮
+                document.body.innerHTML = document.body.innerHTML + "<button>按钮</button>";
+            }
+
+
+
+        }
+    </script>
+</head>
+<body >
+    <!--<ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>-->
+
+</body>
+</html>

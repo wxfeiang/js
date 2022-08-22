@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+
+            box2.onmousedown = function (ev) {
+                var ev = window.event || ev;
+                var x = ev.clientX - box2.offsetLeft;
+                var y = ev.clientY - box2.offsetTop;
+                //alert(oDiv.setCapture);
+                if(box2.setCapture){  //undefined
+                    box2.setCapture();
+                }
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    var l = ev.clientX - x;
+                    var t = ev.clientY - y;
+                    if(l<0){l = 0;}
+                    if(l>document.documentElement.clientWidth- box2.offsetWidth){
+                        l = document.documentElement.clientWidth - box2.offsetWidth;
+                    }
+                    if (t<0){ t = 0;}
+                    var L1 = l;
+                    var R1 = box1.offsetLeft;
+                    var T1 = t;
+                    var B1 = box1.offsetTop;
+                    if(L1+box2.offsetWidth < R1 || L1 > R1+box1.offsetWidth || T1+box2.offsetHeight < B1 || T1 > B1 + box1.offsetHeight ){
+                        box1.style.background = "orange";
+                    }else {
+                        box1.style.background = "red"
+                    }
+                    box2.style.top = t + "px";
+                    box2.style.left = l + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = "";
+                    if(box2.setCapture){
+                        box2.releaseCapture();
+                    }
+                };
+
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div style="width: 200px;height: 200px;background: orange;position: absolute;left: 50%;margin-left: -100px;top: 50%;margin-top: -100px;" id="box1"></div>
+    <div style="width: 100px;height: 100px;background: #abc;position: absolute" id="box2"></div>
+</body>
+</html>

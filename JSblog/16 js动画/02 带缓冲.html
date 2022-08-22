@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box{width: 100px;height: 100px;background: red;position: absolute;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div")[0];
+            //带缓冲的    离目标越远  速度越快  ，越近越慢
+            // 目标值  当前值   500 20   500 100
+            //(目标值 - 当前值)/缩放的系数
+             oDiv.onclick = function () {
+                var timer =   setInterval(function () {
+                    //先获取当前的left
+                    var cur =  parseInt(getStyle(oDiv,"left"));
+                    var speed = (500 - cur)/10;  //没有缓冲  每次加多少
+                    if(speed >= 500){speed = 500;}
+                    oDiv.style.left = cur + speed+"px";
+                    if(speed == 500){
+                        clearInterval(timer);
+                    }
+                },30)
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<div style="width: 2px;height:400px;background: #00FF00;position: absolute;left: 500px; "></div>
+</body>
+</html>

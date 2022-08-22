@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //第一种通过id
+         var oli = document.getElementById("li1");
+         //第二种，通过标签名   document.getElementsByTagName("标签名（不区分大小写）")
+           var oLis = document.getElementsByTagName("LI");  //获取文档内所有li标签
+           console.log(oLis);  //HTMLCollection(4) 集合  [li#li1, li, li, li, li1: li#li1] 不是数组，但是用法一模一样
+
+            /*
+            区别：
+                id  一个                          静态的
+                tagName  父元素里面所有的         动态的
+            * */
+            console.log(oLis[0]);
+
+            //获取div
+           var oDiv = document.getElementsByTagName("div");//[div]
+           oDiv[0].style.cssText = "width:100px;height:100px;background:pink";
+           //z注意：用tagName 必须用[];
+
+
+
+            //获取局部的标签   1.先找到父元素   2.在父元素里面找
+            var oUl = document.getElementsByTagName("ul")[0];
+           var oLi = oUl.getElementsByTagName("li");
+           console.log(oLi);
+
+           oLi[0].onclick = function () {
+               alert("点击了");
+           };
+           oLi[1].onclick = function () {
+               alert("点击了");
+           };
+           oLi[2].onclick = function () {
+               alert("点击了");
+           };
+           oLi[3].onclick = function () {
+               alert("点击了");
+           }
+           //除了下标，其他的都没变
+
+
+        }
+    </script>
+</head>
+<body>
+  <ul id="ul">
+      <li id="li1">1</li>
+      <li>2</li>
+      <Li>3</Li>
+      <li>4</li>
+  </ul>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+    </ul>
+    <div></div>
+</body>
+</html>

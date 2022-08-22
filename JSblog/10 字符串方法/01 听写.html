@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.div上下
+           /* var n = 0;
+            var timer = null;
+            var onOff = true;
+            var stop = 750;
+                for(var i = 0;i<oDiv.length;i++){
+                    oDiv[i].onclick = function () {
+                        clearInterval(timer);
+                        stop = onOff ? 750 : 0;
+                        timer = setInterval(function () {
+                            move(oDiv[n],10,750,"top");
+                            n++;
+                            if(n == oDiv.length){
+                                clearInterval(timer);
+                                n=0;
+                                onOff = !onOff;
+                            }
+                        },100);
+                    }
+                }*/
+            //2.写一个到8月14的倒计时  当前时间  结束时间
+            autoPlay();
+            setInterval(autoPlay,1000);
+            function  autoPlay() {
+                var date = new Date();
+                var newDate = new  Date(2017,7,14,00,00,00);
+                var time = Math.floor((newDate - date)/1000);
+
+                document.body.innerHTML = Math.floor(time/86400)+"天"+Math.floor(time%86400/3600)+"小时"+Math.floor(time%3600/60)+"分钟"+
+                Math.floor(time%60)+"秒";
+            }
+
+
+//            console.log(newDate);
+
+            //4.用while写 1-100的和
+
+            var sum = 0;
+            var i = 1;
+            while (i <= 100){
+                sum += i;
+                i++;
+            }
+            console.log(sum);
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

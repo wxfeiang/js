@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{width: 400px;height: 400px;background: red;margin: 100px auto;overflow: hidden;animation: an 4s linear infinite;}
+        .div2{width: 300px;height: 300px;background: #99ffcc;margin: 50px;overflow: hidden;animation: an 5s linear infinite;}
+        .div3{width: 200px;height: 200px;background: pink;margin: 50px;overflow: hidden;animation: an 6s linear infinite;}
+        .div4{width: 100px;height: 100px;background: fuchsia;margin: 50px;animation: an 7s linear infinite;}
+        
+        @keyframes an {
+            50%{transform: rotate(180deg)}
+            100%{transform: rotate(360deg)}
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function () {
+            //  随机
+              setInterval(function () {
+                  $("div").eq(parseInt(Math.random()*4)).css("background","rgb("+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+")");  //rgb  255
+              },1000);
+        })
+    </script>
+</head>
+<body>
+<div class="div1">
+    <div class="div2">
+        <div class="div3">
+            <div class="div4"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

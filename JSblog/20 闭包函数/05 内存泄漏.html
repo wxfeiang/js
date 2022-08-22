@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            function fun() {
+                var oDiv = document.getElementById("box");
+                var text = oDiv.innerHTML;
+                oDiv.onclick = function () {
+                   alert(text);
+                };
+                oDiv = null;
+            }
+           var s = fun();
+            s();
+            //console.log(oDiv);
+        }
+    </script>
+</head>
+<body>
+    <div id="box">fdad</div>
+</body>
+</html>

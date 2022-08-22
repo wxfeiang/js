@@ -1,0 +1,74 @@
+
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style>
+        *{margin:0; padding:0;}
+        .ujiuye_box{width:500px; height:300px; border:1px solid #e0e0e0; padding:20px; position:relative;}
+        #box_left{width:300px; height:100px; border:1px solid #e0e0e0; float:left;}
+        .right_top{width:180px; float:right;}
+        #zhezhao{width:540px; height:340px; position:absolute; left:0; top:0; background:#000; opacity:.3;filter:alpha(opacity=30); display:none;}
+        #change{width:180px; height:280px; padding:10px; position:absolute; right:20px; top:20px; background:#fff; display:none;}
+        #change a{display:inline-block; width:80px;  border:1px solid #e0e0e0; background:#fff; font-size:14px; text-align:center; line-height:1.8; margin:4px;}
+        #change h3{line-height:1.5;}
+        #change button{width:60px; line-height:1.8; background:#eaeaea; border:none; text-align:center; margin:0 5px; cursor:pointer;}
+    </style>
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            //点击显示
+            $("#btn").click(function () {
+                $("#zhezhao").show();
+                $("#change").show();
+            });
+            $("a").mouseover(function () {
+
+                var arr = $(this).text().split("×");          // 找到内容  一X 分割
+                $("#box_left").css({"width":arr[0],"height":arr[1]});
+                $("#box_left").css("background",$(this).text());
+                $(this).css("background",$(this).html()).siblings().css("background","");
+            });
+
+           $('#btn1').click(function(){
+               $("#zhezhao").hide();
+               $("#change").hide();
+
+           })
+
+          $("#btn2").click(function(){
+              $("#zhezhao").hide();
+              $("#change").hide();
+              $("#box_left").css("width",300)
+                             .css("height",100)
+                             .css("border","1px solid #e0e0e0")
+                             .css("background","#fff");
+
+          })
+
+        })
+    </script>
+</head>
+
+<body>
+<div class="ujiuye_box">
+    <div id="box_left"></div>
+    <div class="box_right">
+        <div class="right_top">
+            <button id="btn">点击改变DIV样式</button>
+        </div>
+    </div>
+    <div id="zhezhao"></div>
+    <div id="change">
+        <h3>大小</h3>
+        <a>300×300</a><a>300×200</a><a>200×300</a><a>100×300</a>
+        <h3>颜色</h3>
+        <a>#FF0000</a><a>#00FF00</a><a>#0000FF</a><a>#00FFFF</a>
+        <button id="btn1">确定</button><button id="btn2">取消</button>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 400px;height: 500px;border: 1px solid #ccc;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oDiv  = document.getElementById("box");
+            var input  = document.getElementById("in");
+            var but  = document.getElementById("but");
+
+            but.onclick = function () {
+
+                oDiv.innerHTML = oDiv.innerHTML + "教师："+input.value+"<br>";
+                //      教师：你好<br>
+                //教师：你好教师：123<br>
+                input.value = "";
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="box">123435</div>
+    教师：<input type="text" id="in"><button id="but">发送</button>
+</body>
+</html>

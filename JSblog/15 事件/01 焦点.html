@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //输入框 a链接  文本域
+            var input = document.getElementsByTagName("input")[0];
+            input.onfocus = function () {
+                //获取焦点
+            }
+            input.onblur = function () {
+                //失去焦点
+            }
+
+            //鼠标停留的位置，接下来可编辑
+            //让input获取到焦点
+            input.focus();
+            input.blur();
+//
+//            var p = document.getElementsByTagName("div")[0];
+//            p.select("705");
+            input.select("f");  //默认选中
+            //事件函数，事件对象
+        }
+    </script>
+</head>
+<body>
+<input type="text" value="fffd343">
+<div>web705</div>
+</body>
+</html>

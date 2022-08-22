@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box div{width: 200px;height: 200px;background: #FFFFCC;display: none}
+        #box .active{background: yellow;}
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                //切换div
+                //console.log($(this).index());
+                $("#box div").css("display","none");
+                $("#box button").removeClass("active");
+
+                $("#box div").eq($(this).index()).css("display","block");
+                $(this).addClass("active");
+            });
+
+           /* $("button").each(function (index,elem) {
+                console.log($(this));
+                $(this).click(function () {
+                    //全清
+                    $("button").removeClass("active");
+                    $("#box div").css("display","none");
+
+                    //添加对应
+                    $(this).addClass("active");
+                   // $("#box div").eq($(this).index()).css("display","block");
+                    console.log(index);
+                    $("#box div").eq(index).css("display","block");
+                });
+
+            })*/
+
+        })
+    </script>
+</head>
+<body>
+<div id="box">
+    <button class="active">aaa</button>
+    <button>bbb</button>
+    <button>ccc</button>
+
+    <div style="display: block">aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+</div>
+</body>
+</html>

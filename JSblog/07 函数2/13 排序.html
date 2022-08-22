@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input");
+            var but = document.getElementsByTagName("button");
+            var arr = [];
+            but[0].onclick = function () {
+
+                arr.push(parseInt(input[0].value));
+                input[0].value = "";
+                input[1].value = "";
+            }
+            but[1].onclick = function () {
+
+                //1.排序
+                var a = 10;
+               arr =  paixu(arr);
+                input[1].value = arr;
+                arr = [];
+
+            };
+
+            function paixu(arr) {
+                for(var i = 0; i<arr.length;i++){
+                    for(var j = i+1;j<arr.length;j++){
+                        if(arr[i]>arr[j]){
+                            var temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                }
+                return arr;
+            }
+
+        }
+    </script>
+</head>
+<body>
+<input type="text"> <button>添加</button><button>显示</button>
+<input type="text">
+</body>
+</html>

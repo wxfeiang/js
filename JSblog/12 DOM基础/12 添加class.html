@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName("div")[0];
+            addClassName(oDiv,"active1");
+            //定义一个函数 添加class   如果没有 直接加 如果有 +""
+            function addClassName(obj,className) {
+                //null  ""
+                if(obj.className == ""){
+                    obj.className = className;
+                }else {
+                    //空格  不能重
+                   var arr = obj.className.split(" ");  //box active
+                    if(_indexof(arr,className) == -1){
+                        obj.className += " " + className;
+                    }
+                }
+            }
+            function _indexof(arr,s) {
+                for(var i = 0; i < arr.length;i++){
+                    if(arr[i] == s){
+                        return i;
+                    }
+                }
+                return -1;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="box active"></div>
+</body>
+</html>

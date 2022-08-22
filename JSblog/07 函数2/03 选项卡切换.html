@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;text-decoration: none;}
+        .box{width: 800px;border: 1px solid #000;margin: 20px auto;background: blue;}
+        .box:after{content: "";display: block;clear: both; }
+        #leftBox{float: left}
+        #rightBox{float: left;}
+
+        #leftBox li {width: 200px;height: 89px;background: red;margin-bottom: 2px;color: #fff;font:50px/89px "黑体";text-align: center;}
+        #rightBox div{display: none;}
+        #rightBox .active{display: block;}
+        #rightBox a{display: block;width: 600px;height: 325px;background:#0F0;font-size:100px;color:#000;text-align:center;text-decoration:none;line-height:360px;en;}
+        .tabUl {display:table;width:100%;}
+        .tabUl li{display:table-cell;background:#909;color:#fff;font-size:20px;text-align:center;height:40px;line-height:40px;border-right:2px solid #03C;cursor:pointer;}
+        .tabUl li.hover{background:#fff;color:#000;}
+        #leftBox .active{
+            background: yellow;color: #000;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            //先获取所需要的元素
+            var leftLi = document.getElementById("leftBox").getElementsByTagName("li");
+            var oDiv = document.getElementById("rightBox").getElementsByTagName("div");
+            for(var i = 0; i < leftLi.length;i++){
+                    leftLi[i].index = i;
+                    leftLi[i].onmouseover = function () {
+                    for (var j = 0;j < leftLi.length;j++){
+                        leftLi[j].className = "";
+                        oDiv[j].className = "";
+                    }
+                    //改li的状态
+                    this.className = "active";
+                        //显示的div
+                    oDiv[this.index].className = "active";
+                }
+            }
+            //切换子选项卡
+            changeItem(oDiv[0]);
+            changeItem(oDiv[1]);
+            changeItem(oDiv[2]);
+            changeItem(oDiv[3]);
+            changeItem(oDiv[4]);
+            function changeItem(obj) {
+                //通过父元素找子元素
+                var oA = obj.getElementsByTagName("a")[0];
+                var oLi = obj.getElementsByTagName("li");
+
+                //给每个li添加点击事件
+                for (var i = 0; i < oLi.length;i++){
+                    oLi[i].onclick = function () {
+                        for (var j = 0;j < oLi.length;j++){
+                            oLi[j].className = "";
+                        }
+                        //1.改li的状态
+                        this.className = "hover";
+                        //2.改a的文字
+                        oA.innerHTML = this.innerHTML;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="box">
+    <ul id="leftBox" >
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <div id="rightBox">
+        <div id="rightBox1" class="active">
+            <a href="#">a1</a>
+            <ul class="tabUl">
+                <li class="hover">a1</li>
+                <li>a2</li>
+                <li>a3</li>
+                <li>a4</li>
+            </ul>
+        </div>
+        <div id="rightBox2">
+            <a href="#">b1</a>
+            <ul class="tabUl">
+                <li class="hover">b1</li>
+                <li>b2</li>
+                <li>b3</li>
+                <li>b4</li>
+            </ul>
+        </div>
+        <div id="rightBox3">
+            <a href="#">c1</a>
+            <ul class="tabUl">
+                <li class="hover">c1</li>
+                <li>c2</li>
+                <li>c3</li>
+                <li>c4</li>
+                <li>c5</li>
+                <li>c6</li>
+            </ul>
+        </div>
+        <div id="rightBox4">
+            <a href="#">d1</a>
+            <ul class="tabUl">
+                <li class="hover">d1</li>
+                <li>d2</li>
+                <li>d3</li>
+                <li>d4</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div")[0];
+            function fun() {
+                oDiv.style.cssText = "width:100px;height:100px;background:pink";
+            }
+           // alert(oDiv.addEventListener);  //ie6-8  undefined
+           /* if(oDiv.addEventListener){
+                //标准
+                oDiv.addEventListener("click",fun);
+            }else {
+                oDiv.attachEvent("onclick",fun);
+            }*/
+            bind(oDiv,"click",fun);
+            bind(oDiv,"mouseover",fun);
+            //封装绑定函数
+            function bind(obj,type,fun) {
+                if(obj.addEventListener){
+                    obj.addEventListener(type,fun); //click
+                }else {
+                    obj.attachEvent("on"+type,fun);
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div>发快递</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box div{width: 300px;height: 300px;border: 1px solid red;display: none}
+        #box .active{background:paleturquoise; }
+        #box .show{display: block;}
+        #box1 div{width: 300px;height: 300px;border: 1px solid red;display: none}
+        #box1 .active{background:paleturquoise; }
+        #box1 .show{display: block;}
+    </style>
+    <script>
+        window.onload = function () {
+            new TabSwitch("box");
+            new TabSwitch("box1");
+
+
+            /* function funClick() {
+             //切换选项卡
+             for(var j = 0;j<this.oBut.length;j++){
+             this.oBut[j].className = "";
+             this.oDiv[j].className = "";
+             }
+             this.className = "active";
+             this.oDiv[this.index].className = "show";
+             }*/
+
+        };
+        //外面的div
+        function TabSwitch(id) {
+            //获取父元素
+            var box = document.getElementById(id);
+            this.oBut = box.getElementsByTagName("input");
+            this.oDiv = box.getElementsByTagName("div");
+
+            var _this = this;   //私有变量
+            //方法  点击
+            for(var i = 0;i<this.oBut.length;i++) {
+                //自定义索引
+                this.oBut[i].index = i;
+                //this.oBut[i].onclick = this.funClick;
+                this.oBut[i].onclick = function (){
+//                    alert(_this);
+                    _this.funClick(this);
+                };
+                console.log(this.funClick);
+            }
+        }
+        TabSwitch.prototype.funClick = function (obj) {
+            //alert(this);  //input 变成  TabSwitch
+            for(var j = 0;j<this.oBut.length;j++){
+                this.oBut[j].className = "";
+                this.oDiv[j].className = "";
+            }
+            obj.className = "active";
+            this.oDiv[obj.index].className = "show";
+        };
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮一" class="active">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+    <div class="show">aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+</div>
+
+<div id="box1">
+    <input type="button" value="按钮一" class="active">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+    <input type="button" value="按钮三">
+    <div class="show">aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+    <div>ccc</div>
+</div>
+</body>
+</html>

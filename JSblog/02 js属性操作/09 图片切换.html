@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //点击图片，切换，1-2  2-1 1-2
+          var image =  document.getElementById("image");
+            var a = 1;
+          image.onclick = function () {
+              /*绝对路径：从根目录   相对：相对文件本身*、
+                if（image.src = "img/1.jpg"）  相对路径不能作为判断条件
+                绝对路径也不行   if(image.src == "http://localhost:63357/705%20%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/01%20JS/02%20js%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C/img/1.jpg"){
+               */
+                //console.log(image.src);  //http://localhost:63357/705%20%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/01%20JS/02%20js%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C/img/1.jpg
+              //切换  if img 1 --->2  else ---->1
+
+              //定义一个变量，标志当前的状态 a = 1   a=2
+              if(a == 1){
+                  image.src = "img/2.jpg";
+                  a = 2;
+              }else {
+                  image.src = "img/1.jpg";
+                  a = 1;
+              }
+          }
+        }
+    </script>
+</head>
+<body>
+<img src="img/1.jpg" alt="" id="image">
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            /*
+            添加滚轮事件
+            ie/chrome  元素.onmousewheel
+            ff  必须用事件绑定  oDiv.addEventListener("DOMMouseScroll",fun,false)
+
+
+            阻止默认事件
+             obj.事件
+                 return false  标准  ie高版本   attachEvent
+                 全局捕获   ie低版本  5 6 7 8
+
+             addElementListener
+             ev.preventDefault
+
+            * */
+
+            var oDiv = document.getElementById("box");
+            oDiv.onmousewheel = fun; //标准 ie添加滚轮事件
+            oDiv.addEventListener("DOMMouseScroll",fun,false);//ff必须用事件绑定
+            function fun(ev) {
+                var ev = window.event || ev;
+                console.log(ev.wheelDelta);//标准 -120 往下滚  120 上
+                console.log(ev.detail); //ff -3 往上滚  3往下
+                var tag = 0;  //下
+                if(ev.wheelDelta){
+                    tag = ev.wheelDelta < 0 ?  2 : -2;
+                }else {
+                    tag = ev.detail < 0 ? -2 :2;
+                }
+                oDiv.style.height = oDiv.offsetHeight +tag +"px";
+            }
+
+            /* document.oncontextmenu = function (){
+                return false;
+            }*/
+           document.addEventListener("contextmenu", function(ev){
+                    var ev = window.event || ev;
+                     if(ev.preventDefault){
+                         ev.preventDefault();
+                     }
+                 } ,false);
+        }
+    </script>
+
+</head>
+<body>
+<div style="width: 100px;height: 100px;background: peachpuff;" id="box"></div>
+</body>
+</html>

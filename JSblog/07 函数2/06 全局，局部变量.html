@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--alert("a");-->
+    <script>
+        var b = 10;
+        window.onload = function () {
+//            var a = 12;
+            /*
+            1.作用域:区域，范围
+               在某个范围可以进行读和写
+            2.全局变量，局部变量
+              全局变量：任何地方都能使用，任何地方都能改变
+             局部变量:在函数里面定义的变量，出了函数的括号就不能被访问
+            * */
+            sum();
+            function sum() {
+              var a = 10;  //定义一个局部变量
+              console.log(a);
+              function  s() {
+                  console.log("A"+a);
+              }
+             s();
+            }
+            console.log(a);  //a是局部变量，出了函数，就会被销毁（垃圾回收）
+            s();//s is not defined
+
+            //在函数里面定义的变量，出了函数的括号就不能被访问
+            for(var i = 0;i<10;i++){
+                var j = 10;
+            }
+            console.log(i,j);  //10
+
+            if(1){
+                var k = 10;
+            }
+            console.log(k);
+            //除了函数定义的变量还是全局变量
+
+        };
+        alert("a");
+    </script>
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+</body>
+</html>

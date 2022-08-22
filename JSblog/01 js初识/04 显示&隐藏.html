@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 500px;height: 500px;background: darkorange;
+        /*隐藏*/
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="show">显示</button>
+    <button id="hide">隐藏</button>
+    <div id="div"></div>
+
+    <script>
+      //单行注释
+        /*
+          d多行注释
+        */
+        //入门三步曲：找到谁   加什么事件  做什么事情
+        //1.找到谁  div button
+        //拿到button标签  id
+        /*
+        * document.getElementById(“id名”);
+        * get      Element   By       Id
+        * 得到     元素      通过     id
+        * */
+//        alert(document.getElementById("show"));
+
+        //在控制台调试
+      /*  console.log(document.getElementById("show"));
+        var but = document.getElementById("show");
+        console.log(but);
+
+
+        //2. 加什么事件   点击事件  onclick
+//        but.onclick   元素.事件名 = function（）{ //做的事情}
+        //3.做什么事情
+        but.onclick = function (){
+            //3.做什么事情 显示div
+               var oDiv = document.getElementById("div");
+               //语法 元素.style.属性名 = 属性值  （字符串）
+               oDiv.style.display = "block";
+        }
+
+*/
+
+
+
+      var oDiv = document.getElementById("div");
+   //找谁
+       var but = document.getElementById("show");
+
+       //加什么事件
+        but.onclick = function () {
+            //做什么事情
+           oDiv.style.display = "block";
+        };
+
+        var hide = document.getElementById("hide");
+        hide.onclick = function (){
+
+            oDiv.style.display = "none";  //oDiv is not defined
+        };
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+http://blog.csdn.net/it_talk/article/details/52448597
+
+1.open   
+2设置字体大小
+   file - setting-editor  -colors&fonts

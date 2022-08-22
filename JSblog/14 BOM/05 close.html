@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button onclick="window.close()">关闭</button>  //关闭当前窗口
+    <script>
+        window.onload = function () {
+
+            document.getElementsByTagName("button")[0].onclick = function () {
+               if(confirm("是否关闭窗口")){
+                   close();
+               };
+                var n = 60;
+                var timer = setInterval(function () {
+
+                    document.write(n--);
+                    if(n==50){
+                        if(confirm("是否重新开始")){
+                            window.location = "05 close.html";
+                         };
+                    }
+
+                },500)
+//              window.location = "05 close.html";
+//            }
+        }
+    </script>
+</body>
+</html>

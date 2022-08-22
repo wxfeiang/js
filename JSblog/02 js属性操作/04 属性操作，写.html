@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var oIn = document.getElementById("in");
+            var oOut = document.getElementById("out");
+            var but = document.getElementById("but");
+
+            but.onclick = function () {
+            //1.in 的value值
+              var oValue =  oIn.value;
+              //2.再把值写入out
+                oOut.value = oValue;
+//                oIn.value = "";
+                oIn.value = null;
+                //= 赋值      var a = 10;  把10赋给a
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+           var but = document.getElementById("change");
+            var image = document.getElementById("image");
+            var title = document.getElementById("title");
+            but.onclick = function () {
+                image.src = "2.jpg";
+                //改变图片标题，点击按钮的时候，同时改变p的内容
+                title.innerHTML = "当前显示的是2.jpg";
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="in"><button id="but">确定</button><br>
+<input type="text" id="out"><br>
+<!--&lt;&gt;-->
+<p id="title">当前显示的是1.jpg</p>
+<img src="1.jpg" alt="" id="image"><button id="change">></button>
+
+<!--请输入显示第几张图片：<input type="text" placeholder="1-4"><button id="change">确定</button>-->
+<!--<p id="title">当前显示的是1.jpg</p>-->
+<!--<img src="1.jpg" alt="" id="image">-->
+
+<!--1 2 3  img/1.jpg-->
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.定义一个函数，计算0-n的和
+            var a = 10;
+            sum(100);
+            sum(10);
+            liClick(document.getElementsByTagName("ul")[0]);
+            function sum(n) {
+                var sum = 0;
+                for(var i = 0; i<=n;i++){
+                    sum += i;
+                }
+                console.log(sum);
+            }
+
+            //2.定义一个函数给需要的li添加点击事件
+            function liClick(obj) {  //obj 是父元素
+                var li = obj.getElementsByTagName("li");
+                for(var i = 0;i < li.length;i++){
+                    li[i].onclick = function () {
+                        alert("点击了");
+                    }
+                }
+            }
+
+
+            //3.点击div切换颜色，用函数实现
+            var oDiv = document.getElementsByTagName("div")[0];
+            oDiv.onclick = function () {
+
+                //切换颜色
+                changeColor();
+            };
+            var a = true;
+            function changeColor() {
+                if(a == true){
+                    oDiv.style.background = "red";
+                    a = false;
+                }else {
+                    oDiv.style.background = "pink";
+                    a = true;
+                }
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+<div style="width: 100px;height: 100px;background: pink;">
+</div>
+</body>
+</html>

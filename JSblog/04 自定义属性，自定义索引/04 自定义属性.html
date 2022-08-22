@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 200px;height: 20px;background: pink;margin-bottom: 10px;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            /*var oDiv = document.getElementsByTagName("div")[0];
+            var onOff = 0;   //20
+            oDiv.onclick = function () {
+                if(onOff == 0){
+                    oDiv.style.height = "100px";
+                    onOff = 1;
+                }else {
+                    oDiv.style.height = "20px";
+                    onOff = 0;
+                }
+
+            }*/
+
+            //获取所有的分组
+          /*  var oDivs = document.getElementsByTagName("div");
+            //var onOff = 0;  //多个元素不能共用一个状态标准  ，一人一个
+            for(var i = 0; i < oDivs.length;i = i + 1){
+                //点击事件
+                oDivs[i].onclick = function () {
+                    //点击展开收起
+                    if(onOff == 0){
+                        this.style.height = "100px";
+                        onOff = 1;
+                    }else {
+                        this.style.height = "20px";
+                        onOff = 0;
+                    }
+                }
+            }*/
+
+            var oDivs = document.getElementsByTagName("div");
+            for(var i = 0; i < oDivs.length;i = i + 1){
+                //自定义一个属性
+                oDivs[i].onOff = 0;
+                oDivs[i].onclick = function () {
+                    //点击展开收起
+                    if(this.onOff == 0){  //
+                        this.style.height = "100px";
+                        this.onOff = 1;
+                    }else {
+                        this.style.height = "20px";
+                        this.onOff = 0;
+                    }
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div></div>  <!--100  1 -->
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

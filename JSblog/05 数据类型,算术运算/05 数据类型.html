@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //数据类型， 基本数据类型 number string  boolean  null  undefined    对象类型（）
+           //1.number  数字类型
+            var a = 10;
+            console.log(typeof a);  //typeof  返回变量的类型 number
+            var b = 0xf;            //0x表示16进制，0-9  a b c d e f    0x10 = 16
+            var c = 071;
+            var d = 078;    //以0开头，并且没有大于8的数，表示8进制
+            console.log(c);
+
+          var e = 3.14;
+          console.log(e,typeof e);  //3.14 "number"
+          var f = 8.0,g = 5.;
+          console.log(f,g);  //8  5   //如果小数点后面为0，或者没有，会被转为整数
+
+
+            var h = 0.1;
+            var i = 0.2;
+            console.log(h+i);   // 0.30000000000000004
+
+            //2.string  字符类型  用单引号或双引号引起来的
+            var j = "web0705";
+            var jj = "前端";
+            console.log(j,typeof j,typeof jj);
+
+            var k = "705";
+            var l = 705;
+            console.log(k,l);
+            var passwrod = "124356789";
+            //1.返回字符串的长度
+            console.log(passwrod.length);
+            console.log(passwrod[0]);  //可以通过下标获取相对应的字符
+            console.log(passwrod.charAt(2));  //通过下标获取字符串中第i个字符
+            //password 一个一个打印
+            for (var i = 0; i < passwrod.length;i = i + 1){
+                console.log(passwrod.charAt(i));
+            }
+
+            //3.boolean  布尔true= 真      false=假     0为假，非0为真
+            var bool = true;
+            console.log(bool,typeof  bool);
+            if(1){  //判断结果
+                alert("条件成立");
+            }
+            //if(1 > 2) == false
+
+            //4.null   表示值为空
+            var nu=null;
+            console.log(nu);
+
+            //5.undefined
+            var def;    //变量没有初始化，表示值的空缺
+            console.log(def);  //undefined
+
+
+            //5.对象类型  引用类型   object     function函数  json array
+            console.log(typeof document);
+            console.log(typeof window);
+            var obj = new Object();
+            console.log(typeof obj);
+
+            //5.1 函数类型   function 函数名（）{代码块}
+            function fun() {
+
+            }
+            console.log(typeof fun);  //function
+
+            //5.2 json  存储数据，数据之间的交换  json   {key:value（任意类型）},多个元素之间用，隔开，
+//            var json = {
+//                name:"txf",
+//            };
+            var json = {
+                "age":18,
+                "name":"txf",
+                "a":function () {
+                    alert("fd");
+                }
+            };
+            console.log(json,typeof json,json.name,json.a);  //通过key获取到了value
+
+
+            //5.2 数组  可以存储任意类型的数据
+            var arr = [1,"fd",{"name":"fd"},[23,4]];
+            console.log(arr,typeof arr);
+            console.log(arr[2]); // 通过下标获取数据，下标从0开始
+            arr[10] = "ssss";  // 1 1 1 1 unde ssss   数组允许通过下标之间插入数据，允许数组当中的某些下标空缺
+            console.log(arr);
+
+            arr[0] = "0000";
+            console.log(arr);
+
+
+            //空数组
+            var arr1 = [];
+            //往空的数组当中添加东西 push往数组末尾添加元素
+            arr1.push("1");
+            arr1.push("1","2");
+            console.log(arr1);  //["1","1","2"]
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background: pink;"></div>
+    <div style="width: 100px;height: 100px;background: pink;"></div>
+    <script>
+        var oDiv = document.getElementsByTagName("div");
+        oDiv.onclick = function () {
+            alert("Fd");
+        }
+
+
+    </script>
+</body>
+</html>

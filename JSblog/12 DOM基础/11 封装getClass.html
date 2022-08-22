@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //定义一个函数  传入父元素以及类名，返回所有满足的元素
+
+           var ch  = getClass(document.getElementsByTagName("ul")[0],"active");
+            for (var i = 0; i<ch.length;i++){
+                ch[i].style.background = "pink";
+            }
+            function getClass(parent,className) {
+                var arr = [];
+               // var child = parent.getElementsByTagName("*");
+                var child = parent.children;
+                for(var i = 0; i<child.length;i++){
+                    //null
+                    var cl = child[i].className;
+                    //通过getAttribute 如果没有为null  就会报错，用下面这个就会有问题
+                    //var cl = child[i].getAttribute("class") == null ?  child[i].getAttribute("className") :  child[i].getAttribute("class");
+                    var arr1 = cl.split(" ");
+                   if(_indexof(arr1,className) != -1){
+                       arr.push(child[i]);
+                   }
+                }return arr; }
+            function _indexof(arr,s) {
+              for (var i = 0;i <arr.length;i++){
+                 if(arr[i] == s){
+                     return i;}
+              }
+              return -1;}
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li class="box active"></li>
+        <li></li>
+    </ul>
+   <p class="active">12</p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //学生
+            //1.定义一个父类型（继承对象的属性和方法）
+            function Student(name,age) {  //被继承的构造函数  父类型（超类型，基类）
+                console.log(this);
+                this.name = name;
+                this.age = age;
+                this.arr = [1,2,3,4];
+            }
+
+            //2.一个子类型
+            function SmallStudent(name,age) {  //继承的    子类 （派生类）
+                // Student("mm",18);  this = window
+                // new Student("mm",18);  this=Student
+
+                Student.call(this,name,age); //SmallStudent
+                console.log(this);
+                this.applay = function () {
+                    console.log("坑队友");
+
+                }
+            }
+
+            Student.prototype.add = function () {
+                console.log("添加");
+            };
+            //组合继承  原型链 + 对象冒充
+            SmallStudent.prototype = new Student();
+            var ss1 = new SmallStudent();
+            ss1.add();
+            ss1.arr.push("5");
+            var ss2 = new SmallStudent();
+            console.log(ss1.arr,ss2.arr);  //[1, 2, 3, 4, "5"]
+
+
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

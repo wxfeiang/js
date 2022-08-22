@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        //1.ready
+
+       /*window.onload = function () {
+            alert("1");
+        }   不能叠加
+        window.onload = function (){
+            alert("2");
+        }*/
+
+//        $(document).ready(function () {
+//            alert("1");
+//        });
+//        $(document).ready(function () {
+//            alert("2");
+//        });
+        //不会被覆盖
+
+        $(function () {
+            //2.hide show
+            $("#but1").click(function () {
+                $("div").hide();
+            });
+            $("#but2").click(function () {
+                $("div").show();
+            });
+
+
+            //遍历 for for-in
+            //map  遍历数组，最后可以返回一个新的数组
+            var arr = [1,2,3,4];
+            var arr1 = arr.map(function (elem,index) {  //对象.map(function(elem元素,index下标/){})
+                console.log(elem +"------------------"+ index);
+                return elem+"";
+            });
+            console.log(arr,arr1);//[1, 2, 3, 4] ["1", "2", "3", "4"]
+            $(arr).map(function (index,elem) { //元素和下标相反
+                console.log(elem +"------------------"+ index);
+            });
+            $.map(arr,function (elem,index) {
+                console.log(elem +"------------------"+ index);
+            });
+
+            //each 遍历 $.each(obj，function（下标，元素）{})
+            $.each(arr,function (index,elem) {  //
+               console.log(elem + "-----------"+index);
+            });
+
+            var cat = {
+                "name":"小花",
+                "color":"pink",
+                "eat":function () {
+                    alert("吃狗粮");
+                }
+            }
+
+            $.each(cat,function (key,value) {
+                console.log(key +"---------"+value);
+            })
+
+            //
+
+        })
+
+    </script>
+</head>
+<body>
+    <button id="but1">隐藏</button>
+    <button id="but2">显示</button>
+    <div style="width: 100px;height: 100px;background: pink"></div>
+
+</body>
+</html>

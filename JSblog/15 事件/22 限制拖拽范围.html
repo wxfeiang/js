@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{position: absolute;}
+        div{width: 400px;height: 500px;background: #99ffcc;}
+        #box1{height: 40px;background: peachpuff;}
+    </style>
+    <script>
+        window.onload = function () {
+            var warp = document.getElementById("box");
+            var oDiv = document.getElementById("box1");
+
+            //按下，拖动
+            var x = 0;
+            var y = 0;
+            oDiv.onmousedown = function (ev) {
+                var ev = window.event || ev;
+                x = ev.clientX - warp.offsetLeft;
+                y = ev.clientY - warp.offsetTop;
+                //alert(oDiv.setCapture);
+                if(oDiv.setCapture){  //undefined
+                    oDiv.setCapture();
+                }
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    var l = ev.clientX - x;
+                    var t = ev.clientY - y;
+                    if(l<0){
+                        l = 0;
+                    }
+                    if(l>document.documentElement.clientWidth- warp.offsetWidth){
+                        l = document.documentElement.clientWidth - warp.offsetWidth;
+                    }
+                    if (t<0){
+                        t = 0;
+                    }
+
+                    warp.style.top = t + "px";
+                    warp.style.left = l + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = "";
+                    if(oDiv.setCapture){
+                        oDiv.releaseCapture();
+                    }
+                }
+
+                return false;
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="box1"></div>
+    <div></div>
+</div>
+</body>
+</html>

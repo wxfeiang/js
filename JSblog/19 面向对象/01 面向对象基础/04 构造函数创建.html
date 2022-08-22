@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*
+             特征
+                1.首字母大写，用来区分其他函数，创建对象用new
+                2.用this添加属性和方法，表示当前作用域
+                3.自动返回创建号的对象
+            * */
+
+            function  Student(name) {
+                this.name = name;
+                this.eat = function () {
+                    console.log("吃饭");
+                }
+            }
+            function s() {
+
+            }
+            //实例对象
+            var s1 = new Student("mm");
+            var s2 = new Student("mm");
+
+            console.log(s == s); //turn  内存地址
+            console.log(s1.eat == s2.eat) //false
+
+            var str1 = new String("fd");
+            var str2 = new String("fd");
+            console.log(str1.split == str2.split); //10 true
+            console.log(s1);
+            console.log(str2);
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

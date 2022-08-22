@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script src="jquery.min.js" ></script>
+    <script>
+        $(function () {
+            //组合选择器
+            //$("div,p").css("color","red");
+            $("#box,p").css("color","red");
+
+            //后代选择器  所有的子类
+            $("#box span").css("background","blue");
+            $("#box>span").css("background","pink");
+
+
+
+
+            //相邻兄弟选择器  (后面的)
+         //$("p+h4").css("font-size","32px");
+
+
+            //兄弟选择器 (后面的，)
+        // $("p~h4").css("font-size","32px");  //后面的
+     //      $("p").siblings("h4").css("font-size","36px");  //找所有
+        //  $("p").nextAll("h4").css("background","blue");
+            $("p").prev("h4").css("background","pink");  //相邻的前面兄弟节点
+          //  $("p").prevAll("h4").css("background","pink");//前面所有的兄弟节点
+            //$("p").style.background = "pink";
+
+        });
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div><span>fdksafj</span></div>
+        <span>uoi434</span>
+    </div>
+    <h4>hahahaha</h4>
+    <div>fdafda</div>
+    <h4>hahahaha</h4>
+    <p>fd</p>
+    <h4>hehe</h4>
+    <span>fsa</span>
+    <h4>fsaf</h4>
+</body>
+</html>

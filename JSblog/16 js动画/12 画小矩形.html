@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 500px;height: 500px;border: 1px solid #000000;margin: 0 auto;position: relative}
+        #box div{border: 1px solid deepskyblue;position: absolute;}
+        p{text-align: center}
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementById("box");
+            oDiv.onmousedown = function (ev) {
+                //按下去的点为起点
+                var ev = window.event || ev;
+                var L1 = ev.clientX - oDiv.offsetLeft; //让以大矩形为起点
+                var T1 = ev.clientY - oDiv.offsetTop; //让以大矩形为起点
+                console.log(L1);
+                oDiv.innerHTML += "<div></div>";
+                var box = oDiv.lastElementChild;
+                 document.onmousemove = function (ev) {
+                     var ev = window.event || ev;
+                     var L2 = ev.clientX - oDiv.offsetLeft;
+                     var T2 = ev.clientY - oDiv.offsetTop;
+                     //L1为按下的起点，L2为结束的点
+                     L2 = L2 < 0 ? 0 : L2;  //不能超出大方块
+                     L2 = L2 > oDiv.clientWidth ? oDiv.clientWidth : L2;
+                     T2 = T2 < 0 ? 0 : T2;
+                     T2 = T2 > oDiv.clientHeight ? oDiv.clientHeight : T2;
+                     box.style.left = L1 > L2 ? L2 + "px" : L1+ "px"; //
+                     box.style.top = T1 > T2 ? T2 + "px" : T1 + "px";
+                     box.style.width = Math.abs(L2-L1) + "px";
+                     box.style.height = Math.abs(T2-T1 )+ "px";
+                 }
+                document.onmouseup = function () {
+                    document.onmousemove =  document.onmouseup = "";
+
+                 }
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <p>在上方画矩形</p>
+</body>
+</html>

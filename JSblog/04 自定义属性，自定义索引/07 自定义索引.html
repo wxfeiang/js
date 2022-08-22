@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 140px;height: 140px;font: 28px/140px "Microsoft YaHei";background: peachpuff;float: left;margin-right: 20px;text-align: center;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div");
+            var jiangli = ["100红包","谢谢惠顾","1红包","10红包","谢谢惠顾","谢谢惠顾"];
+            //下标怎么存下来
+            for(var i = 0;i < oDiv.length;i = i + 1){
+                //把i存到相对的div上面
+                oDiv[i].index = i;   //索引
+                oDiv[i].onclick = function () {
+                   //改div的innerHTML
+                    this.innerHTML = jiangli[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>选择一</div>  <!--100红包-->
+    <div>选择二</div>  <!--谢谢惠顾-->
+    <div>选择三</div>  <!--1红包-->
+    <div>选择四</div>  <!--10红包-->
+    <div>选择五</div>  <!--谢谢惠顾-->
+    <div>选择六</div>  <!--谢谢惠顾-->
+</body>
+</html>

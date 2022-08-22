@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 500px;height: 500px;border: 1px solid #cccccc;margin: 0 auto;position: relative;}
+        p{width: 100%;height: 30px;background: rgba(67,85,80,.5);position: absolute;margin: 0;text-align: center;line-height: 30px;}
+        #count{top: 0;}
+        #title{bottom: 0;}
+        button{position: absolute;width: 30px;height: 40px;}
+        #left{left: 0px;top: 50%;}
+        #right{right: 0px;top: 50%;}
+        ul {list-style: none;padding: 0;position: absolute;bottom: 40px;left: 40%}
+        ul li{width: 20px;height: 20px;background: #abc;float: left;margin-right: 10px;border-radius: 10px;}
+        .active{background: red;}
+    </style>
+    <script>
+        window.onload = function () {
+            var img = document.getElementsByTagName("img")[0];
+            var oP = document.getElementsByTagName("p");
+            var buts = document.getElementsByTagName("button");
+            var oUl = document.getElementsByTagName("ul")[0];
+            var imgs = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/3.jpg"];
+
+            var oLi = document.getElementsByTagName("li");   //
+            var index = 0;
+            //1.根据图片创建li
+            for(var i=0;i < imgs.length;i = i+1){
+                oUl.innerHTML = oUl.innerHTML + "<li></li>";
+            }
+
+            //2.初始化
+            img.src = imgs[0];
+            oP[0].innerHTML = "1/"+imgs.length;
+            oP[1].innerHTML = "美女1";
+            oLi[0].className = "active";
+            
+            for (var i = 0;i < oLi.length;i = i + 1){
+                oLi[i].index = i;
+                oLi[i].onclick = function () {
+                    //改图片，标题 count
+                    img.src = imgs[this.index];
+                    oP[0].innerHTML = this.index + 1 + "/"+imgs.length;
+                    oP[1].innerHTML = "美女"+(this.index+1);
+                    for(var j = 0; j < oLi.length;j = j + 1){
+                        oLi[j].className = "";
+                    }
+                    this.className = "active";
+                    index = this.index;
+                }
+            }
+
+            buts[0].onclick = function () {
+                index = index - 1;
+                if(index < 0){index=imgs.length-1;}
+                img.src = imgs[index];
+                oP[0].innerHTML = index + 1 + "/"+imgs.length;
+                oP[1].innerHTML = "美女"+(index+1);
+                for(var j = 0; j < oLi.length;j = j + 1){          //  li 小圆点
+                    oLi[j].className = "";
+                }
+                oLi[index].className = "active";
+            }
+            buts[1].onclick = function () {
+                index = index + 1;
+                if(index == imgs.length){index=0;}
+                img.src = imgs[index];
+                oP[0].innerHTML = index + 1 + "/"+imgs.length;
+                oP[1].innerHTML = "美女"+(index+1);
+                for(var j = 0; j < oLi.length;j = j + 1){
+                    oLi[j].className = "";
+                }
+                oLi[index].className = "active";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+<div>
+    <img src="" alt="" width="500" height="500">
+    <p id="count">图片数量正在加载...</p>
+    <p id="title">图片名正在加载</p>
+    <button id="left">&lt;</button>
+    <button  id="right">&gt;</button>
+    <ul>
+
+    </ul>
+</div>
+</body>
+</html>

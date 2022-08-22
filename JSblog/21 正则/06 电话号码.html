@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var str = "18210399098";
+
+            var reg = /\d{4}/ig;
+            reg.lastIndex = 3;
+            console.log(str.replace(reg.exec(str),"****"));
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

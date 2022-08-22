@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px}
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function () {
+            //1.标签选择器  css的优先级没有用
+            $("div").css("background","red");  //自己循环
+            console.log($("div"));
+            //id
+            $("#div1").css("background","blue");
+           // $("#div").css("display","none");
+            //类 .
+            $(".box").css("background","pink");
+            $(".box").css("width","200px");
+
+        })
+    </script>
+</head>
+<body>
+<div id="div" class="box"></div>
+<div id="div1"></div>
+<div class="box"></div>
+</body>
+</html>

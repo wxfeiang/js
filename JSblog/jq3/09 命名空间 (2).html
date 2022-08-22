@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            function fun(){
+                alert("fafa");
+            }
+            function fun1() {
+                alert("fdfd");
+            }
+            $("div").bind("click.abc",fun1);
+            $("div").bind("click.xyz",fun);
+            $("div").bind("mouseout.abc",fun);
+
+//            $("div").unbind("click.abc");  //移除click.abc
+//            $("div").unbind(".abc");  //所有二级域名为abc的有移除
+
+
+            //bind  unbind
+            //delegate undelegate   父元素.delegate（子元素，事件类型，处理函数）
+            //on off  父元素.delegate（事件类型,子元素，处理函数）
+            //one  只执行一次
+
+            //ev || event
+            //ev.stopPropagation();
+            //ev.preventDefault（）
+
+            //
+//            $("div").click();
+//            $("div").trigger("click");
+//            $("div").triggerHandler("click");
+
+            $("p").click(function (ev,a,b) {
+                alert(a+b);
+            });
+            $("p").trigger("click",[10,10]);  // 参数两个或两个以上 [] 不是数组
+
+        })
+    </script>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background: pink"></div>
+<p>fdsk</p>
+</body>
+</html>

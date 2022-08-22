@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.在父元素的末尾添加节点
+            //1.先找父元素
+            var oUl = document.getElementsByTagName("ul")[0];
+            //2.创建节点
+            var li = document.createElement("li");
+            var text = document.createTextNode("5");
+            //3.添加
+            li.appendChild(text);
+            oUl.appendChild(li);
+
+
+            var oLi = oUl.getElementsByTagName("li");
+
+            //2.获取第2个li的下一个节点
+            console.log(oLi[1].nextElementSibling);  //ie
+            console.log(oLi[1].previousElementSibling);
+
+
+            //3.找到类名为active的li设置背景
+            var li1 = document.getElementsByClassName("active");  //类名为active的所有的元素
+            for (var i = 0; i<li1.length;i++){
+                li1[i].style.background = "#abc";
+            }
+
+
+            //4.删除div的active
+            var oDiv = document.getElementsByTagName("div")[0];
+            removeClassName(oDiv,"active");
+            function removeClassName(obj,className) {
+
+                var arr = obj.className.split(" ");
+               var index = _indexof(arr,className);
+               if(index != -1){
+                   arr.splice(index,1); //返回被删除的class
+                  obj.className = arr .join(" ");
+               }
+
+            }
+            function _indexof(arr,s) {
+                for(var i = 0;i<arr.length;i++){
+                    if(arr[i] == s){
+                        return i;
+                    }
+                }
+                return -1;
+            }
+            //5.将div从body中移除
+           console.log( document.getElementsByTagName("body")[0].removeChild(oDiv));  //返回被删除的元素
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li class="active">2</li>
+        <li class="active">3</li>
+        <li>4</li>
+    </ul>
+    <div class="box box1 active"></div>
+    <style>
+       .box{
+           width: 100px;
+           height: 100px;
+          background: rosybrown;}
+        .box1{border: 2px solid red;}
+        .active{
+            border-radius: 50px;
+        }
+    </style>
+</body>
+</html>

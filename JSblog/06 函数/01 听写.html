@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.所有的数据类型
+            //1.number
+            var a = 100;
+            console.log(typeof (a));
+            //2.string"" ''
+            var b = "string";
+            //3.boolean   true  false    0 非0
+            var c = true;
+            if(-1){
+                alert("条件成立 ");
+            }
+
+            //4.null
+            var d = null;  //为空
+            //5.undefined
+            var e;   //表示值的空缺
+            //6.object 对象类型 引用类型  function array json
+            var arr = [1,2,"y"];  //数组可以存储任意类型
+           var json = {
+               "name":"txf"  //key:value   通过key获取value
+           };
+           json.name;
+
+
+
+
+            //2.判断一个是不是数字
+            var f = 10;
+            var s = "tdt";
+            var ss = NaN;
+            if(typeof ss != "number"){  //
+                alert("不是一个数字");
+            }else {
+                alert("是一个数字");
+            }
+
+            //3.其他类型转化成字符串
+            String(10); f.toString(2)  //2-36
+            //4.s获取字符串的长度，以及第2个字符
+            var str = "web0705";
+            console.log(str.length,str.charAt(1));  //7
+
+            //5.转换成数字的方式
+            //Number();parseInt();parseFloat();
+
+            //6.undefined 与null 的区别
+            //null 值为空      undefined 值的空缺
+            //7.在数组的末尾添加数字1
+            arr.push(1);
+            //8.运算符所有的分类
+            //1.算术运算符 + - * 　／　％　＋＋　－－
+            var cc = 10;  //cc = cc + 1;
+            cc ++;  //11
+            ++cc;  //12
+            var bb = cc++;   //bb= 12   cc = 13
+            var ee = ++bb + cc++ + ++cc;  //ee =  13 + 13 +  15                 bb = 13 cc=15
+            console.log(ee,bb,cc);  //40 12 14    // 41 13 15
+
+            //2.赋值 =   += -= *= /= %=
+            var a  = 10;
+
+//            sum = sum *i;
+//            sum *= i;
+
+            //3.比较 > < >= <= == != === !==
+            //4.&& || !
+            if(a > 10 && a < 100){  //全真为真
+                //||   一真为真
+                //!    取反
+
+            }
+            console.log(!2);  //false
+
+            //5.三目
+            //  条件？条件成立的时候执行 ：条件不成立的时候执行
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;}
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //除class=box
+            //$("div[class!=box]").css("background","red");
+            //$("div:not(.box)").css("background","red");
+            $("div").not(".box").css("background","red");
+
+            //2.找到div  id = box  中的span都换成p标签
+            $("#box").find("span").replaceWith("<p>我是一个段落</p>");
+            //$("#box").children
+
+            //3.用jq方式获取元素内容，不要标签
+            console.log( $("#box div").html());  //标签 内容
+            console.log($("#box div").text());
+
+            //4.找到class以a开头的div，并且添加class box
+            //$("div[class^=a]").attr("class","box");  //覆盖之前
+            $("div[class^=a]").addClass("box");
+
+            //5.设置默认选中2 4
+            $(":checkbox").val(["2","4"]);
+            //6.添加div到body开头位置
+            $("body").prepend("<div>1</div>")
+            //7.mouseover mouseout
+            $("#box").mouseenter(function () {
+
+            });
+            $("#box").mouseleave(function () {
+
+            });
+
+            //mouseover mouseout 子元素上会被触发
+            //mouseenter mouseleave  不会在子元素上面触发事件
+        })
+    </script>
+</head>
+<body>
+ <div id="box">
+     <span> span1 </span>
+     <div><span>span2</span></div>
+ </div>
+ <div class="box"></div>
+ <div class="as"></div>
+ <div></div>
+ <input type="checkbox" value="1">1
+ <input type="checkbox" value="2">2
+ <input type="checkbox" value="3">3
+ <input type="checkbox" value="4">4
+</body>
+</html>

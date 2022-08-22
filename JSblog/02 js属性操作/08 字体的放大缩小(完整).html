@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{font-size: 12px;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var jia = document.getElementById("jia");
+            var jian = document.getElementById("jian");
+            var title = document.getElementById("title");
+            var font = 12;
+            //往上48 往下12
+            jia.onclick = function () {
+                //改变字体大小,js中不能出现-。用驼峰标识
+//                if(font == 48){}else { font = font + 2;}
+                font = font + 2;//48
+                if(font > 48){font = 48;};
+                title.style.fontSize = font+"px";
+            };
+
+            jian.onclick = function () {
+                font = font - 2;
+                if(font < 12){font = 12;}
+                title.style.fontSize = font + "px";
+            }
+
+            //innerHTML
+//            input.value = null ""
+        }
+    </script>
+</head>
+<body>
+<button id="jia">+</button> <button id="jian">-</button>
+    <p id="title">
+        表示得意
+        【示例】：梁斌《播火记》三四：“哈哈！看咱这暴动，万事俱备，只欠东风了。”
+        【示例】：哈哈！你平时拽，现在死了吧！
+        【示例】：哈哈! 过来把我的胡须给剃了吧!
+        【示例】: 哈哈！我这次考试比你高吧！
+        【示例】: 哈哈！你猜错了！
+        表示得意
+        【示例】：梁斌《播火记》三四：“哈哈！看咱这暴动，万事俱备，只欠东风了。”
+        【示例】：哈哈！你平时拽，现在死了吧！
+        【示例】：哈哈! 过来把我的胡须给剃了吧!
+        【示例】: 哈哈！我这次考试比你高吧！
+        【示例】: 哈哈！你猜错了！
+        表示得意
+        【示例】：梁斌《播火记》三四：“哈哈！看咱这暴动，万事俱备，只欠东风了。”
+        【示例】：哈哈！你平时拽，现在死了吧！
+        【示例】：哈哈! 过来把我的胡须给剃了吧!
+        【示例】: 哈哈！我这次考试比你高吧！
+        【示例】: 哈哈！你猜错了！表示得意
+        【示例】：梁斌《播火记》三四：“哈哈！看咱这暴动，万事俱备，只欠东风了。”
+        【示例】：哈哈！你平时拽，现在死了吧！
+        【示例】：哈哈! 过来把我的胡须给剃了吧!
+        【示例】: 哈哈！我这次考试比你高吧！
+        【示例】: 哈哈！你猜错了！表示得意
+        【示例】：梁斌《播火记》三四：“哈哈！看咱这暴动，万事俱备，只欠东风了。”
+        【示例】：哈哈！你平时拽，现在死了吧！
+        【示例】：哈哈! 过来把我的胡须给剃了吧!
+        【示例】: 哈哈！我这次考试比你高吧！
+        【示例】: 哈哈！你猜错了！
+
+    </p>
+
+
+
+    <div></div>
+    <button>red</button><button>blue</button>
+    <!--red  300 200-->
+    <!--blue 200 100-->
+    <!--
+    1.找到but div
+    2.加点击事件
+    3.
+
+
+    -->
+
+
+
+
+</body>
+</html>

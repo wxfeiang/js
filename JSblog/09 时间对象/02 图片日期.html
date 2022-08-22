@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var img = document.getElementsByTagName("img");
+            autoPlay();
+            setInterval(autoPlay,1000);
+            function autoPlay() {
+                var date = new Date();
+                var str = toTwo( date.getHours())+":"+toTwo(date.getMinutes())+
+                    ":"+toTwo(date.getSeconds());
+                //16:15:05
+                for (var i =0 ;i<img.length;i++){
+                    if(parseInt(str[i])||parseInt(str[i]) == 0){
+                        img[i].src =  "img/"+str.charAt(i)+".jpg"
+                    }else {
+                        img[i].src =  "img/colon.jpg";
+                    }
+                }
+            }
+            function  toTwo(date) {
+                return  date < 10 ?  "0"+date :date;
+            }
+        }
+    </script>
+</head>
+<body>
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/0.JPG" alt="">
+</body>
+</html>

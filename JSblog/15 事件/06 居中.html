@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 200px;height: 200px;border: 5px solid red;text-align: right;position: absolute;display: none;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var but =  document.getElementById("but");
+            var oDiv = document.getElementById("box");
+            var span = oDiv.getElementsByTagName("span")[0];
+
+            but.onclick = function () {
+                oDiv.style.display = "block";
+                var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                oDiv.style.left = document.documentElement.clientWidth/2 - oDiv.offsetWidth/2 + "px";
+                oDiv.style.top = scrollTop + document.documentElement.clientHeight/2 - oDiv.offsetHeight/2 + "px";
+            };
+            span.onclick = function () {
+                oDiv.style.display = "none";
+            }
+            document.body.onscroll = window.onresize = function () {
+
+                var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                oDiv.style.left = document.documentElement.clientWidth/2 - oDiv.offsetWidth/2 + "px";
+                oDiv.style.top = scrollTop + document.documentElement.clientHeight/2 - oDiv.offsetHeight/2 + "px";
+            }
+        }
+    </script>
+</head>
+<body style="height: 2000px;">
+
+<!--<div style="height: 2000px;width: 1000px"></div>-->
+<button id="but">显示</button>
+<div id="box">
+    <span>关闭</span>
+</div>
+</body>
+</html>

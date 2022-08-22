@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var oUl = document.getElementsByTagName("ul")[0];
+            //在最后加一个兔子精
+            var li = document.createElement("li");
+            var text = document.createTextNode("兔子精");
+
+            //1.appendChild  在父元素末尾追加一个元素  父元素.appendChild(子元素)
+            li.appendChild(text);
+            oUl.appendChild(li);
+
+            //insertBefore  (将节点插入。。之前)
+            var li = document.createElement("li");
+            var text = document.createTextNode("观音");
+            li.appendChild(text);
+
+            //父元素.insertBefore(要插入的节点,参考的节点)
+            oUl.insertBefore(li,oUl.getElementsByTagName("li")[0]);
+
+            //oUl.insertAfter(li,oUl.getElementsByTagName("li")[0]);  //  1.
+            var oLi = document.getElementsByTagName("li")[5];  //添加一个已经存在的元素，移动的效果
+            oUl.appendChild(oLi);
+
+
+            //2.替换 父元素.replaceChild(新的节点，被替换的节点)
+            var oLi1 = document.getElementsByTagName("li")[3];
+            oUl.replaceChild(li,oLi1);
+
+            //3.复制cloneNode  被复制的元素.cloneNode（）  默认是false  只复制标签，true 标签和内容
+            var o = oLi.cloneNode(false);  //
+            oUl.appendChild(o);
+
+            //4.删除
+            oUl.removeChild(o);
+            oUl.removeChild(oLi);
+           // fdkfjdkfd    删除
+
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>唐僧</li>
+        <li>孙悟空</li>
+        <li>猪八戒</li>
+        <li>沙和尚</li>
+        <li>白骨精</li>
+        <li>嫦娥</li>
+        <li>白龙马</li>
+    </ul>
+</body>
+</html>

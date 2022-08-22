@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var form = document.getElementsByTagName("form")[0];
+            form.onsubmit = function () {
+                document.cookie = "userName="+form.user.value;
+                return false;
+            };
+            form.user.onfocus = function () {
+                if(document.cookie != ""){ //如果cookie不为空
+                   var tig = confirm("是否使用上一次的用户名和密码");
+                   if(tig){
+                       form.user.value = document.cookie.split("=")[1];
+                       this.blur();
+                   }
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="1.html">
+    <input type="text" placeholder="请输入用户名" name="user">
+    <input type="text" placeholder="请输入密码" name="pass">
+    <input type="submit">
+</form>
+</body>
+</html>

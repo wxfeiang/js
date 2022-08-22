@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            /*
+             js解析  ：
+                    1.找一些东西  var   function   参数  js仓库
+                                   var a = undefined
+                                   fun1 =  function fun1() {
+                                              alert("fun1");
+                                           }
+                    2.逐行解析
+                        遇到表达式 = + - * / % ++ -- !(改变值)
+            * */
+            console.log(a);  //undefined
+            var a = 10;      //a = 10
+            console.log(a);//10
+
+
+
+            console.log(fun1);
+            function fun1() {
+                alert("fun1");
+                //我是一个注释
+            }
+            console.log(fun1);
+
+
+            //参数
+            console.log(a);
+            function fun2(a) {
+               alert(a);  //undefined
+            }
+            fun2();
+            var a = 10;
+            console.log(a); //10
+            function fun2() {
+                alert(a);  //undefined
+                var a = 20;
+                alert(a);  //20
+            }
+            fun2();
+
+
+           /* var b = 20;
+            function fun3(b) {  //var b = undefined
+                alert(b);
+            }
+            fun3();*/
+
+
+
+
+           /*
+           欲解析  找var function   参数
+
+              var c = undefined
+              c =   function c() {
+                         alert("2");
+                     };
+              c = undefined
+              c =  function c() {
+                         alert("4");
+                      }
+
+
+
+            逐行解析：从上往下
+              84     function c() {
+                     alert("4");
+                }
+
+             85  c = 1;
+             86  1
+             90  1
+             91  c = 3
+             92  3
+             96  3
+
+           * */
+
+           alert(c);  //function c(){alert("4")}
+           var c = 1;
+           alert(c); //1
+           function c() { //函数没有调用不会执行
+               alert("2");
+           };
+           alert(c); //1
+           var c = 3;
+           alert(c);//3
+           function c() {
+               alert("4");
+           }
+           alert(c); //3
+           var c = 4;
+           alert(c); //4
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

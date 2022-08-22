@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #form1 {
+            width: 480px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin: 30px auto;
+            padding: 10px;
+            line-height: 30px;
+            position: relative;
+        }
+        #tab1 {
+            width: 500px;
+            margin: 30px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+        tr {
+            cursor: pointer;
+        }
+        tbody tr td:first-child {
+            text-align: center;
+        }
+        input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+        }
+        input[type="button"] {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #div1 {
+            position: relative;
+            width: 480px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            var name = document.getElementById("na");
+            var sex = document.getElementById("sex");
+            var age = document.getElementById("age");
+            var add = document.getElementById("add");
+            var tab = document.getElementById("tab1");
+            var del = document.getElementById("delete");
+            var all = document.getElementById("checkAll");
+            var tBody = tab.tBodies[0];
+            var peopleData = [
+
+                {'name':'钱一','sex':'男','age':'24'},
+                {'name':'孙一','sex':'女','age':'18'},
+                {'name':'李一','sex':'男','age':'20'},
+                {'name':'周一','sex':'女','age':'14'}
+            ];
+
+           for(var i = 0;i<peopleData.length;i++){
+               var tr = document.createElement("tr");
+               var td = document.createElement("td");
+               td.innerHTML = "<input type='checkbox'>"
+               tr.appendChild(td);
+
+               /*var td = document.createElement("td");
+               td.innerHTML = peopleData[i].name;
+               tr.appendChild(td);
+               var td = document.createElement("td");
+               td.innerHTML = peopleData[i].sex;
+               tr.appendChild(td);
+               var td = document.createElement("td");
+               td.innerHTML = peopleData[i].age;*/
+               for(var key in peopleData[i]){ // {'name':'赵一','sex':'男','age':'20'},
+                   var td = document.createElement("td");
+                   td.innerHTML = peopleData[i][key]; //"name"
+                   tr.appendChild(td);
+               }
+               tBody.appendChild(tr);
+                //隔行变色，点击事件
+               click();
+               colorFun();
+           }
+
+           all.onclick = function () {
+               for(var i = 0;i<tBody.rows.length;i++){
+                   tBody.rows[i].cells[0].childNodes[0].checked = all.checked;
+               }
+           };
+            add.onclick = function () {
+
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                td.innerHTML = "<input type='checkbox'/>"
+                tr.appendChild(td);
+
+                var td = document.createElement("td");
+                td.innerHTML = name.value;
+                tr.appendChild(td);
+                var td = document.createElement("td");
+                td.innerHTML = sex.checked ? "男" : "女";
+                tr.appendChild(td);
+                var td = document.createElement("td");
+                td.innerHTML = age.value;
+                tr.appendChild(td);
+                tBody.appendChild(tr);
+                name.value = "";
+                age.value = "";
+                sex.checked = true;
+                colorFun();
+                click();
+            };
+            del.onclick = function () {
+
+                for(var i = 0;i<tBody.rows.length;i++){
+                    if(tBody.rows[i].cells[0].childNodes[0].checked){//选中 删
+                        //
+                       tBody.removeChild(tBody.rows[i]);
+                       i--;
+                    }
+                }
+            };
+
+
+
+
+
+            //添加点击事件
+           function click() {
+                for(var i = 0;i<tBody.rows.length;i++){
+                    tBody.rows[i].onclick = function () {
+                        this.cells[0].childNodes[0].checked = !this.cells[0].childNodes[0].checked;
+                        isCheckAll();
+                    };
+                    tBody.rows[i].cells[0].childNodes[0].onclick = function () {
+                        this.checked = !this.checked;
+                        isCheckAll();
+                    }
+                }
+           }
+
+           function  colorFun() {
+               for(var i = 0;i<tBody.rows.length;i++){
+                   tBody.rows[i].style.background = "";
+                   if(i % 2 == 0){
+                       tBody.rows[i].style.background = "pink";
+                   }
+               }
+           }
+
+           function isCheckAll() {
+               for(var i = 0;i<tBody.rows.length;i++){
+                   if(!tBody.rows[i].cells[0].childNodes[0].checked){
+                       all.checked = false;
+                       return ;
+                   }
+               }
+
+               all.checked = true;
+           }
+        }
+    </script>
+</head>
+<body>
+<form id="form1">
+    请输入姓名：<input type="text" name="name" id="na"><br>
+    请选择性别：<input type="radio" name="sex" checked value="男" id="sex">男<input type="radio" name="sex" value="女">女<br>
+    请输入年龄：<input type="text" name="age" id="age"><br>
+    <input type="button" value="添加到表格" name="add" id="add">
+</form>
+<table id="tab1">
+    <thead>
+    <tr>
+        <th width="20%"><input type="checkbox" id="checkAll"/> 全选</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<div id="div1">
+    <input type="button" value="删除所选行" id="delete">
+</div>
+
+</body>
+</html>

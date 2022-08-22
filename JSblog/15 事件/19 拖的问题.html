@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{position: absolute;}
+        div{width: 400px;height: 500px;background: #99ffcc;}
+        #box1{height: 40px;background: peachpuff;}
+        img{position: absolute;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            /*
+            拖拽的问题：
+             1.如果有文字，文字是选中，会触发浏览器拖拽文字的效果
+             2.图片 同上
+
+             默认行为
+                 解决方法：取消默认行为
+                 ff、chrom ..return false
+                 非标准ie  6 7 8   全局捕获
+
+            * */
+            //按下，拖动
+            var x = 0;
+            var y = 0;
+            document.getElementsByTagName("img")[0].onmousedown = function (ev) {
+                var ev = window.event || ev;
+                x = ev.clientX - document.getElementsByTagName("img")[0].offsetLeft;
+                y = ev.clientY - document.getElementsByTagName("img")[0].offsetTop;
+
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    document.getElementsByTagName("img")[0].style.top = ev.clientY - y + "px";
+                    document.getElementsByTagName("img")[0].style.left = ev.clientX - x + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = "";
+                }
+                return false;
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+<!--发的卡减肥打开解放东路就撒付款大数据快疯了撒娇发了肯德基撒可富来得及撒解放路看到撒酒疯多啦附近的离开撒酒疯看到了撒-->
+<!--<div id="box">-->
+    <!--<div id="box1">放大会计法</div>-->
+    <!--<div></div>-->
+<!--</div>-->
+<img src="timg.jpg" alt="">
+</body>
+</html>

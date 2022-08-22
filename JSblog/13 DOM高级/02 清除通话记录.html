@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var but = document.getElementsByTagName("button");
+            for(var i = 0; i < but.length;i++){
+                but[i].onclick = function () {
+                    //移除li
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>1234353453 <button>删除</button></li>
+        <li>12121212122123 <button>删除</button></li>
+        <li>212143434343434 <button>删除</button></li>
+        <li>1234353434343343453 <button>删除</button></li>
+        <li>12344353453 <button>删除</button></li>
+        <li>1234353453 <button>删除</button></li>
+    </ul>
+</body>
+</html>

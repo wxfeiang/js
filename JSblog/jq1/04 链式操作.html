@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            /*$("div").css("width","100px");
+            $("div").css("height","100px");
+            $("div").css("background","pink");
+            $("div").click(function () {
+                alert("hello");
+            });*/
+            //链式操作
+            $("div").css("width","100px").css("height","100px").css("background","pink").click(function () {
+                alert("hello");
+            });
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

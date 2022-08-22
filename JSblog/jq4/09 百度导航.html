@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //
+            $("li").hover(function () {
+
+                console.log($(this).offset().left);
+                var thisLeft = $(this).offset().left-$("#list").offset().left;
+                //console.log($(this).position().left);  //获取定位的top left
+
+                var thisWidth = $(this).innerWidth();
+
+                $("div").stop(true).animate({"left":thisLeft});
+                $("div").width(thisWidth);
+
+                //stopAll gotoEnd
+            },function () {
+                $("div").stop(true).animate({"left":0},function () {
+                    $("div").width(0);
+                });
+            });
+            
+        })
+    </script>
+</head>
+<body>
+<ul id="list">
+    <div class="slider" style="width:60px;"></div>
+    <li class="home">首页</li>
+    <li>新闻</li>
+    <li>社会新闻</li>
+    <li>汽车</li>
+    <li>家居</li>
+    <li>社会新闻</li>
+    <li>汽车</li>
+    <li>家居</li>
+</ul>
+<style>
+    *{margin: 0;padding: 0;list-style: none}
+    #list{width: 1200px;height: 40px;background: #01204f;margin: 50px auto;position: relative;}
+    #list li{float: left;font: bold 14px/40px "Microsoft YaHei";color: white;padding: 0 15px;position: relative;}
+    #list .home{background: #c00;}
+    #list div{width: 10px;height: 40px;background: #1dff98;position: absolute;}
+</style>
+</body>
+</html>

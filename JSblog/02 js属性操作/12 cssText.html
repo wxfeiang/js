@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementById("box");
+//            oDiv.style.width = "100px";
+//            oDiv.style.height = "100px";
+//            oDiv.style.background = "#abc";
+//            oDiv.style.border = "2px solid red";  //连写直接写就可以
+
+            //cssText
+            oDiv.style.cssText = "width: 100px;height: 100px;background: #abc;border: 2px solid red;";
+        }
+
+
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //oDiV x y
+            var oDiv = document.getElementById("box");
+            oDiv.onmousedown = function (ev) {
+                var ev = window.event || ev;
+                var x = ev.clientX - oDiv.offsetLeft;
+                var y = ev.clientY - oDiv.offsetTop;
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    var l = ev.clientX -x;
+                    var t = ev.clientY - y;
+                    if(l < 0){l = 0;}
+                    if(l>document.documentElement.clientWidth - oDiv.offsetWidth){
+                        l = document.documentElement.clientWidth - oDiv.offsetWidth
+                    }
+                    if(t < 0){t = 0}
+                    if(t > document.documentElement.clientHeight-oDiv.offsetHeight){
+                        t = document.documentElement.clientHeight-oDiv.offsetHeight;
+                    }
+
+                    oDiv.style.left = l + "px";
+                    oDiv.style.top = t + "px";
+
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = "";
+                }
+
+
+            return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box" style="width: 200px;height: 200px;background:red;position: absolute"></div>
+</body>
+</html>

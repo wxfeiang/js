@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var oInput = document.getElementById("in");
+            var oBut = document.getElementById("but");
+            var oSel = document.getElementById("sel");
+
+            oBut.onclick = function () {
+
+                //获取input输入的值    账号为。。。密码为。。。值多少钱
+//                var value = oInput.value;
+                //拼接 连接  +
+                console.log("账号为："+oInput.value+","+"密码为:"+oSel.value+","+"值1毛钱");
+//                console.log(value);
+            }
+        }
+    </script>
+</head>
+<body>
+请输入账号：<input type="text" id="in" value="ff"> <br>
+选择密码：<select name="" id="sel">
+    <option value="12344354">12344354</option>
+    <option value="6666666666">6666666666</option>
+    <option value="8888888888">8888888888</option>
+</select>
+
+<button id="but">发送</button>
+</body>
+</html>

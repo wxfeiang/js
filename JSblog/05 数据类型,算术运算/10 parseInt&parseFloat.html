@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<input type="text">
+<button>确定</button>
+<script>
+    window.onload = function () {
+     var inpunt = document.getElementsByTagName("input")[0];
+     var button = document.getElementsByTagName("button")[0];
+     //只用从键盘输入的数据都是string   "10"  + 2  = ”102“       "美女"+index
+     console.log(Number("10.2"));
+     //parseInt　　转成整数  舍弃掉小数部分
+        console.log(parseInt("10.7"));
+        //parseFloat　　转成小数
+        console.log(parseFloat("10.7"));
+
+
+     button.onclick = function () {
+     for(var i = 0;i<(parseInt(inpunt.value)+2);i++){
+
+      //  var div = "<div style='width: 100px;height: 100px;background: pink;margin-bottom: 10px;'></div>";
+        document.body.innerHTML += "<div style='width: 100px;height: 100px;background: pink;margin-bottom: 10px;'></div>";
+     }
+     }
+
+        }
+</script>
+</body>
+</html>

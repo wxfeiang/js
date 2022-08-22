@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="">
+        button {background:pink;}
+    </style>
+
+    <!--第二种引入方式   内嵌
+        script标签可以有任意多个，可以在任意位置，从上往下解析
+        阻塞型，html页面出现script标签，就会让界面暂停等待js的解析和执行，-->
+    <script type="text/javascript">
+        alert("hello world1!");
+    </script>
+
+    <!--第三种引入方式，外部   js文件 .js-->
+    <script type="text/javascript" src="02.js">
+//       如果script用于引入外部资源，标签内所有的内容都没用
+    </script>
+
+</head>
+
+<body>
+
+    <!--
+    css
+      1.行间
+      2.内部
+      3.外部 .css
+    -->
+
+    <!--1.引入js的第一种方式 ：行间  onclick 点击事件-->
+    <!--onclick 点击事件-->
+    <!--alert();方法，提示框  相同的引号不能嵌套,-->
+    <button onclick='alert("是否关闭")'>关闭</button>
+
+<!--
+
+    1.引入方式
+       行间：
+       内部  script   任意地方任意个数
+       外部  script   src
+
+-->
+
+
+    <script src="02.js">
+        alert("fd");
+    </script>
+
+</body>
+</html>
+
+
+
+

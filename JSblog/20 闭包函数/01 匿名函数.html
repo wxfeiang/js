@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+
+            //1。字面量的函数
+            var fun = function () {
+                console.log("web705");
+            }
+            fun();
+            
+            
+            
+            //2.普通函数
+            function fun1() {
+                return function () {
+                    console.log("hahha");
+                }
+            }
+            var f = fun1();
+            fun1()();
+
+            ///3. 构造函数
+            function Fun() {
+                console.log("fd");
+            }
+            var f1 = new Fun();
+            console.log(f1);
+
+            function  Fun1() {
+                this.name = "fs";
+
+            }
+           var f2 = new Fun1();
+            console.log(typeof f1,f2);
+
+            //4.匿名函数  没有名字的函数
+            /*function () {
+                console.log("haha");
+            }*/
+
+            //匿名函数自执行  (函数)();
+            (function () {
+                alert("自执行函数");
+            })();
+
+            //5，传参数
+            (function (a,b) {
+                console.log(a+b);
+            })(10,20);
+
+            // var s =  fun();
+           var s = (function (a,b) {
+                return a+b;
+            })(20,30);
+           console.log(s);
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

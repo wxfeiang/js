@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            //隐藏
+            $("#hide").click(function () {
+                //$("div").hide();  //没有参数 直接消失
+                //$("div").hide(2000); //一个参数  运动时间
+                
+                //linear swing-(缓冲  慢-快-慢)
+                //$("div").hide(2000,"swing");   //两个参数 时间 动画
+
+                /*$("div").hide(2000,"swing",function () {  //回调函数
+                    $("div").show();
+                })*/
+
+                $("div").hide(2000);
+            });
+            $("#show").click(function () {
+                $("div").show(2000);
+            });
+            $("#toggle").click(function () {
+                $("div").toggle(2000);
+            })
+
+           /* var i =0;
+            $("button").click(function () {
+               var s =  setInterval(function () {
+                 $("div").eq(i).show(1000);
+                 i++;
+                 if($("div").length == i){
+                     clearInterval(s);
+                 }
+                },1000)
+
+            });*/
+
+            /*$("button").click(function () {
+               $("div").eq(0).show(1000,function () {
+                   $("div").eq(1).show(1000,function () {
+                       $("div").eq(2).show(1000,function () {
+                           $("div").eq(3).show(1000,function () {
+                               $("div").eq(4).show(1000,function () {
+                                   $("div").eq(5).show(1000,function () {
+                                       $("div").eq(6).show(1000);
+                                   });
+                               })
+                           })
+                       })
+                   })
+               })
+            })*/
+
+                //阶乘  !6  1*2*3*4*5*6
+                //定义一个函数，6
+                $("button").click(function () {
+                    $("div:first").show(500,function divShow() {
+                        $(this).next().show(500,divShow);
+                    })
+                });
+        })
+    </script>
+</head>
+<body>
+    <button id="hide">隐藏</button>
+    <button id="show">显示</button>
+    <button id="toggle">开关</button>
+    <div style="width: 500px;height: 500px;background: pink"></div>
+
+    <div>放</div><div>放</div> <div>放</div> <div>放</div><div>放</div> <div>假</div> <div>了</div><button>显示</button>
+    <style>
+        div{float: left;margin-right: 10px;width: 50px;height: 50px;background:#ffc; line-height: 50px;
+        text-align: center;font-size: 24px;display: none;}
+    </style>
+</body>
+</html>

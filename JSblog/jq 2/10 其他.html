@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //获取input标签
+            //$("input").css("background","blue");
+            //$(":input").css("background","blue");
+            //$(":text").css("background","blue");  //input 并且type=text
+
+
+
+
+           //    $(':text').css('background','blue');  //文本框
+
+            //$('button').css('background','blue'); //button 标签
+
+            //$(':button').css('background','blue');  //按钮 input button
+
+            //$(':checked').css('background','blue');
+
+            //    $(':enabled').css('background','blue');  //可操作的
+
+            //$(':disabled').css('background','blue');  //禁用
+
+            $(':hidden').css('background','blue');
+
+            /*
+             input  只获取 input 标签的表单元素
+             :input	选择所有的表单元素  <input> 包括textarea <button> <select>
+             :text	   选择 type="text" 的 <input> 元素：
+             :button	 选择 type="button" 的 <button> 元素和 <input> 元素：
+             button     只选择button 标签的元素
+             :password
+             :file
+             :radio
+             :checkbox
+             :submit
+             :reset
+             :image
+             :checked
+             :enabled
+             :disabled
+             :hidden  <input type="hidden" />和<div style="display:none">test</div> 不可见的元素都可以匹配
+             */
+
+
+        })
+    </script>
+</head>
+<body>
+<input type="text">
+<input type="text">
+<input type="button" value="按钮">
+
+</body>
+</html>

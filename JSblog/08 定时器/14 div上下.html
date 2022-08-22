@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 50px;height: 50px;background: red;position: absolute;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            //先生成div
+            var str = "";
+            for(var i = 0; i<15;i++){
+                //i = 0  i 60
+                str += "<div style='left:"+i*60+"px;'></div>"
+            }
+            document.body.innerHTML = str;
+            var  n = 0;
+            var timer = null;
+            var stop = 750;  //结束值
+            var onOff = true; //决定是往上还是往下
+            var oDiv = document.getElementsByTagName("div");
+            for(var i = 0 ; i < oDiv.length;i++ ){
+                oDiv[i].onclick = function () {
+                    stop = onOff ? 750 : 0;//750  0     onOff
+                    clearInterval(timer);
+                    timer = setInterval(function () {
+                        move( oDiv[n],10,stop,"top");
+                        n++;
+                        if(n == oDiv.length){
+                            clearInterval(timer);
+                            n=0; //重置0，方便下次运动
+                            onOff = !onOff; //保证每个div都做了往下落的动作才能执行往回走
+                        }
+                    },100);
+                }
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

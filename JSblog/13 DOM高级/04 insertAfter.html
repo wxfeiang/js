@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+           var oUl =  document.getElementsByTagName("ul")[0];
+           console.log(oUl.lastElementChild);
+           var li = document.createElement("li");
+            inserAfter(oUl,li,oUl.firstElementChild);
+        function inserAfter(parent,newElement,oldElement) {
+            //父元素没有孩子，直接加
+            //有，插入到下一个节点的前面
+            if(parent.lastElementChild == null){
+                parent.appendChild(newElement);
+            }else {
+               parent.insertBefore(newElement,oldElement.nextElementSibling);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+</html>

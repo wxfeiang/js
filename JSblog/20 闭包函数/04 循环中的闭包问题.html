@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload= function (){
+
+            var oLi = document.getElementsByTagName("li");
+            /*for(var i = 0;i < oLi.length;i++){
+                oLi[i].index = i;
+                oLi[i].onclick = function (){
+                    alert(this.index);
+
+                }
+            }*/
+
+            /*for(var i = 0;i < oLi.length;i++){  //4  ()()
+                oLi[i].index = i;
+                oLi[i].onclick = (function (i) {
+                    alert(i);
+                })(i)
+            }*/
+
+
+            for(var i = 0;i < oLi.length;i++){  //4  ()()
+                oLi[i].index = i;
+                (function (i) {
+                    oLi[i].onclick = function () {
+                        alert(i);
+                    }
+                })(i); //0
+            }
+
+
+            function fun(a){console.log(a);}
+            fun(10);
+            fun(20);
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+</html>

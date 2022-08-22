@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function(){
+            //bind  unbind
+            //1.delegate() 代理  //$(父元素).delegate("子元素"，事件，处理)  添加的事件能发生在未来
+            function  fun1(ev) {
+               //console.log($(this));  //this----li 子元素
+                alert("hahah")
+            }
+            function fun2(ev) {
+                alert("2222")
+            }
+
+            $("#list").delegate("li","click",fun1);
+            $("#list").delegate("li","click",fun2);
+            $("#list").delegate("p","click",fun2);
+            //$("#list").delegate("li","click mouseover",fun2);
+            //$("#list").delegate("li",{"click":fun1,"mouseover":fun2});
+            $("ul").append("<li>3</li>");  //添加的事件能发生在未来
+
+
+            //移除  undelegate
+            //$("#list").undelegate();  //清除所有子元素的事件
+            //$("#list").undelegate("li");  //清除指定子元素的事件
+            //$("#list").undelegate("li","click");  //清除指定子元素的click事件
+            $("#list").undelegate("li","click",fun1);  //清除指定子元素的click事件
+
+
+            //2. on off  $(父元素).on(事件类型，子元素，处理函数)
+            $("div").on("click","p",fun1);  //发生在未来
+            $("div").append("<p>3</p>");
+            $("div").off();
+
+            //3.one  只执行一次，自己移除
+            //$("div").one("click","p",fun1);
+
+
+
+            //4.jq  阻止冒泡 ev.stopPropagation();  默认行为ev.preventDefault();
+            $("span").click(function (ev) {  //jq处理好的ev
+                console.log(window.event,ev);
+               /*
+               阻止冒泡：
+                        标准：ev.stopPropagation();
+                        IE   ev.cancelBubble = true;
+              阻止事件默认行为
+                        标准：  ev.preventDefault()   return false
+                        IE:    ev.returnValue = false;  oDiv.setCapture()
+              jq:
+                  阻止事件默认行为：ev.preventDefault()
+                  阻止冒泡 ev.stopPropagation();
+               * */
+                ev.stopPropagation();
+
+                alert("span");
+
+            });
+
+
+
+
+            $("div p").click(function () {
+               alert("p");
+            });
+
+            $(document).contextmenu(function (ev) {
+                ev.preventDefault();
+            })
+            //document.oncontextmenu = function (ev) {
+
+                /*
+                *
+                 阻止冒泡
+                 var ev = window.event || ev;
+                 ev.stopPropagation();
+                 ev.cancelBubble = true;
+
+                 阻止默认行为
+                 ev.preventDefault();
+                 ev.returnValue = false;
+                 return false
+                 oDiv.setCapture()
+                * */
+
+                //var ev = window.event || ev;
+               // ev.preventDefault();  //
+
+
+
+           // }
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <p>23</p>
+    </ul>
+    <div>
+        <p style="background: pink;width: 100px;height: 100px;">
+            <span style="position: absolute;top: 500px;">哈哈</span>
+        </p>
+    </div>
+</body>
+</html>

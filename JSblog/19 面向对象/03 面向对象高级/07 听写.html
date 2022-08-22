@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.面向对象的创建方式
+            //1.字面量(重复)
+           /* var josn = {
+                "name":"mm"
+            }
+            var json1 = {
+                "name":"ss"
+            }
+            //2.工厂
+            function careatObject(name) {
+                var obj = new Object();
+                obj.name = name;
+                obj.eat = function () {
+                    alert("fd");
+                }
+                return obj;
+            }
+
+            //3.构造函数 (首字母大写，不用创建和返回对象，用this,用new创建实例对象)
+            function Student(name) {
+                 this.name = name;
+                 this.eat = function () {
+                    console.log("fdf")  //相同函数，占内存
+                }
+            }
+            var s1 = new Student("mm");
+            console.log(s1.name);
+            //4.原型(不能传参，共享的问题)
+            function Stduent1() {
+            }
+            Stduent1.prototype.name = "mm";
+            Stduent1.prototype.eat = function () {
+                console.log("d");
+            }
+            //5.混合 (构造函数+原型)
+            function Student2(name) {
+                this.name = name;
+            }
+            Student2.prototype.eat = function () {
+                console.log("d");
+            }
+            //6.动态混合
+            function Student3(name) {
+                this.name = name;
+                //1.没有  不是函数
+                if(typeof this.eat != "function"){
+                    Student2.prototype.eat = function () {
+                        console.log("fd");
+                    }
+                }
+            }*/
+            //2.继承
+            /*function Student(name,age) {//父类型  被继承
+                this.name = "mm";
+                this.age = 18;
+                this.arr = [1,2,4];
+            }
+            function SmallStudent() { //子类型  继承
+            }
+
+            //继承动作
+//            SmallStudent.prototype = new Student();  //Student 属性  方法  原型
+            var s1 = new Student();
+            SmallStudent.prototype = s1;
+            var ss = new SmallStudent();
+            console.log(ss.name);//ss实例本身---ss构造函数--ss的原型：s1的实例----s1构造函数---S1的原型 ---object
+            //不能传参 继承了引用类型一改全改*/
+            function Student(name,age) {//父类型  被继承
+                this.name =name;
+                this.age = age;
+                this.arr = [1,2,4];
+            }
+            function SmallStudent(name,age) { //子类型  继承
+                Student.call(this,name,age);
+            }
+            SmallStudent.prototype = new Student();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

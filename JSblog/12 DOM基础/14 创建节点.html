@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //创建元素节点   document.createElement("标签名");
+            var oSpan = document.createElement("span");
+            console.log(oSpan);
+            //创建文本节点
+            var text = document.createTextNode("对啊对啊");
+            console.log(text);
+
+            //添加节点
+            oSpan.appendChild(text);
+            console.log(oSpan);
+            document.getElementsByTagName("div")[0].appendChild(oSpan);
+
+
+
+            var oSpan = document.createElement("span");
+            console.log(oSpan);
+            //创建文本节点
+            var text = document.createTextNode("对啊对啊1");
+            oSpan.appendChild(text);
+            document.getElementsByTagName("div")[0].appendChild(oSpan);
+
+
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+
+</body>
+</html>

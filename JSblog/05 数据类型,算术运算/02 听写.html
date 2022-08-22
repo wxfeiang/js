@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = function () {
+
+            /*
+            1.在界面上生成10个li，双数为红色，单数为蓝色
+            2、两个div切换颜色，不会影响
+            * */
+          /* var oUl = document.getElementsByTagName("ul")[0] ;
+           var oLi = document.getElementsByTagName("li");
+           for(var i = 0; i<10;i = i + 1){
+              // 1.在界面上生成10个li
+               oUl.innerHTML = oUl.innerHTML + "<li>"+i+"</li>";
+           }
+
+           for(var i = 0;i < oLi.length;i = i + 1 ){
+
+               //双数为红色，单数为蓝色
+               if(i % 2 == 0){
+                   oLi[i].style.background = "pink";
+               }else {
+                   oLi[i].style.background = "#abc";
+               }
+           }
+           */
+
+            var oDiv = document.getElementsByTagName("div");
+//            var onOff = 0;   //pink
+            for (var i = 0;i < oDiv.length; i = i + 1){
+                oDiv[i].onOff = 0;
+                //添加点击事件
+                oDiv[i].onclick = function () {
+                  // #abc pink
+                    if(this.onOff == 0){
+                        this.style.background = "#abc";
+                        this.onOff = 1;
+                    }else {
+                        this.style.background = "pink";
+                        this.onOff = 0;
+                    }
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+
+    </ul>
+    <div></div>
+    <div></div>
+    <style>
+        div{width: 100px;
+            height: 100px;
+            background: pink;
+            margin-bottom: 10px;
+        }
+    </style>
+</body>
+</html>

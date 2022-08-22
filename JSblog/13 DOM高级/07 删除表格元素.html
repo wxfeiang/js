@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input");
+            var but = document.getElementsByTagName("button")[0];
+            var tab = document.getElementsByTagName("table")[0];
+
+
+            //点击在表格后面添加一行
+            but.onclick = function () {
+                var tr = document.createElement("tr");
+                tr.appendChild(_createElement("td",tab.tBodies[0].rows.length+1));
+                tr.appendChild(_createElement("td",input[0].value));
+                tr.appendChild(_createElement("td",input[1].value));
+                //最后一个单元格删除
+                var td = document.createElement("td");
+                var a = document.createElement("a");
+                a.innerHTML = "删除";
+                a.onclick = function () {
+                    //删除一行
+//                  tab.tBodies[0].removeChild(tr);
+                    tab.tBodies[0].removeChild(this.parentNode.parentNode);
+                };
+                td.appendChild(a);
+                tr.appendChild(td);
+                tab.tBodies[0].appendChild(tr);
+                input[0].value = input[1].value = "";
+            }
+
+
+        }
+
+        function  _createElement(title,text) {
+
+           var element =  document.createElement(title);
+            element.innerHTML = text;
+           return element;
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" placeholder="请输入姓名">
+<input type="text" placeholder="请输入年龄">
+<button>添加</button>
+<table border="1" width="500">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Jom</td>
+        <td>23</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Sum</td>
+        <td>70</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>tom</td>
+        <td>90</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>jury</td>
+        <td>18</td>
+        <td></td>
+    </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>
+<style>
+    a{color: red;}
+</style>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //带目的
+            function sum() {
+                console.log(10+20);
+            }
+            sum();
+
+
+            function  sum1(a,b) {
+                console.log(a+b);
+            }
+
+            sum1(10,20);
+            sum1(30,20);
+
+            var a = 10;
+            function fun() {
+                a = 20;
+                console.log(a);
+            }
+            fun();
+            function fun() {
+                a = 30;
+                console.log(a);
+            }
+            fun();  //30  同名，后面的会把前面的给覆盖掉
+
+            function fun1(a,b) {  //var a = 10,b = 20
+                console.log(a + b);
+            }
+            fun1(10,20,30);  //30  如果实参比形参多，取前面的个数
+            fun1(10);       //NaN   如果实参比实参少，有问题(少参数)
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //函数参数类型 = js数据类型 number string boolean function object【object，json，array，null】 undefined
+            //1.undefined  (未定义的)  没有什么意义，可能还会报错，所以一般不会传递undefined null
+            var un;
+            function fun1(a) {
+                alert(a);
+            };
+            // fun1(un);
+
+            //1.number  n的阶乘  !n
+            function  factorial (n) {
+                var fac = 1;
+                for(var i = 1; i <= n;i++){
+                    fac *= i;
+                }
+                console.log(fac);
+            }
+            //2.以string 类型作为参数
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            //"txf" = ["t","x","f"]; 函数的
+            but.onclick = function () {
+                arr(input.value);
+            };
+            function arr(str) {
+                //var str = “fda” str现在就有了字符串所以的方法
+                var arr = [];
+                for(var i = 0; i < str.length;i++){
+                    arr.push(str.charAt(i));
+                }
+                console.log(arr);
+            };
+
+            //4.boolean  判断
+            //询问用户是否关闭
+            function fun2(bool) {
+                if(bool){
+                    alert("打开窗口");
+                }else {
+                    alert("关闭窗口");
+                }
+            }
+            fun2(true);
+
+            //5.数组
+            //数组排序
+            function fun3(arr,type) {  //true  1-7    false 7-1
+                for(var i = 0;i < arr.length;i++){
+                    for(var j = i + 1;j < arr.length;j++){
+                        if(type){
+                            if(arr[i] > arr[j]){
+                                var temp = arr[i];
+                                arr[i] = arr[j];
+                                arr[j] = temp;
+                            }
+                        }else {
+                            if(arr[i] < arr[j]){
+                                var temp = arr[i];
+                                arr[i] = arr[j];
+                                arr[j] = temp;
+                            }
+                        }
+                    }
+                }
+                console.log(arr);
+            }
+            fun3([1,45,7,4,9,3,2],false);
+
+
+            //json
+            var buto = document.getElementById("but");
+            var oUl = document.getElementsByTagName("ul")[0];
+            //新闻数据在后台   加载
+            buto.onclick = function () {
+                //获取数据 json
+                var json = {"name":"战神","age":10000,"height":0};
+                //加载
+                fun4(oUl,json);
+            }
+            function fun4(ul,json) {
+                ul.innerHTML = "<li>"+json.name+json.age +"</li>"
+            }
+
+
+            //函数
+            function  fun5(a ,b,fun) {
+                fun(a+b);
+            }
+            function  fun6(a) {
+                console.log(a * 100);
+            }
+            fun5(1,2,fun6);
+
+        }
+
+        //函数的作用 判断传入的参数类型  number string function
+        //
+
+    </script>
+</head>
+<body>
+<input type="text">
+<button>确定</button>
+
+<p>新闻</p>
+<button id="but">详细信息</button>
+<ul style="border: 1px solid red;">
+
+</ul>
+
+</body>
+</html>

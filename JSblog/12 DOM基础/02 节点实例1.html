@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div")[0];
+            //获取子节点
+           var childs = oDiv.childNodes;
+           //标签 ：设置背景  输出标签名     文本，输出文本内容
+           for(var i = 0;i < childs.length;i++){
+                if(childs[i].nodeType == 1){ //标签
+                    childs[i].style.background = "red";
+                    console.log(childs[i].nodeName);
+                }else  if(childs[i].nodeType == 3){
+                    console.log(childs[i].nodeValue);
+                }
+           }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div>web<p>段落一</p>
+        <p>段落二</p>
+    </div>
+</body>
+</html>

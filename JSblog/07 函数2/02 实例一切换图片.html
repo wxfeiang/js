@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 500px;height: 500px;border: 1px solid #cccccc;margin: 0 auto;position: relative;}
+        p{width: 100%;height: 30px;background: rgba(67,85,80,.5);position: absolute;margin: 0;text-align: center;line-height: 30px;}
+        .count{top: 0;}
+        .title{bottom: 0;}
+        button{position: absolute;width: 30px;height: 40px;}
+        .left{left: 0px;top: 50%;}
+        .right{right: 0px;top: 50%;}
+        ul {list-style: none;padding: 0;position: absolute;bottom: 40px;left: 40%}
+        ul li{width: 20px;height: 20px;background: #abc;float: left;margin-right: 10px;border-radius: 10px;}
+        .active{background: red;}
+    </style>
+    <script>
+        window.onload = function () {
+          var oDiv = document.getElementsByTagName("div");
+          var imgs = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/3.jpg"];
+          change(oDiv[0],["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg"]);
+          change(oDiv[1],["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/3.jpg"]);
+        function change(oDiv,imgs) {
+
+            var img = oDiv.getElementsByTagName("img")[0];
+            var oP = oDiv.getElementsByTagName("p");
+            var buts = oDiv.getElementsByTagName("button");
+            var oUl = oDiv.getElementsByTagName("ul")[0];
+            var oLi = oDiv.getElementsByTagName("li");   //
+            var index = 0;
+            //通过图片的数量，创建相同数量的li
+            for (var i = 0; i < imgs.length; i = i + 1) {
+                oUl.innerHTML = oUl.innerHTML + "<li></li>";
+            }
+            //初始化
+            changeImg(0);
+
+            for (var i = 0; i < oLi.length; i = i + 1) {
+                oLi[i].index = i;
+                oLi[i].onclick = function () {
+                    //图片，title   count
+                    changeImg(this.index);
+                    //下标同步
+                    index = this.index;
+
+                }
+            }
+            buts[0].onclick = function () {
+                index = index - 1;  //0 -1
+                if (index < 0) {
+                    index = imgs.length - 1;
+                }  //4
+
+                changeImg(index);
+            };
+            buts[1].onclick = function () {
+                index = index + 1;  //  1   4
+                if (index > imgs.length - 1) {
+                    index = 0;
+                }
+                changeImg(index);
+            };
+
+            function changeImg(index) {
+                img.src = imgs[index];
+                oP[0].innerHTML = (index + 1) + "/" + imgs.length;
+                oP[1].innerHTML = "美女" + (index + 1);
+                for (var j = 0; j < oLi.length; j = j + 1) {
+                    oLi[j].className = "";
+                }
+                oLi[index].className = "active";
+
+            }
+        }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <img src="../08%20定时器/img/1.jpg" alt="" width="500" height="500">
+        <p class="count">图片数量正在加载...</p>
+        <p class="title">美女1</p>
+        <button class="left">&lt;</button>
+        <button  class="right">&gt;</button>
+        <ul>
+
+        </ul>
+    </div>
+    <div>
+        <img src="../08%20定时器/img/1.jpg" alt="" width="500" height="500">
+        <p class="count">图片数量正在加载...</p>
+        <p class="title">美女1</p>
+        <button class="left">&lt;</button>
+        <button  class="right">&gt;</button>
+        <ul>
+
+        </ul>
+    </div>
+</body>
+</html>

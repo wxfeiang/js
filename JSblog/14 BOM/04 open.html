@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--open 可以打开一个新的界面-->
+    <button onclick="window.open('http://www.ujiuye.com')">打开</button>
+    <button id="but1">打开</button>
+    <button id="kong">打开一个空界面</button>
+    <script>
+        window.onload = function () {
+            var but = document.getElementById("but1");
+            but.onclick = function () {
+                //1 要打开窗口的url   窗口名称和窗口目标，一个特性的字符串（设置窗口大小）,
+                // 新的页面是否取代浏览器记录中当前的页面（boolean）
+             var newW = open("http://www.ujiuye.com","_blank","width:200px;height:200px",false);
+//                open("04 open.zip"); //下载
+            };
+            document.getElementById("kong").onclick = function () {
+              var  newW = open("about:blank","_blank");  //弹出来一个空的界面,返回新窗口的window
+                newW.document.write("haha");
+                window.document.write("hheh");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*
+            childNodes  、、文本 标签  ie不会获取折行
+            chlidren       标签
+
+            parentNode
+
+            nodeType   文本-3  标签-1  属性-2
+            文本标签.nodeValue   标签.nodeName
+            * */
+
+            var oUl = document.getElementsByTagName("ul")[0];
+            /*var ch = oUl.childNodes;
+            ch[1].style.border = "1px solid red";  //0 text*/
+
+            //1.获取首尾节点firstChild
+           alert( oUl.firstChild);  //ie6-8  正确的元素标签，标准下是折行(文本)
+            oUl.firstChild.style.border = "1px solid red";
+
+            alert(oUl.firstElementChild);//标准下正确的元素标签   ie6-8  undefined
+            oUl.firstElementChild.style.border = "1px solid red";  //ie6 7 8不兼容
+            //兼容
+            if(oUl.firstElementChild){
+                oUl.firstElementChild.style.border = "1px solid red";
+            }else {
+                oUl.firstChild.style.border = "1px solid red";
+            }
+
+            //lastChild lastElementChild
+           // alert(oUl.lastChild);
+            //alert(oUl.lastElementChild);
+
+            //兼容问题
+            //var lastLi = oUl.lastElementChild ? oUl.lastElementChild  : oUl.lastChild;
+            var lastLi = oUl.lastElementChild || oUl.lastChild;
+            lastLi.style.border = "2px solid blue";
+
+            //3.某个元素的下一个兄弟节点 nextSibling nextElementSibling
+            var oLi = document.getElementById("li");
+           console.log(oLi.nextSibling); //ie 6 7 8
+            console.log(oLi.nextElementSibling);
+            var nextLi = oLi.nextElementSibling || oLi.nextSibling;
+            nextLi.style.background = "black";
+
+            //.某个元素的下一个兄弟节点 nextSibling nextElementSibling
+           var preLi = oLi.previousElementSibling || oLi.previousSibling;
+           preLi.style.background = "#abcdef";
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li id="li"></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

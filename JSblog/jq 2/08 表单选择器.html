@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //$("div[]") 属性选择器  基本，层次选择器  内容过滤
+            //获取class
+            //$("div").attr("class");
+            //console.log($("div").css("class"));  //un
+            console.log($(".sex:checked"));
+            //:checked 被选中的单选框
+            $(".sex").click(function () {
+                $(".sex").css("width","30px");
+                $(".sex:checked").css("width",100);
+            });
+
+
+            //:checked
+            $(".sex1").click(function () {
+                $(".sex1:checked").css("width","100");
+                console.log( $(".sex1").not(".sex1:checked"));
+                $(".sex1").not(".sex1:checked").css("width",30);
+            })
+
+
+            //option  :checked :selected
+            console.log($("option:checked").val());
+            console.log($("option:selected").val());
+
+            console.log($("select").val());
+
+
+        })
+    </script>
+</head>
+<body>
+    <input type="radio" name="sex" class="sex">a
+    <input type="radio" name="sex" class="sex">b
+    <input type="radio" name="sex" class="sex">c
+    <input type="checkbox" class="sex1">1
+    <input type="checkbox" class="sex1">2
+    <input type="checkbox" class="sex1">3
+    <input type="checkbox" class="sex1">4
+    <select name="" id="" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+
+</body>
+</html>

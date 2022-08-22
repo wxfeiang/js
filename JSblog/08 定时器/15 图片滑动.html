@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{ width: 700px;height: 525px;border: 2px solid red;margin: 40px auto;position: relative;overflow: hidden;}
+        #box{list-style: none;padding: 0;margin: 0;position: absolute;left: -700px;}
+        #box{width: 4200px;}
+        #box li{float: left;}
+        #click {list-style: none;padding: 0;position: absolute;bottom: 40px;left: 40%}
+        #click li{width: 20px;height: 20px;background: #abc;float: left;margin-right: 10px;border-radius: 10px;}
+        #click .active{background: red;}
+    </style>
+    <script src="txf.js">
+    </script>
+    <script>
+       /* window.onload = function () {
+            var oUl = document.getElementsByTagName("ul")[0];
+            var oLi = oUl.getElementsByTagName("li");
+            var index = 0;
+            var timer = setInterval(autoPlay,3000);
+            function  autoPlay() {
+                index++;
+                move(oUl, 10, -700 * index, "left");
+                if (index == oLi.length - 1) {
+                    clearInterval(timer);
+                }
+            }
+        }*/
+
+
+
+      /* window.onload = function () {
+           //加小原点
+           var oDiv = document.getElementsByTagName("div")[0];
+           var oUl = document.getElementById("box");
+           var clickUl = document.getElementById("click");
+           var oLi = oUl.getElementsByTagName("li");
+           var clickLi = clickUl.getElementsByTagName("li");
+           var index = 0;
+
+
+
+           //生成小原点
+           for (var i = 0;i<oLi.length;i++){
+               clickUl.innerHTML += "<li></li>"
+           }
+           //初始化
+           clickLi[0].className = "active";
+           //给li加点击事件
+           for (var i = 0;i<clickLi.length;i++){
+               clickLi[i].index = i;
+               clickLi[i].onclick = function () {
+                   move(oUl, 10, -700 * this.index, "left");
+                   //小原点同步
+                   for (var j = 0; j < clickLi.length;j++ ){
+                       clickLi[j].className = "";
+                   }
+                   this.className = "active";
+                   index = this.index;
+               }
+           }
+
+
+
+           var timer = setInterval(autoPlay,3000);
+           function  autoPlay() {
+               index++;  //0 1 2 3
+               if(index == clickLi.length){index=clickLi.length-1}
+               move(oUl, 10, -700 * index, "left");
+               //小原点同步
+               for (var j = 0; j < clickLi.length;j++ ){
+                   clickLi[j].className = "";
+               }
+               clickLi[index].className = "active";
+               if (index == oLi.length) {
+                   clearInterval(timer);
+               }
+
+           }
+
+
+           //开启关闭定时器
+           oDiv.onmouseover = function () {
+
+               clearInterval(timer);
+           }
+           oDiv.onmouseout = function () {
+               timer = setInterval(autoPlay,3000);
+           }
+       }*/
+
+       window.onload = function () {
+           //加小原点  加循环
+           var oDiv = document.getElementsByTagName("div")[0];
+           var oUl = document.getElementById("box");
+           var clickUl = document.getElementById("click");
+           var oLi = oUl.getElementsByTagName("li");
+           var clickLi = clickUl.getElementsByTagName("li");
+           var index = 1;
+
+           //生成小原点
+           for (var i = 0;i<oLi.length-2;i++){
+               clickUl.innerHTML += "<li></li>"
+           }
+           //初始化
+           clickLi[0].className = "active";
+           //给li加点击事件
+           for (var i = 0;i<clickLi.length;i++){
+               clickLi[i].index = i;
+               clickLi[i].onclick = function () {
+                   move(oUl, 10, -700 * this.index, "left");
+                   //小原点同步
+                   for (var j = 0; j < clickLi.length;j++ ){
+                       clickLi[j].className = "";
+                   }
+                   this.className = "active";
+                   index = this.index;
+               }
+           }
+
+
+
+           var timer = setInterval(autoPlay,3000);
+           function  autoPlay() {  //0 [1 2 3 4 1]   [2 3 4 1]  [2 3 4 1]
+               index++;
+               if(index == 6){
+                   index = 2;
+                   oUl.style.left = "-700px";
+               }
+               move(oUl, 10, -700 * index, "left");  //-700 -1400 -2100 -2800  5 = 3500 i = 3  i = 4
+               for (var j = 0; j < clickLi.length;j++ ){
+                   clickLi[j].className = "";
+               }
+               if(index == 5){clickLi[0].className = "active";}else {
+                   clickLi[index-1].className = "active";
+               }
+
+           }
+
+
+           //开启关闭定时器
+           oDiv.onmouseover = function () {
+
+               clearInterval(timer);
+           }
+           oDiv.onmouseout = function () {
+               timer = setInterval(autoPlay,3000);
+           }
+       }
+    </script>
+</head>
+<body>
+    <div>
+        <ul id="box">
+            <li><img src="img/6.jpg" alt=""></li>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/6.jpg" alt=""></li>
+            <li><img src="img/1.jpg" alt=""></li>
+        </ul>
+         <ul id="click">
+         </ul>
+    </div>
+
+</body>
+</html>

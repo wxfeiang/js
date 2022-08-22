@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+          // console.log( new Date());
+           //1.创建一个日期对象
+            var date =  new Date();//返回系统时间
+            console.log(date);
+            console.log(date.getFullYear());//2017
+            console.log(date.getMonth()+1);//获取的月份少1
+            console.log(date.getDate());//日
+            console.log(date.getDay());//星期 4  从0开始
+            console.log(date.getHours());//小时
+            console.log(date.getMinutes());//分
+            console.log(date.getSeconds());//秒
+
+//           var y = date.getFullYear();
+//           console.log(y);
+//           var m = date.getMonth()+1;  //获取的月份少1
+//           console.log(m);
+//           var da = date.getDate();
+//           console.log(da);   //日
+//           var day = date.getDay();  //星期
+//           console.log(day);
+//           var h = date.getHours();
+//           var min = date.getMinutes();
+//           var s = date.getSeconds();
+//           console.log(h+":"+min+":"+s);
+
+
+           //2017 年 8月10号  15：49    星期四
+            autoPlay();
+            setInterval(autoPlay,1000);
+            function autoPlay() {
+                var date =  new Date();
+                var y = date.getFullYear();
+                var m = date.getMonth()+1;
+                var da = date.getDate();
+                var day = date.getDay();
+                var h = date.getHours();
+                var min = date.getMinutes();
+                var s = date.getSeconds();
+                var arr = ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"];
+                document.body.innerHTML = y+"年"+m+"月"+da+"日"+
+                    "&nbsp;&nbsp;&nbsp;"+toTwo(h)+":"+toTwo(min)+":"+toTwo(s)+
+                    "&nbsp;&nbsp;&nbsp;"+arr[day];
+            }
+            function  toTwo(date) {
+              return  date < 10 ?  "0"+date :date;
+            }
+
+
+
+
+
+
+            var date = new  Date();
+            console.log(date.toDateString()); //Thu Aug 10 2017
+            console.log(date.toTimeString());//16:23:40 GMT+0800 (中国标准时间)
+            console.log(date.toLocaleDateString());  //2017/8/10
+            console.log(date.toLocaleTimeString());  //下午4:25:07
+
+            //时间戳  ms
+            console.log(Date.parse("8"));
+            console.log(date.setHours(1));  //cookie
+
+            //20
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

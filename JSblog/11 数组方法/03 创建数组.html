@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.用字面量方式创建数组
+            var arr = [1,2,3,4];
+            console.log(typeof arr);  //object
+            console.log(arr)  //具体的类型
+            console.log(arr[0])//取元素
+            console.log(arr.length)//长度 4
+            console.log(arr[arr.length-1]);
+        //2.构造函数（首字母大写,new）
+           var arr1 = new Array();
+            arr1.push("1");
+            console.log(arr1);  //[]
+            arr1[10] = "9";
+           arr1.length = 20; //可以通过修改长度修改数组的长度
+            console.log(arr1.length,arr1);  //11
+
+            var str = "21212rieruie";
+            str.length = 1;
+            console.log(str,str.length);
+
+
+            //用构造函数生成有内容的数组
+            var arr2 = new Array(1,"11",3,4,5);
+            console.log(arr2);
+            var arr3 = new Array(5);  //如果只有一个参数，并且为number  创建一个长度为n 的空数组
+            console.log(arr3,arr3.length);
+
+            //遍历数组
+        console.log(arr1 instanceof  Array == true);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

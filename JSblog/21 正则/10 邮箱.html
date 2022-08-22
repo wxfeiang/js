@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            but.onclick = function (){
+                var value = input.value;
+                //txf12445@qq.com cn edu net
+                var reg = /^\w+@\w{2,5}\.(com|cn|edu|net)$/ig;
+                if(reg.exec(value)){
+                    alert("对的");
+                }else {
+                    alert("不对的");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text">
+<button>确定</button>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //文本框  取一次
+            console.log( $("input")[0].value);
+            $(".text").val("web");
+            console.log($(".text").val());
+
+            //弹出被选中的value
+            $(".sex").click(function () {
+                alert($(".sex:checked").val());
+            })
+            //var a = 10;
+            //var b = 10;
+            //alert(a,b);
+
+            //复选框  打印  index == value
+            $(".sex1").click(function () {
+                $(".sex1:checked").each(function (index,elem) {
+                    console.log(index+"------------"+$(elem).val());
+                })
+            })
+
+
+
+            //$(".sex").val("a");  //设置单选选框的value
+            $(".sex").val(["b"]);  //设置选中项
+            $(".sex1").val(["2","哈哈"]);
+
+            console.log($("option:checked").val());
+
+            console.log($("select").val());
+            $("select").val(["2"]);
+            console.log($("select").val());
+            $("select").val(["2","3"]);
+            console.log($("select").val());
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <input type="text" class="text">
+    <input type="radio" name="sex" class="sex" value="a">a
+    <input type="radio" name="sex" class="sex" value="b">b
+    <input type="radio" name="sex" class="sex" value="c">c
+    <input type="checkbox" class="sex1" value="1">1
+    <input type="checkbox" class="sex1" value="2">2
+    <input type="checkbox" class="sex1" value="哈哈">3
+    <input type="checkbox" class="sex1" value="4">4
+
+    <select name="" id="selec" multiple>
+        <option value="1">1</option>
+        <option value="2" >2</option>
+        <option value="3">3</option>
+    </select>
+</body>
+</html>

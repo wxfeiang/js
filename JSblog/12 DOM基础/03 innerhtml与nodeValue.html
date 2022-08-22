@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{background: rosybrown;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            //document.write("23"); //整个文档的内容
+            var oDiv = document.getElementsByTagName("div")[0];
+//            oDiv.innerHTML = "<span>"+oDiv.innerHTML+"</span>";
+            console.log(oDiv.childNodes[0]);
+            console.log(oDiv.childNodes[0].nodeValue);
+            oDiv.childNodes[0].nodeValue = "<span>"+oDiv.innerHTML+"</span>";
+
+            //innerhtml  能解析标签 元素.innerhtml
+            //nodeValue  不能解析标签 文本节点.nodeValue
+
+
+        }
+    </script>
+</head>
+<body>
+    <div>我是一个div</div>
+</body>
+</html>

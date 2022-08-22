@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            //1.获取属性
+            var oDiv = document.getElementById("div1");
+           console.log( oDiv.getAttribute("id"));
+            //1个取值  2个赋值
+           console.log( $("div").attr("id"));  //div1
+            $("div").attr("id","box");
+
+            //2.移除
+            // oDiv.id = "";
+            $("div").removeAttr("id");
+
+            //3.批量操作
+           console.log($("div").attr("class"));
+           $("div").attr({"id":"hehe","class":"haha"})
+            $("div").attr((function () {
+                return "class";
+            })());
+
+           //操作class
+            //1.attr   //addclass  不会覆盖之前的
+            $("div").addClass("box");
+            $("div").addClass("box1");
+
+            $("div").removeClass("box");  //box
+            //开关效果  有就删了，如果没有就添加
+            $("div").toggleClass("box");
+            $("div").toggleClass("box");
+
+
+        })
+    </script>
+</head>
+<body>
+    <div id="div1" class="box" >stzfhgc</div>
+</body>
+</html>

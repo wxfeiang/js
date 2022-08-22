@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            //1.jquery 引入方式
+            //1.加载本地   2.加载   CDN
+            //2.链式操作
+            $("div").css("width","100px").css("height","100px");
+            //3.jquery的语法
+             // $(selector).action()  $(selector)找到相对应的元素  action  具体的操作
+
+            //4.jq程序入口
+//            $(document).ready(function(){})
+//            $().ready()
+             //$(function (){})
+            /*
+                window.onload  等文档 资源都加载完成之后   后面的会覆盖前面
+                ready   等文档就绪      会叠加
+            */
+
+            //5.jq对象与dom对象之间的互换
+            var oDiv = document.getElementsByTagName("div")[0];  //dom
+            console.log($(oDiv),$(oDiv)[0]);
+
+            $("div")[1].onclick = function () {
+                alert("fa");
+            }
+            //6.除了id为oLi的所有的li设置背景颜色为红色
+            $("li:not(#oLi)").css("background","red");
+
+            //7.给所有有子元素的div设置背景颜色为abc
+            $("div:parent").css("background","#abc");
+            $("div:empty").css("background","red");
+            //8.前3个背景颜色为orange 后面为red  下标
+            $("li:lt(3)").css("background","orange");
+            $("li:gt(2)").css("background","red");
+            //9.定义一个对象遍历
+            var cat = {
+                "name":"小明",
+                "age": 12,
+                "eat":function () {
+                    console.log("Fa");
+                }
+            }
+
+            $.each(cat,function (key,value) {
+                console.log(key +"-------------"+value);
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+    <div>fd</div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li id="oLi">3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+</html>

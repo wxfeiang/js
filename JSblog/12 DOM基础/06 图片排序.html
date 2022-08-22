@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 820px;margin: 20px auto;
+        }
+        p{width: 200px;text-align: center;display: inline-block;}
+        h4{text-align: center;}
+    </style>
+    <script>
+        window.onload = function () {
+     /* var img = ["img/1.JPG","img/2.JPG","img/3.JPG","img/4.JPG","img/5.JPG","img/6.JPG","img/7.JPG","img/8.JPG"];*/
+
+
+            var but = document.getElementsByTagName("button");
+            var oP = document.getElementsByTagName("p");
+            var oDiv = document.getElementsByTagName("div")[0];
+            var arr = [],arr2 = [];
+            var onOff = true;
+            for(var i = 0; i < oP.length;i++){
+                arr.push(oP[i]);
+                arr2.push(oP[i]);
+            }
+            but[0].onclick = function () {
+                arr2.reverse();
+                console.log(arr);
+                var str = "";
+                for(var i = 0;i<oP.length;i++){
+                    str += "<p>"+arr2[i].innerHTML+"</p>";
+                }
+                oDiv.innerHTML = str;
+                if(onOff){
+                    this.innerHTML = "从小到大";
+                    onOff = false;
+                }else {
+                    this.innerHTML = "从大到小";
+                    onOff = true;
+                }
+
+            }
+            but[1].onclick = function () {
+                arr.sort(function (a,b) {
+                    return 0.5-Math.random();
+                });
+                var str = "";
+                for(var i = 0;i<oP.length;i++){
+                    str += "<p>"+arr[i].innerHTML+"</p>";
+                }
+                oDiv.innerHTML = str;
+            }
+
+
+                       /* but[0].onclick = function () {
+
+                //倒序
+                img.reverse();
+                for(var i = 0;i<oP.length;i++){
+                    oP[i].getElementsByTagName("img")[0].src = img[i];
+                }
+            };
+            var imgs = ["img/1.JPG","img/2.JPG","img/3.JPG","img/4.JPG","img/5.JPG","img/6.JPG","img/7.JPG","img/8.JPG"];
+            but[1].onclick = function () {
+                imgs.sort(function (a,b) {
+                   return 0.5-Math.random();
+                });
+                for(var i = 0;i<oP.length;i++){
+                    oP[i].getElementsByTagName("img")[0].src = imgs[i];
+                }
+                console.log(imgs);
+            }*/
+
+        }
+    </script>
+</head>
+<body>
+<h4><button>从大到小</button> <button>随机排序</button></h4>
+    <div>
+
+        <p><img src="img/1.JPG" alt="" width="200px" height="200px">图片一</p>
+        <p><img src="img/2.JPG" alt="" width="200px" height="200px">图片二</p>
+        <p><img src="img/3.JPG" alt="" width="200px" height="200px">图片三</p>
+        <p><img src="img/4.JPG" alt="" width="200px" height="200px">图片四</p>
+        <p><img src="img/5.JPG" alt="" width="200px" height="200px">图片五</p>
+        <p><img src="img/6.JPG" alt="" width="200px" height="200px">图片六</p>
+        <p><img src="img/7.JPG" alt="" width="200px" height="200px">图片七</p>
+        <p><img src="img/8.JPG" alt="" width="200px" height="200px">图片八</p>
+
+    </div>
+</body>
+</html>

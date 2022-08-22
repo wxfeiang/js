@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //1.淘宝评论
+            var divTop = $("div").offset().top;
+            $(document).scroll(function () {
+                if($(document).scrollTop() >= divTop){
+                    $("div").addClass("active");
+                }else {
+                    $("div").removeClass("active");
+                }
+            })
+            //2.width+padding
+            console.log($("div").width());
+            $("div").width("1200");
+            console.log($("div").width());
+            //client  =  innerWidth  padding+width
+            //offset = outWidth   padding + width + border         outWidth(true) +margin
+
+            //3.绑定方式，语法，大致的区别
+            //bind unbind  /delegate undelegate  on off one
+            /*
+             $(selector).bind(事件类型，处理函数) 不能发生在未来
+             $(selector).unbind(事件类型，处理函数)  不放参数，全清，放事件类型：清除该事件      事件类型 处理函数
+
+             $(父元素).delegate(子元素，事件类型，处理函数) 能发生在未来
+             $(父元素).undelegate(子元素，事件类型，处理函数) 能发生在未来
+
+             $(父元素).on(事件类型，子元素，处理函数) 能发生在未来
+             $(父元素).off(事件类型，子元素，处理函数) 能发生在未来
+
+             $(selector).one(事件类型，处理函数) 运行一次
+
+            *
+            * */
+            //4.模拟用户点击
+            $("div").click(function () {
+                alert("fd");
+            }).triggerHandler("click");
+            //用代码调用
+            $("div").click();
+
+            //5.jq实现离开 移入
+            $("div").hover(function () {
+                $("div").css("background","pink");
+            },function () {
+                $("div").css("background","red");
+            })
+
+            //6.元素显示或消失
+            //show hide（w h o）  fadeIn fadeOut  fadeToggle(o)   slideUp slideDown  slideToggle (h)
+        })
+    </script>
+</head>
+<body style="height: 2000px">
+<div></div>
+<style>
+    div{width: 1000px;height: 35px;background: red;margin-top:1000px;}
+    .active{position: fixed;top: 0;left: 50%;margin-left: -500px;margin-top:0px}
+</style>
+</body>
+</html>

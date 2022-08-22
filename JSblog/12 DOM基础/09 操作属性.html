@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{width: 100px;
+            height:100px;background: #abcdef;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            //之前
+            var oDiv = document.getElementsByTagName("div")[0];
+            oDiv.className = "active";
+            console.log(oDiv.className,oDiv.title);
+            //DOM  元素.getAttribute("属性名")
+            console.log(oDiv.getAttribute("style"));  //行间样式  整个style  是字符串
+            console.log(oDiv.getAttribute("title"));
+            alert(oDiv.getAttribute("class"));  //ie7 null
+            alert(oDiv.getAttribute("className"));
+            var cl = oDiv.getAttribute("className") || oDiv.getAttribute("class");
+            alert(cl);
+            //赋值
+           var input = document.getElementsByTagName("input")[0];
+           //input.value = "给一个值";  //input["value"]
+            input.setAttribute("value","值");
+
+
+
+//             var text = document.createTextNode("fdkfjdkf");
+//             oDiv.appendChild(text);
+
+              var doc =  document.getElementsByClassName("active");
+              console.log(doc);
+
+        }
+    </script>
+</head>
+<body>
+    <div title="haha" ></div>
+    <input type="text" value="" class="active">
+</body>
+</html>

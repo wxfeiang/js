@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+    <script>
+       /* window.onload = function () {
+            //$(selector).action()
+            //$(selector)  选择器  html元素
+            //.action  执行具体的操作
+
+            //jquery = $ 别名
+            jQuery("div").css("background","red");
+        }*/
+
+        /*$(document).ready(function () {  //文档就绪执行代码
+           //代码入口
+           jQuery("div").css("background","red");
+        });*/
+        /*$().ready(function () {
+            jQuery("div").css("background","red");
+        });*/
+        $(function () {
+            jQuery("div").css("background","red");
+        });
+
+        /*
+            window.onload   所有元素以及所有的资源，都加载完成之后运行
+            ready   文档就绪 元素加载完成
+        * */
+    </script>
+</head>
+<body>
+<div style="width: 100px;height: 100px"></div>
+</body>
+</html>

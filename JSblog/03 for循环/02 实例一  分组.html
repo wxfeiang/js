@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{padding: 0;margin: 0;}
+        ul li{list-style: none;}
+        .box{margin:100px auto;width: 250px; font-size:14px; }
+        #title{padding-left: 10px;background: url("images/nav_link.gif") repeat-x;color: #fff;height: 24px;line-height: 24px;
+        }
+        #title img{vertical-align: middle;padding-right: 10px;}
+        #list{display: none;}
+        #list li{background: url("images/menu.gif") repeat-x;padding-left:25px; }
+        a{text-decoration: none;color: #666;background: url("images/nav2.gif") no-repeat 0px 5px;padding-left: 20px;}
+    </style>
+    <script>
+        window.onload = function () {
+            var title = document.getElementById("title");
+            var list = document.getElementById("list");
+            var onOff = 0;
+            title.onclick = function () {
+                if (onOff == 0){
+                    //显示
+                    list.style.display = "block";
+                    onOff = 1;
+                }else {
+                    list.style.display = "none";
+                    onOff = 0;
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<ul class="box">
+    <li>
+        <p id="title"><img src="images/nav.gif" alt="">web 0705</p>
+        <ul id="list">
+            <li><a href="#">客观就</a></li>
+            <li><a href="#">客观就</a></li>
+            <li><a href="#">客观就</a></li>
+            <li><a href="#">客观就</a></li>
+        </ul>
+    </li>
+    <!--<li>-->
+        <!--<p id="title1"><img src="images/nav.gif" alt="">web 515</p>-->
+        <!--<ul id="list1">-->
+            <!--<li><a href="#">客观就</a></li>-->
+            <!--<li><a href="#">客观就</a></li>-->
+            <!--<li><a href="#">客观就</a></li>-->
+            <!--<li><a href="#">客观就</a></li>-->
+        <!--</ul>-->
+    <!--</li>-->
+</ul>
+
+</body>
+</html>

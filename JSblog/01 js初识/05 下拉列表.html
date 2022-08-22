@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 200px;margin: 0 auto;}
+        #title{background: orange;font: 24px/40px "Microsoft YaHei";color: white;text-align: center;margin: 0;}
+        ul {list-style: none;padding: 0;margin: 0;display: none;}
+        ul li{background: lemonchiffon;}
+        ul li:hover{background: fuchsia;}
+    </style>
+</head>
+<body>
+    <div id="div">
+        <p id="title">web前端课程</p>
+        <ul id="oUl">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+        </ul>
+    </div>
+
+    <script>
+       /*var oDiv = document.getElementById("div");
+       oDiv.onclick = function () {
+           //事件处理函数  .只有在事件触发的时候才会执行
+           console.log("heheh");
+       };
+       oDiv.onmousedown = function () {
+         console.log("鼠标按下了");
+       };
+       oDiv.onmouseup = function () {
+           console.log("鼠标抬起");
+       };
+       oDiv.onmouseover = function () {
+          console.log("鼠标划过");
+       };
+       oDiv.onmouseout = function () {
+           console.log("鼠标离开");
+       };
+       oDiv.onmousemove = function () {
+           console.log("鼠标移动");
+       };
+
+*/
+
+           /**
+            * 鼠标事件
+                onclick   点击事件
+                onmouseover  鼠标进入元素
+                onmouseout   鼠标离开元素
+                onmousedown   鼠标按下
+                onmouseup     鼠标弹起
+                onmousemove   鼠标移动
+
+
+            */
+
+
+           //下拉列表
+           var title = document.getElementById("title");
+           var oUl = document.getElementById("oUl");
+           var oDiv = document.getElementById("div");
+
+           //问题  p标签
+           oDiv.onmouseover = function () {
+               //
+               oUl.style.display = "block";
+           };
+           oDiv.onmouseout = function () {
+               oUl.style.display = "none";
+           }
+
+    </script>
+</body>
+</html>

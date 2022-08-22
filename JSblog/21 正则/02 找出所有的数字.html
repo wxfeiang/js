@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+
+            var str = "12 fff 87 er334 233 -=-=fa80";  //12
+            var temp = "";
+            var arr = [];
+            console.log(String.fromCharCode(48));
+            for(var i = 0; i<str.length;i++){
+               if(str.charCodeAt(i) > 47 && str.charCodeAt(i) < 58 ){  //0-9
+                    temp += str[i];  //12
+                    console.log(temp);
+               }else {  //不是数字
+                   if(temp){
+                       arr.push(temp);
+                       temp = "";
+                   }
+               }
+            }
+
+            if(temp){
+                arr.push(temp);
+            }
+            console.log(arr);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

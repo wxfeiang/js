@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul li{list-style: none;}
+        #tab{width: 300px;padding: 10px;font: 14px "Microsoft YaHei";border: 1px solid #333; margin: 50px auto;}
+        #nav{height: 30px;}
+        #nav li{width: 80px;height: 30px;background: #9fc;float: left;line-height: 30px;text-align: center;margin-right: 3px;}
+        #nav .active{background: #066;color: #fff;}
+        .box{width: 300px;height: 90px;padding-top: 1px;display: none;}
+        .box img{width: 200px;height: 89px;float: left;}
+        .box ul{width: 100px;float: left}
+        .box ul li{height:29px;background: #f1f1f1;margin-bottom: 1px;text-align: center;line-height: 29px;cursor: pointer}
+        .box ul .active{background: #69c;}
+
+
+    </style>
+    <script>
+        window.onload = function () {
+            var tab = document.getElementById("tab");
+            var navLi = document.getElementById("nav").getElementsByTagName("li");
+            var oDiv = tab.getElementsByTagName("div");
+            var imgs = [["img/1.jpg","img/2.jpg","img/3.jpg"],["img/4.jpg","img/5.jpg","img/6.jpg"]];
+            var num = 0;  //当前显示照片的下标
+            var now = 0; //当前显示的div
+            //1.点击切换div
+            for (var i = 0; i<navLi.length;i++){
+                navLi[i].index = i;
+                navLi[i].onclick = function () {
+                    changDiv(this);
+                }
+            }
+            //3.自由开启定时器
+            tab.onmouseover = function () {
+                  clearInterval(timer);
+            };
+            tab.onmouseout = function () {
+                timer = setInterval(autoPlay,1000);
+            };
+            //2.开启定时器
+           var timer = setInterval(autoPlay,1000);
+            function autoPlay() {
+                num++;
+                if(num == 3){
+                    now = now == 0 ? 1 : 0;
+                    num = 0;
+                    changDiv(navLi[now]);
+                }
+                changLi(now,num);
+            }
+            function changLi(now,num) {
+                var img = oDiv[now].getElementsByTagName("img")[0];
+                var oLi = oDiv[now].getElementsByTagName("li");
+                for (var i = 0; i<oLi.length;i++){
+                    oLi[i].className = "";
+                }
+                img.src = imgs[now][num];
+                oLi[num].className = "active";
+            }
+            //切换div的函数
+            function changDiv(nLi) {
+                for (var i = 0; i<navLi.length;i++){
+                    navLi[i].className = "";
+                    oDiv[i].style.display = "none";
+                }
+                nLi.className = "active";
+                oDiv[nLi.index].style.display = "block";
+                num = 0;
+                changLi(nLi.index,num);
+
+            }
+
+
+                //4.划过li切换图片   样式
+                var oImg = oDiv[0].getElementsByTagName("img")[0];
+                var li = oDiv[0].getElementsByTagName("li");
+                for(var j = 0 ;j < li.length;j++){
+                    li[j].index = j;
+                    li[j].onmouseover = function () {
+                        for (var k = 0; k<li.length;k++){
+                            li[k].className = "";
+                        }
+                        oImg.src = imgs[now][this.index];
+                        this.className = "active";
+                        num = this.index;
+                    }
+                }
+            var oImg1 = oDiv[1].getElementsByTagName("img")[0];
+            var li1 = oDiv[1].getElementsByTagName("li");
+            for(var j = 0 ;j < li1.length;j++){
+                li1[j].index = j;
+                li1[j].onmouseover = function () {
+                    for (var k = 0; k<li1.length;k++){
+                        li1[k].className = "";
+                    }
+                    oImg1.src = imgs[now][this.index];
+                    this.className = "active";
+                    num = this.index;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="tab">
+    <ul id="nav">
+        <li class="active">菜单一</li>
+        <li>菜单二</li>
+    </ul>
+    <div class="box" style="display: block">
+        <img src="img/1.jpg" alt="">
+        <ul>
+            <li class="active">图片1</li>
+            <li>图片2</li>
+            <li>图片3</li>
+        </ul>
+    </div>
+    <div class="box">
+        <img src="img/4.jpg" alt="">
+        <ul>
+            <li class="active">图片4</li>
+            <li>图片5</li>
+            <li>图片6</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

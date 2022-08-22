@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*循环  for
+            *
+            for（初识值;条件判断;值的变化）{
+                循环体
+            }
+
+            for（1.初始化循环变量;2.判断条件(循环结束的条件);4.更新循环变量）{
+                3.执行括号里面的代码
+            }
+
+
+
+        执行顺序for(;;){}
+            1.初始化循环变量   var i = 0;
+            2.判断条件
+                条件成立，   执行循环体
+                条件不成立   结束循环
+           4.更新循环变量  i = i + 1;
+
+
+
+           注意：  必须要有跳出循环的条件  （死循环）
+                   必须要更新循环变量
+                        * */
+            for(var i = 0;i < 4;i = i + 1){
+                console.log(i);
+            };
+
+            // + - * /  %取余
+            //1.输出1-100    每10个一行
+           var oDiv = document.getElementsByTagName("div")[0];
+           for (var j = 1;j <= 100;j = j + 1){
+                oDiv.innerHTML = oDiv.innerHTML + j + " ";
+                if(j % 10 == 0){  //如果是10的倍数
+                    oDiv.innerHTML = oDiv.innerHTML + "<br>";
+                }
+           }
+
+
+           //2.1-100的和  5050
+            var sum = 0;
+            for(var n = 1;n <= 100 ;n = n + 1){
+               sum = sum + n;  //sum = sum + 1   sum = 0+1  0+1+2+3+  累加
+            };
+            console.log(sum);
+
+            //3.阶乘  ！6   1*2*4*5*6   720
+            var s = 1;
+            for(var m = 1;m < 7;m = m + 1){
+                 s = s * m;
+            };
+
+
+            //除了判断条件一定写到括号里面，其他的都可以不在
+            var c = 0;
+            for (;c < 10;){
+                c = c + 1;
+                console.log("s");
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

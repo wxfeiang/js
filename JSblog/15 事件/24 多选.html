@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 300px;margin: 30px auto;}
+        #box input {width:300px;height: 30px;border: 1px solid blue;}
+        #box ul{list-style: none;border: 1px solid blue;margin: 0;padding: 0;display: none;}
+        #box ul li{height: 30px;}
+        #box ul li:hover{background: blue;}
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementById("in");
+            var oUl = document.getElementsByTagName("ul")[0];
+            var oLi = oUl.getElementsByTagName("li");
+            input.onclick = function (ev) {
+                var ev = window.event || ev;
+                oUl.style.display = "block";
+                ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true;
+            }
+            document.onclick = function () {
+                oUl.style.display = "none";
+            }
+            var arr = [];
+            for(var i = 0; i < oLi.length;i++){
+                oLi[i].onclick = function (ev) {
+                    var ev = window.event || ev;
+                    ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true;
+                    //判断有没有按shift
+                    if(ev.shiftKey){
+                        for (var j = 0; j<arr.length;j++){
+                            if(this.innerHTML == arr[j]){
+                                arr.splice(j,1);
+                                input.value = arr.join("");
+                                return;
+                            }
+                        }
+                       arr.push(this.innerHTML);
+                        input.value = arr.join("");
+                    }else {
+                        input.value = this.innerHTML;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="text" id="in">
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>javascript</li>
+        <li>jquery</li>
+        <li>php</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+     window.onload = function () {
+        var oDiv = document.getElementById("box");
+        function  fun(a,b) {
+            this.style.background = "red";
+            console.log(a,b);
+         }
+       // fun(); //this 是window
+         //fun.call(oDiv,10,20);
+         //call 可以改变this的是指向  函数名.call(this的指向，参数列表)
+         fun.apply(oDiv,[10,20]);    //参数列表用放到数组当中
+     }
+    </script>
+</head>
+<body>
+<div id="box" style="width: 100px;height: 100px"></div>
+</body>
+</html>

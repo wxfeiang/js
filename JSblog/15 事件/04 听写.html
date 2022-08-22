@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.input自动获取焦点，普通按钮实现提交功能 reset submit focus blur
+            document.getElementsByTagName("input")[0].focus();
+            document.getElementsByTagName("input")[1].onclick = function () {
+                //提交
+                document.getElementsByTagName("form")[0].submit();
+            }
+
+            //2.输入查找，全部查找完
+            var input = document.getElementById("in");
+            var but = document.getElementById("but");
+            var  fin = "";
+           /* but.onclick = function () {
+                if(!find(fin)){
+                    fin = prompt("请输入要查找的内容","2");
+                }//找不到返回false
+               find(fin) ;  //null
+            }*/
+            //3.点击按钮打开一个新的窗口
+               /* but.onclick = function () {
+                    open("http://www.ujiuye.com");
+                }*/
+            //4.点击关闭，弹出好提示信息，确定是否关闭
+            but.onclick = function () {
+                if(confirm("是否关闭窗口")){
+                    close();
+                }
+
+            }
+            //5.获取鼠标点击的位置
+            document.onclick = function (ev) {
+                var ev = event || ev;
+                //点击位置
+                console.log(event.clientX);
+            }
+
+        }
+    </script>
+</head>
+<body style="width: 2000px;">
+<form action="01.html">
+    <input type="text">
+    <input type="button" value="按钮">
+</form>
+<input type="text" id="in">
+<button id="but">按钮</button>
+<p>2.输入查找，全部查找完2.输入查找，全部查找完2.输入查找，全部查找完2.输入查找，全部查找完2.输入查找，全部查找完2.
+    输入查找，全部查找完2.输入查找，全部查找完2.输入查找，全部查找完</p>
+</body>
+</html>

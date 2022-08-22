@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            but.onclick = function (){
+                var value = input.value;
+                var reg = /^0\d{2,3}-\d{7,8}$/ig;  //010-   3222954
+                if(reg.exec(value)){
+                    alert("是")
+                }else {
+                    alert("不是")
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text">
+<button>确定</button>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*
+            定时器：  分两种
+               重复执行  和 执行一次
+               重复执行 setInterval(函数，时间);   时间的单位  毫秒  ms  1000ms = 1s
+
+            * */
+
+            //setInterval(函数,间隔时间(单位是毫秒))
+            var i = 0;
+            setInterval(function () { //每隔一分钟调用这个函数
+                document.write(i);
+            },1000);
+
+//            var i = 0;  //返回id  唯一能够标识当前定时器的  i=30
+           var timer =  setInterval(function () {
+                document.write(i++);
+                if(i == 30){
+                    clearInterval(timer);
+                }
+            },1000);
+            //clearInterval(timer);  //清除定时器
+
+
+
+           console.log(timer,t);
+        }
+
+
+  /*
+
+
+  * */
+    </script>
+</head>
+<body>
+
+<img src="img/1.jpg" alt="" width="700" height="525">
+</body>
+</html>

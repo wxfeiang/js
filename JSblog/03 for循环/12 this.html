@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var oli = document.getElementsByTagName("li");
+            for(var i = 0; i<oli.length;i = i + 1){  //i = 3
+                oli[i].onclick = function () {
+                    //this：这个
+                    //this  当前调用函数的对象
+                    console.log(this.innerHTML);
+//                    alert(oli[i].innerHTML);  //oli[3]
+                }
+            }
+
+            var a = 10;
+            function aa() {
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

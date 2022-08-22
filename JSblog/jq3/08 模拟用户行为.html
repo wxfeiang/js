@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function(){
+          /* $("div").click(function () {
+               open("http://www.baidu.com");
+            });
+            $("div").trigger("click"); 模拟用户操作，模拟用户的点击 */
+
+           //合并
+            $("div").click(function () {
+                //open("http://www.baidu.com");
+                alert("haha");
+            }).trigger("click");
+
+            $("body").click(function () {
+                //open("http://www.baidu.com");
+                alert("hehhehe");
+            });
+
+            //不冒泡，不产生默认行为
+           $("div").click(function () {
+                open("http://www.baidu.com");
+            }).triggerHandler("click");
+
+            //用代码触发事件
+            setTimeout(function () {
+               // $("div").click();
+            },2000)
+
+
+
+        })
+    </script>
+</head>
+<body style="width: 100%;height: 200px;background: pink">
+<div>fkdjf</div>
+</body>
+</html>

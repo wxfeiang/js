@@ -186,6 +186,7 @@
                             }
                         ]
                     }
+
                 ],
                 needMergeArr: ['timeMeal', 'categoryName', 'foodName'], //需要进行合并的column的prop值
                 rowMergeArrs: {}, //处理过后得到的每个column的合并规则
@@ -231,13 +232,13 @@
                 return needMerge;
             },
             arraySpanMethod({ column, rowIndex }) {
-                // console.log("arraySpanMethod", row, column, rowIndex, columnIndex);
+
                 if (column.property === 'timeMeal') {
-                    return this.mergeAction('timeMeal', rowIndex, column);
+                    return this.mergeAction('timeMeal', rowIndex);
                 } else if (column.property === 'categoryName') {
-                    return this.mergeAction('categoryName', rowIndex, column);
+                    return this.mergeAction('categoryName', rowIndex);
                 } else if (column.property === 'foodName') {
-                    return this.mergeAction('foodName', rowIndex, column);
+                    return this.mergeAction('foodName', rowIndex);
                 }
             },
             mergeAction(val, rowIndex) {

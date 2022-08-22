@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0px;margin: 0}
+        #text {width: 400px;height: 200px;}
+        ul {width: 500px;height:500px;border: 1px solid #ccc;margin: 0px auto}
+        ul li {list-style: none;height: 40px;border-bottom: 1px dashed #ccc;line-height: 40px;overflow: hidden;
+            /*opacity: 0;filter: alpha(opacity=0);*/
+        }
+
+    </style>
+    <script type="text/javascript" src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            var text = document.getElementById("text");
+            var but = document.getElementsByTagName("input")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            but.onclick = function () {
+            //点击发表
+                //先创建li
+                var oLi = document.createElement("li");
+                oLi.innerHTML = text.value;
+                console.log(oLi);
+                //如果父元素为空  直接追加，如果一直第一个
+                if(oUl.children.length == 0){
+                    oUl.appendChild(oLi);
+                }else {
+                    oUl.insertBefore(oLi,oUl.firstElementChild);
+                }
+                //过渡高  0---40
+                var h = oLi.offsetHeight;
+                oLi.style.height = "0";
+                move(oLi,h,"height");
+            }
+
+        }
+
+        function move(obj,target,attr) {
+            var timer =   setInterval(function () {
+                //先获取当前的left
+                var cur =  parseInt(getStyle(obj,attr));
+                var speed = (target - cur)/10;  //没有缓冲  每次加多少
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                obj.style[attr] = cur + speed+"px";
+                if(speed == 0){
+                    clearInterval(timer);
+                }
+            },30)
+
+
+        }
+    </script>
+</head>
+<body>
+<textarea id="text"></textarea>
+<input type="button" value="发表">
+<ul>
+
+</ul>
+</body>
+</html>

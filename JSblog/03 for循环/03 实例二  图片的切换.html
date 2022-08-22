@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0px;padding: 0px;}
+        .box{width: 800px;height: 800px;margin: 20px auto;}
+        .box1{width: 700px;height: 525px;border: 1px solid #333;position: relative;}
+        #title1{width: 100%;text-align: center;background: rgba(75,86,85,0.5);position: absolute;top: 0;font: 24px/30px "黑体";color: #fff;}
+        #title2{width: 100%;text-align: center;background: rgba(75,86,85,0.5);position: absolute;bottom: 0;font: 24px/30px "黑体";color:#fff;}
+        #left{width: 40px;height: 60px;background:rgba(75,86,85,0.5);position: absolute;top:50% }
+        #right{width: 40px;height: 60px;background:rgba(75,86,85,0.5);position: absolute;top:50% ;right: 0px}
+        #s{width: 40px;height: 30px;margin:0px 10px 3px 38%}
+        #x{width: 40px;height: 30px;}
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            var sBut = document.getElementById("s");
+            var xBut = document.getElementById("x");
+            var title1 = document.getElementById("title1");
+            var title2 = document.getElementById("title2");
+            var left = document.getElementById("left");
+            var right = document.getElementById("right");
+            var img = document.getElementById("im");
+
+            var imgs = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+            var index = 0;
+            var tag = 1;   //tag = 1;顺序
+
+            sBut.onclick = function () {
+                tag = 1;
+            };
+            xBut.onclick = function () {
+                tag = 2;
+            };
+
+            right.onclick = function () {
+                index = index + 1;
+                if(index == 4){
+                    //tag标准当前是顺序还是循环   1 顺序    2循环
+                    if(tag == 1){
+                        index = 3;
+                    }else {
+                        index = 0;
+                    }
+                }  //顺序 4   循环0
+                img.src = imgs[index];
+                title1.innerHTML = (index+1)+"/4";
+                title2.innerHTML = "美女"+(index+1);
+            };
+
+            left.onclick = function () {
+                index = index - 1;  //- 1
+                if(index < 0){
+                    //tag标准当前是顺序还是循环   1 顺序    2循环
+                    if(tag == 1){
+                        index = 0;
+                    }else {
+                        index = 3;
+                    }
+                }  //顺序 4   循环0
+                img.src = imgs[index];
+                title1.innerHTML = (index+1)+"/4";
+                title2.innerHTML = "美女"+(index+1);
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <button id="s">顺序</button>
+    <button id="x">循环</button>
+    <div class="box1">
+        <p id="title1">1/4</p>
+        <p id="title2">美女1</p>
+        <button id="left">&lt;</button>
+        <button id="right">&gt;</button>
+        <img src="../04%20自定义属性，自定义索引/img/1.jpg" alt="" id="im">
+    </div>
+</div>
+</body>
+</html>

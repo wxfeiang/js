@@ -1,0 +1,71 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>操作文本节点</title>
+    <script type="text/javascript" >
+
+
+        window.onload = function () {
+            // 操作文本节点
+            // 1.获取父节点
+            var div = document.getElementsByTagName('div')[0];
+
+            // 2.创建文本节点
+            var text1 = document.createTextNode("tang.");
+            var text2 = document.createTextNode("fang");
+
+            // 3.添加到元素节点中
+            div.appendChild(text1);
+            div.appendChild(text2);
+
+             alert(div.childNodes.length);    //2个文本节点
+             alert(div.childNodes[0].nodeValue);
+
+
+            // 4.合并同级文本节点
+            div.normalize();
+             alert(div.childNodes.length);    //1个文本节点 合并
+             alert(div.childNodes[0].nodeValue);
+
+
+            // 5.拆分文本节点   splitText(2) 字符个数
+            alert(div.childNodes[0]);
+            alert(div.childNodes[0].splitText(4).nodeValue);  //tang.fang
+             alert(div.childNodes.length);      //2个文本节点 合并
+            // alert(div.childNodes[0].nodeValue);
+
+             // .fang
+            // 6.删除文本节点的内容 deleteData(0,1) 第一参数从下标的那个位置开始 第二个参数 删几个
+            div.childNodes[1].deleteData(0,1);
+            // alert(div.childNodes[1].nodeValue);
+
+
+           // 7.插入文本 tang  insertData(4,"xin") 第一参数从下标的那个位置开始 第二个参数插入的文本
+            div.childNodes[0].insertData(4,"xin");
+            // alert(div.childNodes[0].nodeValue);
+
+            //[tangxin fang]
+            //8.替换  第一参数从下标的那个位置开始 第二个参数要替换几个字符  第三个参数替换的文本
+           /* div.childNodes[0].replaceData(4,3,"xiao");
+            // alert(div.childNodes[0].nodeValue);
+
+
+            // 9.截取字符串 第一参数从下标的那个位置开始 第二个参数要截取几个字符
+            var str =  div.childNodes[0].substringData(4,4);  ///23232
+            // alert(div.childNodes[0].nodeValue);
+            // alert(str);
+
+*/
+
+        }
+    </script>
+</head>
+<body>
+<div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{display: none;position: absolute;}
+        ul li:hover{background: #cccccc;}
+    </style>
+    <script>
+        window.onload = function () {
+          var a =  document.getElementsByTagName("a")[0];
+           a.onclick = function () {
+               //阻止事件默认行为
+               return false;
+           };
+           var oUl = document.getElementsByTagName("ul")[0];
+           document.oncontextmenu = function (ev) {
+               var ev = window.event || ev;
+                oUl.style.display = "block";
+                oUl.style.left = ev.clientX + "px";
+                oUl.style.top = ev.clientY + "px";
+               return false;
+           }
+        }
+    </script>
+</head>
+<body>
+<a href="http://www.ujiuye.com">web705</a>
+<ul>
+    <li>html</li>
+    <li>css</li>
+    <li>javascript</li>
+    <li>ph</li>
+</ul>
+</body>
+</html>

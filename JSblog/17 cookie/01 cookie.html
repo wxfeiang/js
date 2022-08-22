@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            /*
+              cookie   用来保存页面信息   4KB
+              离线缓存 localStorage
+                        sessionStorage
+            * */
+
+            //1.存储 key = value
+            document.cookie = "userName=aaa";
+            console.log(document.cookie); //”userName=aaa“
+            //存多个键值对  中间用;隔开
+            document.cookie = "userName=txf;password=123435";
+            console.log(document.cookie);//"userName=txf;password=123435"
+            console.log(document.cookie.split("=")[1]);//["userName","12345"];
+
+            //存用户名 密码
+            /*document.cookie = "userName=txf";
+            document.cookie = "password=1232423";
+            document.cookie = "userNames=1232423"; //[0] = 12 [0]=234*/
+            //存多个键值对  中间用;隔开
+            document.cookie = "userName=txf;password=123435";
+            alert(document.cookie);
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

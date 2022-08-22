@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{background: pink;}
+    </style>
+    <script>
+        window.onload = function () {
+
+         var oLi = document.getElementsByTagName("li");
+            for(var i = 0; i < oLi.length;i++){
+                oLi[i].onclick =function () {
+                    //当前调用方法的对象
+                    console.log(this);
+                }
+            }
+
+
+
+            //直接定义的变量，或者函数（方法）都是全局变量，函数   都属于window
+            //window的属性和方法可以省略window
+            sum();
+            function sum() {
+                console.log(this);  //window
+            }
+
+
+            var oLi = document.getElementsByTagName("li");
+            for(var i = 0; i < oLi.length;i++){
+                oLi[i].onclick = function (){
+                    sum(this);  //把this做为参数传入函数
+                }
+            }
+            function sum(li) {
+                console.log(this);  //window
+                for(var i = 0; i < oLi.length;i++){
+                    oLi[i].className = "";
+                }
+                li.className = "active";
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

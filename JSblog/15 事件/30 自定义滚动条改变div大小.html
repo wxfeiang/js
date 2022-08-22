@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var box = document.getElementById("box");
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            box2.onmousedown = function () {
+                if(box2.setCapture){box2.setCapture();}
+                var ev = window.event || ev;
+                var y = ev.clientY - box2.offsetTop;
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    var t = ev.clientY - y;
+                    if(t < 0){t = 0;}//滚轮不能超出滚动条
+                    if(t > box1.clientHeight-box2.offsetHeight){
+                        t = box1.clientHeight-box2.offsetHeight;
+                    }
+                    box2.style.top = t + "px";
+                    var scale = t/(box1.clientHeight - box2.offsetHeight);
+                    box.style.width = 500 * scale + "px"; //div最大500
+                    box.style.height = 500 * scale + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove =  document.onmouseup = "";
+                    if(box2.releaseCapture){box2.releaseCapture(); }
+                }
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+<style>
+    #box{background: red;}
+    #box1{width: 30px;height: 500px;background: #99ffcc;position: absolute;left: 50%;top: 20px;}
+    #box2{
+        width: 30px;height: 50px;background: #FFFFCC;position: absolute;
+    }
+</style>
+</body>
+</html>

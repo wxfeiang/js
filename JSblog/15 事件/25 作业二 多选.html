@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 300px;margin: 30px auto;}
+        #box input {width:300px;height: 30px;border: 1px solid blue;}
+        #box ul{list-style: none;border: 1px solid blue;margin: 0;padding: 0;display: none;}
+        #box ul li{height: 30px;}
+        #box ul li:hover{background: blue;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementById("box");
+            var oIn = oDiv.getElementsByTagName("input")[0];
+            var oUl = oDiv.getElementsByTagName("ul")[0];
+            var oLi = oUl.getElementsByTagName("li");
+
+            oIn.onclick = function (ev) {
+                oUl.style.display = "block";
+                var ev = ev || event;
+                event ? ev.stopPropagation() : ev.cancelBubble = true;
+            };
+            document.onclick = function () {
+                oUl.style.display = "none";
+            };
+
+            var arr = [];
+            for(var i = 0;i<oLi.length;i++){
+                oLi[i].onclick = function (ev) {
+                    var ev = ev || event;
+                    event ? ev.stopPropagation() : ev.cancelBubble = true;
+
+                    if(ev.shiftKey){  //判断是否按了shift
+                        for(var j = 0;j<arr.length;j++){  //比较当前选中的数据数组中是否存储
+                            if(this.innerHTML == arr[j]){ //如果已经有了，表示取消 ，
+                                arr.splice(j,1);
+                                colorfun();
+                                return ;
+                            }
+                        }
+                        arr.push(this.innerHTML);
+                        colorfun();
+
+
+
+                    }else {
+                        for(var j = 0;j<oLi.length;j++){
+                            oLi[j].style.background = "";
+                        }
+                        this.style.background = "orange";
+                        oIn.value = this.innerHTML;
+                        oUl.style.display = "none";
+                    }
+
+                }
+            }
+
+
+
+            function colorfun() {
+                for(var k = 0;k<oLi.length;k++){  //判断之前存的是那个li的innerHTML
+                    oLi[k].style.background = "";
+                }
+                for(var j = 0;j<arr.length;j++){  //循环数组，
+                    for(var k = 0;k<oLi.length;k++){  //判断之前存的是那个li的innerHTML
+                        if(arr[j] == oLi[k].innerHTML){
+                            oLi[k].style.background = "orange";
+                        }
+                    }
+                }
+                oIn.value = arr.join(",");
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="text" placeholder="按住shift多选">
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>PHP</li>
+        <li>jquery</li>
+    </ul>
+</div>
+</body>
+</html>

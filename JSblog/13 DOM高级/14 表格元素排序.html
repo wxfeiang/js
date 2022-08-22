@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        th,td{
+            width: 150px;
+        }
+        tr{display: block;}
+    </style>
+    <script>
+        window.onload = function () {
+            var tab = document.getElementsByTagName("table")[0];
+            var but = document.getElementsByTagName("input")[0];
+            but.onclick = function () {
+                tab.tBodies[0].appendChild(tab.tBodies[0].rows[0]);
+            };
+//            var tabTr = tab[0].tBodies[0].rows;
+//
+//            for(var i = 0; i < tabTr.length;i++){
+//                tabTr[i].onclick = function () {
+//                    //点击，当前被点击的tr 移动到第二个表格
+//                    //1.拿到当前点击的，添加
+//                    console.log(tab[1].tBodies);
+//                    tab[1].tBodies[0].appendChild(this);
+//                }
+//            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="排序">
+<table border="1" width="600">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Jom</td>
+        <td>23</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>张三</td>
+        <td>70</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>吃饭</td>
+        <td>90</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>jury</td>
+        <td>18</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>sfdkf</td>
+        <td>18</td>
+        <td></td>
+    </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>
+
+<style>
+    a{color: red;}
+</style>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+           /* document.onmousedown = function () {
+                console.log("fd");
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    console.log(ev.clientX +"-----------"+ev.clientY);
+
+                }
+                document.onmouseup = function () {
+                    //事件取消
+                    document.onmousemove = "";
+                }
+            }*/
+            function fun(ev) {
+                var ev = window.event || ev;
+                console.log(ev.clientX +"-----------"+ev.clientY);
+
+            }
+            function fun1() {
+                alert("fd");
+            }
+
+            //取消 obj.removeEventListener(事件类型，事件处理函数) //只会移除事件的某一个处理函数
+            bind(document,"click",fun);
+            bind(document,"mousemove",fun);
+            bind(document,"mousemove",fun1);
+            document.removeEventListener("mousemove",fun);
+            document.detachEvent("onmousemove",fun1);
+            //封装绑定函数
+            function bind(obj,type,fun) {
+
+                if(obj.addEventListener){
+                    obj.addEventListener(type,fun); //click
+                }else {
+                    obj.attachEvent("on"+type,fun);
+                }
+            }
+
+        /*
+          ie
+            obj.attachEvent(type,fun)
+            obj.detachEvent(type,fun)
+
+         标准
+            obj.addEventListener(type,fun,false)
+            obj.removeEventListener(type，fun，false)
+        * */
+
+        }
+    </script>
+</head>
+<body>
+    <div>发的</div>
+</body>
+</html>

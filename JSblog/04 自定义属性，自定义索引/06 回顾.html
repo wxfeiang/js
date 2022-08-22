@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width:200px; height:5px;background:red;margin-bottom: 5px;}
+    </style>
+    <script>
+        window.onload = function () {
+              var oDiv = document.getElementsByTagName("div");
+           // 自定义属性   onOff = 0
+            //
+            for(var i = 0; i < oDiv.length;i = i + 1){
+                oDiv[i].onOff = 0;
+                oDiv[i].onclick = function () {
+
+                    if(this.onOff == 0){
+                        this.style.height = "100px";
+                        this.onOff = 1;
+                    }else {
+                        this.style.height = "20px";
+                        this.onOff = 0;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{border: 1px solid red;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var news = ["资深女主管在优就业学习后的一点感悟1212121",
+                "年薪40万“屌丝”的优就业SEO培训学习体验",
+                "放弃搜狗offer入职名企做副总，大专生参加优就业培训改变命运！",
+                "数控技工参加优就业网络营销培训，成功转行入职云*集团",
+                "我在优就业培训的日子，SEO学员感悟：致优就业"];
+
+            var oUl = document.getElementsByTagName("ul")[0];
+           document.getElementsByTagName("button")[0].onclick = function () {
+               //生成新闻
+               //for循环操作标签
+               for(var i = 0;i < 5;i = i + 1){
+                   var li = "<li>"+news[i]+"</li>";
+                    oUl.innerHTML = oUl.innerHTML + li;
+               }
+           }
+
+        }
+    </script>
+</head>
+<body>
+<button>请求数据</button>
+<ul>
+</ul>
+
+</body>
+</html>

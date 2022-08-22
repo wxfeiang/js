@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+//            常用的算术运算分类   算术运算符
+              //1.算术运算符  + - *  / %   ++  --(自增，自减)
+            console.log(0.1+0.2);
+            console.log(10-20);
+            console.log(10*10);
+            console.log(50/3);
+            console.log(50%3);
+
+            var a = 0;
+            a = a + 1;
+            a++;   //在自己原来的数值上加1
+            ++a;
+            a--;
+            ++a;
+            console.log(a);  //3
+
+           var aa = 10;
+           console.log(a++,++a); //3 5  ++在前先自加，然后再赋值, ++在后，先赋值，在自加
+            //a = a ++   a = 3   a = a +1   5
+            var cc = aa++;      //11
+            console.log(aa++,++aa,cc);  //11 13
+
+
+
+            //2.赋值运算符 =  +=  -=  *= /= %=
+            var f = 0;
+             f = f + 1;  //f += 1
+            //1-100
+            var sum = 0;
+            for(var i=1;i<=100;i++){  //i = i + 1
+//                sum = sum + i;
+                  sum += i;
+            }
+            console.log(sum);
+
+            //3.比较运算符  > < >= <= ==  !=      ===  !==
+            var s1 = 10;
+            var s2 = "10";
+           /* if(s1 == s2){  //数值相等，类型可以不一样
+                alert("条件成立");
+            }*/
+            if(s1 === s2){  //数值相等，类型一样
+                alert("条件成立");
+            }else {
+                alert("条件不成立");
+            }
+
+            //如果c 不等于10 输出
+            c = 10;
+            cc = "10";
+            if(c !== cc){
+                console.log(c);
+            }
+
+            var a = 2;
+            //4.逻辑运算符 && || ! 10<a<100
+            if(a>10 || a<100){   //&& 两真为真（条件全为真才为真）  || 一真为真  ！取反
+
+            }
+
+            if(!true){  //false ！取反
+
+            }
+
+            //5.三目运算符   条件判断? 条件成立执行的一行代码 ：条件不成立执行的一行代码       a大于10  true   false
+            var ccc = a > 10 ? true : false;
+            console.log(ccc);
+
+
+            //如果今天天气好，出去玩，如果天气不好，学习
+            var sun = 0;
+            if(sun == 0){
+                alert("学习");
+            }else {
+                alert("出去玩");
+            }
+            sun == 0? alert("学习"): alert("出去玩") ;
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{padding: 30px;}
+        #box1{background: #abcdef;}
+        #box2{background: #99ffcc;}
+        #box3{background: #cccccc;}
+    </style>
+    <script>
+        window.onload = function () {
+            
+            var oDiv = document.getElementsByTagName("div");
+            oDiv[0].onclick = function () { alert(this.id);};
+            oDiv[1].onclick = function () {alert(this.id); };
+            oDiv[2].onclick = function () {alert(this.id);};
+            document.body.onclick = function () {alert("body");}
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+
+        window.onload = function () {
+            var arr =  ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];  //12;  "12"
+            console.log(arr);
+            //下标,下标从0开始
+            console.log(arr[2]);
+            console.log(arr.length);  //数组的长度
+            console.log(arr[arr.length-1]);  //数组的最后一项
+           var img =   document.getElementById("img");
+           img.src = arr[2];
+
+
+        }
+    </script>
+</head>
+<body>
+<img src="" alt="" id="img">
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;margin: 50px auto;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var imgs = document.getElementsByTagName("img");
+            var n = 100;//当前点击的下标
+//            var onOff = false;
+            for (var i = 0 ;i < imgs.length;i++){
+                imgs[i].index = i;
+                imgs[i].onmouseover = function () {
+                    //换图片  鼠标停留的位置小于2  灰              大于2  sth
+                    if(this.index < 2){
+                        //从0到当前的位置，都是这个颜色的图片
+                        for(var j = 0;j <= this.index;j++){
+                            imgs[j].src = "img/nsg.gif";
+                        }
+                    }else {
+                        for(var j = 0;j <= this.index;j++){
+                            imgs[j].src = "img/sth.gif";
+                        }
+                    }
+                }
+                imgs[i].onmouseout = function () {
+                    for(var j = 0;j < imgs.length;j++){
+                        imgs[j].src = "img/nst.gif";
+                    }
+                   if(n<imgs.length){
+                       if(n < 2){
+                           //从0到当前的位置，都是这个颜色的图片
+                           for(var j = 0;j <= n;j++){
+                               imgs[j].src = "img/nsg.gif";
+                           }
+        }else {
+            for(var j = 0;j <= n;j++){
+                imgs[j].src = "img/st.gif";
+            }
+        }
+        }
+        };
+        imgs[i].onclick = function () {
+            n = this.index;
+
+            onOff = true;
+
+        }
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <img src="../08%20定时器/img/nst.gif" alt="" >
+    <img src="../08%20定时器/img/nst.gif" alt="" >
+    <img src="../08%20定时器/img/nst.gif" alt="" >
+    <img src="../08%20定时器/img/nst.gif" alt="" >
+    <img src="../08%20定时器/img/nst.gif" alt="" >
+
+</div>
+</body>
+</html>

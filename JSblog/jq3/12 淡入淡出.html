@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#fadeOut").click(function () {
+
+                $("div").fadeOut(2000); //淡出
+            })
+            $("#fadeIn").click(function () {
+
+                $("div").fadeIn(2000); //淡入
+            })
+
+            $("#toggle").click(function () {
+
+                $("div").fadeToggle(2000); //开关
+            })
+
+            $("#fadeTo").click(function () {
+
+                $("div").fadeTo(2000,0.4); //淡出  运动时间  透明到那个程度
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="fadeOut">淡出</button>
+    <button id="fadeIn">淡入</button>
+    <button id="toggle">淡入</button>
+    <button id="fadeTo">淡入</button>
+
+    <div style="width: 600px;height: 600px;background: red"></div>
+</body>
+</html>

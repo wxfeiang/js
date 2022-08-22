@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{position: absolute;}
+        div{width: 400px;height: 500px;background: #99ffcc;}
+        #box1{height: 40px;background: peachpuff;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            //1.div固定右下角
+           /* var oDiv = document.getElementsByTagName("div")[0];
+            document.onscroll = function (ev) {
+                //
+                var ev= window.event||ev; //window.event 标准  ie
+
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                oDiv.style.top =scrollTop+ document.documentElement.clientHeight-oDiv.clientHeight + "px";
+            }*/
+            //2.事件冒泡，事件捕获分别是什么，怎么阻止事件冒泡
+            /*
+             事件冒泡:如果事件发生，子元素处理完以后往上冒泡到父元素
+             事件捕获 ：如果事件发生，直接传到父元素，从父元素开始处理，然后一级一级到子元素
+             ev.stopPropagation ? ev.stopPropagation():ev.cancelBubble = true;
+            * */
+            //3.拖拽效果
+            var box = document.getElementById("box");
+            var oDiv = document.getElementById("box1");
+            oDiv.onmousedown = function (ev) {
+                var ev = window.event || ev;
+                var x = ev.clientX - box.offsetLeft;
+                var y = ev.clientY - box.offsetTop;
+
+                document.onmousemove = function (ev) {
+                var ev = window.event || ev;
+                 box.style.top = ev.clientY - y + "px";
+                 box.style.left = ev.clientX - x + "px";
+                }
+                document.onmouseup = function () {
+
+                    document.onmousemove = document.onmouseup = ""
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body style="height: 2000px;">
+    <!--<div style="width: 100px;height: 100px;background: pink;position: absolute;right: 0;bottom: 0">-->
+
+    <!--</div>-->
+    <div id="box">
+        <div id="box1"></div>
+        <div></div>
+    </div>
+</body>
+</html>

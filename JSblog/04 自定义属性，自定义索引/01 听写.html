@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;background: pink;display: none;}
+    </style>
+    <script>
+        window.onload = function () {
+            /*
+            1.获取button元素的两种方式
+            2.点击按钮，在div当中生成div，宽高100，pink
+            3.打印1-100里面所有的偶数
+            4.
+             *
+             **
+             ***
+             ****
+
+             5.
+
+            *
+            * */
+          var but =  document.getElementById("but");
+          var but1 = document.getElementsByTagName("button")[0];  //[button]
+            var oDiv = document.getElementsByTagName("div")[0];
+            but1.onclick = function () {
+                oDiv.innerHTML = oDiv.innerHTML + "<div style='width: 100px;height: 100px;background:pink'></div>"
+            }
+
+
+            for(var i = 1;i <= 100;i = i+1){
+                //判断是否是偶数
+                if(i % 2 == 0){
+                    console.log(i);
+                }
+            }
+
+           /* for(var i = 0;i < 5;i = i + 1){
+                //i=0 *  i= 1 ** i=2 ***
+                for (var j = 0;j <= i;j = j + 1){
+                    document.write("*");
+                }
+                document.write("<br>");
+            }
+*/
+           var oLi = document.getElementsByTagName("li");
+           for(var i = 0;i < oLi.length;i = i + 1){
+               oLi[i].onmouseover = function () {
+                   this.getElementsByTagName("div")[0].style.display = "block";
+                   // 触发事件的li
+
+               }
+               oLi[i].onmouseout = function () {
+                   this.getElementsByTagName("div")[0].style.display = "none";
+               }
+           }
+
+        }
+    </script>
+</head>
+<body>
+    <button id="but">生成div</button>
+    <div></div>
+    <ul>
+        <li>
+            <p>html</p>
+            <div></div>
+        </li> <li>
+            <p>css</p>
+            <div></div>
+        </li> <li>
+            <p>css</p>
+            <div></div>
+        </li>
+
+    </ul>
+</body>
+</html>

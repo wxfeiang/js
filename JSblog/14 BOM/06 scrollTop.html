@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //滚动
+           document.onscroll = function () {
+                //alert(document.body.scrollTop); //c
+              // alert(document.documentElement.scrollTop ); //IE FF
+               var a = document.body.scrollTop || document.documentElement.scrollTop;
+               alert(a);
+           };
+           var wrap = document.getElementById("box1");
+           var div = document.getElementById("box2");
+           wrap.onscroll = function () {
+               console.log(wrap.scrollTop);  //被卷去的高
+               console.log(wrap.scrollLeft); //left 被卷去的宽
+               console.log("width"+wrap.scrollWidth); //实际内容宽
+                console.log(wrap.scrollHeight);
+           }
+        }
+    </script>
+</head>
+<body style="height: 2000px">
+    <div style="width: 200px;height: 200px;overflow: scroll;padding: 20px;" id="box1" >
+        <div style="width: 400px;height: 400px;background: pink;padding: 10px;border: 1px solid red;margin: 20px;" id="box2"></div>
+    </div>
+</body>
+</html>

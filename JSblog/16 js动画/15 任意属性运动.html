@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 150px;height: 150px;background: red;float: left;margin-right: 10px;}
+        #box{position: absolute;left: 350px;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName("div");
+            /*for (var i = 0;i<oDiv.length;i++){
+                oDiv[i].onmouseover = function () {
+                    sMove(this,20,"opacity");
+                };
+                oDiv[i].onmouseout = function () {
+                    sMove(this,100,"opacity");
+                };
+            }*/
+            oDiv[0].onclick = function () {
+                sMove(this,500,"height");
+            }
+            oDiv[1].onclick = function () {
+                sMove(this,10,"opacity");
+            }
+            oDiv[2].onclick = function () {
+                sMove(this,500,"top");
+            }
+
+        };
+        function sMove(obj,target,attr) {
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                //先获取当前值
+                if(attr == "opacity"){
+                    var cur = Math.round(parseFloat(getStyle(obj,attr))*100); //ie 0-100  0.1   44.6   4  解决小数问题
+                }else {
+                    var cur =  parseInt(getStyle(obj,attr));
+                }
+                //速度
+                var speed = (target - cur)/10;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(cur == target){
+                    clearInterval(obj.timer);
+                }else {
+                    if(attr == "opacity"){
+                        obj.style.opacity = (cur + speed)/100;
+                        obj.style.filter = "alpha(opacity="+speed+cur+")" ; //filter: alpha(opacity=50);
+                    }else {
+                        obj.style[attr] = cur + speed+"px";
+                    }
+
+                }
+
+
+            },30)
+        }
+
+       /*function sMove(obj,target,attr) {
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                var cur = Math.round(parseFloat(getStyle(obj,attr))*100); //ie 0-100  0.1   44.6   4  解决小数问题
+                var speed = (target - cur)/5;
+                console.log(cur,speed);
+                if(cur == target){
+                    clearInterval(obj.timer);
+                }else {
+                    obj.style.opacity = (cur + speed)/100;
+                    obj.style.filter = "alpha(opacity="+speed+cur+")" ; //filter: alpha(opacity=50);
+                }
+            },30)
+        }
+
+        function move(obj,target,attr) {
+            clearInterval(obj.timer);
+            obj.timer =   setInterval(function () {
+                //先获取当前的left
+                var cur =  parseInt(getStyle(obj,attr));
+                var speed = (target - cur)/10;  //没有缓冲  每次加多少
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if(speed == 0){
+                    clearInterval(obj.timer);
+                }else {
+                    obj.style[attr] = cur + speed+"px";  //491 0.9  491.9  获取当前值的时候，直接抹掉小数点后面的数字
+                }
+            },30)
+        }*/
+
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div id="box"></div>
+</body>
+</html>

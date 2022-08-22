@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*#li1{height: 40px;background: rosybrown;}*/
+        .change{height: 40px;background: rosybrown;}
+    </style>
+    <script>
+        window.onload = function () {
+            var li1 = document.getElementById("li1");
+            var li2 = document.getElementById("li2");
+            var li3 = document.getElementById("li3");
+            var li4 = document.getElementById("li4");
+            var li5 = document.getElementById("li5");
+            var li6 = document.getElementById("li6");
+
+
+
+            //什么时候需要修改class，同时修改元素的多个属性  元素.className = "类名"
+            li1.onclick = function () {
+                li1.className = "change";
+            };
+            li2.onclick = function () {
+                //js修改或添加clss 用className
+               li2.className = "change";
+               li1.className = "";
+            };
+            li3.onclick = function () {
+                li3.className = "change";
+            };
+            li4.onclick = function () {
+                li4.className = "change";
+            };
+            li5.onclick = function () {
+                li5.className = "change";
+            };
+            li6.onclick = function () {
+                li6.className = "change";
+            };
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li id="li1" >1</li>
+        <li id="li2" class="">2</li>      // 修改 class名
+        <li id="li3" >3</li>
+        <li id="li4">4</li>
+        <li id="li5">5</li>
+        <li id="li6">6</li>
+    </ul>
+</body>
+</html>

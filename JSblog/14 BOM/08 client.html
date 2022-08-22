@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body style="height: 2000px">
+    <div style="width: 100px;height: 100px;background: red;border: 4px solid;padding: 10px;position: absolute;"></div>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName("div")[0];
+            console.log(oDiv.clientTop);  //上边框
+            console.log(oDiv.clientLeft); //左边框
+            console.log(oDiv.clientWidth);
+            console.log(oDiv.clientHeight);  //可视高  width+padding
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{background: pink;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            //1.欲解析的过程
+            //1.找一些东西 var function 参数  var a = undefined   fun1 = 整个函数
+            var a = 10;
+            function fun1(a){
+                console.log(a)  //undefined  var a = undefined
+            }
+            fun1();
+
+            //2.局部变量与全局变量的区别
+            //局部变量作用于函数，出了函数大括号就没有
+            //全局变量  在任何地方都能访问，修改
+
+            //3.定义一个函数，改变li的状态
+            var oLi = document.getElementsByTagName("li");
+            /* for(var i = 0; i < oLi.length;i++){
+                oLi[i].index = i;
+                oLi[i].onclick = function () {
+                    //改状态
+                    //change(this.index);
+                    change1(this);
+                }
+            }
+            function change(index){
+                //先获取点击的li
+                for(var i = 0; i < oLi.length;i++){
+                    oLi[i].className = "";
+                }
+                oLi[index].className = "active";
+            }
+            function change1(that) {
+                for(var i = 0; i < oLi.length;i++){
+                    oLi[i].className = "";
+                }
+                that.className = "active";
+            }
+
+
+            //4.定义一个函数，获取到元素返回
+            function getId(id) {
+              return  document.getElementById(id);
+            }*/
+
+            for(var i = 0; i < oLi.length;i++){
+                oLi[i].index = i;
+                oLi[i].onclick = aa;
+
+                }
+
+            function aa() {
+                alert("a");
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

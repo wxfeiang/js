@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    /*div{width: 100px;height: 100px;background: pink;}*/
+        .active{width: 100px;height: 100px;background: pink;}
+</style>
+    <script>
+        window.onload = function () {
+            getId("div").onclick = function () {
+
+                //每次点击加2px
+                var w = this.style.width;  //获取不到非行间样式
+                //alert(getComputedStyle(this).width);  //获取行间样式getComputedStyle(要获取样式的元素).具体的样式    ie 6 7 8不兼容
+                //alert(this.currentStyle["width"]);  //标准不兼容     元素.currentStyle["具体的样式"];
+                var w;
+
+
+                //兼容     如果是标准，
+                if(this.currentStyle){  // ie
+                  w = this.currentStyle["width"];
+                }else {  //标准  undefined 为假
+                    w = getComputedStyle(this).width;
+                }
+
+
+            }
+
+        };
+        function getStyle() {
+
+        }
+        function getId(id) {
+            return document.getElementById(id);
+        }
+    </script>
+</head>
+<body>
+    <div id="div" class="active"></div>
+</body>
+</html>

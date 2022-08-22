@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        #content{position: relative;margin-left: 500px;}
+        #main{width: 320px;height: 568px;background-image: url("image/background_1.png");}
+        #main img{position: absolute;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            //
+            var mainDiv = document.getElementById("main");
+            //创建图片节点
+           /* var imageNode = document.createElement("img");
+            imageNode.src = "image/我的飞机.gif";
+            imageNode.style.left = "127px";
+            imageNode.style.top =  "480px";
+            mainDiv.appendChild(imageNode);
+              属性和方法  node ， src  left top  创节点
+            */
+            //创建本方飞机
+            var selfPlan = new Plan(127,480,"image/我的飞机.gif");
+            //创建敌方飞机
+            setInterval(move,30);
+            var mark = 0;  //20
+            var mark1 = 0;
+            var enemys = [];
+            var bgY = 0;  //每次移动的背景
+            function move() {  //多久创建一个飞机，  每一次进来都能创建一个小飞机，隔5次 中型，  隔20 创建大
+                mainDiv.style.backgroundPositionY = bgY + "px";
+                bgY +=1;
+                mark++;
+                if(mark == 20){  //到20开始创建
+                    if(mark1 == 20){
+                        //320 -110
+                        //320 -110
+                        enemys.push(new Enemy(Math.floor(Math.random()*210),-10,"image/enemy2_fly_1.png",3));
+                        mark1 = 0;
+                    }else if(mark1 % 5 ==0){
+                        //320 -46
+                        enemys.push(new Enemy(Math.floor(Math.random()*274),-10,"image/enemy3_fly_1.png",3));
+                    }else {
+                        //320-34
+                        enemys.push(new Enemy(Math.floor(Math.random()*286),-10,"image/enemy1_fly_1.png",3));
+                    }
+                    mark1++;
+                    mark = 0;
+                }
+
+                for (var i = 0; i<enemys.length;i++){
+                    enemys[i].planMove();
+                }
+            }
+           function Plan(x,y,imageSrc) {
+               this.planX = x;
+               this.planY = y;
+               this.imageSrc = imageSrc;
+               this.imageNode = null;
+               this.init = function () {
+                   this.imageNode = document.createElement("img");
+                   this.imageNode.style.left = this.planX + "px";
+                   this.imageNode.style.top = this.planY + "px";
+                   this.imageNode.src = this.imageSrc;
+                   mainDiv.appendChild(this.imageNode);
+               };
+               this.init();
+           }
+           function Enemy(x,y,imageSrc,speed) {
+               this.speed = speed;
+                Plan.call(this,x,y,imageSrc);
+                this.planMove = function () {
+                    //飞机往下掉
+                    this.imageNode.style.top = this.imageNode.offsetTop + this.speed + "px";
+                }
+           }
+        }
+    </script>
+</head>
+<body>
+    <div id="content">
+        <div id="main"></div>
+    </div>
+</body>
+</html>

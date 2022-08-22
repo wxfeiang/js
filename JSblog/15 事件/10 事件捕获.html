@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{position: absolute;left: -200px;}
+        p{display: inline-block;width: 200px;height: 60px;background: #99ffcc;}
+        span{width: 30px;height: 30px;background: pink;display: inline-block}
+    </style>
+    <script>
+        window.onload = function () {
+            //事件捕获:将所用的事件加到父元素上，由父元素统一处理
+            document.getElementById("box").onclick = function () {
+                document.getElementById("box").style.left = "0px";
+            }
+            document.getElementsByTagName("p")[0].onclick = function () {
+                alert("fd");
+            }
+            var oUl = document.getElementsByTagName("ul")[0];
+            oUl.onclick = function () {
+                alert("fd");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+       <div > <p></p><span></span></div>
+    </div>
+<ul>
+    <li>
+    </li>
+    <li>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var op = document.getElementsByTagName("p");
+            var but = document.getElementsByTagName("button");
+            for (var i = 0; i< but.length;i++){
+                but[i].index = i;
+                but[i].onclick = function () {
+
+//                       op[this.index].style.display = "none";
+                    //获取父元素 直接父
+                   console.log(this.parentNode);
+                   this.parentNode.style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <p><span>1242343434</span><button id="">删除</button></p>
+    <p><span>1242343434</span><button>删除</button></p>
+    <p><span>1242343434</span><button>删除</button></p>
+    <p><span>1242343434</span><button>删除</button></p>
+    <p><span>1242343434</span><button>删除</button></p>
+
+</body>
+</html>

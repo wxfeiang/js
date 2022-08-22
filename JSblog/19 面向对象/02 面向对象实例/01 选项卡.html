@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <style>
+       #box div{width: 300px;height: 300px;border: 1px solid red;display: none}
+        #box .active{background:paleturquoise; }
+       #box .show{display: block;}
+   </style>
+    <script>
+        window.onload = function () {
+
+            var but = document.getElementsByTagName("input");
+            var oDiv = document.getElementById("box").getElementsByTagName("div");
+
+            //添加点击事件
+            for(var i = 0;i<but.length;i++){
+                //自定义索引
+                but[i].index = i;
+                but[i].onclick = function () {
+                    //切换选项卡
+                    for(var j = 0;j<but.length;j++){
+                        but[j].className = "";
+                        oDiv[j].className = "";
+                    }
+                    this.className = "active";
+                    oDiv[this.index].className = "show";
+
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮一" class="active">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+    <div class="show">aaa</div>
+    <div>bbb</div>
+    <div>ccc</div>
+</div>
+</body>
+</html>

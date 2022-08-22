@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            //1.去除字符串首尾空格 $.trim(str);
+            var str = "     hello   world!             ";
+            var reg = /^\s+/g;
+            var reg1 = /\s+$/g
+            console.log(str.replace(reg.exec(str),""));
+            console.log("|"+$.trim(str)+"|");
+
+            //2.each map 遍历
+            var cat = {
+                "name":"小花",
+                "age":1,
+                "eat":function () {
+                    alert("吃");
+                }
+            };
+
+            //对象.map(function) ，$(对象).map(function) ，$.map(对象，function)
+            var arr = [1,2,3,5]
+            $.map(arr,function (elem,index) {
+                console.log(index+"-------------"+elem);
+            });
+            $(arr).map(function (index,elem) {
+                console.log(index+"-------------"+elem);
+            })
+            //【0---cat】
+            $(cat).each(function (index,elem) {
+                console.log(index+"-------------"+elem);
+            });
+            //对象的遍历
+            $.each(cat,function (index,elem) {
+                console.log(index+"-------------"+elem);
+            })
+
+
+            //3.$.grep（） 数据筛选
+            var arr1 = [6,5,7,1,8,2,9];  //数值大于2  下标大于3
+            var ss = $.grep(arr1,function (elem,index) {
+                console.log(index+"-------------"+elem);
+                return elem > 2 && index > 3;  //返回符合条件的数组
+            });
+            console.log(ss);
+
+            //4.$$.isArray  判断是否是数组
+            console.log($.isArray(cat));
+
+            //5.$.inArray(7,arr1)   查找指定元素的下标
+            console.log($.inArray(7,arr1));
+
+            //6.合并数组  	merge: function( first, second )
+//            var arr2 = arr.concat(arr1);
+            var arr2 = $.merge(arr,arr1);
+            console.log(arr2);
+
+            //7.$("div").get()  返回dom对象(数组)
+            console.log($("div").get(0));  //0  获取具体下标
+
+           //8. $.unique()删除重复的DOM元素
+            var arr3 = $("div").get();
+            var arr4 = arr3.concat($(".box").get());
+            console.log(arr4.length);
+            $.unique(arr4);
+            console.log(arr4.length);
+
+            // 9.合并多个DOM元素组成数组
+            console.log($("div").toArray());
+            // 10.判断是否是函
+            var fn1 = function () {};
+            console.log($.isFunction(fn1));
+
+            // 11.判断是否为空对象
+            var obj = {};
+            console.log($.isEmptyObject(obj));
+
+            // 12.判断是否是纯粹对象(所谓纯粹对象就是通过new Object()或{}创建出来的对象)
+            // 注意：当new Object('name')传了参数就不是纯粹对象了
+            // var obj2 = new Object("name");
+            var obj2 = {'name':'jack','age':15};
+            console.log($.isPlainObject(obj2));
+
+
+
+            // 13.判断一个DOM节点中是否含有另一个DOM节点
+            console.log($.contains($(".box").get(0), $('p').get(0)));
+
+            // 14.检查数据类型
+            var a = 10;
+            console.log($.type(arr1),$.type(a));  //array
+
+            // 15.判断是否是数值
+            var num = 12.0;
+            console.log($.isNumeric(num));
+
+            // 12.检测数据对象是否是window对象
+            var wd = window;
+            console.log($.isWindow(wd));
+
+            //https://www.baidu.com/?tn=98012088_5_dg&ch=12
+            // 13.将对象的键值对转换为URL字符串键值对
+            var obj2 = {'name':'jack','age':15};  //url    ?name=jack& & & & &
+            console.log($.param(obj2)); //name=Jack&age=15
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <div class="box"><span>uieru</span></div>
+    <div></div>
+</body>
+</html>

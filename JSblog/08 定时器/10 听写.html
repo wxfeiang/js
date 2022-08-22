@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            //1.封装一个获取样式的函数
+            function getStyle(obj,attr) {
+                return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+            }
+            //2.分别写两种定时器，停止，区别
+           var timer = setInterval(function () {  //重复执行
+                document.write("1");
+            },1000);
+            clearInterval(timer);
+
+
+            var time = setTimeout(function () {  //只执行一次
+                document.write("hello");
+            },1000)
+            clearTimeout(time);
+
+
+            //3.定义一个定时器，切换图片，隔一秒换一张
+            var imgs = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/3.jpg"];
+            var img = document.getElementsByTagName("img")[0];
+            var index = 0;
+            setInterval(function () {
+                index++;
+                if(index == imgs.length){index=0;}
+                img.src = imgs[index];
+            },1000)
+            
+        }
+    </script>
+</head>
+<body>
+<img src="img/1.jpg" alt="">
+</body>
+</html>

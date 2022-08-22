@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //
+            var form = document.getElementById("form");
+            console.log(form.user.value);  //web705  通过name获取元素
+            console.log(form.sex[0].checked,form.sex[0].value);  //RadioNodeList
+            console.log(form.eat.checked);
+            console.log(form.ctiy.value);
+
+            
+        }
+    </script>
+</head>
+<body>
+<form action="" id="form">
+    <input type="text" name="user" value="web705">
+    <input type="radio" name="sex" checked value="1">男
+    <input type="radio" name="sex">女
+    <input type="radio" name="sex">人妖
+    <input type="checkbox" name="eat">吃
+    <input type="checkbox" name="sleep">睡
+    <select name="ctiy" id="">
+        <option value="北京">北京</option>
+        <option value="2">中南海</option>
+        <option value="3">白宫</option>
+    </select>
+</form>
+<div></div>
+</body>
+</html>

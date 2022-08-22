@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function (){
+            //动画 $(selector).animate({},speed,easing,callBack)
+            //动画队列  对象的所有添加的动画都会加入动画队列当中，
+            //$("div").animate({"width":500,"height":500},2000);  //一个动画
+            //$("div").animate({"height":500},2000);
+
+            $("button").click(function () {
+                //元素可以直接使用  hide show toggle
+                //$("div").animate({"height":'toggle'});
+
+                //2.连缀
+                //$("div").animate({"width":500},1000).animate({"height":500},1000); //队列
+                //css 不是动画  不能加入动画队列  会跟第一个动画同时运动
+                //$("div").animate({"width":500},1000).animate({"height":500},1000).css("background","pink");
+
+                //3.解决方法  手动加入队列 queue(函数)
+                /*$("div").animate({"width":500},1000).animate({"height":500},1000).queue(function () {
+                     $(this).css("background","pink");
+                }).animate({"width":200,"height":200});*/
+
+                //问题  后面的动画不能执行
+                $("div").animate({"width":500},1000).animate({"height":500},1000).queue(function (next) {
+                    $(this).css("background","pink");
+                    //出队列  不建议用
+                    //$(this).dequeue();
+                    next();  //next保存的方法 让队列执行下一个动画
+                }).animate({"width":200,"height":200});
+
+
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <button>动画</button>
+    <div style="width: 200px;height: 200px;background: red;"></div>
+</body>
+</html>

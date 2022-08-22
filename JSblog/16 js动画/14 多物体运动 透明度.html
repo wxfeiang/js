@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 150px;height: 150px;background: red;float: left;margin-right: 10px;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName("div");
+            for (var i = 0;i<oDiv.length;i++){
+                oDiv[i].onmouseover = function () {
+                    sMove(this,20,"opacity");
+                };
+                oDiv[i].onmouseout = function () {
+                    sMove(this,100,"opacity");
+                };
+            }
+
+        };
+            function sMove(obj,target,attr) {
+                clearInterval(obj.timer)
+                obj.timer = setInterval(function () {
+                    var cur = Math.round(parseFloat(getStyle(obj,attr))*100); //ie 0-100  0.1   44.6   4  解决小数问题
+                    var speed = (target - cur)/5;
+                    console.log(cur,speed);
+                    if(cur == target){
+                        clearInterval(obj.timer);
+                    }else {
+                        obj.style.opacity = (cur + speed)/100;
+                        obj.style.filter = "alpha(opacity="+speed+cur+")" ; //filter: alpha(opacity=50);
+                    }
+                },30)
+            }
+
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //参数类型=数据类型 number string boolean null undefined object
+            //,=number
+            //2.string
+            var str = "wed705";
+            fenge(str);
+            function fenge(str) {   //var str = “web705”
+                //str 有字符串的所用方法
+                console.log(typeof str);
+                for(var i = 0; i < str.length;i++){
+                    console.log(str.charAt(i));
+                }
+            }
+
+            //3.boolean  作为判断条件  如果大于6上学，小于6    玩泥巴
+            function school(isSix) {
+                if(isSix){
+                    alert("上学");
+                }else {
+                    alert("玩泥巴");
+                }
+            }
+            var s = 5;
+            school(s>6);  //false   65
+
+
+            //4.null undefined  传入没有意义，可以会报错
+
+            //object : function json array object
+            //5.对象类型：document window  公共的
+            console.log(typeof document,typeof window,typeof new Object());
+            //5.1json
+            var json = {
+                "name":"txf",
+                "age":18,
+            };
+            //姓名：。。。年龄：。。。
+            meg(json);
+            function  meg(json) {
+                console.log("姓名："+json.name+","+"年龄:"+json.age);
+            }
+
+            //5.2 array  排序
+            var arr = [1,9,11,3,2,7,5,6];
+            paixu(arr);
+            //定义一个函数，从小到大排序  快速排序
+            function paixu(arr) {
+                console.log(arr);
+                for (var i = 0; i < arr.length;i++){
+                    for(var j = i+1; j < arr.length;j++){
+                        if(arr[i] > arr[j]){
+                            //借助一个中间变量
+                            var temp = arr[i];
+                            arr[i] = arr[j]; //arr[i] = 3
+                            arr[j] = temp;  //arr[j] = 3
+                        }
+                    }
+                }
+                //i = 0;
+                //j = 0 j = 1   []
+                console.log(arr);
+            }
+        
+            
+            //5.3 函数
+            function fun1(fun) {
+                //函数
+                fun();  //fun is not a function
+            }
+            function  fun2() {
+                console.log("hello");
+            }
+            console.log(fun2());  //undefined
+            fun1(fun2);
+            
+            
+            
+//        var a=undefined;  //input
+//        console.log(a.value);
+
+        
+            //判断类型     如果number +10 ，string 3， 函数调用
+
+
+            //number string boolean json  array function
+            function fun(){
+
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<input type="text">
+</body>
+</html>

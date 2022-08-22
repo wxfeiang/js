@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            
+            //学生
+            //1.定义一个父类型（继承对象的属性和方法）
+            function Student(name,age) {  //被继承的构造函数  父类型（超类型，基类）
+//                this.name = "mmmmm";
+                this.age = 18
+            }
+            Student.prototype.name = "haha";
+            Student.prototype.eat = function () {
+                alert("吃太多");
+            };
+            //2.一个子类型
+            function SmallStudent() {  //继承的    子类 （派生类）
+                this.applay = function () {
+                    console.log("坑队友");
+
+                }
+            }
+            //3.继承的操作与行为 （继承对象的属性和方法）
+            var s1 = new Student();  //创建出来的实例拥有对象的属性和方法
+            //继承
+            SmallStudent.prototype = s1;//会将Student里面所有的属性和方法以及原型里面的信息都交给SmallStudent
+            var ss = new SmallStudent();
+            //获取某个属性name --ss实例里面找 -- ss构造函数里面找--s1实例里面找--s1的构造函数 --Student原型
+            console.log(ss.name,ss.__proto__);
+
+
+
+
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

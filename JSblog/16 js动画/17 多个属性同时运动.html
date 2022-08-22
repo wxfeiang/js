@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            //添加回调函数
+            var oDiv = document.getElementsByTagName("div")[0];
+            oDiv.onclick = function () {
+
+                sMove(this,{"top":500,"left":500});
+
+            }
+        }
+
+        function sMove(obj,json,fun) {
+            clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+                    for (var attr in json) {
+                        //先获取当前值
+                        if (attr == "opacity") {
+                            var cur = Math.round(parseFloat(getStyle(obj, attr)) * 100); //ie 0-100  0.1   44.6   4  解决小数问题
+                        } else {
+                            var cur = parseInt(getStyle(obj, attr));
+                        }
+                        //速度
+                        var speed = (json[attr] - cur) / 10;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                        if (cur == json[attr]) {
+                            clearInterval(obj.timer);
+                            fun && fun();  //有回调函数再去调用
+                        } else {
+                            if (attr == "opacity") {
+                                obj.style.opacity = (cur + speed) / 100;
+                                obj.style.filter = "alpha(opacity=" + speed + cur + ")"; //filter: alpha(opacity=50);
+                            } else {
+                                obj.style[attr] = cur + speed + "px";
+                            }
+
+                        }
+                    }
+                },30)
+        }
+
+    </script>
+</head>
+<body>
+<div style="width: 100px;height: 100px;background: red;position: absolute"></div>
+</body>
+</html>

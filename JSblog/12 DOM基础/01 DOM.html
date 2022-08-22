@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            /*p{background: darkorange}*/
+        </style>
+        <script>
+            window.onload = function () {
+                //ECMAScript  ES6  DOM  document object model 文档对象模型   BOM  浏览器
+                // 节点树  node
+
+                //1.获取子节点 children 非标准属性  返回指定位置的元素的子元素的集合
+                var oDiv = document.getElementsByTagName("div")[0];
+                alert( oDiv.children.length);  //2
+                //2.childNodes  标准，返回指定位置的元素的子元素的集合    节点：标签，文本节点 ，属性节点
+                alert(oDiv.childNodes.length);  //IE不算折行
+
+                //3.
+                var childs = oDiv.childNodes;  //标签  文本
+                for (var i = 0; i<childs.length;i++){
+                    alert(childs[i].nodeType);  //得到节点类型  文本 ------3   标签---------1    属性 -----------2
+//                    childs[i].style.background = "darkorange";  //text
+                    //如果是标签，加背景
+                    if(childs[i].nodeType == 1){
+                        childs[i].style.background = "darkorange";
+                        console.log(childs[i].nodeName); //获取标签节点的标签名
+                    }else if(childs[i].nodeType == 3){
+                       alert( childs[i].nodeValue);
+                    }
+                }
+
+                /*
+                1.获取子节点
+                父节点.children  非标准属性   获取标签节点
+                父节点.childNode  标准属性     获取文本，标签   （ie 不会计算折行）
+
+                2.判断到底是什么节点
+                  节点.nodeType
+                        标签-----------1
+                        属性-----------2
+                        文本-----------3
+
+                //3.获取标签节点的标签名
+                    节点.nodeName
+
+                  4.获取文本节点的内容
+                  节点.nodeValue
+                * */
+
+
+
+
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>段落一</p>
+            <p>段落二</p>
+        </div>
+
+    </body>
+</html>

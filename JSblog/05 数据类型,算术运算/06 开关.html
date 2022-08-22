@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+   window.onload = function(){
+       var oDiv = document.getElementsByTagName("div")[0];
+       var onOff = false;  //pink
+       oDiv.onclick = function () {
+
+           if(onOff){   //
+               oDiv.style.background = "pink";
+               onOff = false
+           }else {
+               oDiv.style.background = "#abc";
+               onOff = true;
+           }
+       }
+   }
+</script>
+<body>
+
+
+    <div style="width: 100px;height: 100px;background: pink"></div>
+</body>
+</html>

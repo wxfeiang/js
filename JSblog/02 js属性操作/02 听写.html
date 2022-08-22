@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 200px;height: 200px;background: red;}
+    </style>
+    <script>
+        /*
+        *
+        1.js引入方式
+         1.行间
+         <button onclick = ""><button>
+         2.内部
+         <script><script> 任意位置任意个数，从上往下，
+         3.外部
+         <script src="02.js"><script>  .js
+
+
+        2.移入div，背景颜色为blue 300*300       离开red    200*200
+        3.获取用户的输入，在控制台打印
+        4.js组成部分
+          ECMAScript  DOM  BOM
+        * */
+        //等页面加载完成后调用
+      window.onload = function () {
+        //找到谁
+        var oDiv = document.getElementById("box");
+        //加什么事件
+          oDiv.onmouseover = function () {
+
+              //做什么事情
+              oDiv.style.width = "300px";
+              oDiv.style.height = 300+"px";  //300px
+              oDiv.style.background = "blue";
+          };
+          oDiv.onmouseout = function () {
+              //做什么事情
+              oDiv.style.width = "200px";
+              oDiv.style.height = 200+"px";
+              oDiv.style.background = "red";
+          }
+
+
+
+         var oIn = document.getElementById("in");
+        var but = document.getElementById("but");
+        but.onclick = function () {
+            console.log(oIn.value);
+        }
+      }
+    </script>
+</head>
+<body>
+    <!-- 2.移入div，背景颜色为blue 300*300       离开red    200*200-->
+    <div id="box"></div>
+  <!--3.获取用户的输入，在控制台打印-->
+    <input type="text" id="in"><button id="but">确定</button>
+   <!--7:30-9-->
+   //js
+</body>
+</html>

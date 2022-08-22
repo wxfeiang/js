@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #li{
+            background: pink;
+        }
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            //1.innerHTML  createElement createTextNode  append  insertBefore replace  clone removeChild
+            //jq 操作节点
+            //1.添加
+            // 1.1  append  在父元素末尾添加
+            $("ul").append("<li>往父元素末尾追加子元素</li>");
+            var li = document.createElement("li");
+            li.innerHTML = "create";
+            $("ul").append(li);
+            $("ul").append(function () {
+                return "<li>函数创建</li>"
+            });
+            $("ul").append($(".li2")); //添加一个已经存在的元素，物理移动
+
+            //1.2  添加到父元素的第一个元素 prepend
+            $("ul").prepend($("li").eq(1));
+
+            //1.3 appendTo  (要添加的子元素).appendTo(父元素)
+            $("<li>要添加的子元素,末尾</li>").appendTo("ul");
+            //1.4 prependTo  (要添加的子元素).prependTo (父元素)
+            $("<li>要添加的子元素,开头</li>").prependTo("ul");
+
+
+            //1.4 before   after     参考元素.before(新的标签)
+            $(".li2").before("<li>before</li>");
+            $(".li2").after("<li>after</li>");
+
+            //insertBefore
+            $("<li>insertBefore</li>").insertBefore("p");
+            $("<li>insertAfter</li>").insertAfter("p");
+
+
+            //2.替换   被替换掉的.replaceWith（新的） replaceAll
+            /*var oLi = document.createElement("li");
+            var oP = document.getElementsByTagName("p")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            oUl.replaceChild(oLi,oP);  //  父元素.replaceChild（新的节点，旧的的节点）*/
+            $("p").replaceWith("<p style='background: palevioletred'>fdk</p>")
+            $("<a>我是一个连接</a>").replaceAll("li:eq(1)")
+
+            //3.删除
+            //$("ul").empty();  //清空  所有的子节点
+            $("li:last").remove();  //移除一个
+
+            //4.copy  被copy的元素.clone();
+            var l = $("#li").clone(true);  //true  节点，事件都能被复制
+            $("ul").append(l);
+
+
+            //5.find
+           /* $("div a").click(function () {
+              alert("fda");
+            })*/
+           /*$("div").find("a").click(function () {  //全部不考虑层级
+               alert("fda");
+           });*/
+           $("div").children("a").click(function () {  //直接后代
+               alert("fda");
+           })
+
+
+
+
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li id="li" onclick="alert('被点击了')"><span>fdkfa</span></li>
+        <li class="li2">2</li>
+        <li>3</li>
+        <p>wo  s  yi ge duanluo</p>
+    </ul>
+
+    <div>
+        <h1><a href="#">fd</a></h1>
+        <a href="#">fa</a>
+    </div>
+    <a href="#">fsa</a>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="cont_box">
+            <div class="title">
+                早餐
+            </div>
+            <div class="from">
+                <el-form :model="moring" ref="moring" label-width="100px">
+                    <div v-for="(item, index) in moring.food" :key="index">
+                        <el-form-item label='类型' :prop="'food.' + index + '.name'" :rules="{
+                        required: true, message: '类型不能为空', trigger: 'blur'
+                      }">
+                            <el-input v-model="item.name" placeholder="请输入类型"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <div class="tag_box">
+                                <div class="tag_item">
+                                    <el-tag :key="tag" v-for="tag in item.tag" closable :disable-transitions="false"
+                                        @close="handleClose('moring','food', index ,tag)">
+                                        {{tag}}
+                                    </el-tag>
+                                    <el-input class="input-new-tag" placeholder="请输入"
+                                        v-model="moring.food[index].tagValue" size="small"
+                                        @keyup.enter.native="handleInputConfirm('moring','food',index)"
+                                        @blur="handleInputConfirm('moring','food',index)">
+                                    </el-input>
+
+                                </div>
+                                <div class="btn_box">
+                                    <el-button circle icon="el-icon-delete" v-if="moring.food.length-1 !=0 || index>0 "
+                                        @click.prevent="removeitem(item)" size="mini">
+                                    </el-button>
+                                    <el-button circle icon="el-icon-plus" v-if="index == moring.food.length-1"
+                                        @click="addFrom" size="mini"></el-button>
+                                </div>
+                            </div>
+
+                        </el-form-item>
+                    </div>
+                    <el-form-item>
+                        <el-button type="primary" @click="submitForm('moring')">获取数据</el-button>
+                        <el-button @click="resetForm('moring')">重置</el-button>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+
+                moring: {
+                    food: [
+                        {
+                            name: '',
+                            tag: ["1111", "222"],
+                            tagValue: '',
+                        }
+                    ],
+
+
+                }
+                // 多个moring
+            }
+        },
+        created() {
+
+
+        },
+        methods: {
+            // 获取数据
+            submitForm(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('submit!');
+                        console.log(this.moring)
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            },
+            resetForm(formName) {
+                this.$refs[formName].resetFields();
+            },
+            // 点击删除
+            removeitem(item) {
+                var index = this.moring.food.indexOf(item)
+                if (index !== -1) {
+                    this.moring.food.splice(index, 1)
+                }
+            },
+            // 点击添加
+            addFrom() {
+                this.moring.food.push({
+                    name: '',
+                    tag: [],
+                    tagValue: '',
+                });
+            },
+
+            // 删除单个标签 
+            handleClose(obj, filed, index, tag) {
+                this[obj][filed][index].tag.splice(this[obj][filed][index].tag.indexOf(tag), 1);
+            },
+            // 单个标签输入
+            handleInputConfirm(obj, filed, index) {
+                let inputValue = this[obj][filed][index].tagValue
+                if (inputValue) {
+                    this[obj][filed][index].tag.push(inputValue);
+                }
+                this[obj][filed][index].tagValue = '';
+            }
+
+
+        },
+
+
+    })
+</script>
+<style lang="">
+    .cont_box {
+        display: flex;
+    }
+
+    .title {
+        width: 50px;
+        line-height: 40px;
+    }
+
+    .from {
+        flex: 1;
+    }
+
+    .tag_box {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .tag_item {
+        width: 90%;
+    }
+
+    .btn_box {}
+
+    .el-tag+.el-tag {
+        margin-left: 10px;
+    }
+
+    .button-new-tag {
+        margin-left: 10px;
+        height: 32px;
+        line-height: 30px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .input-new-tag {
+        width: 90px;
+        margin-left: 10px;
+        vertical-align: bottom;
+    }
+</style>
+
+
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var str = "webjfkdfjkdwebuoiuorewruweburiowuriowweb";
+            var s = "web";  //要查找的字符
+            var i = 0;
+            str.indexOf(s);
+            index(str,s);
+            function index(str,s) {
+                for (;str.indexOf(s,i) != -1;){  //找到一个之后，下标从第一个找到的下标后面开始查找
+                    alert(str.indexOf(s,i));
+                   i = str.indexOf(s,i) + s.length;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

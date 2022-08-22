@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            var tab = document.getElementsByTagName("table")[0];
+
+
+            //点击在表格后面添加一行
+            but.onclick = function () {
+                //姓名搜索
+                var seach = input.value;
+                for (var i = 0; i<tab.tBodies[0].rows.length;i++){
+                    tab.tBodies[0].rows[i].style.background = "";
+                    if(tab.tBodies[0].rows[i].cells[1].innerHTML == seach){
+                        tab.tBodies[0].rows[i].style.background = "pink";
+                    }
+                }
+                input.value = "";
+            }
+
+
+        }
+
+
+    </script>
+</head>
+<body>
+<input type="text" placeholder="请输入搜索的值">
+<button>搜索</button>
+<table border="1" width="500">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Jom</td>
+        <td>23</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Sum</td>
+        <td>70</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>tom</td>
+        <td>90</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>jury</td>
+        <td>18</td>
+        <td></td>
+    </tr>
+    </tbody>
+    <tfoot></tfoot>
+</table>
+<style>
+    a{color: red;}
+</style>
+</body>
+</html>

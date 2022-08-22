@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 200px;height: 200px;background: red;position: absolute;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div")[0];
+            //
+            oDiv.onclick = function () {
+              var timer =   setInterval(function () {
+                    //先获取当前的left
+                    var speed =  parseInt(getStyle(oDiv,"left"))+10;
+                    if(speed >= 500){
+                        speed = 500;
+                    }
+                    oDiv.style.left = speed+"px";
+                    if(speed == 500){
+                        clearInterval(timer);
+                    }
+                },30)
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div ></div>
+</body>
+</html>

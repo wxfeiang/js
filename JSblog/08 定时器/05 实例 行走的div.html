@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;background: red;position: absolute;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var rightBut = document.getElementsByTagName("button")[0];
+            var leftBut = document.getElementsByTagName("button")[1];
+            var oDiv = document.getElementsByTagName("div")[0];
+            var timer = null;
+            rightBut.onclick = function () {
+                //演示，每次点击把之前的定时器清掉，要不然会在同一个元素上添加多个
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    //500 停止  +10
+                    var speed = parseInt(getStyle(oDiv,"left")) + 10;  //490   520
+                    if(speed >= 500){speed = 500;}
+                    oDiv.style.left = speed + "px";
+                    if(speed == 500){
+                        clearInterval(timer);
+                    }
+                },30);
+            };
+
+            leftBut.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    //0 停止  -10
+                    var speed = parseInt(getStyle(oDiv,"left")) - 10;  //490   520
+                    if(speed <= 0){speed = 0;}
+                    oDiv.style.left = speed + "px";
+                    if(speed == 0){
+                        clearInterval(timer);
+                    }
+                },30);
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //放大
+           /* but.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    //每次增加10
+                    var w = parseInt(getStyle(oDiv,"width")) + 7;  //490 + 520
+                    if(w >= 500){
+                        w = 500;
+                    }
+                    oDiv.style.width = w  + "px";
+                    oDiv.style.height = w  + "px";
+                    if(w == 500){
+                    clearInterval(timer);
+                }
+            },300);
+            }*/
+        }
+        function  getStyle(obj,attr) {
+            return  obj.currentStyle ?  obj.currentStyle[attr] :  getComputedStyle(obj)[attr];
+        }
+    </script>
+</head>
+<body>
+    <button>往前走</button><button>往回走</button>
+   <div></div>
+</body>
+</html>

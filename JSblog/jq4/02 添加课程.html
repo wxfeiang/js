@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#but").click(function () {
+                var arr = ["web前端","java","php","安卓","linux","ios","智能硬件"];
+                //生成一个li
+                var newLi = $("<li>"+arr[$("li").length%7]+"</li>");
+                newLi.css("background",colorRand());
+
+                var but = $("<button style='float: right;background: "+colorRand()+"'>删除</button>");
+                but.click(function () {
+                    $(this).parent().remove();
+                });
+
+                newLi.append(but);
+                newLi.appendTo("ol");
+
+            });
+            function colorRand() {
+                return "rgb("+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+")"
+            }
+        })
+    </script>
+</head>
+<body>
+ <button id="but">点击添加课程</button>
+ <ol></ol>
+<style>
+    ol{width: 600px;}
+    ol li{width: 100%;height: 44px;}
+</style>
+</body>
+</html>

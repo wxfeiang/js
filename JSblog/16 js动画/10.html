@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="txf.js"></script>
+    <script>
+
+/*        oDiv
+        box
+        oDiv.onmousedown = function (ev) {
+            var ev = window.event || ev;
+            var x = ev.clientX - oDiv.offsetLeft;
+            var y = ev.clientY - oDiv.offsetTop;
+            document.onmousemove = function (ev) {
+                var ev = window.event || ev;
+                var l = ev.clientX - x;
+                var t = ev.clientY - y;
+
+
+                if(l+oDiv.offsetWidth<box.offsetLeft ||l>box.offsetLeft+box.offsetWidth || t+oDiv.offsetTop < box.offsetTop||t>box.offsetTop+box.offsetHeight){
+
+                }else {
+                    box.style.background = "red";
+                }
+                oDiv.style.left = l + "px";
+                oDiv.style.top = t + "px";
+
+
+
+            }*/
+
+
+          window.onload = function () {
+              var oDiv = document.getElementsByTagName("div")[0];
+              oDiv.onclick = function () {
+                  //(目标值-当前值)/缩放系数  500
+                  var timer = setInterval(function () {
+                      var cur = parseInt(getStyle(oDiv,"left"));
+                      var speed =Math.ceil( (500 - cur)/10);
+                      oDiv.style.left = cur + speed + "px";
+                      if(cur == 500){
+                          clearInterval(timer);
+                      }
+                  },30)
+              }
+          }
+
+    </script>
+</head>
+<body>
+    <div style="width: 100px;height: 100px;background: red;position: absolute"></div>
+</body>
+</html>

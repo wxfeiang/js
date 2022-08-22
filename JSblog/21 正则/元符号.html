@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            var str = "_A-g1o2o3g4le \ngoole";  //\n表示换行
+            //单个字符和数字
+            //.
+            //var reg = /./ig;    //匹配除换行符以外的任意字符
+            //console.log(str[0],reg.exec(str));
+            //ggle
+            //var reg = /g..gle/ig;
+
+
+            //[]
+            //var reg = /[a-z]/g;  //匹配一个a-z之间的任意一个字符
+            //var reg = /[A-Z][a-zA-Z0-9]/;  //[a-zA-z0-9] 匹配区间内的任意字符
+
+            //^
+            //var reg = /[^a-zA-Z0-9]/g;  //不在这个区间范围内的任意字符
+
+
+            //\
+            //var reg = /\d/g;          //匹配数字字符
+            //var reg = /\D/g;            //非数字
+           // var reg = /\w/ig;             //匹配数字，字母，下划线_
+            //var reg = /\W/ig;           //除数字，字母，下划线以外的任意字符
+
+            //空白字符 \b
+            //var reg = /\b/ig;     //匹配空格  \n \r \s :空白，空格，制表位，换行  \S  非空白字符
+            //var reg = /\r/ig;
+            //var str1 = "\n";
+            //var reg = /\S/ig;
+            //console.log(reg.exec(str1));
+
+            //锚字符  ^行首 $行尾
+           //var str = "web705";
+            //var reg = /^w....5$/g;
+
+            //重复字符
+            //?
+           /* var str1 = "web";
+            var reg = /w?d/ig;  //？匹配0个或者1个字符  ,放某个字符的前面找后面的字符
+            console.log(reg.exec(str1));*/
+
+            //*
+            var str1 = "wefkalfjdlkaf";
+            var reg = /we*/ig;             //匹配0个或任意多个
+            console.log(reg.exec(str1));
+
+            //+
+            var str2 = "1212121";
+            var rge2 = /.+/ig;   //至少匹配一个
+            console.log(rge2.exec(str2));
+
+
+             var str3 = "18210399098";  //**  “暴力”
+
+             var reg3 = /\d{4}/g;  //{m，n} 最少m最到n个
+             reg3.lastIndex = 3;
+
+             console.log(str3.replace(reg3,"****"));
+//             console.log(reg3.exec(str3));
+
+            //|
+            var str4 = "http://www.baidu.cm";  //匹配其中一个 h
+            var reg4 = /http:\/\/www.baidu.com|.cn|.net/ig;
+            console.log(reg4.exec(str4));
+
+
+            //()()
+            var str5 = "web705";
+            var reg5 = /(w)eb(7)/ig;  // ["web7", "w", "7", index: 0, input: "web705"]
+            console.log(reg5.exec(str5));
+            console.log(RegExp.$1);
+            console.log(RegExp.$2);
+
+
+
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

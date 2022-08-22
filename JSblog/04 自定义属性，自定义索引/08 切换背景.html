@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+
+            var buts = document.getElementsByTagName("button");
+             //[button,  button,  button]  下标
+            var colors = ["pink","yellow","#abc"];
+            for(var i= 0;i < buts.length;i = i + 1){
+                buts[i].index = i;
+                buts[i].onclick = function () {
+                    //改背景 colors     取下标colors[this.index]
+                    document.body.style.background = colors[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+<body bgcolor="#efefef">
+    <button>pink</button>
+    <button>yellow</button>
+    <button>#abc</button>
+</body>
+</html>

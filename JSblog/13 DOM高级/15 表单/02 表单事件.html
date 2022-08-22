@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+
+            var form = document.getElementsByTagName("form")[0];
+            //提交事件  return true  提交  false 不能提交
+            form.onsubmit = function () {
+                if (form.user.value == ""){
+                    alert("不能为空");
+                    return false;
+                }
+                return true;
+            }
+
+            //重置
+            form.onreset = function () {
+                console.log(confirm("是否确定重置"));//确定-turn 取消-false
+                return confirm("是否确定重置");
+            }
+        };
+    </script>
+</head>
+<body>
+<form action="1.html">
+    <input type="text" name="user">
+    <input type="submit" value="提交">
+    <input type="reset" value="重置">
+</form>
+</body>
+</html>

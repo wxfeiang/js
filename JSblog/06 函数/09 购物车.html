@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*复用
+                1.HTML代码结构尽可能的一样
+                2.把核心代码实现，用函数包起来
+                3.把每组当中不同的值找出来，通过参数传递
+             */
+            var oli = document.getElementsByTagName("li");
+            for (var i = 0; i < oli.length;i++){
+                sum(oli[i]);
+            }
+            function sum(oLi) {
+//                var oLi = document.getElementsByTagName("li")[2];
+                var buts = oLi.getElementsByTagName("button");
+                var numS = oLi.getElementsByTagName("strong")[0];
+                var pic = oLi.getElementsByTagName("i")[0];
+                var b = oLi.getElementsByTagName("b")[0];
+                var number = parseInt(numS.innerHTML);
+                var price = parseFloat(pic.innerHTML);
+                buts[0].onclick = function () {
+                    number--;
+                    if(number < 0){number=0;}
+                    //改数量，改小计(单价*数量)
+                    numS.innerHTML = number;
+                    b.innerHTML = number * price;
+                }
+                buts[1].onclick = function () {
+                    number++;
+                    //改数量，改小计(单价*数量)
+                    numS.innerHTML = number;
+                    b.innerHTML = number * price;
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <ul>
+        <li>
+            <button>-</button>
+            <strong>0</strong>
+            <button>+</button>
+            <span>单价：<i>12.5元</i></span>
+            <em>小计：<b>0</b>元</em>
+        </li>
+        <li>...</li>
+    </ul>
+
+</body>
+</html>

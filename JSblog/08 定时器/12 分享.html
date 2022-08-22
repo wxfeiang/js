@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 400px;height: 180px;position: absolute;left: -360px;}
+        p{width: 360px;height: 180px;background: orange;}
+        span{position: absolute;right: 0;top: 50%;width: 30px;background: red;padding-left: 10px;height: 50px;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementById("box");
+            var span = oDiv.getElementsByTagName("span")[0];
+            span.onclick = function () {
+                move(oDiv,10,0,"left");
+            };
+            //事件
+            oDiv.onmouseout = function () {
+                move(oDiv,10,-360,"left");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <p></p>
+        <span>分享</span>
+    </div>
+</body>
+</html>

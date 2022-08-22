@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding: 0;margin: 0;list-style: none;}
+        #menu{position: relative;width: 960px;height: 40px;margin: 50px auto;}
+        #tab{height: 40px;line-height: 40px;background: red;border-radius: 20px;}
+        #tab a{text-decoration: none;color: #fff;font: 16px "Microsoft YaHei";margin-left: 50px;padding: 3px 15px;}
+        #tab a:hover{color: red;background: yellow;border-radius: 20px;}
+        .ulMenu{position: absolute;top:50px;width: 450px;height: 40px;line-height: 40px;border-radius: 20px;background: red;display: none}
+        .ulMenu li{float: left;margin-left: 50px;}
+        .menu1{left: 0px;}
+        .menu2{left: 126px;}
+        .menu3{left: 260px;}
+        .menu4{left: 400px;}
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oA = document.getElementById("tab").getElementsByTagName("a");
+            var oUl = document.getElementsByTagName("ul");
+            var timer = null;
+            for (var i = 0; i<oA.length;i++){
+                oA[i].index = i;
+                oUl[i].index = i;
+                oA[i].onmouseover = oUl[i].onmouseover = function () {
+                    show(this.index);
+                }
+                oA[i].onmouseout = oUl[i].onmouseout =  function () {
+                    hide(this.index);
+                }
+            }
+            
+            function  show(index) {
+                clearTimeout(timer);
+                for (var i = 0;i<oUl.length;i++){
+                    oUl[i].style.display = "none";
+                }
+                oUl[index].style.display = "block";
+            }
+            function  hide(index) {
+               timer =  setTimeout(function () {
+                    oUl[index].style.display = "none";
+                },300);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <div id="tab">
+            <a href="#">菜单一</a>
+            <a href="#">菜单二</a>
+            <a href="#">菜单三</a>
+            <a href="#">菜单四</a>
+        </div>
+        <ul class="ulMenu menu1">
+            <li>菜单1</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+        </ul>
+        <ul class="ulMenu menu2">
+            <li>菜单2</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+        </ul>
+        <ul class="ulMenu menu3">
+            <li>菜单3</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+        </ul>
+        <ul class="ulMenu menu4">
+            <li>菜单4</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+            <li>菜单一</li>
+        </ul>
+    </div>
+</body>
+</html>

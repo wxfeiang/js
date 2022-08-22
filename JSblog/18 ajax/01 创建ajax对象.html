@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+
+            //ajax  xml  http ：通信协议  Request请求
+            //非ie6
+            //1、创建ajax对象
+           var ajax = new XMLHttpRequest();
+            //var ajax = new ActiveXObject("Microsoft.XMLHTTP");
+           //alert(ajax);  // XMLHttpRequest
+
+            //2.建立连接 api 接口
+            //ajax.open(method,url,async) 请求方法：GET POST,请求数据的地址,是否异步
+            ajax.open("GET","wenben.txt",true);
+
+            //3.发送请求
+            ajax.send();
+
+            /*
+            0:请求初始化，没有调用open
+            1：请求已建立，但是没有发送(没有send)
+            2.请求已经发送
+            3.请求在处理
+            4.响应完成，
+            * */
+            //4.接收服务器返回的数据   事件   onreadystatechange  服务器开始返回数据时调用
+            ajax.onreadystatechange = function (){
+                    console.log(ajax.readyState);
+                    if(ajax.readyState == 4){
+                        console.log(ajax.status);  //200 能找到  404 文件不存在
+                        if(ajax.status == 200){
+                            console.log(ajax.responseText);//请求文件中的内容
+                        }
+                    }
+            }
+
+
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

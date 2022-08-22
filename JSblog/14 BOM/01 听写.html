@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //获取表格第一行第二个单元格
+            var tab = document.getElementsByTagName("table")[0];
+            console.log(tab.tBodies[0].rows[0].cells[1]);
+            //点击添加一行（姓名，年龄） 删除
+            var but = document.getElementsByTagName("button")[0];
+            /*but.onclick = function () {
+
+                //添加一行
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                td.innerHTML = "tom";
+                tr.appendChild(td);
+
+                var td = document.createElement("td");
+                td.innerHTML = "88";
+                tr.appendChild(td);
+
+                var td = document.createElement("td");
+                td.innerHTML = "<a>删除</a>";
+                td.getElementsByTagName("a")[0].onclick = function () {
+                    tab.tBodies[0].removeChild(this.parentNode.parentNode);
+                };
+                tr.appendChild(td);
+
+                tab.tBodies[0].appendChild(tr);
+
+            }
+*/
+            //模糊搜索
+            but.onclick = function () {
+
+                //给匹配到的单元格设置背景
+                var seach = document.getElementsByTagName("input")[0].value.toLowerCase();
+                for(var i = 0;i<tab.tBodies[0].rows.length;i++){
+                    var value = tab.tBodies[0].rows[i].cells[0].innerHTML.toLowerCase();
+                    tab.tBodies[0].rows[i].style.background = "";
+                    if(value.search(seach) != -1){  //if(value.indexOf(seach) != -1)
+                        tab.tBodies[0].rows[i].style.background = "pink";
+                    }
+                }
+
+                document.getElementsByTagName("input")[0].value = "";
+            }
+
+            //input value
+            var form = document.getElementById("form1");
+            console.log(form.user.value);
+        }
+    </script>
+</head>
+<body>
+<input type="text">
+<button>添加</button>
+<table border="1" width="600">
+    <thead>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>操作</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>tom</td>
+            <td>30</td>
+            <td>删除</td>
+        </tr>
+        <tr>
+            <td>kang</td>
+            <td>30</td>
+            <td>删除</td>
+        </tr>
+        <tr>
+            <td>juatry</td>
+            <td>30</td>
+            <td>删除</td>
+        </tr>
+        <tr>
+            <td>sum</td>
+            <td>30</td>
+            <td>删除</td>
+        </tr>
+    </tbody>
+</table>
+<form action="" id="form1">
+    <input type="text" value="fd" name="user">
+</form>
+</body>
+</html>

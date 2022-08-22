@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [1,2,3,4,5];
+        //1.push pop
+        arr.push(6);  //改变原来的数组
+        //有返回值，返回改变后数组的长度
+        console.log(arr.push(6,7));
+        arr.pop();
+        console.log( arr.pop(),arr);  //被移除的值
+        arr.pop();  //移除数组最后一个元素
+        console.log(arr);
+        //shift unshift
+        //push操作内部大致的操作
+        function push() {
+            for(var i = 0; i<arguments.length;i++){
+                arr[arr.length] = arguments[i];
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

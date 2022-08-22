@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var arr = [2,3,4];
+        var arr1 = new Array(3,4,5);
+
+        //方法  存储  增 删  改 查
+        //1.push  pop
+        console.log(arr,arr.push(5)); //先操作数组，在输出  添加  数组的长度
+        console.log(arr,arr.pop());  //返回  返回被删除的元素 最后一个元素
+            //2.shift unshift
+        console.log(arr.unshift(0,1),arr); // 往数组前端添加数据，返回当前数组的长度
+        //alert(arr.unshift(0));  //ie6 7不兼容，undefined
+        console.log(arr.shift(),arr);  //被删除的元素  【1，2，3】
+
+
+        //[1, 2, 3, 4]
+        //3.删除
+        console.log(arr.splice(3));   //一个参数，从下标为0开始，删除n个
+        //console.log(arr.splice(1,1)); // [3,4]  两个参数（i,num）从下标i开始，移除num个元素  返回被删除元素通过数组返回【2】
+        console.log(arr.splice(0,1,3));  //三个参数（i，num，att）  从下标i 开始删除num个元素，用att替代
+        console.log(arr.splice(0,1,"html","css")); //["html", "css", 2, 3, 4]
+        console.log(arr.splice(0,2,"js"));   //如果有替换，先删除，在删除的这个位置，把后面替换的参数加入数组
+
+        //4.排序  sort
+        var arr1 = [2,3,5,7,1,11];
+        /*for(var i = 0; i < arr1.length;i++){
+            for(var j = i+1;j<arr1.length;j++){
+                if(arr1[i] > arr1[j]){
+                    var temp = arr1[i];
+                    arr1[i] = arr1[j];
+                    arr1[j] = temp;
+                }
+            }
+        }
+        console.log(arr1);*/
+        //arr1.sort();
+        //console.log(arr1);  //[1, 11, 2, 3, 5, 7] 如果是数字，是按字符编码排序
+
+        arr1.sort(function (x,y) {  //大于0  从大到小 b-a   小于0 从小到大 a-b
+            return x - y;
+        });  //函数
+        console.log(arr1);
+
+
+        //4.join  把数组转成字符串
+        var arr1 = [2017,8,14];
+        console.log(arr1.join("/"));
+        console.log(arr1.join("-"));
+        console.log(arr1.join());
+
+        //5.concat 组合数组
+        var arr2 = ["html","css"];
+        var arr3 = ["js","jquery"];
+        var arr5 = ["bs","php"];
+        var arr4 = [arr2,arr3];  //[ ["html","css"],["js","jquery"]]
+        console.log(arr4);
+        console.log(arr2.concat(arr3)); //["html","css","js","jquery"]
+       console.log( arr3.concat(arr2,arr5),arr2,arr3);//["html", "css", "js", "jquery"]  不会改变原数组，会生成一个新的
+
+
+        //6.arr1.reverse()   倒序
+
+        console.log(arr1);
+       console.log( arr1.reverse());  //影响原数组的
+       console.log(arr1);
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

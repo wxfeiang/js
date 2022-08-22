@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 50px;height: 50px;background: red;position: absolute;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            //先生成div
+            var str = "";
+            for(var i = 0; i<15;i++){  //60为了div中间留下空隙
+                str += "<div style='left:"+i*60+"px;'></div>"
+            }
+            document.body.innerHTML = str;
+            var  n = 0;
+            var timer = null;
+            var oDiv = document.getElementsByTagName("div");
+            for(var i = 0 ; i < oDiv.length;i++ ){
+                oDiv[i].onclick = function () {
+                    clearInterval(timer);
+                 timer = setInterval(function () {
+                       move( oDiv[n],10,750,"top");
+                       n++;
+                       if(n == oDiv.length){ //到最后一个div停止
+                           clearInterval(timer);
+                       }
+                    },100) //每个定时器运动的间隔时间
+                }
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

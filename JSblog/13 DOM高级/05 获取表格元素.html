@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //23
+            var tr = document.getElementsByTagName("tr");
+            var y = tr[1].getElementsByTagName("td")[2].innerHTML;
+            console.log(y);
+           //获取表格元素
+            var tab = document.getElementsByTagName("table")[0];
+            console.log(tab.tBodies[0]);  //返回HTMLCollection(1)  集合，获取到tbody
+            console.log(tab.tBodies[0].rows);  //row 所用的行
+            console.log(tab.tBodies[0].rows[0].cells[2]);  //单元格
+            console.log(tab.tBodies[0].rows[0].cells[2].innerHTML);
+            //tBodies-tbody  rows--tr     cells--td    tHead---thead  tFoot-tfoot
+            console.log(tab.tHead.rows[0].cells[0]);
+
+
+            //例。隔行变色
+            var rows = tab.tBodies[0].rows;
+            for(var i = 0; i<rows.length;i++){
+                if(i%2 == 0){
+                    rows[i].style.background = "#abc";
+                }else {
+                    rows[i].style.background = "#bca";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <table border="1" width="500">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>年龄</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Jom</td>
+                <td>23</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Sum</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>tom</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>jury</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</body>
+</html>

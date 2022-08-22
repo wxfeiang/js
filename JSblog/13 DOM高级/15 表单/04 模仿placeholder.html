@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+           var input = document.getElementsByTagName("input")[0];
+
+           //  第一次输入，获取到焦点，清空输入框，离开的时候如果为空，原来的值，
+            //第二次输入，如果值发生了变化，不需要改变
+           input.onblur = function () {
+               if(input.value == ""){
+                   input.value = "web705";
+               }
+           }
+           input.onfocus = function () {
+               if(input.value == "web705"){
+                   input.value = "";
+               }
+           }
+        }
+    </script>
+</head>
+<body>
+<input type="text" value="web705">
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1-100里面   前10个偶数
+            var num = 0;
+            for(var i = 1;i <= 100;i = i+1){
+                if(num == 10){
+
+                    break;     //结束循环
+                    continue;  //跳出本次循环
+                }
+                if(i % 2 == 0){
+                    console.log(i);
+                    num = num + 1;
+                }
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

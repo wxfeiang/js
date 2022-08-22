@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //隐式转化，
+        //加法 +
+        console.log(10+100);  //110
+        console.log(10+"string"); //"10string"   10转换成了字符串 string    +只要一遇到字符串就变成连接符
+        console.log(19+10 + "age" + 18 + 10); //"29age1810"
+        console.log(10+"100"); //10100  10转换成了字符串 string
+        console.log(10+true);  //number类型11  true 变成了number类型的1
+        console.log(true+false);  //1
+        console.log("10"+true);  //10true
+        console.log(""+100);  //"100"  "" = 0
+        console.log(10+null);  //10  null - 0
+        console.log(10+undefined);  //NaN
+        console.log(typeof (10+undefined));  //number
+        //没有任何一个NaN是相同的
+        var a = NaN;
+        var b = NaN;
+        if(a == b){
+            alert("a");
+        }else {
+//            alert("b");
+        }
+
+
+        //减 -
+        console.log(100-10);  //90
+        console.log(100-"t"); //NaN
+        console.log(100-"");  //100  ""转换成数字0
+        console.log(100-true);  //99  true 转换成数字1
+        console.log(100-"80");  //20  “80”转换成数字80
+        console.log(100-null);   //100  null转换成数字0
+        console.log(100-undefined); //NaN
+
+
+        //乘 *
+        console.log(100*"a");  //NaN
+        console.log(100*"");   //0
+        console.log(100*"100"); //10000
+        console.log(100*null);  //0
+        console.log(100*undefined);  //NaN
+
+        //c除 /
+        console.log(100/"a");  //NaN
+        console.log(100/"");   //Infinity  无穷大
+        console.log(100/"70");  //10/7
+        console.log(100/null);  //Infinity  无穷大
+        console.log(100/undefined);NaN
+
+        //取余%
+        console.log(100%"a");  //NaN
+        console.log(100%"");   //NaN
+        console.log(100%"70"); //30
+        console.log(100%null);  //NaN
+        console.log(100%undefined); //NaN
+
+        //i++
+        var n = "10";
+        n++;  //进行自加，字符串会变成number
+        console.log(n);
+         //判断
+        if(10 < "20"){  //跟number进行判断的时候字符串变成number
+
+//            alert("成立");
+        }
+
+        if("A"<"a"){  //两个字符串进行比较  单个字符进行比较     A = 65  a = 97  0:48
+            alert("成立");
+        }
+
+        //! && ||
+        //!取反
+
+        console.log(!true);//false
+        console.log(!0);  //true 0变成boolean类型的false
+        console.log(!"web");//false  非0为真
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 200px;height: 200px;background: red;}
+    </style>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementById("box");
+            oDiv.onclick = function () {
+                sMove(oDiv,20,"opacity")
+            }
+            function sMove(obj,target,attr) {
+
+                var timer = setInterval(function () {
+                    var cur = parseInt(getStyle(obj,attr))*100; //ie 0-100
+                    var speed = (target - cur)/5;
+                    oDiv.style.opacity = (cur + speed)/100;
+                    oDiv.style.filter = "alpha(opacity="+speed+cur+")" ; //filter: alpha(opacity=50);
+                    if(cur == target){
+                        clearInterval(timer);
+                    }
+                },30)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

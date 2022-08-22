@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+
+            var p = document.getElementsByTagName("p")[0];//显示到p标签
+            var but = document.getElementsByTagName("button")[0];//点击开始计时
+            but.onclick = function () {
+                var s = 60;
+               var timer = setInterval(function () { //返回id  唯一能够标识当前定时器的
+                    s--;
+                    if(s == 0){clearInterval(timer);}  //关闭定时器
+                    p.innerHTML = s;
+                },1000)
+            };
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <p></p>
+    <button>开始倒计时</button>
+</body>
+</html>

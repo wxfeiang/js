@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*input:focus{
+            获取焦点
+            background: red;
+        }*/
+    </style>
+    <script>
+        window.onload = function () {
+            /*
+            from
+              onsubmit 事件  提交时触发， false turn
+              onreset
+
+              submit()  方法  提交表单
+              reset()
+
+            input
+               onfocus  事件 获取焦点时触发
+               onblur
+
+
+            * */
+            var form = document.getElementsByTagName("form")[0];
+            var input = document.getElementsByTagName("input");
+            input[1].onclick = function () {
+                //alert("fd");
+                form.submit();  //form.submit()  提交表单
+            };
+            input[2].onclick = function () {
+                form.reset();
+            }
+
+            //获取焦点事件
+            input[0].onfocus = function () {
+
+                this.style.background = "red";
+            }
+            //失去焦点
+            input[0].onblur = function () {
+
+                this.style.background = "";
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="1.html">
+    <input type="text" placeholder="32">
+    <input type="button" value="按钮">
+    <input type="button" value="重置">
+    <input type="submit">
+</form>
+</body>
+</html>

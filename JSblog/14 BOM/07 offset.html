@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //滚动
+            document.onscroll = function () {
+
+            };
+
+            var div1 = document.getElementById("box3");
+            console.log(div1.offsetTop); //相对于父元素的位置 之间的距离 （没有定位body 有定位，定位的父元素）
+            console.log(div1.offsetLeft);  //当前元素到相对父元素左边框的距离
+            console.log(div1.offsetWidth); //占位宽  wdith+padding+border
+            console.log(div1.offsetHeight);
+
+        }
+    </script>
+</head>
+<body style="height: 2000px">
+<div style="margin: 30px;position: relative;top: 100px;">
+    <div style="margin: 10px;width: 100px;height: 100px;background: red;position: absolute;left: 100px;padding: 10px;border: 1px solid;" id="box3">fd</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+
+            //QQ数字 ，5  12
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            but.onclick = function () {
+                //QQ
+                var QQ = input.value; //0 213484932048392
+                var reg = /^[1-9]\d{4,11}/g;
+                var tig = reg.exec(QQ);
+
+                if(tig){
+                    alert("QQ");
+                }else {
+                    alert("不正确")
+                }
+
+            }
+
+           
+            var  str = "world hell";
+            var reg = /(.*)\s(.*)/ig;  //"
+            console.log(str.replace(reg,'$2 $1'));
+//            console.log(reg.exec(str));
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="input"><button>确定</button>
+</body>
+</html>

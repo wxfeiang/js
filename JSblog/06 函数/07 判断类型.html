@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+//            isType(NaN);
+//            isType(12);
+            isType("web705");
+            isType(function () {
+               alert("我是一个函数");
+            });
+
+
+
+
+            //判断类型    如果number +10 ，string 3， 函数调用
+            function  isType(type) {
+                //if  number  +10
+//         if(typeof type == "number" && !isNaN(type)){  // isNaN("NaN")   true
+                if(typeof  type == "number" && type == type){
+                    console.log(type + 10);
+                }else  if(typeof  type == "string"){//string 3
+                    console.log(type.charAt(2));
+                }else {
+                    type();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

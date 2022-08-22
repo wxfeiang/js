@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            //bind  $(selector).bind(事件类型，事件处理函数);
+            /*$("div").bind("click",function () {
+                alert("fd");
+            });
+            $("div").bind("click",fun);*/
+            function  fun() {  //处理函数可以叠加
+                alert("哈哈哈哈");
+            }
+            function fun1() {
+                alert("222222");
+            }
+            //2.给同一个元素多个事件绑定同一个处理函数
+            //$("div").bind("click mouseover",fun);
+
+            //
+            /*$("div").bind("click",fun);
+            $("div").bind("click",fun1);*/
+
+            $("div").bind({
+                "click":fun,
+                "click":fun1,
+                "mouseout":fun1,
+            });
+
+            /*addEventListener()
+            removeEventListener()
+            attachEvent()
+            detachEvent()*/
+
+            //$("div").unbind();  //不加参数，全清
+            //$("div").unbind("click");  //click 全清
+            $("div").unbind("click",fun);  //click事件的 fun处理函数清除
+
+            //
+            
+            var odiv = document.createElement("div");
+            $("body").append(odiv);
+
+        })
+    </script>
+</head>
+<body>
+<div ></div>
+<input type="text">
+<style>
+    div{width: 100px;height: 100px;background: pink}
+</style>
+</body>
+</html>

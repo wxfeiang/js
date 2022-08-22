@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="height:2000px;">
+    <div style="width: 200px;height: 200px;background: red;position: absolute"></div>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div")[0];
+            document.onmousemove =  function (ev) {
+                var ev = event || ev;
+                var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                oDiv.style.top = scrollTop + ev.clientY + "px";
+                oDiv.style.left = ev.clientX + "px";
+            }
+        }
+    </script>
+</body>
+</html>

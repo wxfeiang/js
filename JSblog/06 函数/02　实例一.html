@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            /*1.  var arr = ['100px','abc'-6,[],-987456,-2,0,'300',,function(){alert(1)},null,document,[],true,'200px',-30,'23.45元',5,Number('abc'),function(){alert(3);}];
+
+             要求：
+             1、找出数组中的所有字符串
+             2、找出arr中的所有数值类型
+             3、找出arr中最大的数（比较数值）
+             4、找出arr中NaN的位置
+             */
+
+            var arr = ['100px','abc'-6,[],-987456,-2,0,'300',,function(){alert(1)},null,document,[],true,'200px',-30,'23.45元',5,Number('abc'),function(){alert(3);}];
+          //找出数组中的所有字符串
+           /*for(var i = 0;i < arr.length;i++){
+                if(typeof arr[i] == "string"){
+                    console.log(arr[i]);
+                }
+            }*/
+            // 2、找出arr中的所有数值类型
+            console.log(isNaN(123));  //false
+           /* for(var i = 0;i < arr.length;i++){
+                if(typeof arr[i] == "number" && !isNaN(arr[i])){  //123
+                    console.log(arr[i]);
+                }
+            }*/
+
+           // 3、找出arr中最大的数（比较数值）  定义一个变量，保存最大值
+            var max = -6;
+            for(var i = 0;i < arr.length;i++){
+                if(typeof arr[i] == "number" && !isNaN(arr[i])){
+                    if(max < arr[i]){
+                        max = arr[i];
+                    }
+                 }
+                }
+                console.log(max);
+            /*<!--  2. 一个输入框
+             1、有没有输入
+             2、输入的是不是数字
+             3、不能有0在前面
+             4、不能是小数
+             5、输入的数字必须在5位以上、10位以内
+             -->*/
+
+            //3.输入一个三位数，输出每个数字的和  如 123    输出1+2+3 = 6
+
+           /* [1.9.11.3.2.7.5.6]
+            将数组里面的数据排序  【1，2，3，5，6，7，9，11】*/
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

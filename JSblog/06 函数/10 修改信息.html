@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+         var oLi = document.getElementsByTagName("li");
+         for (var i = 0; i < oLi.length;i++){
+             edit(oLi[i]);
+         }
+            function edit(oLi) {
+                var oP = oLi.getElementsByTagName("p");
+               var ed = oP[0].getElementsByTagName("a")[0];
+                var meg = oP[0].getElementsByTagName("span")[0];
+               var input = oP[1].getElementsByTagName("input")[0];
+               var aBut = oP[1].getElementsByTagName("a");
+                ed.onclick = function () {
+                    //编辑消失，输入出现
+                    oP[0].style.display  = "none";
+                    oP[1].style.display  = "block";
+                    input.value = meg.innerHTML;
+                }
+                //保存  有输出保存，input消失   span出现
+                aBut[0].onclick = function () {
+                    //编辑，输入消失
+                    oP[0].style.display  = "block";
+                    oP[1].style.display  = "none";
+                    meg.innerHTML = input.value;
+                }
+                aBut[1].onclick = function () {
+                    //编辑，输入消失
+                    oP[0].style.display  = "block";
+                    oP[1].style.display  = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <ul>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+        <li>...</li>
+    </ul>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span>Javascript权威指南</span> <a href="###">编辑</a>
+            </p>
+            <p style="display:none;">
+                <input type="text"> <a href="##">保存</a> <a href="##">取消</a>
+            </p>
+        </li>
+    </ul>
+</body>
+</html>

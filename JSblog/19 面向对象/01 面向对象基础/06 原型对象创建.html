@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var obj = new Object();
+            Object.prototype.name = "name";
+
+
+
+            //混合模式  构造函数+原型
+            function  Student(name) {
+                this.name = name;
+//                this.eat = function () {
+//                    console.log("吃饭");
+//                }
+                //放函数里面照样执行很多次
+               /* Student.prototype.eat = function () {
+                    console.log("吃饭");
+                }*/
+            }
+            //封装，破坏了封装性
+            Student.prototype.eat = function () {
+                console.log("吃饭");
+            };
+
+            //实例对象
+            var s1 = new Student("mm");
+            var s2 = new Student("mm");
+            console.log(s1.eat == s2.eat,s1);
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

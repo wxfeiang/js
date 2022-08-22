@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //定义两个按钮，分别添加点击事件
+            var but = document.getElementsByTagName("button");
+            but[0].onclick = function () {alert("1"); }
+            but[1].onclick = function () {alert("2");}
+            but[0].setCapture();  //当给一个元素添加了全局捕获，一直监听，只要发现有相同的事件触发，就去执行处理函数，ie能识别
+            but[0].releaseCapture();//释放
+        }
+    </script>
+</head>
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+</body>
+</html>

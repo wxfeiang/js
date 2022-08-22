@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+            var p = document.getElementsByTagName("p")[0];
+            but.onclick = function () {
+                p.innerHTML = changeStr(input.value);//先获取编码，+ 某个值，转成字符
+            }
+            function changeStr(str) {
+                var s = "";
+                for(var i = 0;i<str.length;i++){
+                  s += String.fromCharCode( str.charCodeAt(i) + 250);
+                }
+                return s;
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text"><button>确定</button>
+<p></p>
+</body>
+</html>

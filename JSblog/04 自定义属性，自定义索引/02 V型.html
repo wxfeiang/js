@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 50px;height: 50px;background: red;position: absolute;}
+    </style>
+    <script>
+        window.onload = function () {
+
+            var input = document.getElementsByTagName("input")[0];
+            var but = document.getElementsByTagName("button")[0];
+
+            but.onclick = function () {
+
+                //输入的值
+                var num = input.value;
+                for(var i = 0;i<num;i = i +1){
+                    if(i <= num/2){  //0 1 2 3     3.5
+                        //i = 0 50|i = 1 100  |i = 2 150
+                        document.body.innerHTML =  document.body.innerHTML + "<div style='top:" +(i+1)*50+"px;left: "+(i+1)*50+"px;'>"+(i+1)+"</div>";
+                    }else {
+                        //i = 4 150  7       i = 5  100 7      i = 6 50 7
+                        document.body.innerHTML =  document.body.innerHTML + "<div style='top:" +(num-i)*50+"px;left: "+(i+1)*50+"px;'>"+(i+1)+"</div>";
+
+                    }
+
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" placeholder="请输入一个奇数 3 5 7">
+<button>确定</button>
+</body>
+</html>

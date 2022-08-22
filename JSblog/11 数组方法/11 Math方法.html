@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //Math 对象
+        console.log(Math.floor(9.9999)); //9  向下取整，舍弃倒小数部分
+        console.log(Math.ceil(9.0000));  //9
+        console.log(Math.ceil(9.000000000000001)); //10  15个小数点  往上取整，有小数就加1
+        console.log(Math.round(5.521));  //四舍五入
+        console.log(Math.max(12,3,5,8,9));//最大的数
+        console.log(Math.min(12,3,5,8,9));//最大的数
+        //（1，1） （10，10）
+        //(x1-x2)^2 + (y1-y2)^2 开根号
+        console.log(Math.pow(2,10));  //1G = 1024 乘方 pow（基数，次方数）
+        console.log(Math.sqrt(90)); //开根号
+        console.log(Math.sqrt(Math.pow(1-10,2)+Math.pow(1-10,2)));
+        console.log(Math.abs(-10));  //绝对值
+
+
+        //产生随机数的范围是0-1
+        console.log(Math.random());
+        console.log(Math.round(Math.random()*10));  //0-10
+        console.log(Math.round(Math.random()*5+5));  //5-10
+        console.log(Math.round(Math.random()*10+10)); //10-20 x-y  *(y-x) + x
+        console.log(Math.round(Math.random()*70+30));  //30-100
+        var arr = [1,5,2,9,11,0,4];
+        var max = arr[0];
+        arr.sort(function (a,b) {
+           return 0.5-Math.random();  //0-1  随机排序
+//           return Math.random() - 0.5            0.5 - Math.random(); 代表一个区间的随机数 (0.5,-0.5),
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{position: absolute;}
+        div{width: 400px;height: 500px;background: #99ffcc;}
+        #box1{height: 40px;background: peachpuff;}
+    </style>
+    <script>
+        window.onload = function () {
+            var warp = document.getElementById("box");
+            var oDiv = document.getElementById("box1");
+
+            //按下，拖动
+            oDiv.onmousedown = function (ev) {
+                var ev = window.event || ev;
+                var x = ev.clientX - warp.offsetLeft;
+                var y = ev.clientY - warp.offsetTop;
+                if(oDiv.setCapture){  //undefined
+                    oDiv.setCapture();
+                }
+                document.onmousemove = function (ev) {
+                    var ev = window.event || ev;
+                    warp.style.top = ev.clientY - y + "px";
+                    warp.style.left = ev.clientX - x + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = "";
+                    if(oDiv.setCapture){
+                        oDiv.releaseCapture();
+                    }
+                }
+                return false;
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="box1"></div>
+    <div></div>
+</div>
+</body>
+</html>

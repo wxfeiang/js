@@ -1,0 +1,6 @@
+
+不能用js
+获取input 遍历
+添加点击事件，class  removeClass add
+
+div  选择器

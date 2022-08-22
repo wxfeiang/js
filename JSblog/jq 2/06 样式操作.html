@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;background: red;}
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function(){
+            //1.获取
+            $("div").css("width");
+            $("div").css("height");
+
+            //2.同时获取多个  1.8.3  返回jquery对象，   3.1.0  返回object width height
+         console.log( $("div").css(["width","height"]));
+
+
+         //修改
+            $("div").css("width","200px");
+            var json = {"width":"200px","height":"200px"};
+            $("div").css(json);
+
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

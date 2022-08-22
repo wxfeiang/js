@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            autoPlay();
+            setInterval(autoPlay,1000);
+            function autoPlay() {
+                var date = new Date();
+               // var newDate = new  Date(2017,7,11,00,00,00); //创建未来时间
+               var newDate = new  Date("Aug 13 2017 00:00:00");
+               console.log(newDate-date);  //26545999 毫秒
+                var time = Math.floor((newDate-date)/1000);  //舍弃掉小数部分  s
+                document.body.innerHTML = Math.floor(time/86400)+ "天"+
+                    Math.floor(time%86400/3600)+ "小时"+ Math.floor(time%3600/60)+
+                    "分"+Math.floor(time%60)+"秒"
+                /* January、February、March、April、May、June、
+                 July、August、September、October、November、December*/
+                //m = s /60
+                //h = s/60/60
+                //t = s/60/60/24
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

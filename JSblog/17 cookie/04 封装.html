@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            setCookie("user","123",10);
+            setCookie("user1","123",10);
+            setCookie("user2","123",10);
+            console.log(document.cookie);
+            console.log(getCookie().user);
+            removeCookie("user");
+            console.log(getCookie());
+            //1.存储
+            function  setCookie(name,value,iDate) { //key value  20
+                var date = new Date();
+                date.setDate(date.getDate() + iDate);
+                document.cookie = name+"="+value+";expires="+date;
+            }
+            //2.获取json.key = value
+            function  getCookie() {
+               // user=123; user1=123; user2=123
+                var json = {};
+                ////["user=123","user1=123","user2=123"]
+                var arr = document.cookie.split(";");
+                for(var i = 0;i<arr.length;i++){
+                    var arr1 = arr[i].split("=");  //[user 123]
+                    json[arr1[0]] = arr1[1];
+                }
+                console.log(arr);
+                return json;
+            }
+            //3.移除
+            function removeCookie(name) {
+                setCookie(name,1,-1);
+            }
+            //
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+

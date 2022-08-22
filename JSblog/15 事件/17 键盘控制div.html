@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height:100px;
+            background: pink;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var oDiv = document.getElementsByTagName("div")[0];
+            onkeydown = function (ev) {
+                var ev = window.event || ev;
+                console.log(ev.keyCode);  //上 38 ： 下 40  左 37  右39
+               /* if(ev.keyCode == 38){
+                    oDiv.style.top = oDiv.offsetTop - 10 +"px";
+                }else if (ev.keyCode == 39){
+                    oDiv.style.left = oDiv.offsetLeft + 10 +"px";
+                }else  if(ev.keyCode == 37){
+                    oDiv.style.left = oDiv.offsetLeft -  10 +"px";
+                }else if(ev.keyCode == 40){
+                    oDiv.style.top = oDiv.offsetTop + 10 +"px";
+                }*/
+
+               switch (ev.keyCode){
+                   case 37 :  oDiv.style.left = oDiv.offsetLeft -  10 +"px";break;
+                   case 38 :  oDiv.style.top = oDiv.offsetTop - 10 +"px";break;
+                   case 39 :  oDiv.style.left = oDiv.offsetLeft + 10 +"px";break;
+                   case 40 :  oDiv.style.top = oDiv.offsetTop + 10 +"px";break;
+               }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

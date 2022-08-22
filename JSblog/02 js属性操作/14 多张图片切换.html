@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+           var img = document.getElementById("image");
+           var imgs = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg"];
+           var index = 0;
+           img.onclick = function () {
+              /* //img/2.jpg   img/3.jpg
+               //每点击一次，图片加1
+               index = index + 1;  //2
+               //如果到最后一张图片，回到第一张
+               if(index == 5){index=1;}
+               img.src = "img/"+index+".jpg";*/
+
+                index = index + 1;
+                if(index == 4){index=0;}
+                img.src = imgs[index];
+           }
+        }
+    </script>
+</head>
+<body>
+<img src="img/1.jpg" alt="" id="image">
+</body>
+</html>

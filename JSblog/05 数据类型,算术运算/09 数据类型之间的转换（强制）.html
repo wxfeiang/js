@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.其他类型转string
+            var a = 16;
+            var b = true;
+            var c = "hello";
+
+            //toString  将其他类型转换为string类型，不会改变原变量本身，
+            //a.toString(num) 将number类型转换为不同进制的字符串，toString（n）可选   取值范围2-36
+            console.log(a.toString(),a);
+            console.log(a.toString(8),a.toString(16),a.toString(2));  //12
+            //String
+            console.log(String(a));
+            /*
+                区别：String  强制转换为字符串类型
+                     变量.toString()  是你调用对象所带的方法，它可以被重写，按照自己的方法改变
+            */
+
+
+            //2.其他类型转成number  Number()
+            var e = 10;
+            var f = true;  //0=false   1=true
+            var g = "web";
+            var h = null;
+            var i = undefined;
+            console.log(Number(e),Number(f),Number(g));  //10 1 NaN(不是数字)
+            console.log(Number(null),Number(undefined));  //0  NaN
+
+            console.log(Number("123"));  //123
+            console.log(Number("124ha"));  //NaN  只要包含字符就不能转
+            console.log(Number("ha124"));  //NaN
+            console.log(Number("0000123"));  //123  忽略前面的0
+            console.log(Number(""));        //0
+            console.log(Number("0xf"));   //15
+            console.log(Number("071"));  // 71 没有看成8进制，直接忽略前面的0
+
+            //s数组转
+            console.log(Number([]));  //0
+            console.log(Number([""]));  //0
+            console.log(Number([123]));  //123
+            console.log(Number(["123"]));  //123
+            console.log(Number(["web"]));  //NaN
+            console.log(Number([1,2,3]));  //NaN
+
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+<input type="text">
+<button>确定</button>
+<script>
+   /* window.onload = function () {
+        var inpunt = document.getElementsByTagName("input")[0];
+        var button = document.getElementsByTagName("button")[0];
+        //只用从键盘输入的数据都是string   "10"  + 2  = ”102“       "美女"+index
+
+        button.onclick = function () {
+            for(var i = 0;i<(inpunt.value+2);i++){
+                document.body.innerHTML += "<div style='width: 100px;height: 100px;background: pink;margin-bottom: 10px;'></div>";
+            }
+        }
+*/
+//    }
+</script>
+</body>
+</html>

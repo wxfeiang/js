@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{position: absolute;}
+        div{width: 400px;height: 500px;background: #99ffcc;}
+        #box1{height: 40px;background: peachpuff;}
+    </style>
+    <script>
+        window.onload = function () {
+//            var warp = document.getElementById("box");
+//            var oDiv = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+//            drag(warp,oDiv);
+            drag(box2);
+
+
+            function drag(obj1,obj2) {  //父元素  拖拽的元素
+                //按下，拖动
+                var obj2 =  arguments.length == 2 ? obj2:obj1;
+                obj2.onmousedown = function (ev) {
+                    var ev = window.event || ev;
+                    var x = ev.clientX - obj1.offsetLeft;
+                    var y = ev.clientY - obj1.offsetTop;
+                    //alert(oDiv.setCapture);
+                    if(obj2.setCapture){  //undefined
+                        obj2.setCapture();
+                    }
+                    document.onmousemove = function (ev) {
+                        var ev = window.event || ev;
+                        var l = ev.clientX - x;
+                        var t = ev.clientY - y;
+                        if(l<50){
+                            l = 0;
+                        }
+                        if(l>document.documentElement.clientWidth- obj1.offsetWidth-50){
+                            l = document.documentElement.clientWidth - obj1.offsetWidth;
+                            console.log(l);
+                        }
+                        if (t<50){
+                            t = 0;
+                        }
+                        if(t>document.documentElement.clientHeight - obj1.offsetHeight-50){
+                            t = document.documentElement.clientHeight - obj1.offsetHeight;
+                        }
+                        obj1.style.top = t + "px";
+                        obj1.style.left = l + "px";
+                    };
+                    document.onmouseup = function () {
+                        document.onmousemove = document.onmouseup = "";
+                        if(obj2.setCapture){
+                            obj2.releaseCapture();
+                        }
+                    };
+
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<!--<div id="box">-->
+    <!--<div id="box1"></div>-->
+    <!--<div></div>-->
+<!--</div>-->
+<div id="box2" style="width: 100px;height: 100px;background: red;position: absolute;"></div>
+</body>
+</html>

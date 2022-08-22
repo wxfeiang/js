@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = function () {
+
+                //1.声明变量
+              var a;
+              a = 10;
+
+              var b = 10;
+
+              var n,m;
+              n = 100;
+              m = 80;
+
+              var w = 100,x = 100;
+                console.log(a,b);
+                //2.发送信息
+                   // oDiv.innerHTML = oDiv.innerHTML + input.value+"<br>";
+
+                //3.用类的方式  200 200 red
+                var oDiv = document.getElementById("box");
+                oDiv.onclick = function () {
+                    //添加类
+                    oDiv.className = "box";
+                }
+                //4.判断，90往上A 80-90B 70-80C 其他D
+                  var c = 78
+                  if(c > 90){
+                    alert("A");
+                  }else if(c > 80){
+                      alert("B");
+                  }else if(c > 70){
+                      alert("C");
+                  }else {
+                      alert("D");
+                  }
+                //5.开关效果
+                var but = document.getElementById("but");
+                  var onOff = 0;
+                  but.onclick = function () {
+                      if(onOff == 0){
+                          alert("1");  //开
+                          onOff = 1;
+                      }else {
+                          alert("0");  //关
+                          onOff = 0;
+                      }
+                  }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box" >123</div>
+<input type="text">
+<button id="but">开关</button>
+<style>
+    div{width: 100px;height: 100px;background: fuchsia;}
+    .box{width: 200px;height: 200px;background: red;}
+</style>
+</body>
+</html>

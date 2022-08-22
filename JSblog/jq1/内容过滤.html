@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;background: pink;}
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+       $(function () {
+            //1、:contains   节点内部必须包含特定内容  不考虑层级
+            $("div:contains('hello')").css("background","red");
+
+            //2.:empty  获取空元素  没有任何文本 标签
+           document.body.removeChild( $("div:empty")[0]);
+           //3.:parent  有子节点
+           console.log($("div:parent")[0]);
+           $("div:parent").css("background","#abc");
+
+            //4:first :last
+           $("li:first").css("background","red");
+           $("li:last").css("background","red");
+
+           //5.:eq  下标索引  0
+           $("li:eq(1)").css("background","red");
+
+           //6.:gt 大于   大于某个范围   :lt小于
+           $("li:gt(1)").css("background","pink");
+           $("li:lt(2)").css("background","blue");
+
+           //7：not  反选  除了not里面的元素其他的都获取
+            $("li:not(#li)").css("font-size","28px");
+            //8.header
+           $("h2:header").css("background","red");
+            $("div#box").css("background","blue");  //并且关系，顺序可以换。不能有歧义
+
+       })
+    </script>
+</head>
+<body>
+    <div class="box"><p><a href=""><span>hello world</span></a></p></div>
+    <div>ha</div>
+    <div class="box" id="box">hjhjh</div>
+    <div></div>
+    <ul>
+        <li id="li">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <h2>fkdsa</h2>
+    <h3>fkdsa</h3>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            //定义函数 function 函数名(){ 代码块 }   见名知意
+            //没有触发，调用，没有任何作用
+            function fun1(){
+                //代码块
+                console.log("hello word!");
+            }
+
+            //调用  函数名();
+            fun1();
+
+            //定义一个函数，计算某个范围之间的累加    50
+          var n = 70;
+            function sum() {
+                var sum = 0;
+                for(var i = 0; i <= n;i++){
+                    sum += i;
+                }
+                console.log(sum);
+            }
+            sum();
+            
+            //1.声明了一个函数，并且不带参数
+            function fun2() {
+                //具体保存的代码，调用 的时候执行这一段代码
+            }
+
+           //3.带参数的函数  function fun3(形参){}
+            function fun3(num) {   //形式参数   50   var num = 100
+                var sum = 0;
+                for (var i = 0; i <= num;i++){
+                    sum += i;
+                }
+                console.log(sum);
+            }
+            //1.确定这个函数的作用，开始写，一些不确定的值，设置为参数，
+            fun3(50);  //调用的时候传参fun3（实参） 实际参数 把实际参数的值传入函数，赋值给形式参数
+            fun3(100);  //调用的时候传参
+            fun3(90);  //调用的时候传参
+
+            
+
+        }
+    </script>
+</head>
+<body>
+<input type="text"><span>+</span><input type="text"><span>=</span><input type="text">
+</body>
+</html>

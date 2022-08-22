@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //封装 继承 多态   属性  方法
+            //1.字面量
+           /* var s1 = {
+                "name":"mm",
+                "eat":function () {
+                    alert("fd1");
+                }
+            };
+            s1.eat();
+            var s2 = {
+                "name":"mm",
+                "eat":function () {
+                    alert("fd2");
+                }
+            }
+            s2.eat();
+
+            //问题，相同代码重复写
+            //2.工厂模式
+            function createObject(name) {
+                //原材料
+                var obj = new Object();
+                obj.name = name;
+                obj.eat = function () {
+                    alert("吃饭");
+                    alert("this"+this);
+                };
+
+                return obj;
+            }
+            var s3 = createObject("mm");
+            console.log(s3.name);
+            s3.eat();
+            var s4 = createObject("mm");
+            console.log(s4.name);
+            s4.eat();*/
+
+            //3.构造函数  ,不需要创建和返回对象，直接用this，
+            function Student(name,age) {
+                this.name = name;
+                this.age = age;
+                this.eat = function () {
+                    console.log("不想吃饭");
+                }
+            }
+            var s5 = new Student("mm",18);
+            var s6 = new Student("???",19);
+           console.log(s5.name,s6.name);
+           if(s5.eat == s6.eat) //false
+           s5.eat();
+           //问题：相同的方法，浪费内存
+
+            //4.原型  定义一些共享的属性和方法  初始化一次
+            function  Teacher() {}
+            Teacher.prototype.name = "mm";
+            Teacher.prototype.eat = function () {
+                console.log("不想吃饭");
+            }
+
+            var s7 = new Teacher();
+//            s7.name = "如花";
+            console.log(s7.name);
+            var s8 = new Teacher();
+            console.log(s8.name);
+            //问题.不能传参
+
+            //5.混合  构造函数+原型 （构造函数中存放可变的属性和方法，原型里面不变的属性和方法）
+            function Person(name,age) {
+                this.name = name;
+                this.age = age;
+            }
+            Person.prototype.eat = function () {
+                console.log("不想吃饭");
+            }
+            //问题 破坏封装
+            //6.动态混合(封装)
+            function  Car(name,price) {
+                this.name = name;
+                this.price = price;
+                //1.不存在，不是函数
+                if(!(typeof  this.run == "function")){
+                    Car.prototype.run = function () {
+                        alert("跑的快");
+                    }
+                }
+            }
+            Car.prototype.color = "red";
+            var c1 = new Car("ttr",100);
+            //引用类型
+
+            //要改某个属性
+            console.log(c1.name);
+            c1.name = "hahahha";
+            console.log(c1.name,c1.color);
+            c1.color = "pink";
+//            Car.prototype.color = "white";  //改了原型的东西，后面创建的所有的对象都改了
+            c1.__proto__.color = "white";
+            console.log(c1.color);
+            var c2 = new Car("ttr",100);
+            console.log(c2.color,c2);  //如果是具体实例对象，只会改变自己本身
+            console.log(c1.__proto__ == Car.prototype);
+            console.log(c1.__proto__.__proto__==Object.prototype);
+
+
+            //移除
+            delete Car.prototype.color;
+            var c3 = new Car("ttr",100);
+            console.log(c3.color); //undefined
+            delete c3.name;
+            console.log(c3.name);
+
+            var c4 = new Car("ttr",100);
+            console.log(c4.color,c4.name)
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

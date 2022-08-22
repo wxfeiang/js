@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+
+            //创建正则 正则表达式:规定文本检索的内容
+            //RegExp 正则对象，存储检索模式    new RegExp("要查找的内容"，形式)
+            //----------------------------1.创建正则-------------------------
+            //1.构造函数
+            var str = "Hello world!";
+            var reg1 =  new RegExp("h");
+            var reg2 =  new RegExp("h","ig");//i 不区分大小写 g 全局匹配
+            //2.字面量创建 /要查找的内容/ig
+            var reg3 = /o/ig;
+
+
+            //---------------------2.检索的方法-------------------------------
+            //1.test();   检测字符串中是否包含定义的字符模式，返回的是布尔
+//            console.log(reg3.test(str));  //true
+            //2.exec  具体进行检索匹配，没找到返回nall 找到
+            //正则对象每次匹配一个，在lastIndex属性中保存下一次要查的位置，如果再执行一次查找，开始的位置就是lastIndex里面的值
+            /*reg3.lastIndex = 9;
+            console.log(reg3.exec(str),reg3.lastIndex);
+            console.log(reg3.exec(str),reg3.lastIndex);
+            console.log(reg3.exec(str),reg3.lastIndex);
+            console.log(reg3.exec(str),reg3.lastIndex);
+            console.log(reg3.exec(str),reg3.lastIndex);*/
+            var ss = null;
+            while ((ss = reg3.exec(str)) != null){ //
+                  console.log(ss.index);  //下标
+            }
+            //
+            console.log(/w/ig.exec(str));
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

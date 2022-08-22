@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            //1.找到字符串中所有的数字用数组输出
+            var str = "12 fff 87 er334 233 -=-=fa80"; //[12 87 334]
+            var temp = "";
+            var arr = [];
+            for(var i = 0;i<str.length;i++){
+                if(str.charCodeAt(i)>47 && str.charCodeAt(i)<58){
+                    temp += str[i];
+                }else {
+                    if(temp){ //temp不为空
+                        arr.push(temp);
+                        temp = "";
+                    }
+                }
+            }
+            if (temp){
+                arr.push(temp);
+                temp = "";
+            }
+            console.log(arr);
+            var arr1 = [];
+            var reg = /\d+/g;
+            var temp1 = null;
+            while ((temp1 = reg.exec(str)) !=  null ){  //1.temp1   lastIndex
+               arr1.push(temp1[0]);
+//               console.log(reg.exec(str));  //null
+            }
+            console.log(arr1);
+
+            //2.创建正则表达式的方法
+            //构造函数创建
+            var reg1 = new RegExp("i","ig");
+            var reg2 = /\d/ig;
+            //3.用正则检索字符串，是否包含数字
+            var str3 = "hello world12";
+            var reg3 = /\d/g;
+            if(reg3.test(str3)){  //test 布尔
+                alert("有")
+            }else {
+                alert("没有")
+            }
+            //4.检测字符串是否不包含字母
+            var reg4 = /[^a-zA-Z]/;
+            //5.检测网址 http://www.baidu.com            .com  cn  net  edu
+            var str5 = "http://www.baidu.com";
+            var reg5 = /http:\/\/[a-zA-Z]+\.\w+\.(com|net|cn|ed)/;
+            console.log(reg5.exec(str5));
+            //6.去除首尾空格
+            var str6 = "                     hello world                             ";
+            console.log("|"+str6+"|");
+            var reg6 = /(^\s+).+\S(\s+$)/g;
+            reg6.exec(str6);  //RegExp
+           var str7 = str6.replace(RegExp.$1,"");
+            console.log("|"+str7+"|");
+             str7= str7.replace(RegExp.$2,"");
+            console.log("|"+str7+"|");
+
+
+
+
+            var str8= "                     hello world                             ";
+            var reg8= /^\s+/g;
+            var str9 = str8.replace(reg8,"");
+            console.log("|"+str9+"|");
+            var reg9 = /\s+$/g;
+            str9 = str9.replace(reg9,"");
+            var reg9 = /\s+$/g;
+            console.log("|"+str9+"|");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

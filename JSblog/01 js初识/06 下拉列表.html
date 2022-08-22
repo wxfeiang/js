@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 200px;margin: 0 auto;}
+        #title{background: orange;font: 24px/40px "Microsoft YaHei";color: white;text-align: center;margin: 0;}
+        ul {list-style: none;padding: 0;margin: 0;display: none;width: 200px;margin: 0 auto;}
+        ul li{background: lemonchiffon;}
+        ul li:hover{background: fuchsia;}
+    </style>
+</head>
+<body>
+    <div id="div">
+        <p id="title">web前端课程</p>
+    </div>
+    <ul id="oUl">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>PHP</li>
+    </ul>
+    <script>
+           //下拉列表
+           var title = document.getElementById("title");
+           var oUl = document.getElementById("oUl");
+
+           //问题  p标签
+           title.onmouseover = function () {
+               //
+               oUl.style.display = "block";
+           };
+           title.onmouseout = function () {
+               oUl.style.display = "none";
+           };
+           oUl.onmouseover = function () {
+               oUl.style.display = "block";
+           };
+           oUl.onmouseout = function () {
+               oUl.style.display = "none";
+           };
+    </script>
+</body>
+</html>

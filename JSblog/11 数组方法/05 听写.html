@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            var str = "abcabcabcfdfdrabcfdfd";
+            //1.获取字符串第一个字符的至少三种方法
+            console.log(str[0],str.charAt(0),str.substring(0,1));
+            //2.获取字符串的前两个字符
+            console.log(str.substring(0,2));
+            //3.获取除第一个字符以为的其他所有的字符
+            console.log(str.substring(1));
+            //4.定义一个字符串，加空格显示
+            var str1 = "web705";  // w e b 7 0 5
+            var arr = str1.split("");
+            console.log(arr); //w e b 7 0 5
+            console.log(arr.join(" "));
+
+            //5.定义一个函数，判断是否为数字
+            var str2 = "w70fdfd";
+            console.log(isNum(str2));
+            console.log(isNum("705"));
+            //6.判断一个字符在字符串中出现的次数
+            var s = "abc";
+            console.log(indexLength(str,s));
+            //7.创建一个长度为5的空数组
+            var arr1 = new Array(5);
+            console.log(arr1,arr1.length);
+
+            function isNum(str) {
+                //函数里面只要遇到return 函数就结束
+                for(var i = 0; i<str.length;i++){
+                    if(str.charCodeAt(i) < 48 || str.charCodeAt(i) > 57){
+                        //不是数字
+                       return false;
+                    }
+                }
+                return true;
+            }
+
+            function indexLength(str,s) {
+
+                var n = 0;
+                var i  = 0;
+                for (;str.indexOf(s,i) != -1;){
+                    n++;
+                    i = str.indexOf(s,i) + s.length;
+                }
+                return n;
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{width: 500px;height: 500px;background: darkseagreen;}
+    </style>
+    <script>
+        //window 窗口  window.onload  等页面加载完成   window :表示窗口   系统自带
+          window.onload  = function () {
+              var oDiv = document.getElementById("div");
+              oDiv.onmouseover = function () {  //Cannot set property 'onmouseover' of null    这个事件前面的元素没有
+                  alert("已经进入电子监控区域");
+              }
+         }
+    </script>
+</head>
+<body>
+    <div id="div"></div>
+</body>
+</html>

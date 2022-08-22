@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var a = 10;   //全局  在任何地方都能改，在任何地方都能取
+        function fun1() {
+            a++;console.log(a);  //11
+        }
+        function fun2() {
+            a++;    //12
+            a--;    //11
+            console.log(a);    //11
+        }
+        fun1();
+        fun2();
+        console.log(a);//11
+
+
+
+        function  fun3() {
+            var a = 100;
+            a++;
+            console.log(a);
+        }
+        fun3();  //101
+        fun3();  //101
+        fun3();  //101
+
+
+
+        //操作局部变量
+        var s = 0;
+        function  fun4() {
+            var c = 20;
+            c++;
+            s = c;
+        }
+        fun4();
+        console.log(s);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

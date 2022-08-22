@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function (){
+            var text = document.getElementsByTagName("textarea");
+            var but = document.getElementsByTagName("button")[0];
+            but.onclick = function (){
+                var value = text[0].value;
+                var reg = /(if)|(as)/ig;   //if as
+                text[1].value = value.replace(reg,"***");
+            }
+
+        }
+    </script>
+</head>
+<body>
+<textarea name=""  cols="60" rows="15"></textarea><button>过滤</button>
+<br>
+<textarea name="" cols="60" rows="15"></textarea>
+
+</body>
+</html>

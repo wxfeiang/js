@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{width: 100px;height: 100px;}
+
+    </style>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //给有class的元素设置背景
+            //$("div[class]").css("background","red");
+            //1.有class 并且必须为box
+            //$("div[class=box]").css("background","red");
+
+            //!=
+            $("div[class!=box1]").css("background","red");
+
+            //^=  $=    class名以b开头
+            $("div[class^=b]").css("background","pink");
+            $("div[class$='1']").css("background","#abc");
+
+            //获取元素的内容 标签和内容
+           console.log( $(".box").html());
+//           $(".box").html("<p>我是一个段落</p>");
+
+           //获取元素的内容  内容
+           console.log( $(".box").text());
+            $(".box").text("<p>我是一个段落</p>");
+
+
+
+        })
+    </script>
+</head>
+<body>
+<div class="box"><span>我是一个span</span></div>
+<div class="box1"></div>
+<div ></div>
+</body>
+</html>

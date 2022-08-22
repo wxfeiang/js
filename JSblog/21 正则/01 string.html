@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var str = "web,705";
+            var s = "w";
+            //1.indexof
+            console.log(str.indexOf(s));//找的到  返回首次出现下标  找不到-1
+            console.log(str.search(s));
+
+            //2.substring
+            console.log(str.charAt(0));  //返回指定下标的字符
+            console.log(str.substring(3,5));  //705  包括开始，不包括结束
+
+            //3.split分割
+            console.log(str.split(","));
+
+            //4.
+            console.log(str.match("w"));  //["7", index: 4, input: "web,705"]
+            //12 fff 87 er334 233 -=-=fa80  [12 87 334 233 80]
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

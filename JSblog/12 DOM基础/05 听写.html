@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            //1.定义一个json，打印里面所有的项
+            var json = {
+                "name":"web705",
+                "age":1,
+                "h":180
+            };
+            for( var key  in json){
+                console.log(key,json[key]);
+            }
+            var arr = [1,2,3];
+            for( var key  in arr){
+                console.log(key,arr[key]); //"0"
+            }
+            console.log(json.length);
+
+            //2.定义一个数组，把数组的第一项放到最后一项
+            arr.push( arr.shift());
+            console.log(arr);
+            //unshift shift    push pop
+
+            //3.[1,2,3]  把2的位置换成4，5  //[2, 3, 1]
+//            arr.splice(1);
+            console.log(arr);//[2, 3]
+            var arr1 = [1,2,3,11];
+            arr1.splice(1,1,4,5);
+            console.log(arr1);
+
+            //4.数组从小到大排序
+            arr1.sort(function (a,b) {
+                return b-a;
+            });
+            console.log(arr1);
+
+
+            //5.随机生成10个10-100之间的数  x-y  *（y-x）+x
+            for(var i = 0 ;i < 10;i++){
+                var s = Math.round(Math.random()*90+10);  //0-1
+                console.log(s);
+            }
+
+            //6.div里面有个按钮，点击按钮设置div的背景颜色
+            var but = document.getElementsByTagName("button");
+            for (var i = 0;i<but.length;i++){
+                but[i].onclick = function () {
+                    //获取父元素
+                    console.log(this.parentNode);
+                    this.parentNode.style.background = this.childNodes[0].nodeValue;
+                    //this  标签
+                   console.log( this.childNodes[0].nodeValue); //集合 【text】
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <button>#abc</button>
+    <button>#bca</button>
+</div>
+<style>
+    div{width: 200px;height: 200px;}
+</style>
+</body>
+</html>

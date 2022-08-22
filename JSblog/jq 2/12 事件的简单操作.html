@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $(function () {
+            //mouseover   mouserout  mousemove
+            /*
+            mouseover  在子元素上也会触发事件
+            mouseenter 不会在子元素上触发
+
+            mouseout
+            mouseleave
+            * */
+            //
+            $("#box").mouseover(function (ev) {
+                //ev 事件对象
+                /*console.log(event.type);
+                console.log(event.clientY);
+                console.log(event.target);*/
+                console.log("进入");
+            });
+            $("#box").mouseout(function (ev) {
+                console.log("离开");
+            });
+            $("#box1").mouseenter(function (ev) {
+                console.log("进入")
+            });
+            $("#box1").mouseleave(function (ev) {
+                console.log("离开")
+            });
+
+
+        })
+    </script>
+</head>
+<body>
+    <div style="width: 500px;height: 200px;background: thistle;margin-bottom: 20px;overflow: hidden" id="box">
+        <div style="width: 300px;height: 100px;background: orange;margin: 50px auto;"></div>
+    </div>
+    <div style="width: 500px;height: 200px;background: sandybrown;overflow: hidden" id="box1">
+        <div style="width: 300px;height: 100px;background: orangered;margin: 50px auto;"></div>
+    </div>
+
+</body>
+</html>

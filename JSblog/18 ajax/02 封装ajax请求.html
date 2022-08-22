@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="txf.js"></script>
+    <script>
+        window.onload = function (){
+           /* ajax(”“，function(){当你请求到正确数据的时候调用，拿到请求的数据
+            }，function(){
+                当你请求失败的时候调用，提示错误信息
+            }):*/
+
+           ajax("wenben.txt",function (str) {
+               //成功的时候
+               alert("请求成功"+str);
+           },function (str) {
+                //alert(str);
+              var newW =   open("03.html","_blank");
+              newW.document.write("<h1 style='text-align: center'>"+str+"</h1>")
+           });
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

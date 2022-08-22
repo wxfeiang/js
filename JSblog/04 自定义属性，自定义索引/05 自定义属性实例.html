@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            var imgs = document.getElementsByTagName("img");
+            for(var i = 0;i<imgs.length;i = i + 1){
+                imgs[i].onOff = 0;
+                imgs[i].onclick = function () {
+                    if(this.onOff == 0){
+                        this.src = "img/2.jpg";
+                        this.onOff = 1;
+                    }else {
+                        this.src = "img/1.jpg";
+                        this.onOff = 0;
+                    }
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<img src="img/1.jpg" alt="" width="500">
+<img src="img/1.jpg" alt="" width="500">
+<img src="img/1.jpg" alt="" width="500">
+</body>
+</html>
