@@ -36,10 +36,10 @@
                                 </div>
                                 <div class="btn_box">
                                     <el-button circle icon="el-icon-delete" v-if="moring.food.length-1 !=0 || index>0 "
-                                        @click.prevent="removeitem(item)" size="mini">
+                                        @click.prevent="removeitem('moring','food',item)" size="mini">
                                     </el-button>
                                     <el-button circle icon="el-icon-plus" v-if="index == moring.food.length-1"
-                                        @click="addFrom" size="mini"></el-button>
+                                        @click="addFrom('moring','food')" size="mini"></el-button>
                                 </div>
                             </div>
 
@@ -64,8 +64,9 @@
         el: '#app',
         data() {
             return {
-
                 moring: {
+                    week: '',
+                    weekDate: '',
                     food: [
                         {
                             name: '',
@@ -74,9 +75,11 @@
                         }
                     ],
 
+                },
+                // 多个moring'
+                formarr: ['moring'],//假设这是四个form表单的ref
+                resultarr: [],//用来接受返回结果的数组
 
-                }
-                // 多个moring
             }
         },
         created() {
@@ -84,31 +87,66 @@
 
         },
         methods: {
-            // 获取数据
-            submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        alert('submit!');
-                        console.log(this.moring)
-                    } else {
-                        console.log('error submit!!');
-                        return false;
-                    }
+            //封装验证函数
+            checkForm(formName) {
+                let _self = this;
+                _self.resultArr = []
+                let result = new Promise(function (resolve, reject) {
+                    _self.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            resolve();
+                        } else { reject() }
+                    })
+                })
+                _self.resultArr.push(result) //push 得到promise的结果
+            },
+
+
+            // 
+            submitForm() {
+                let _self = this;
+                _self.formarr.forEach(item => { //根据表单的ref校验
+                    _self.checkForm(item)
+                })
+                //resultArr数组的值必须是promise对象才能使用Promise.all，在checkForm做了这一步
+                Promise.all(_self.resultArr).then(function () { //都通过了
+                    let datas = _self.chaagrr(_self.moring.food)
+                    console.log('所有表单验证通过', datas)
+                    // TODO:可直接执行你的提交 数据 
+                    // 该区域使用this无效，promise内面的this表示局部，并不代表VueComponet实例
+                }).catch(function () {
+                    console.log("err");
                 });
             },
+
+
+
+
+            chaagrr(array) {
+                var json = {}
+                array.forEach(item => {
+                    json[item.name] = item.tag
+
+                });
+                return json
+            },
+
+
             resetForm(formName) {
                 this.$refs[formName].resetFields();
             },
             // 点击删除
-            removeitem(item) {
-                var index = this.moring.food.indexOf(item)
+            removeitem(obj, filed, item) {
+                var index = this[obj][filed].indexOf(item)
                 if (index !== -1) {
-                    this.moring.food.splice(index, 1)
+                    this[obj][filed].splice(index, 1)
                 }
             },
             // 点击添加
-            addFrom() {
-                this.moring.food.push({
+            addFrom(obj, filed) {
+                console.log(obj, filed)
+
+                this[obj][filed].push({
                     name: '',
                     tag: [],
                     tagValue: '',
@@ -133,7 +171,14 @@
 
 
     })
+
+
+
+
+
 </script>
+
+
 <style lang="">
     .cont_box {
         display: flex;
