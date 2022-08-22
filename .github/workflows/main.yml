@@ -19,6 +19,7 @@ jobs:
     - name: Build
       run: |
         ls -al # 进入前端侧的工程目录
+        mkdir dist
         cp -R /*  /dist
     # 命名这个任务为发布Deploy
     - name: Deploy
