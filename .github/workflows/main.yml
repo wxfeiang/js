@@ -21,9 +21,8 @@ jobs:
         ls -al # 进入前端侧的工程目录
         pwd
         cd ../
-        pwd 
-        cd ../
-        ls 
+        pwd
+        
     # 命名这个任务为发布Deploy
     - name: Deploy
       # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
@@ -36,5 +35,5 @@ jobs:
         user: ${{ secrets.USER_NAME }}
         pass: ${{ secrets.USER_PASS }}
         connect_timeout: 10s
-        local: '  ./js/*'
+        local: '  ../../js/*'
         remote: /home/www/javaScrip/
