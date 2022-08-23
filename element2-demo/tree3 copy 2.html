@@ -10,42 +10,11 @@
     <div id="app">
         <div class="tab_box">
 
-            <div v-for="(item,index) in tableList" :key="index">
-                <div class="h3">
-                    <div class="item-title item1">
-                        星期{{ handlerWeek()[item.weekNum -1]}}
-                    </div>
-                    <div class="item-title item2">
-                        {{item.createTime}}
-                    </div>
-                </div>
-                <el-table :data="item.list" border :show-header="false" style="width: 100%"
-                    :span-method="arraySpanMethod" :row-class-name="rowClassName">
 
-                    <el-table-column prop="timeMeal" :formatter="handlerDaysT" align="center" sortable label="就餐时间"
-                        width="120px">
-                    </el-table-column>
-                    <el-table-column prop="categoryName" align="center" sortable label="类别" width="150px">
-                    </el-table-column>
-                    <el-table-column prop="foodName" align="center" sortable label="餐品">
-                        <template slot-scope="scope">
-                            <div class="tag_box">
-                                <span class="tab_sapn" v-for="(item,index) in changeArr(scope.row.foodName)"
-                                    :key="index">
-                                    {{item}}
-                                </span>
-                            </div>
-
-
-
-                        </template>
-                    </el-table-column>
-                </el-table>
-
-
-            </div>
 
         </div>
+
+    </div>
 
     </div>
 </body>
@@ -61,18 +30,18 @@
                 tableList: [],
                 rows: [
                     {
-                        id: '1561936182330081282',
-                        weekNum: '2',
-                        weekDate: '2022-07-31 00:00:00',
-                        createTime: '2022-08-23 12:39:39',
-                        updateTime: null,
+                        "id": "1559839139432300546",
+                        "weekNum": "1",
+                        "weekDate": "2022-08-23 00:00:00",
+                        "createTime": "2022-08-17 17:46:45",
+                        "updateTime": null,
                         moring: [
                             {
                                 id: null,
                                 timeMeal: 'MOR',
                                 weekDateId: null,
                                 foodTypeId: null,
-                                foodName: '["小喵"]',
+                                foodName: '["早晨"]',
                                 createTime: null,
                                 updateTime: null,
                                 categoryName: '面点'
@@ -84,7 +53,7 @@
                                 timeMeal: 'MIDDAY',
                                 weekDateId: null,
                                 foodTypeId: null,
-                                foodName: '["肌肉"]',
+                                foodName: '["早晨"]',
                                 createTime: null,
                                 updateTime: null,
                                 categoryName: '肉食'
@@ -96,28 +65,27 @@
                                 timeMeal: 'NIGHT',
                                 weekDateId: null,
                                 foodTypeId: null,
-                                foodName: '["刀削麵"]',
+                                foodName: '["早晨"]',
                                 createTime: null,
                                 updateTime: null,
-                                categoryName: '面食'
+                                categoryName: '面点'
                             }
                         ]
-                    }
+                    },
+
                 ],
-                needMergeArr: ['timeMeal', 'categoryName', 'foodName'], //需要进行合并的column的prop值
+                needMergeArr: ['timeMeal', 'categoryName'], //需要进行合并的column的prop值
                 rowMergeArrs: {}, //处理过后得到的每个column的合并规则
             }
         },
         created() {
 
             this.tableList = this.handleArr(this.rows)
-            console.log(this.tableList)
             this.rowMergeArrs = this.rowMergeHandle(this.needMergeArr, this.tableList[0].list); // 处理数据
         },
         methods: {
             handleArr(arr) {
-                let newarr = []
-                arr.forEach(item => {
+                arr.forEach((item, index) => {
                     item.list = [...item.moring, ...item.midday, ...item.night]
                 })
                 return arr
@@ -155,9 +123,6 @@
                 } else if (column.property === 'categoryName') {
                     return this.mergeAction('categoryName', rowIndex);
                 }
-                // else if (column.property === 'foodName') {
-                //     return this.mergeAction('foodName', rowIndex);
-                // }
             },
             mergeAction(val, rowIndex) {
                 let _row = this.rowMergeArrs[val].rowArr[rowIndex];
@@ -190,15 +155,7 @@
                 return day
 
             }
-            ,
-            rowClassName: function ({ row }) {
-                if (row.categoryName === 'set') {
-                    return "showRow";
-                } else {
-                    return
-                }
-            },
-            // seizeASeat
+
 
 
         },
@@ -248,10 +205,6 @@
         display: inline-block;
         padding: 0 10px;
 
-    }
-
-    .showRow {
-        display: none;
     }
 </style>
 
