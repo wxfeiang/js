@@ -34,8 +34,8 @@ jobs:
         user: ${{ secrets.USER_NAME }}
         pass: ${{ secrets.USER_PASS }}
         connect_timeout: 10s
-        local: '  ../../js/*'
-        remote: /home/www/javaScrip/
+       #  local: '  ../../js/*'
+       #  remote: /home/www/javaScrip/
         script: |
             cd /home/www/js # 进入服务器中的端工程所在的目录
             git pull
