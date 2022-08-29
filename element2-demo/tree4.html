@@ -35,6 +35,9 @@
 
                                 </div>
                                 <div class="btn_box">
+                                    <el-button circle icon="el-icon-delete"
+                                        @click.prevent="removeitem('moring','food',item)" size="mini">
+                                    </el-button>
                                     <el-button circle icon="el-icon-delete" v-if="moring.food.length-1 !=0 || index>0 "
                                         @click.prevent="removeitem('moring','food',item)" size="mini">
                                     </el-button>
@@ -46,7 +49,7 @@
                         </el-form-item>
                     </div>
                     <el-form-item>
-                        <el-button type="primary" @click="submitForm('moring')">获取数据</el-button>
+                        <el-button type="primary" @click="submitForm('subData')">获取数据</el-button>
                         <el-button @click="resetForm('moring')">重置</el-button>
                     </el-form-item>
                 </el-form>
@@ -103,14 +106,14 @@
 
 
             // 
-            submitForm() {
+            submitForm(fun) {
                 let _self = this;
                 _self.formarr.forEach(item => { //根据表单的ref校验
                     _self.checkForm(item)
                 })
                 //resultArr数组的值必须是promise对象才能使用Promise.all，在checkForm做了这一步
                 Promise.all(_self.resultArr).then(function () { //都通过了
-                    _self.subData()
+                    _self[fun]()
                     console.log('所有表单验证通过')
                     // TODO:可直接执行你的提交 数据 
                     // 该区域使用this无效，promise内面的this表示局部，并不代表VueComponet实例
@@ -118,6 +121,10 @@
                     console.log("err");
                 });
             },
+
+
+
+
             subData() {
                 let data = {
                     week: this.moring.week,
