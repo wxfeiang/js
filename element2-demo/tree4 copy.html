@@ -1,0 +1,209 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2022-09-16 19:39:10
+ * @LastEditTime: 2022-09-19 00:00:08
+ * @FilePath: /js/element2-demo/tree4 copy.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        {{alt}}
+
+        <el-cascader v-model="value" :props="props" :options="alt"></el-cascader>
+        <el-button @click="sure">
+            quding
+        </el-button>
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                value: [1, 2],
+                options: [
+                    {
+                        value: 'zhinan',
+                        label: '指南',
+                        children: [
+                            {
+                                value: 'shejiyuanze',
+                                label: '设计原则',
+                                children: [{
+                                    value: 'yizhi',
+                                    label: '一致'
+                                }, {
+                                    value: 'fankui',
+                                    label: '反馈'
+                                }, {
+                                    value: 'xiaolv',
+                                    label: '效率'
+                                }, {
+                                    value: 'kekong',
+                                }]
+                            },
+                        ]
+                    },
+                ],
+                props: {
+                    checkStrictly: true,
+                    value: "value",
+                    children: 'children',
+                    label: "title"
+                },
+                alt: null,
+                //treeData: null,
+                newTreeList: [],
+                treeData: [
+                    {
+                        "id": 1,
+                        "parentId": 0,
+                        "type": "结生上取段日名求将查由六才酸商验又每。",
+                        "referenceId": 234,
+                        "sort": 29,
+                        "code": "你计世派列太是后气住内带却所就。",
+                        "name": "直按种白亲叫也总较机低及省。",
+                        "userCount": 196,
+                        "description": "空价等名共通七斗海共度实养族识观东。",
+                        "modifyDate": null,
+                        "makeBillMan": "test",
+                        "createDate": null,
+                        "modifier": "test",
+                        "deleteFlag": false,
+                        "children": [
+                            {
+                                "id": 2,
+                                "parentId": 1,
+                                "type": "结生上取段日名求将查由六才酸商验又每。",
+                                "referenceId": 234,
+                                "sort": 29,
+                                "code": "你计世派列太是后气住内带却所就。",
+                                "name": "直按种白亲叫也总较机低及省。",
+                                "userCount": 196,
+                                "description": "空价等名共通七斗海共度实养族识观东。",
+                                "modifyDate": null,
+                                "makeBillMan": "test",
+                                "createDate": null,
+                                "modifier": "test",
+                                "deleteFlag": false,
+                                "children": [
+                                    {
+                                        "id": 3,
+                                        "parentId": 2,
+                                        "type": "结生上取段日名求将查由六才酸商验又每。",
+                                        "referenceId": 234,
+                                        "sort": 29,
+                                        "code": "你计世派列太是后气住内带却所就。",
+                                        "name": "直按种白亲叫也总较机低及省。",
+                                        "userCount": 196,
+                                        "description": "空价等名共通七斗海共度实养族识观东。",
+                                        "modifyDate": null,
+                                        "makeBillMan": "test",
+                                        "createDate": null,
+                                        "modifier": "test",
+                                        "deleteFlag": false,
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }]
+                // -----------------------------
+            }
+        },
+        created() {
+
+
+        },
+        methods: {
+            changeArr(arr) {
+                //  console.log("--", arr)
+                let c = {
+                    val: '',
+                    chile: []
+                }
+                arr.forEach(item => {
+                    if (item.children && item.children.length > 0) {
+                        //  console.log(item)
+                        this.changeArr(item.children)
+                    } else {
+                        c.val = item.value + "valuesss"
+
+                    }
+
+                });
+                return c
+            },
+
+            // 递归树状数据
+            getTreeList(treeList, newTreeList) {
+                console.log(treeList)
+                treeList.map(c => {
+                    let tempData = {
+                        label: c.name
+                    }
+                    if (c.children && c.children.length > 0) {
+                        tempData.children = []
+                        this.getTreeList(c.children, tempData.children)
+                    }
+                    newTreeList.push(tempData)
+                })
+            }
+            ,
+
+            treeDataFormat(treeJson) {
+                if (!Array.isArray(treeJson) || treeJson && treeJson.length <= 0) {
+                    return []
+                }
+                let res = []
+                treeJson.forEach((item, i) => {
+                    res.push({
+                        title: item.id,
+                        value: item.id,
+                        children: (item.children && item.children.length > 0) ? this.treeDataFormat(item.children) : null
+                    })
+                })
+                // console.log(res)
+                return res
+            },
+            sure(data) {
+                console.log(this.value)
+            }
+
+
+        },
+        created() {
+            //  = this.changeArr(this.options)
+            // this.alt = this.getTreeList(this.treeData, this.newTreeList);
+            this.alt = this.treeDataFormat(this.treeData);
+            console.log(this.alt)
+
+
+        }
+
+
+    })
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</html>

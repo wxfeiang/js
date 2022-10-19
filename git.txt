@@ -53,7 +53,7 @@ git checkout -b <branchName> <tagName>
 git push --force  本地会退 后  强制更新远程库
 
 
-————————————————
+——————————————————————————————————————————————————————————————————————————
 分支相关命令
  git branch                  查看本地分支； 
  git branch -r              查看远程分支； 
@@ -61,7 +61,7 @@ git push --force  本地会退 后  强制更新远程库
  git branch -d branchName              删除本地分支； 
  git branch -d -r branchName                删除远程分支； 
  git branch -D branchName                   强制删除branchName分支； 
- git branch -v                      查看本地分支信息； 
+ git branch -v    s                   查看本地分支信息； 
  git branch -vv                      查看更多本地分支信息； 
  git branch -av                     查看所有分支信息； 
  git branch -m oldbranch newbranch                      重命名分支； 
