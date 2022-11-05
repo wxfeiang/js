@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2022-09-16 19:39:10
- * @LastEditTime: 2022-09-19 00:00:08
+ * @LastEditTime: 2022-11-04 23:58:02
  * @FilePath: /js/element2-demo/tree4 copy.html
 -->
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
     <div id="app">
         {{alt}}
 
-        <el-cascader v-model="value" :props="props" :options="alt"></el-cascader>
+        <el-cascader ref="cc" v-model="value" filterable :props="props" :options="alt" @change="change"></el-cascader>
         <el-button @click="sure">
             quding
         </el-button>
@@ -179,6 +179,15 @@
             },
             sure(data) {
                 console.log(this.value)
+            },
+            change(data) {
+                console.log(data, "---")
+
+
+                setTimeout(() => {
+                    let ss = this.$refs.cc.getCheckedNodes()
+                    console.log(ss)
+                }, 100)
             }
 
 
@@ -186,6 +195,7 @@
         created() {
             //  = this.changeArr(this.options)
             // this.alt = this.getTreeList(this.treeData, this.newTreeList);
+
             this.alt = this.treeDataFormat(this.treeData);
             console.log(this.alt)
 

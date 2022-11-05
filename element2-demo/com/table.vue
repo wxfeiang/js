@@ -1,10 +1,4 @@
-<!--
- * @Author: wxfeiang
- * @Description: 产品推荐编辑
- * @Date: 2022-08-23 14:11:10
- * @LastEditTime: 2022-08-23 23:19:11
- * @FilePath: /js/element2-demo/com/table.vue
--->
+
 <template>
   <div>
     <div class="h3">
