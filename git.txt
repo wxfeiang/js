@@ -98,7 +98,7 @@ git config --global init.defaultBranch main
 
 2 git checkout --patch 来源分支名称 文件路径（比如/app/view/activity.java）
 
-
+3 git checkout dev 切换分支 （dev 也可以是远程分支）
 
 ---- mac git提交失败
 
