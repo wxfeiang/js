@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 </head>
 
 <body>
     <script>
         var arr = [
-            { id: 56, pid: 62, name: "sssss" },
+            { id: 56, pid: 62, name: 'sssss' },
             { id: 81, pid: 80 },
             { id: 74, pid: null },
             { id: 76, pid: 80 },
@@ -22,16 +22,14 @@
             { id: 86, pid: 74 },
             { id: 12, pid: null },
             { id: 44, pid: 12 },
-            { id: 13, pid: 12 },
-
-        ];
+            { id: 13, pid: 12 }
+        ]
         //  第一次 改变成树
         function gettree(arr, id, list) {
             for (let item of arr) {
                 if (item.pid == id) {
                     list.push(item)
                 }
-
             }
             for (let i of list) {
                 i.children = []
@@ -42,11 +40,11 @@
             }
 
             return list
-
         }
 
         var res = gettree(arr, null, [])
         console.log(res)
+        console.log(JSON.stringify(res))
 
         //  更优
         let arr3 = [
@@ -54,7 +52,7 @@
             { id: 2, name: '部门2', pid: 1 },
             { id: 3, name: '部门3', pid: 1 },
             { id: 4, name: '部门4', pid: 3 },
-            { id: 5, name: '部门5', pid: 4 },
+            { id: 5, name: '部门5', pid: 4 }
         ]
         var arr4 = [
             { id: 56, pid: 62 },
@@ -68,20 +66,19 @@
             { id: 86, pid: 74 },
             { id: 12, pid: null },
             { id: 44, pid: 12 },
-            { id: 13, pid: 12 },
-
-        ];
+            { id: 13, pid: 12 }
+        ]
 
         function arrayToTree(items) {
-            const result = [];   // 存放结果集
-            const itemMap = {};  //
+            const result = [] // 存放结果集
+            const itemMap = {} //
             for (const item of items) {
-                const id = item.id;
-                const pid = item.pid;
+                const id = item.id
+                const pid = item.pid
 
                 if (!itemMap[id]) {
                     itemMap[id] = {
-                        children: [],
+                        children: []
                     }
                 }
 
@@ -90,54 +87,96 @@
                     children: itemMap[id]['children']
                 }
 
-                const treeItem = itemMap[id];
+                const treeItem = itemMap[id]
 
                 if (pid === 0 || pid == '' || !pid) {
-                    result.push(treeItem);
+                    result.push(treeItem)
                 } else {
                     if (!itemMap[pid]) {
                         itemMap[pid] = {
-                            children: [],
+                            children: []
                         }
                     }
                     itemMap[pid].children.push(treeItem)
                 }
-
             }
-            return result;
+            return result
         }
 
         console.log('……………………^_^……………………')
         console.log(arrayToTree(arr3))
         var res0 = arrayToTree(arr4)
-        console.log(res0, "res0----")
-
+        console.log(res0, 'res0----')
 
         //  还原扁平化
 
         var newArr = [] //新建一个数据，用于存储扁平化化后的数组
         function flatData(arr) {
-            arr.forEach(item => {
+            arr.forEach((item) => {
                 newArr.push(item)
-                item.children && item.children.length > 0 ? flatData(item.children) : ""
+                item.children && item.children.length > 0 ? flatData(item.children) : ''
                 delete item.children
                 //  item.children = ''    //若是扁平化后的数组须要显示父子层级，能够把这一项删除
             })
         }
         var naar2 = []
         function flatData2(arr) {
-            arr.forEach(item => {
+            arr.forEach((item) => {
                 if (item.children && item.children.length > 0) {
                     flatData2(item)
                 } else {
                     naar2.push(item)
                 }
-
-
             })
         }
         flatData(res0)
-        console.log(newArr, "newArr", naar2)
+        console.log(newArr, 'newArr', naar2)
+
+        //利用reduce 重新扁平化
+
+        let trees = [
+            {
+                id: 74,
+                pid: null,
+                children: [
+                    {
+                        id: 62,
+                        pid: 74,
+                        children: [
+                            { id: 56, pid: 62, name: 'sssss' },
+                            { id: 63, pid: 62 }
+                        ]
+                    },
+                    {
+                        id: 86,
+                        pid: 74,
+                        children: [
+                            {
+                                id: 80,
+                                pid: 86,
+                                children: [
+                                    { id: 81, pid: 80 },
+                                    { id: 76, pid: 80 }
+                                ]
+                            },
+                            { id: 87, pid: 86 }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 12,
+                pid: null,
+                children: [
+                    { id: 44, pid: 12 },
+                    { id: 13, pid: 12 }
+                ]
+            }
+        ]
+        trees.reduce((prev, cur) => {
+            console.log('🍹[prev, cur]:', prev);
+
+        })
     </script>
 </body>
 

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="tab_box">
+
+            <!-- <div v-for="(item,index) in tableList" :key="index"> -->
+
+            <el-table :data="tableList" border style="width: 100%" :span-method="arraySpanMethod">
+
+                <el-table-column type="index" label="就餐时间" width="40px">
+                </el-table-column>
+                <el-table-column prop="plc" align="center" sortable label="类别" width="150px">
+                </el-table-column>
+                <el-table-column prop="id" align="center" sortable label="类33别" width="150px">
+                </el-table-column>
+                <el-table-column v-for="(item,index) in  
+                 needMergeArr" :key="index" prop="thiree" align="center" :label=`${index}sdsdc` width="150px">
+
+                </el-table-column>
+
+
+
+            </el-table>
+
+            <!-- 
+            </div> -->
+
+        </div>
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                tableData: [],
+                tableList: [
+                    {
+                        id: 0,
+                        plc: "1111",
+                        thiree: "112"
+
+                    },
+                    {
+                        id: 1,
+                        plc: "2222",
+                        thiree: "112"
+                    },
+                    {
+                        id: 2,
+                        plc: "2222",
+                        thiree: "112"
+                    },
+                    {
+                        id: 4,
+                        plc: "3333",
+                        thiree: "112"
+                    },
+                    {
+                        id: 5,
+                        plc: "3333",
+                        thiree: "112"
+                    }
+                ],
+
+
+                needMergeArr: ['plc', "aaa"], //需要进行合并的column的prop值 'timeMeal','foodName'
+                rowMergeArrs: {}, //处理过后得到的每个column的合并规则
+            }
+        },
+        created() {
+            this.rowMergeArrs = this.rowMergeHandle(this.needMergeArr, this.tableList); // 处理数据
+        },
+        methods: {
+            rowMergeHandle(needMergeArr, tableData) {
+                if (!Array.isArray(needMergeArr) && !needMergeArr.length) return false;
+                if (!Array.isArray(tableData) && !tableData.length) return false;
+                let needMerge = {};
+                needMergeArr.forEach(i => {
+                    needMerge[i] = {
+                        rowArr: [], //该数组用来记录在目前列中的每一行的cell应该向下合并几行还是应该被合并。如果对应数组的数据==0,则说明该cell应该被合并。
+                        rowMergeNum: 0, //用来记录在目前列的第几行的行数，rowNum
+                    };
+                    tableData.forEach((item, index) => {
+                        if (index === 0) {
+                            needMerge[i].rowArr.push(1);
+                            needMerge[i].rowMergeNum = 0;
+                        } else {
+                            if (item[i] === tableData[index - 1][i]) {
+                                needMerge[i].rowArr[needMerge[i].rowMergeNum] += 1;
+                                needMerge[i].rowArr.push(0);
+                            } else {
+                                needMerge[i].rowArr.push(1);
+                                needMerge[i].rowMergeNum = index;
+                            }
+                        }
+                    });
+                });
+                return needMerge;
+            },
+            arraySpanMethod({ column, rowIndex }) {
+                for (let i = 0; i < this.needMergeArr.length; i++) {
+                    if (column.property === this.needMergeArr[i]) {
+                        return this.mergeAction(this.needMergeArr[i], rowIndex);
+                    }
+                }
+
+            },
+            mergeAction(val, rowIndex) {
+                let _row = this.rowMergeArrs[val].rowArr[rowIndex];
+                let _col = _row > 0 ? 1 : 0;
+                console.log(_row, _col, '_row, _col')
+                return [_row, _col];
+            },
+
+
+
+        },
+
+
+    })
+</script>
+<style lang="">
+    body {
+        /* background: #ccc; */
+    }
+
+    .tab_box {
+        border: 1px solid #EBEEF5;
+
+    }
+
+    .h3 {
+        display: flex;
+        background: rgb(182, 89, 89);
+        color: #fff
+    }
+
+    .item-title {
+
+        text-align: center;
+        line-height: 40px;
+        border-bottom: none;
+    }
+
+    .item1 {
+        width: 270px;
+        border-right: 1px solid #EBEEF5;
+    }
+
+    .item2 {
+        flex: 1;
+    }
+
+    .tag_box {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .tag_box span {
+        display: inline-block;
+        padding: 0 10px;
+
+    }
+
+    .showRow {
+        display: none;
+    }
+</style>
+
+
+
+</html>
