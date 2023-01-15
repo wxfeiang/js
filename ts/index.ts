@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: ts 内容
  * @Date: 2022-12-20 19:38:53
- * @LastEditTime: 2022-12-20 22:16:19
+ * @LastEditTime: 2022-12-22 17:05:23
  * @FilePath: /js/ts/index.ts
  */
 // 类型注解  类型约束
@@ -226,3 +226,150 @@ enum Action3 { // 没有自增长行为
   down = 'down'
 }
 // 枚举的特性  不仅是类型 还提供了值  会被编译成js
+
+let anyp: any = '2222'
+anyp = 32
+
+// any  任意类型  尽量少用  或者临时使用
+// 隐式 具有 any  类型
+// 申明变量  没有初始值
+// 申明函数 参数 没有指定类型
+//=====================================
+
+console.log(typeof 'hello TS ')
+
+// typeof 与js 不同点 可以直接获取类型
+let ptype = {
+  // 省略了注解
+  x: 1,
+  y: '2'
+}
+
+function fontType(point: typeof ptype) {
+  // 当前参数就为对象类型
+  console.log(point)
+}
+// fontType('sss')
+fontType({ x: 1, y: '22222' }) // 来自ptype 的数据
+
+//===================高级类型==================
+class Person {
+  age: number = 12
+  name = 'wangpeng '
+}
+const peop = new Person()
+
+console.log(peop.name)
+
+//  构造函数
+class Car {
+  age: number
+  name: string
+  constructor(age: number, name: string) {
+    this.age = age
+    this.name = name
+  }
+}
+const Dcar = new Car(19, 'dycar')
+// const Dcar2 = new Car('sd', 'dycar') // 报错
+
+//实例 对象方法
+
+class porit {
+  x: 1
+  y: 1
+  sclic(n: number) {
+    this.x *= n
+    this.y *= n
+  }
+}
+const peopr = new porit()
+
+// class 继承和 extends
+
+class child extends porit {
+  showChild() {
+    console.log()
+  }
+}
+
+const newChild = new child() //  可以调用各种方法
+
+//  类继承接口
+interface sings {
+  sing(): void
+  name: string
+}
+
+class apple implements sings {
+  sing() {}
+  name: 'sss' // 继承接口里的属性方法
+}
+
+//  目的 为类 添加约束
+// class  成员的可见性   public  protected   private  readonly
+
+class Amila {
+  public move() {
+    //  默认的公开属性
+    console.log('move')
+  }
+  protected pro() {
+    //  当前类 和子类 可见
+    console.log('pro')
+  }
+  private privatetest() {
+    //  类的私有属性 仅自己内部可见
+    console.log('private')
+  }
+  readonly readonlytest: number // 只读 默认值允许 // 只能在constructor 中修改
+  constructor(readonlytest: number) {
+    this.readonlytest = 10
+  }
+}
+
+class Dog extends Amila {
+  action() {
+    console.log('action')
+  }
+}
+
+const tags = new Dog(12) //  实例对象 有的属性就不可访问
+
+// 类的公开  可以任意访问
+interface red {
+  readonly name: string
+}
+let obs: red = {
+  name: '2222'
+}
+obs.name = '22' //  err  不可被修改
+
+//=================================================
+//  类的兼容性
+// 结构类型完全相同的类型可以 兼容
+// 对象类型的兼容性
+// 接口之间的兼容性
+interface pop1 {
+  x: number
+  y: number
+}
+interface pop2d {
+  x: number
+  y: number
+}
+
+let p1: pop1
+let p2: pop2d
+
+class por3 {
+  x: number
+  y: number
+  z: number
+  d: number
+}
+
+//  类和接口之间兼容  成员多的可以赋值给成员少的
+
+// 泛型
+//  保证类型安全  多种类型一起工作
