@@ -71,7 +71,7 @@ firewall-cmd --zone=public --add-port=1000-2000/tcp --permanent
 `
 firewall-cmd --reload
 `
-## 产看
+## 查看
 `
 firewall-cmd --zone=public --query-port=80/tcp
 `

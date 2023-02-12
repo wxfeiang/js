@@ -1,3 +1,10 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2021-12-05 09:32:20
+ * @LastEditTime: 2023-02-08 21:46:47
+ * @FilePath: /js/01/for.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +34,54 @@
 
         })
         // console.log(newArr);
+
+        const data = [
+            {
+                id: 1,
+                name: ""
+            }
+            ,
+            {
+                id: 1,
+                name: ""
+            }
+        ]
+        data.forEach((item, index) => {
+
+            if (!item.id) {
+                // alert(`第${index} id不可为空！`)
+            }
+            if (!item.name) {
+                // alert(`第${index}行name不可为空！`)
+            }
+
+
+        })
+        let arr = [
+            {
+                id: "23456"
+            },
+            {
+                id: "123456"
+            },
+            {
+                id: "423456"
+            },
+            {
+                id: "223456"
+            }
+        ]
+        // 
+        let reg = /^[2]\d*$/
+        let narr = arr.map(item => reg.test(item.id) ? item : null)
+        let narr4 = arr.filter(item => reg.test(item.id))
+
+        let narr2 = arr.map(item => reg.exec(item.id))
+
+        let narr3 = arr.filter(item => item.id.search(reg))
+
+        console.log(narr, narr2, narr3, "===", narr4)
+
     </script>
 
 </body>
