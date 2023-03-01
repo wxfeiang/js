@@ -1,0 +1,64 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2021-12-05 09:32:20
+ * @LastEditTime: 2023-03-01 21:00:47
+ * @FilePath: /js/es6/reduce2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>reduce</title>
+
+</head>
+
+<body>
+  <div>
+    <span>
+
+    </span>
+
+  </div>
+  <script>
+
+
+    var colors = [{ color: "red", p: '1' }, { color: "pink", p: '2' }, { color: "blie", p: '3' }];
+    var colors2 = [{ color: "red", p: '1' }, { color: "pink", p: '2' }, { color: "blie", p: '3' }];
+    var colors3 = [{ color: "red", p: '1' }, { color: "pink", p: '2' }, { color: "blie", p: '3' }];
+
+    let ceshi = [
+      { name: '11', id: 555 },
+      { name: '21', id: 2 },
+      { name: '31', id: 3 },
+      { name: '4', id: 4 },
+      { name: '5', id: 5 },
+    ]
+    // 根据 第2 数组 给 p 相等 给 第一数组 赋值 value = id 
+
+    const arr2 = ceshi.reduce((t, v) => {
+      // console.log(v, "v")
+      const { name, ...b } = v
+      t[name] = b
+      return t
+    }, {})
+    console.log(arr2)
+    //colors.forEach(i => i.value = arr2[i.p]?.id)
+    colors.forEach(i => i.value = arr2[i.p]?.id ?? 0)
+    console.log(colors)
+
+    //=================
+    colors2.forEach(i => i.value = ceshi.find(j => i.p === j.name)?.id ?? 0)
+    console.log(colors2)
+
+
+
+
+
+  </script>
+</body>
+
+</html>

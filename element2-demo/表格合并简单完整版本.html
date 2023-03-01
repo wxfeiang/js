@@ -110,6 +110,8 @@
                 return needMerge;
             },
             arraySpanMethod({ column, rowIndex }) {
+                //  作为组件是否有自定义规则  父组件传入  【object Funciton] 原路返回
+
                 for (let i = 0; i < this.needMergeArr.length; i++) {
                     if (column.property === this.needMergeArr[i]) {
                         return this.mergeAction(this.needMergeArr[i], rowIndex);

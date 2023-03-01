@@ -1,80 +1,102 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2021-12-05 09:32:20
+ * @LastEditTime: 2023-02-25 20:48:38
+ * @FilePath: /js/es6/reduce.html
+-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>reduce</title>
-  </head>
-  <body>
-    <script>
-      //  可以替换很多 map  forEach
-      var numbers = [1, 2, 3];
-      // 求和
-      var sum = 0;
-      for (var i = 0; i < numbers.length; i++) {
-        sum += numbers[i];
-      }
-      console.log(sum);
 
-      // reduce
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>reduce</title>
 
-      var sumvlaue = numbers.reduce((sum2, number) => {
-        // 第一个参数  必须 初始化 得到相加值
-        // 第二个参数  具体的数组每一个值
-        //console.log(sum2, number);
-        console.log(sum2);
-        return sum2 + number;
-      }, 0); // 初始化 0
-      console.log(sumvlaue);
+</head>
 
-      console.log("==================");
-      var colors = [{ color: "red" }, { color: "pink" }, { color: "blie" }];
+<body>
+  <div>
+    <span>
 
-      var cox = colors.reduce((pros, colorA) => {
-        console.log(pros);
-        // pros.push(colorA.color);
-        return pros;
-      }, []);
-      console.log(cox);
+    </span>
 
-      console.log("==================");
-      //  判断字符串中括号是否对称  0 对称
-      function banpaers(string) {
-        return !string.split("").reduce((pever, cars) => {
-          if (pever < 0) {
-            return pever;
-          }
-          if (cars == "(") {
-            return ++pever;
-          }
-          if (cars == ")") {
-            return --pever;
-          }
+  </div>
+  <script>
+    //  可以替换很多 map  forEach
+    var numbers = [1, 2, 3];
+    // 求和
+    var sum = 0;
+    for (var i = 0; i < numbers.length; i++) {
+      sum += numbers[i];
+    }
+    console.log(sum);
+
+    // reduce
+
+    var sumvlaue = numbers.reduce((sum2, number) => {
+      // 第一个参数  必须 初始化 得到相加值
+      // 第二个参数  具体的数组每一个值
+      //console.log(sum2, number);
+      console.log(sum2);
+      return sum2 + number;
+    }, 0); // 初始化 0
+    console.log(sumvlaue);
+
+    console.log("==================");
+    var colors = [{ color: "red", p: 1 }, { color: "pink", p: 2 }, { color: "blie", p: 3 }];
+    let ceshi = [
+      { p: 1, id: 4 },
+      { p: 2, id: 3 },
+      { p: 3, id: 3 },
+    ]
+    var cox = colors.reduce((pros, colorA) => {
+      console.log(pros, colorA);
+      const { ...b } = colorA
+      pros["a"] = b
+      return pros;
+    }, {});
+    console.log(cox, "coxn===");
+
+    console.log("==================");
+    //  判断字符串中括号是否对称  0 对称
+    function banpaers(string) {
+      return !string.split("").reduce((pever, cars) => {
+        if (pever < 0) {
           return pever;
-        }, 0);
-      }
-      console.log(banpaers(")()"));
+        }
+        if (cars == "(") {
+          return ++pever;
+        }
+        if (cars == ")") {
+          return --pever;
+        }
+        return pever;
+      }, 0);
+    }
+    console.log(banpaers(")()"));
 
-      // 详细
-      var arr = [1, 2, 3];
-      var sum = arr.reduce((accumulator, currentValue, currentIndex, array) => {
-        // accumulator 累计器
-        // currentValue 当前值
-        // currentIndex 当前索引
-        // array 数组
-        console.log(
-          accumulator +
-            "+++++++++++++" +
-            currentValue +
-            "+++++++++++++" +
-            currentIndex,
-          array
-        );
-        // console.log(accumulator + currentValue);
-        return accumulator + currentValue;
-      });
-      console.log(sum);
-    </script>
-  </body>
+    // 详细
+    var arr = [1, 2, 3];
+    var sum = arr.reduce((accumulator, currentValue, currentIndex, array) => {
+      // accumulator 累计器
+      // currentValue 当前值
+      // currentIndex 当前索引
+      // array 数组
+      console.log(
+        accumulator +
+        "+++++++++++++" +
+        currentValue +
+        "+++++++++++++" +
+        currentIndex,
+        array
+      );
+      // console.log(accumulator + currentValue);
+      return accumulator + currentValue;
+    });
+    console.log(sum);
+  </script>
+</body>
+
 </html>

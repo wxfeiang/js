@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2022-09-16 10:18:41
- * @LastEditTime: 2022-09-16 10:21:52
+ * @LastEditTime: 2023-03-01 22:46:52
  * @FilePath: /js/es6/map2.html
 -->
 <!DOCTYPE html>
@@ -20,6 +20,26 @@
         let ids = [23, 34, 25]
         let ss = ids.map(item => { return { id: item } })
         console.log(ss)
+
+        let a = [
+            {
+                id: 1,
+            },
+            {
+                id: 2,
+            },
+            {
+                id: 3,
+            },
+            {
+                id: 4,
+            }
+        ]
+        let b = {
+            value: 1
+        }
+        const d = a.map(i => i = { ...b, ...i })
+        console.log(d, "====")
     </script>
 </body>
 
