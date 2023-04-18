@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2021-12-05 09:32:20
- * @LastEditTime: 2023-03-01 21:00:47
+ * @LastEditTime: 2023-04-18 22:10:39
  * @FilePath: /js/es6/reduce2.html
 -->
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
     var colors3 = [{ color: "red", p: '1' }, { color: "pink", p: '2' }, { color: "blie", p: '3' }];
 
     let ceshi = [
-      { name: '11', id: 555 },
+      { name: '11', id: 555, "ww": 1 },
       { name: '21', id: 2 },
       { name: '31', id: 3 },
       { name: '4', id: 4 },
@@ -42,10 +42,11 @@
     const arr2 = ceshi.reduce((t, v) => {
       // console.log(v, "v")
       const { name, ...b } = v
+      console.log(name, "name")
       t[name] = b
       return t
     }, {})
-    console.log(arr2)
+    console.log(arr2, "arr2")
     //colors.forEach(i => i.value = arr2[i.p]?.id)
     colors.forEach(i => i.value = arr2[i.p]?.id ?? 0)
     console.log(colors)

@@ -20,7 +20,7 @@
                 </el-table-column>
                 <el-table-column prop="id" align="center" sortable label="类33别" width="150px">
                 </el-table-column>
-                <el-table-column v-for="(item,index) in  
+                <el-table-column v-for="(item,index) in
                  needMergeArr" :key="index" prop="thiree" align="center" :label=`${index}sdsdc` width="150px">
 
                 </el-table-column>
@@ -117,7 +117,6 @@
                         return this.mergeAction(this.needMergeArr[i], rowIndex);
                     }
                 }
-
             },
             mergeAction(val, rowIndex) {
                 let _row = this.rowMergeArrs[val].rowArr[rowIndex];

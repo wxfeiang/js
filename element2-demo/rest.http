@@ -35,3 +35,7 @@ content-type: application/json
   }
 
 # 单个#号用来标记注释
+
+#  获取github 
+
+GET https://api.github.com/users/wxfeiang/repos
