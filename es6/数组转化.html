@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-04-18 21:48:40
- * @LastEditTime: 2023-04-19 00:05:27
+ * @LastEditTime: 2023-04-19 22:15:11
  * @FilePath: /js/es6/数组转化.html
 -->
 <!DOCTYPE html>
@@ -90,15 +90,13 @@
         const maxNum = Math.max(...lenArr)
         item[xData[index]] = changeItem(item[xData[index]], maxNum)
     })
+    // item  最大值----
+    console.log('🍠[lenArr]:', lenArr);
 
     const seil = resData.map((item, index) => {
         // return seiesData(item[xData[index]], xData.length)
         return item[xData[index]].map(i => i.value)
     })
-
-    // console.log('🍝[seil]:', seil);
-
-
     function changeItem(data, len) {
         let c = len - data.length
         if (c > 0) {
@@ -111,56 +109,20 @@
         }
         return data
     }
-    seiesData(seil, xData.length)
-    // xData.forEach((item, index) => {
+    seiesData(seil, Math.max(...lenArr))
 
-
-    //     // data: seiesData(seil)
-    //   //  console.log('🥗[seiesData(seil)]:', seiesData(seil), xData.length);
-
-
-
-
-    // })
-
-    function seiesData(data, len) {
-        console.log(data, "===22",)
-        let arr = new Array(len)
-        const all = []
-        for (let i = 0; i < len; i++) {
+    function seiesData(data, clom) {
+        let arr = new Array(clom)
+        for (let i = 0; i < clom; i++) {
             arr[i] = []
-            all.push(...data[i])
+            arr[i].push(...data.map(k => k[i]))
 
+            // 原始写法
+            // data.forEach((item, index) => {
+            //     arr[i].push(item[i])
+            // })
         }
-        console.log(arr)
-        // arr.map((i, index) => {
-        //     //  return i.push(all[index*3+1])
-        //     console.log('🍡[all[index*3+1]]:', all[index * 3]);
-        // })
-        for (let i = 0; i < all.length; i++) {
-            for (let k = 0; k < arr.length; k++) {
-                // console.log()
-                console.log(arr[k], "===")
-                // arr[k].push(all[i * 3])
-            }
-        }
-
-
-        // for (let k = 0; k < arr.length; k++) {
-        //     for (let i = 0; i < all.length; i++) {
-        //         arr[k].push(all[k * 3])
-        //     }
-        // }
-
-        //  0 3 6 9  // 1,5,8,11
-        //  1 4 7 10  // 
-
-
-        console.log(all, "all")
-        //arr[0] = [1,5,8,11]
-
-
-        console.log(arr, "arr===")
+        console.log('🍼️[arr]:', arr);
 
 
         return arr
