@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-04-18 21:48:40
- * @LastEditTime: 2023-04-19 22:15:11
+ * @LastEditTime: 2023-04-19 22:20:19
  * @FilePath: /js/es6/数组转化.html
 -->
 <!DOCTYPE html>
@@ -77,26 +77,32 @@
         }
     ]
     const xData = []
-
-    // for (let i of resData) {
-    //     xData.push(...Object.keys(i))
-    // }
     const lenArr = []
 
     resData.forEach((item, index) => {
         xData.push(...Object.keys(item))
         // console.log('🥒[ item[xData[index]]]:', item[xData[index]]);
+
+        // 把每一项的长度放入数据 取出最大的用于补齐
         lenArr.push(item[xData[index]].length)
         const maxNum = Math.max(...lenArr)
         item[xData[index]] = changeItem(item[xData[index]], maxNum)
     })
-    // item  最大值----
+    // item  最大值----确定有几组
     console.log('🍠[lenArr]:', lenArr);
 
     const seil = resData.map((item, index) => {
         // return seiesData(item[xData[index]], xData.length)
         return item[xData[index]].map(i => i.value)
     })
+
+
+
+
+
+
+
+    // 补齐不全的数据 
     function changeItem(data, len) {
         let c = len - data.length
         if (c > 0) {
@@ -110,7 +116,7 @@
         return data
     }
     seiesData(seil, Math.max(...lenArr))
-
+    //转化为新的分组
     function seiesData(data, clom) {
         let arr = new Array(clom)
         for (let i = 0; i < clom; i++) {
