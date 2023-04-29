@@ -1,0 +1,117 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2023-04-29 16:03:35
+ * @LastEditTime: 2023-04-29 16:53:42
+ * @FilePath: /js/element2-demo/gw.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    .content {
+        width: 854px;
+        height: 352px;
+        background: #031923;
+        margin: 50px auto;
+        padding: 10px;
+    }
+
+    .cont_item {}
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #53D4FF;
+        line-height: 40px;
+
+    }
+
+    .center {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+
+    }
+
+    .prosss:first-child {
+        width: 582px;
+        text-align: left;
+        font-size: 36px;
+        font-family: DS-Digital, DS;
+        font-weight: normal;
+        color: #A5FFFF;
+        line-height: 46px;
+        height: 46px;
+        background: linear-gradient(270deg, #1C8BEF 0%, rgba(28, 139, 239, 0) 100%);
+        border: 1px solid;
+        border-image: linear-gradient(270deg, rgba(86, 250, 246, 1), rgba(86, 214, 250, 0.1)) 1 1;
+    }
+
+    .prosss:last-child {
+        width: 268px;
+        text-align: right;
+        font-size: 36px;
+        font-family: DS-Digital, DS;
+        font-weight: normal;
+        color: #FFE2B0;
+        line-height: 46px;
+        height: 46px;
+        background: linear-gradient(90deg, #FFB73C 0%, rgba(255, 183, 60, 0) 100%);
+        border: 1px solid;
+        border-image: linear-gradient(90deg, rgba(255, 235, 188, 1), rgba(255, 235, 188, 0.1)) 1 1;
+    }
+
+    .center::after {
+        position: absolute;
+        width: 80px;
+        content: "";
+        left: 62%;
+        line-height: 46px;
+        height: 46px;
+        background: linear-gradient(270deg, #1C8BEF 0%, rgba(28, 139, 239, 0) 100%);
+
+        transform-origin: right;
+        transform: skew(-45deg);
+    }
+</style>
+
+<body>
+    <div class="content">
+        <div class="cont_item">
+            <div class="top">
+                <div class="top_item">已复电--89</div>
+                <div class="top_item">高危用户停电
+                    <span class="num ">12030</span>
+                    户
+                </div>
+                <div class="top_item">
+                    999-未复电
+                </div>
+            </div>
+            <div class="center">
+                <div class="prosss">84.81</div>
+                <div class="prosss">16.11</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

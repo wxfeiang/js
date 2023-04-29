@@ -1,0 +1,94 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2023-04-18 21:48:40
+ * @LastEditTime: 2023-04-22 17:53:29
+ * @FilePath: /js/es6/数组转化 copy.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const resData = [
+        {
+            "750酒泉": [
+                {
+                    name: "酒泉1",
+                    value: 1
+                },
+                {
+                    name: "酒泉2",
+                    value: 2
+                },
+                {
+                    name: "酒泉3",
+                    value: 3
+                }
+            ]
+        },
+        {
+            "760酒泉": [
+                {
+                    name: "酒泉5",
+                    value: 5
+                },
+                {
+                    name: "酒泉6",
+                    value: 6
+                }
+
+            ]
+        },
+        {
+            "770兰州": [
+                {
+                    name: "兰州8",
+                    value: 8
+                },
+                {
+                    name: "兰州9",
+                    value: 9
+                },
+
+                {
+                    name: "兰州10",
+                    value: 10
+                }
+            ]
+        },
+        {
+            "7000余中": [
+                {
+                    name: "余中2",
+                    value: 11
+                },
+
+            ]
+        }
+    ]
+    const xData = []
+    const lenArr = []
+
+
+    let resalldata = resData.map(item => Object.values(item)).flat(2)
+    // .map(item => item.map(i => i))
+    console.log(resalldata)
+
+
+
+
+
+
+</script>
+
+</html>
