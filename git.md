@@ -83,6 +83,8 @@ git fetch origin tag < tagname>
                         git branch -m oldbranch newbranch 重命名分支；
                         git branch -M oldbranch newbranch 强制重命名分支（如果newbranch分支已存在，那么采用-M强制重命名为newbranch）
 
+                       git push origin --delete branch”命令删除远程分支；
+
 
                         ————————————————
                         git checkout -- * 撤销上次提交后的所有修改

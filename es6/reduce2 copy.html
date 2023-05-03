@@ -1,0 +1,89 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2021-12-05 09:32:20
+ * @LastEditTime: 2023-05-02 22:14:18
+ * @FilePath: /js/es6/reduce2 copy.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>reduce</title>
+
+</head>
+
+<body>
+  <div>
+    <span>
+
+    </span>
+
+  </div>
+  <script>
+
+    const json = {
+      '输电': 1,
+      '配电': 2,
+      '变电': 3
+
+    }
+    const initdata = [
+      {
+        name: "输电",
+        color: "#ddd"
+      },
+      {
+        name: "变电",
+        color: "#ccc"
+      },
+      {
+        name: "配电",
+        color: "#777"
+      },
+    ]
+    console.log(Object.keys(json))
+
+    function changeData(data) {
+      let arr = []
+
+      for (let i in data) {
+        console.log(i)
+        arr.push({
+          name: i,
+          value: data[i]
+        })
+
+      }
+      return arr
+
+    }
+
+
+    const arr = changeData(json)
+    console.log('🍊[arr]:', arr);
+
+    // const c = [...arr, ...initdata]
+    // console.log('🍊[ c]:', c);
+    const c = Object.assign(arr, ...initdata)
+    console.log('🍕[c]:', c);
+
+    const res = initdata.map(i => {
+      i.value = json[i.name] ?? 0
+      return i
+
+      // return i = Object.assign(i, arr.find(t => t.name === i.name))
+    })
+
+
+    console.log(res)
+
+
+
+  </script>
+</body>
+
+</html>
