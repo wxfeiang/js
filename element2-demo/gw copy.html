@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-04-29 16:03:35
- * @LastEditTime: 2023-04-29 23:13:42
+ * @LastEditTime: 2023-05-13 14:19:41
  * @FilePath: /js/element2-demo/gw copy.html
 -->
 <!DOCTYPE html>
@@ -46,13 +46,15 @@
         display: flex;
         justify-content: space-between;
         position: relative;
+        background: linear-gradient(270deg, #1C8BEF 0%, rgba(28, 139, 239, 1) 100%);
+
 
 
     }
 
     .prosss:first-child {
         position: relative;
-        width: 70%;
+        width: 98%;
         text-align: left;
         z-index: 2;
         font-size: 36px;
@@ -65,9 +67,11 @@
         border: 1px solid;
         border-image: linear-gradient(270deg, rgba(86, 250, 246, 1), rgba(86, 214, 250, 0.1)) 1 1;
         border-left: none;
+        transform-origin: right;
+        transform: skew(-45deg);
     }
 
-    .prosss:last-child::after {
+    /* .prosss:last-child::after {
         top: -1px;
         position: absolute;
         left: -27px;
@@ -89,7 +93,7 @@
 
 
 
-    }
+    } */
 
 
 
@@ -97,7 +101,7 @@
 
         position: relative;
 
-        width: 30%;
+        width: 2%;
         text-align: right;
         font-size: 36px;
         font-family: DS-Digital, DS;
@@ -109,6 +113,8 @@
         border: 1px solid;
         border-image: linear-gradient(90deg, rgba(255, 235, 188, 1), rgba(255, 235, 188, 0.1)) 1 1;
         border-right: none;
+        transform-origin: left;
+        transform: skew(-45deg);
     }
 
     .piebox {
@@ -200,8 +206,8 @@
                 </div>
             </div>
             <div class="center">
-                <div class="prosss">84.81</div>
-                <div class="prosss">16.11</div>
+                <div class="prosss"></div>
+                <div class="prosss"></div>
             </div>
         </div>
         <div class="cont_item">

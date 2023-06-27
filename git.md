@@ -151,7 +151,7 @@ git fetch origin tag < tagname>
 
                         配置本项目 的用户名和 邮箱
 
-                        切换 远程地址
+                        切换 "远程地址"
 
 
                         未commit操作时
@@ -173,4 +173,4 @@ git fetch origin tag < tagname>
 
 
                         # 建议不要用 cnpm 安装 可以通过如下操作解决 npm 下载速度慢的问题
-                        npm install --registry=https://registry.npm.taobao.org
+                       npm install --registry=https://registry.npm.taobao.org

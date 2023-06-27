@@ -1,0 +1,41 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 
+ * @Date: 2023-05-18 20:49:19
+ * @LastEditTime: 2023-05-18 20:50:31
+ * @FilePath: /js/es6/float.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flat</title>
+</head>
+
+<body>
+    <script>
+        var user = [
+            { name: "王鹏", age: "16", type: "1" },
+            { name: "李飒", age: "16", type: "15" },
+            { name: "王先生", age: "17", type: "90" },
+            { name: "李先生", age: "18", type: "9" },
+            {
+                user: [
+                    { name: "王鹏", age: "16", type: "1" },
+                    { name: "李飒", age: "16", type: "15" },
+                    { name: "王先生", age: "17", type: "90" },
+                    { name: "李先生", age: "18", type: "9" }
+                ]
+            }
+        ];
+
+        let a = user.flat(3)
+        console.log('🌽[a]:', a);
+
+    </script>
+</body>
+
+</html>

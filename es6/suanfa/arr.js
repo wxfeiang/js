@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description:
  * @Date: 2022-06-15 09:07:25
- * @LastEditTime: 2022-06-21 18:01:48
+ * @LastEditTime: 2023-06-20 22:22:52
  * @FilePath: /js/es6/suanfa/arr.js
  */
 //del: konk
@@ -12,21 +12,26 @@
 var data = [
   {
     a: 1,
-    consuption: '2323',
-    conName: '1'
+    consuption: "2323",
+    conName: "1"
   },
   {
     a: 1,
-    consuption: '2323',
-    conName: '1'
+    consuption: "2323",
+    conName: "1"
   },
   {
     a: 1,
-    consuption: '2323',
-    conName: '1'
+    consuption: "2323",
+    conName: "1"
   }
 ]
 
+/**
+ * @description: sdsa
+ * @param {} data
+ * @return {}
+ */
 function newArr(data) {
   var newarr = []
   data.forEach((item) => {

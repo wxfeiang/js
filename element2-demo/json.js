@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description:
  * @Date: 2022-08-23 13:41:50
- * @LastEditTime: 2022-08-23 21:37:47
+ * @LastEditTime: 2023-06-27 10:29:50
  * @FilePath: /js/element2-demo/json.js
  */
 var data = {
@@ -10,7 +10,7 @@ var data = {
   rows: [
     {
       id: '1561936182330081282',
-      weekNum: '2',
+      weekNum: '2'
       weekDate: '2022-07-31 00:00:00',
       createTime: '2022-08-23 12:39:39',
       updateTime: null,

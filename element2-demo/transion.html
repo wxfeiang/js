@@ -1,0 +1,101 @@
+<!--
+ * @Author: wxfeiang
+ * @Description:  动画
+ * @Date: 2022-08-28 21:24:14
+ * @LastEditTime: 2023-06-27 14:27:19
+ * @FilePath: /js/element2-demo/transion.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <button @click="show=!show">Toggle</button>
+        <transition name="fade">
+            <div v-if="show">Hello, World!</div>
+        </transition>
+
+
+
+
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                show: false
+            }
+        },
+
+        mounted() {
+            this.restaurants = this.loadAll();
+        },
+
+        methods: {
+            querySearch(queryString, cb) {
+                var restaurants = this.restaurants;
+                var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+                // 调用 callback 返回建议列表的数据
+                cb(results);
+            },
+            createFilter(queryString) {
+                return (restaurant) => {
+                    return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) > -1);
+                };
+            },
+            add() {
+                console.log(this.state)
+            },
+            handleSelect(item) {
+                console.log(item);
+            },
+            handleIconClick(ev) {
+                console.log(ev);
+            },
+            loadAll() {
+                return [
+                    {
+                        label: "孙悟空",
+                        value: '500',
+                    },
+                    {
+                        label: "孙尚香",
+                        value: '18',
+                    },
+                    {
+                        label: "沙和尚",
+                        value: '1000',
+                    },
+                ]
+            },
+
+        }
+
+
+    })
+
+
+</script>
+
+
+<style>
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
+    }
+</style>
