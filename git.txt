@@ -119,6 +119,7 @@ git config --global init.defaultBranch main
 3 git checkout dev 切换分支 （dev 也可以是远程分支）
 
 ---- mac git提交失败
+ 在 .ssh 文件下 新建 config 文件 写入以下内容
 
 Host wxfeiang
 HostName 47.99.93.97
