@@ -1,0 +1,133 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 树组件
+ * @Date: 2022-08-28 21:24:14
+ * @LastEditTime: 2023-07-10 17:51:41
+ * @FilePath: /js/element2-demo/el-tree-test.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-tree :data="data" default-expand-all node-key="id" ref="tree" highlight-current :props="defaultProps">
+        </el-tree>
+
+        <div class="buttons">
+            <el-button @click="getCheckedNodes">通过 node 获取</el-button>
+            <el-button @click="getCheckedKeys">通过 key 获取</el-button>
+            <el-button @click="setCheckedNodes">通过 node 设置</el-button>
+            <el-button @click="setCheckedKeys">通过 key 设置</el-button>
+            <el-button @click="resetChecked">清空</el-button>
+        </div>
+
+
+
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                data: [{
+                    id: 1,
+                    label: '一级 1',
+                    children: [{
+                        id: 4,
+                        label: '二级 1-1',
+                        children: [{
+                            id: 9,
+                            label: '三级 1-1-1'
+                        }, {
+                            id: 10,
+                            label: '三级 1-1-2'
+                        }]
+                    }]
+                }, {
+                    id: 2,
+                    label: '一级 2',
+                    children: [{
+                        id: 5,
+                        label: '二级 2-1'
+                    }, {
+                        id: 6,
+                        label: '二级 2-2'
+                    }]
+                }, {
+                    id: 3,
+                    label: '一级 3',
+                    children: [{
+                        id: 7,
+                        label: '二级 3-1'
+                    }, {
+                        id: 8,
+                        label: '二级 3-2'
+                    }]
+                }],
+                defaultProps: {
+                    children: 'children',
+                    label: 'label'
+                }
+            };
+        },
+        methods: {
+            getCheckedNodes() {
+                console.log(this.$refs.tree.getCheckedNodes());
+            },
+            getCheckedKeys() {
+                console.log(this.$refs.tree.getCheckedKeys());
+            },
+            setCheckedNodes() {
+                this.$refs.tree.setCheckedNodes([{
+                    id: 5,
+                    label: '二级 2-1'
+                }, {
+                    id: 9,
+                    label: '三级 1-1-1'
+                }]);
+            },
+            setCheckedKeys() {
+                this.$refs.tree.setCheckedKeys([7]);
+            },
+            resetChecked() {
+                this.$refs.tree.setCheckedKeys([]);
+            }
+        },
+
+    })
+
+
+
+
+
+</script>
+
+
+<style lang="">
+    .tree-icons {
+        border: 1px solid #1890ff;
+        font-size: 10px;
+        color: #1890ff;
+        font-weight: bold;
+
+    }
+</style>
+
+<!-- font-size: 18px;
+      font-family: PingFang SC, PingFang SC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #333333;
+      line-height: 40px; -->
+
+
+</html>
