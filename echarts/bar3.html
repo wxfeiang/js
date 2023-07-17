@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-05-03 18:35:12
- * @LastEditTime: 2023-07-17 15:35:43
+ * @LastEditTime: 2023-07-17 21:44:01
  * @FilePath: /js/echarts/bar3.html
 -->
 <!DOCTYPE html>
@@ -24,124 +24,272 @@
 </style>
 
 <body>
-    <div class="main" id="main"></div>
+    <div class="" id="app">
+
+        <div class="main" id="main"></div>
+    </div>
 
 
 
 </body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.common.js"></script>
 <script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                myChart: null,
+                timeOut: null,
+                allData: [],
 
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
 
-    // 指定图表的配置项和数据
-    const arr = [
-        {
-            name: "杭州市",
-            value: 1297,
+            }
         },
-        {
-            name: "宁波市",
-            value: 999,
-        },
-        {
-            name: "温州市",
-            value: 844,
-        },
-        {
-            name: "嘉兴市",
-            value: 791,
-        },
-        {
-            name: "湖州市",
-            value: 766,
-        },
+        mounted() {
 
-    ]
-    var option = {
-        xAxis: {
-            show: false,
+            this.init()
+            this.autoMove()
 
         },
-        yAxis: {
-            show: false,
+        methods: {
+            init() {
+                this.myChart = echarts.init(document.getElementById('main'));
 
-        },
-        series: [
-            {
-                type: "bar",
-                barGap: "-105%", // 柱形图偏移 
-                offset: 80,
-                data: arr.map((item, i) => {
-                    return item.value
-                }),
-                barWidth: 16,
-                itemStyle: {
-                    borderColor: "transparent",
-                },
-                label: {
-                    show: true,
-                    position: "right",
-                    color: "#13B5B1",
-                    fontSize: 12,
-                    formatter: function (params) {
-                        const name = params.name;
-                        const value = ""
-                        const str = `${value}`
-                        return str;
+                let colorList = [
+                    "#f36c6c",
+                    "#e6cf4e",
+                    "#20d180",
+                    "#0093ff",
+                    "#f36c6c",
+                    "#e6cf4e",
+                    "#20d180",
+                    "#0093ff"
+                ];
+
+                this.allData = [
+                    {
+                        name: "杭州市",
+                        count: 100,
+                        percent: 0.182
                     },
-                },
-                z: 0,
-            },
-            // 图片和文字
-            {
-                type: 'bar',
-                xAxisIndex: 0,
-                yAxisIndex: 0,
-                barWidth: 10,
-                data: arr.map((item, i) => {
-                    return item.value
-                }),
-                silent: true,
-                label: {
-                    show: true,
-                    offset: [6, -20],
-                    color: '#fff',
-                    fontSize: 16,
-                    fontWeight: 500,
-                    position: 'left',
-                    align: 'left',
-                    formatter: function (params) {
-                        return `{icon1|}`;
+                    {
+                        name: "宁波市",
+                        count: 366,
+
+                        percent: 0.22
                     },
-                    rich: {
-                        icon1: {
-                            width: 1.5,
-                            height: 1.5,
-                            align: 'center',
-                            padding: [0, 0, 2, 0],
-                            backgroundColor: {
-                                image: "./images/0.png",
-                            },
-                            color: '#ffffff',
-                            fontSize: 16,
-                        },
+
+                    {
+                        name: "温州市",
+
+                        count: 733,
+
+                        percent: 0.452
+                    },
+
+                    {
+                        name: "湖州市",
+
+                        count: 287,
+
+                        percent: 0.229
+                    },
+
+                    {
+                        name: "丽水市",
+
+                        count: 89,
+
+                        percent: 0.082
+                    },
+
+                    {
+                        name: "舟山市",
+
+                        count: 25,
+
+                        percent: 0.112
+                    },
+                    {
+                        name: "丽水市2",
+
+                        count: 89,
+
+                        percent: 0.082
+                    },
+
+                    {
+                        name: "舟山市2",
+
+                        count: 25,
+
+                        percent: 0.112
                     }
-                },
-                itemStyle: {
-                    emphasis: {},
-                    normal: {
-                        color: "#64DFA2",
+                ];
+                option = {
+                    tooltip: {
+                        trigger: "axis",
+                        axisPointer: {
+                            type: "shadow"
+                        }
                     },
-                },
 
+                    legend: {
+                        show: false
+                    },
 
+                    // 加这块地方重点！！！！！！！
+                    dataZoom: [
+                        //滑动条
+                        {
+                            yAxisIndex: 0, //这里是从X轴的0刻度开始
+                            show: false, //是否显示滑动条，不影响使用
+                            type: "slider", // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                            startValue: 0, // 从头开始。
+                            endValue: 4, // 一次性展示5个。
+                        },
+                    ],
+                    xAxis: {
+                        type: "value",
+
+                        splitLine: {
+                            show: false
+                        },
+
+                        axisLabel: {
+                            show: false
+                        },
+
+                        axisTick: {
+                            show: false
+                        },
+
+                        axisLine: {
+                            show: false
+                        }
+                    },
+
+                    yAxis: [
+                        {
+                            type: "category",
+
+                            inverse: true,
+
+                            axisLine: {
+                                show: false
+                            },
+
+                            axisTick: {
+                                show: false
+                            },
+
+                            axisPointer: {
+                                label: {
+                                    show: true
+                                }
+                            },
+
+                            data: this.allData.map(item => item.name),
+
+                            axisLabel: {
+                                margin: 20,
+
+                                fontSize: 14,
+
+                                color: "#333"
+                            }
+                        },
+
+                        {
+                            type: "category",
+
+                            inverse: true,
+
+                            axisTick: "none",
+
+                            axisLine: "none",
+                            offset: -10,
+                            zlevel: 100,
+                            show: true,
+                            position: "left",
+                            axisLabel: {
+                                textStyle: {
+                                    color: "#000",
+                                    // fontSize: "10"
+                                    align: 'left'
+                                }
+                            },
+                            data: this.allData.map(item => item.count)
+                        }
+                    ],
+                    series: [
+                        {
+                            z: 2,
+                            name: "value",
+                            type: "bar",
+                            align: "left",
+                            //   barCategoryGap: '50%',
+                            data: this.allData
+                                .map(item => item.percent)
+                                .map((item, i) => {
+                                    itemStyle = {
+                                        color: colorList[i]
+                                    };
+                                    return {
+                                        value: item,
+                                        itemStyle: itemStyle
+                                    };
+                                }),
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: "right",
+                                    color: "#333333",
+                                    fontSize: 14,
+                                    formatter: function (value) {
+                                        let val = (value && value.data && value.data.value) || 0;
+                                        return parseFloat(val * 100).toFixed(2) + "%";
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                };
+                this.myChart.setOption(option)
             },
-        ]
-    };
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+            autoMove() {
+                // 自动滚动：
+                this.timeOut = setInterval(() => {
+                    if (option.dataZoom[0].endValue == this.allData.length) {
+                        option.dataZoom[0].endValue = 4;
+                        option.dataZoom[0].startValue = 0;
+                    } else {
+                        option.dataZoom[0].endValue = option.dataZoom[0].endValue + 1;
+                        option.dataZoom[0].startValue = option.dataZoom[0].startValue + 1;
+                    }
+                    console.log('🥩[option]:', window.option);
+                    this.myChart.setOption(option);
+                    this.myChart.on('mouseover', this.stop())
+                    this.myChart.on('mouseout', this.goMove())
+                }, 2000)
+            },
+            //停止滚动
+            stop() {
+                clearInterval(this.timeOut)
+            },
+            //继续滚动
+            goMove() {
+                this.autoMove()
+            }
+        }
+
+
+    })
+
+
+
+
 </script>
 
 </html>
