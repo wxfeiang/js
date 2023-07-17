@@ -1,3 +1,12 @@
+/*
+ * @Author: wxfeiang wxfeiang@qq.com
+ * @Description: 
+ * @Date: 2023-06-29 20:45:51
+ * @LastEditors: wxfeiang wxfeiang@qq.com
+ * @LastEditTime: 2023-06-29 20:47:51
+ * @FilePath: /js/swagger.js
+ * Copyright (c) 2023 by ${git_name} email: ${git_email}, All Rights Reserved. 
+ */
 const path = require("path") //  文件路径系统
 const swaggerUi = require("swagger-ui-express")
 const swaggerJSDoc = require("swagger-jsdoc")

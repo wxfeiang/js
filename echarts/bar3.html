@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-05-03 18:35:12
- * @LastEditTime: 2023-07-14 10:58:48
+ * @LastEditTime: 2023-07-17 15:35:43
  * @FilePath: /js/echarts/bar3.html
 -->
 <!DOCTYPE html>
@@ -36,25 +36,45 @@
     var myChart = echarts.init(document.getElementById('main'));
 
     // 指定图表的配置项和数据
+    const arr = [
+        {
+            name: "杭州市",
+            value: 1297,
+        },
+        {
+            name: "宁波市",
+            value: 999,
+        },
+        {
+            name: "温州市",
+            value: 844,
+        },
+        {
+            name: "嘉兴市",
+            value: 791,
+        },
+        {
+            name: "湖州市",
+            value: 766,
+        },
+
+    ]
     var option = {
-        se: [
+        xAxis: {
+            show: false,
+
+        },
+        yAxis: {
+            show: false,
+
+        },
+        series: [
             {
                 type: "bar",
-                barGap: "-105%", // 柱形图偏移
-                data: listData.map((items, i) => {
-                    const value = Math.max(...listData.map(item => item.value));
-                    const itemStyle = {
-                        color: "none",
-                        borderRadius: 8, //圆角
-                        borderColor: "#041921",
-                    };
-                    if (i >= 8 && i <= 10) {
-                        const colors = ["#00FFC0", "#0195C2", "#FFF100"];
-                        itemStyle.color = colors[i - 8];
-                    }
-                    return {
-                        value,
-                    };
+                barGap: "-105%", // 柱形图偏移 
+                offset: 80,
+                data: arr.map((item, i) => {
+                    return item.value
                 }),
                 barWidth: 16,
                 itemStyle: {
@@ -67,7 +87,7 @@
                     fontSize: 12,
                     formatter: function (params) {
                         const name = params.name;
-                        const value = listData.find(item => item.name === name).value;
+                        const value = ""
                         const str = `${value}`
                         return str;
                     },
@@ -80,7 +100,9 @@
                 xAxisIndex: 0,
                 yAxisIndex: 0,
                 barWidth: 10,
-                data: dataSource,
+                data: arr.map((item, i) => {
+                    return item.value
+                }),
                 silent: true,
                 label: {
                     show: true,
@@ -95,15 +117,15 @@
                     },
                     rich: {
                         icon1: {
-                            width: xuhaofontsize * 1.5,
-                            height: xuhaofontsize * 1.5,
+                            width: 1.5,
+                            height: 1.5,
                             align: 'center',
                             padding: [0, 0, 2, 0],
                             backgroundColor: {
-                                image: img1,
+                                image: "./images/0.png",
                             },
                             color: '#ffffff',
-                            fontSize: xuhaofontsize,
+                            fontSize: 16,
                         },
                     }
                 },
