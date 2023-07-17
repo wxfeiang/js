@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-05-03 18:35:12
- * @LastEditTime: 2023-05-03 18:42:52
+ * @LastEditTime: 2023-07-14 10:36:17
  * @FilePath: /js/echarts/bar.html
 -->
 <!DOCTYPE html>
@@ -38,18 +38,17 @@
     // 指定图表的配置项和数据
     var option = {
         tooltip: {
-            trigger: 'item'
+            trigger: 'item',
+            formatter: function (name) {
+                let str = `<div style="width:20px;height: 20px; background:#1890ff">1</div>`
+                return str
+            }
         },
         legend: {
 
             left: 'center',
             formatter: function (name) {
-                let str = `
-                    <div class="item">
-                            <div class="left">${'Legend ' + name}</div>
-                            <div class="right">ss</div>
-                        </div>
-                    `
+                let str = `<span style="width:20px;height: 20px; ">1</span>`
                 return str
             }
         },
