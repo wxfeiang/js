@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 
  * @Date: 2023-05-03 18:35:12
- * @LastEditTime: 2023-07-17 21:44:01
+ * @LastEditTime: 2023-07-27 10:45:47
  * @FilePath: /js/echarts/bar3.html
 -->
 <!DOCTYPE html>
@@ -42,6 +42,8 @@
                 myChart: null,
                 timeOut: null,
                 allData: [],
+                startValue: 0,
+                endValue: 4
 
 
             }
@@ -54,6 +56,10 @@
         },
         methods: {
             init() {
+                if (this.myChart) {
+                    this.myChart.dispose()
+                    this.myChart = null
+                }
                 this.myChart = echarts.init(document.getElementById('main'));
 
                 let colorList = [
@@ -127,7 +133,7 @@
                         percent: 0.112
                     }
                 ];
-                option = {
+                let option = {
                     tooltip: {
                         trigger: "axis",
                         axisPointer: {
@@ -146,8 +152,8 @@
                             yAxisIndex: 0, //这里是从X轴的0刻度开始
                             show: false, //是否显示滑动条，不影响使用
                             type: "slider", // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-                            startValue: 0, // 从头开始。
-                            endValue: 4, // 一次性展示5个。
+                            startValue: this.startValue, // 从头开始。
+                            endValue: this.endValue, // 一次性展示5个。
                         },
                     ],
                     xAxis: {
@@ -256,20 +262,32 @@
                         }
                     ]
                 };
+
                 this.myChart.setOption(option)
             },
             autoMove() {
+                // let option = this.myChart.getOption()
+                // console.log(option)
                 // 自动滚动：
                 this.timeOut = setInterval(() => {
-                    if (option.dataZoom[0].endValue == this.allData.length) {
-                        option.dataZoom[0].endValue = 4;
-                        option.dataZoom[0].startValue = 0;
+                    if (this.endValue == this.allData.length) {
+                        this.endValue = 4;
+                        this.startValue = 0;
                     } else {
-                        option.dataZoom[0].endValue = option.dataZoom[0].endValue + 1;
-                        option.dataZoom[0].startValue = option.dataZoom[0].startValue + 1;
+                        this.endValue += 1;
+                        this.startValue += 1;
                     }
-                    console.log('🥩[option]:', window.option);
-                    this.myChart.setOption(option);
+                    let dataZoom = [
+                        {
+                            yAxisIndex: 0, //这里是从X轴的0刻度开始
+                            show: false, //是否显示滑动条，不影响使用
+                            type: "slider", // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                            startValue: this.startValue, // 从头开始。
+                            endValue: this.endValue, // 一次性展示5个。
+                        },
+                    ]
+                    // console.log('🥩[option]:', dataZoom);
+                    this.init()
                     this.myChart.on('mouseover', this.stop())
                     this.myChart.on('mouseout', this.goMove())
                 }, 2000)
