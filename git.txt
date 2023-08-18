@@ -196,4 +196,4 @@ git commit --amend --reset-author --no-edit
 
 git  reflog
 命令可以看到曾经执行过的操作，还有版本序号。
- git reset --hard HEAD@{【填那个序号】} 就可以恢复本地删除的文件了！
+git reset --hard HEAD@{【填那个序号】} 就可以恢复本地删除的文件了！
