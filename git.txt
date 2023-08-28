@@ -59,6 +59,7 @@ git push origin :< tagName>
 git checkout -b < branchName>
 < tagName>
 
+git tag  -a  "v1.0.1" -m  "zhushi "
 
 ------------------
 5. git 删除后紧急操作
