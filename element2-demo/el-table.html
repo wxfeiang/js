@@ -1,0 +1,149 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 表格返显
+ * @Date: 2022-08-28 21:24:14
+ * @LastEditTime: 2023-09-06 21:05:25
+ * @FilePath: /js/element2-demo/el-table.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <template>
+            <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
+                @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55">
+                </el-table-column>
+
+                <el-table-column label="日期" width="120">
+
+                    <template slot-scope="scope">{{ scope.row.date }}</template>
+                </el-table-column>
+                <el-table-column prop="name" label="姓名" width="120">
+                </el-table-column>
+                <el-table-column prop="address" label="地址" show-overflow-tooltip>
+                </el-table-column>
+                <el-table-column prop="id" label="id" show-overflow-tooltip>
+                </el-table-column>
+            </el-table>
+            <div style="margin-top: 20px">
+                <el-button @click="toggleSelection([tableData[0], tableData[6]])">切换第二、第三行的选中状态</el-button>
+                <el-button @click="toggleSelection()">取消选择</el-button>
+                <el-button @click="slearr()">点击设置</el-button>
+            </div>
+        </template>
+
+
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                tableData: [
+                    {
+                        id: 1,
+                        date: '2016-05-03',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        id: 2,
+                        date: '2016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        id: 3,
+                        date: '2016-05-04',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        id: 4,
+                        date: '2016-05-01',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        id: 5,
+                        date: '2016-05-08',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        id: 6,
+                        date: '2016-05-06',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }, {
+                        id: 7,
+                        date: '2016-05-07',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄'
+                    }
+                ],
+                multipleSelection: [],
+                ids: [2, 3, 4]
+            }
+
+        },
+
+
+        methods: {
+            slearr() {
+                let a = this.ids.map(item => {
+                    return this.tableData.find(i => item == i.id)
+                })
+                this.toggleSelection(a)
+                // this.$refs.multipleTable.toggleRowSelection(row);
+            },
+            toggleSelection(rows) {
+                if (rows) {
+                    rows.forEach(row => {
+                        this.$refs.multipleTable.toggleRowSelection(row);
+                    });
+                } else {
+                    this.$refs.multipleTable.clearSelection();
+                }
+            },
+            handleSelectionChange(val) {
+                console.log('🍩[val]:', val);
+                this.multipleSelection = val;
+            }
+
+        }
+
+    })
+
+
+
+
+
+</script>
+
+
+<style lang="">
+    .tree-icons {
+        border: 1px solid #1890ff;
+        font-size: 10px;
+        color: #1890ff;
+        font-weight: bold;
+
+    }
+</style>
+
+<!-- font-size: 18px;
+      font-family: PingFang SC, PingFang SC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #333333;
+      line-height: 40px; -->
+
+
+</html>
