@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description:
  * @Date: 2022-12-05 22:19:04
- * @LastEditTime: 2023-12-28 22:26:09
+ * @LastEditTime: 2023-12-29 23:15:23
  * @FilePath: /js/element2-demo/uploadFrom.html
 -->
 <!DOCTYPE html>
@@ -27,8 +27,8 @@
                 <el-form-item label="上传图片" prop="name">
 
                     <el-upload action="http://localhost:3001/v1/base/uploadLocal" list-type="picture-card"
-                        :on-success="uploadSess" :file-list="fileList" :limit="3" :on-preview="handlePictureCardPreview"
-                        :on-remove="handleRemove">
+                        :on-success="uploadSess" :file-list="fileList" :limit="limt"
+                        :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
                         <i class="el-icon-plus"></i>
                     </el-upload>
 
@@ -54,6 +54,7 @@
                 return {
                     dialogImageUrl: '',
                     dialogVisible: false,
+                    limt: 2,
                     ruleForm: {},
                     rules: {
                         name: [
@@ -65,30 +66,18 @@
 
                 };
             },
-            watch: {
-                'ruleForm.name': {
-                    handler(newVal) {
-                        if (newVal.length) {
-                            this.$refs['ruleForm'].clearValidate(['name'])
-                        }
-                    },
-                    deep: true
-                }
-            },
-
             methods: {
-
                 handlePictureCardPreview(file) {
                     this.dialogImageUrl = file.url;
                     this.dialogVisible = true;
                 },
                 submitForm(formName) {
                     this.$refs[formName].validate((valid) => {
-                        console.log('🍬', this.ruleForm);
+
                         if (valid) {
                             alert('submit!');
                         } else {
-                            console.log('error submit!!');
+
                             return false;
                         }
                     });
@@ -101,17 +90,14 @@
                         name: response.data.url,
                         url: response.data.base + response.data.url
                     })
-                    this.ruleForm.name = this.fileList.map(i => i.url).join(',');
-                    // this.$refs['ruleForm'].clearValidate()
-                    // this.$refs['ruleForm'].validateField('name');
-
+                    this.$set(this.ruleForm, 'name', this.fileList.map(i => i.url).join(','))
+                    this.$refs['ruleForm'].clearValidate()
                 },
                 handleRemove(file, fileList) {
-                    console.log('🍼️[fileList]:', fileList);
-                    console.log('🥥[file]:', file);
+                    this.fileList = fileList
 
-                    this.ruleForm.name = fileList.map(i => i.url).join(',');
-                    console.log('🍈[this.ruleForm.name]:', this.ruleForm.name);
+                    this.$set(this.ruleForm, 'name', this.fileList.map(i => i.url).join(','))
+
                 },
             }
         })
