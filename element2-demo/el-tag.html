@@ -1,0 +1,117 @@
+<!--
+ * @Author: wxfeiang
+ * @Description: 树组件
+ * @Date: 2022-08-28 21:24:14
+ * @LastEditTime: 2023-10-09 08:45:13
+ * @FilePath: /js/element2-demo/el-tag.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <el-tag>标签一</el-tag>
+        <el-tag type="success" class="noactive">标签二</el-tag>
+        <el-tag type="info">标签三</el-tag>
+        <el-tag type="warning">标签四</el-tag>
+        <el-tag type="danger">标签五</el-tag>
+
+
+
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                restaurants: [],
+                state: ''
+            }
+        },
+
+        mounted() {
+            this.restaurants = this.loadAll();
+        },
+
+        methods: {
+            querySearch(queryString, cb) {
+                var restaurants = this.restaurants;
+                var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
+                // 调用 callback 返回建议列表的数据
+                cb(results);
+            },
+            createFilter(queryString) {
+                return (restaurant) => {
+                    return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) > -1);
+                };
+            },
+            add() {
+                console.log(this.state)
+            },
+            handleSelect(item) {
+                console.log(item);
+            },
+            handleIconClick(ev) {
+                console.log(ev);
+            },
+            loadAll() {
+                return [
+                    {
+                        label: "孙悟空",
+                        value: '500',
+                    },
+                    {
+                        label: "孙尚香",
+                        value: '18',
+                    },
+                    {
+                        label: "沙和尚",
+                        value: '1000',
+                    },
+                ]
+            },
+
+        }
+
+
+    })
+
+
+</script>
+
+
+<style lang="">
+    .tree-icons {
+        border: 1px solid #1890ff;
+        font-size: 10px;
+        color: #1890ff;
+        font-weight: bold;
+
+    }
+
+    .noactive {
+        background-color: #fff !important;
+        color: #000 !important;
+        border: 1px solid #409EFF !important;
+        cursor: pointer;
+    }
+</style>
+
+<!-- font-size: 18px;
+      font-family: PingFang SC, PingFang SC-Medium;
+      font-weight: 500;
+      text-align: left;
+      color: #333333;
+      line-height: 40px; -->
+
+
+</html>

@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description: 表格返显
  * @Date: 2022-08-28 21:24:14
- * @LastEditTime: 2023-09-06 21:05:25
+ * @LastEditTime: 2023-09-07 09:23:33
  * @FilePath: /js/element2-demo/el-table.html
 -->
 <!DOCTYPE html>
@@ -36,6 +36,7 @@
                 <el-button @click="toggleSelection([tableData[0], tableData[6]])">切换第二、第三行的选中状态</el-button>
                 <el-button @click="toggleSelection()">取消选择</el-button>
                 <el-button @click="slearr()">点击设置</el-button>
+                <el-button @click="test">test</el-button>
             </div>
         </template>
 
@@ -115,6 +116,13 @@
             handleSelectionChange(val) {
                 console.log('🍩[val]:', val);
                 this.multipleSelection = val;
+            },
+
+            test() {
+                let a = [undefined, undefined, 23, 4]
+                let b = a.filter(i => i)
+                console.log('🍝', b);
+
             }
 
         }
