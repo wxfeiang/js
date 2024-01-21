@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>banner</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #000;
+    }
+
+    .box {
+        position: relative;
+    }
+
+    .pater {
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        position: absolute;
+        z-index: 9999;
+        top: 200px;
+    }
+
+    .pater:nth-child(1) {
+        left: 0;
+
+    }
+
+    .pater:nth-child(2) {
+        right: 0;
+
+
+    }
+
+    .warp {
+        width: 500px;
+        height: 400px;
+        margin: 100px auto;
+        position: relative;
+        perspective: 800px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item {
+            position: absolute;
+            height: 400px;
+            transition: all 1s;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+
+
+
+
+        }
+
+        /* .item:nth-child(1) {
+            top: 20px;
+            left: 30px;
+            z-index: 1;
+        }
+
+        .item:nth-child(2) {
+            top: 0;
+            right: 0;
+        } */
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="warp">
+
+            <!-- <img class="item" src="https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg"
+                alt="Banner">
+            <img class="item" src="https://youimg1.c-ctrip.com/target/100r10000000pycel4E0E.jpg" alt="Banner">
+            <img class="item" src="https://youimg1.c-ctrip.com/target/100r10000000pycel4E0E.jpg" alt="Banner">
+            <img class="item" src="https://youimg1.c-ctrip.com/target/100r10000000pycel4E0E.jpg" alt="Banner">
+            <img class="item" src="https://youimg1.c-ctrip.com/target/100r10000000pycel4E0E.jpg" alt="Banner">
+            <img class="item" src="https://youimg1.c-ctrip.com/target/100r10000000pycel4E0E.jpg" alt="Banner"> -->
+
+
+            <div class="item">
+                <img src="https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg" alt="Banner">
+            </div>
+            <div class="item">
+                <img src="https://img95.699pic.com/photo/50070/5999.jpg_wh860.jpg" alt="Banner">
+            </div>
+            <div class="item">
+                <img src="https://pic3.zhimg.com/v2-d1f733345b0d11ea4d1bde0e2511dbc8_720w.jpg?source=172ae18b"
+                    alt="Banner">
+            </div>
+            <div class="item">
+                <img src="https://ts1.cn.mm.bing.net/th/id/R-C.62a4420f03d0594f14c4cedb4ca92f55?rik=eoZdvlU%2bTEZCnQ&riu=http%3a%2f%2fimg95.699pic.com%2fphoto%2f50100%2f1450.jpg_wh860.jpg&ehk=UL6jUo5ODeseZEucJ0Z9yz%2fTk7HuvshjF94HW0i%2fEvM%3d&risl=&pid=ImgRaw&r=0"
+                    alt="Banner">
+            </div>
+            <div class="item">
+                <img src="https://youimg1.c-ctrip.com/target/100212000000smw417D90.jpg" alt="Banner">
+            </div>
+            <div class="item">
+                <img src="https://ts1.cn.mm.bing.net/th/id/R-C.633901d07a3d18cdf6d58a0ccc74078d?rik=8evNNQvJj91%2bjg&riu=http%3a%2f%2fimg.hkwb.net%2fatt%2fsite2%2f20120308%2f633901d07a3d18cdf6d58a0ccc74078d.jpg&ehk=mupUGFlfxfEilMIkHoDFPVYnfR%2bSaF86fmgOkvvU8YM%3d&risl=&pid=ImgRaw&r=0"
+                    alt="Banner">
+            </div>
+            <div class="item">
+                <img src="https://ts1.cn.mm.bing.net/th/id/R-C.62a4420f03d0594f14c4cedb4ca92f55?rik=eoZdvlU%2bTEZCnQ&riu=http%3a%2f%2fimg95.699pic.com%2fphoto%2f50100%2f1450.jpg_wh860.jpg&ehk=UL6jUo5ODeseZEucJ0Z9yz%2fTk7HuvshjF94HW0i%2fEvM%3d&risl=&pid=ImgRaw&r=0"
+                    alt="Banner">
+            </div>
+        </div>
+        <div class="pater left">
+            2
+        </div>
+        <div class="pater right">
+            3
+        </div>
+    </div>
+
+
+</body>
+<script>
+    const items = document.querySelectorAll('.item');
+    let index = 3;
+
+    function layout() {
+        const xoffsetStep = 150 // 每个间隔
+        // const xoffset = index * xoffsetStep; // 计算偏移量
+
+        const count = items.length
+
+        const scaleSteep = 0.6// 缩放步长
+        const opciatytSteep = 0.5 // 透明度步长
+
+
+        // 当前第几张
+        for (let i = 0; i < count; i++) {
+            // 设置该元素的 ttransform :
+            //   translateX
+            //   scale   // 当前的不用缩放 0
+            // .  rotate
+            // zindex
+            // opactiy
+            const sign = Math.sign(i - index)
+            let xoffset = (i - index) * xoffsetStep
+            if (i !== index) {
+                // 初始值 确定方向符号 + -
+                xoffset = xoffset + (100 * sign)
+            }
+            const scale = scaleSteep ** Math.abs(i - index)
+            const rotateY = i === index ? 0 : 45 * -sign
+
+            items[i].style.transform = `translateX(${xoffset}px) scale(${scale}) rotateY(${rotateY}deg)`;
+            //离的越远 ，层级越低
+            items[i].style.zIndex = count - Math.abs(index - i)
+
+            const opacity = opciatytSteep ** Math.abs(i - index)
+            items[i].style.opacity = opacity
+        }
+
+
+    }
+    layout()
+
+    const prev = document.querySelector('.left');
+    const next = document.querySelector('.right');
+    prev.addEventListener('click', () => {
+        index--;
+        if (index < 0) {
+            index = items.length - 1
+        }
+        layout();
+    })
+    next.addEventListener('click', () => {
+        index++;
+        if (index > items.length - 1) {
+            index = 0
+        }
+        layout();
+    })
+    items.forEach((item, i) => {
+        item.addEventListener('click', () => {
+            index = i;
+            layout();
+        })
+    })
+
+
+</script>
+
+</html>
