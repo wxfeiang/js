@@ -2,7 +2,7 @@
  * @Author: wxfeiang
  * @Description:
  * @Date: 2022-08-24 16:30:20
- * @LastEditTime: 2022-08-24 16:33:25
+ * @LastEditTime: 2023-11-21 16:54:57
  * @FilePath: /js/element2-demo/checkFrom.js
  */
 // 表单名字组
@@ -44,3 +44,5 @@ function submitForm() {
       console.log('err')
     })
 }
+
+//写一个js 树扁平化方法

@@ -1,30 +1,4 @@
-# git 配置部分
 
-1. 配置ssh-key （邮箱最好与远端的保持一致）
-
-```
-ssh-keygen -t rsa -C '你的邮箱'
-```
-2. 配置邮箱，用户名
-```
-git config --global user.name "姓名"
-git config --global user.email "邮箱"
-
-```
-
-
-通过git stash将工作区恢复到上次提交的内容，
-同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，
-执行git stash pop将之前本地做的修改应用到当前工作区。
-
-
-git stash
-git pull
-git stash pop
-
-克隆远程仓库并重命名
-
-git clone url dir
 
 ------ tags
 把本地tag推送到远程
@@ -119,34 +93,8 @@ git config --global init.defaultBranch main
 
 3 git checkout dev 切换分支 （dev 也可以是远程分支）
 
----- mac git提交失败
- 在 .ssh 文件下 新建 config 文件 写入以下内容
 
-Host wxfeiang
-HostName 47.99.93.97
-port 22
-User root
-IdentityFile ~/.ssh/wxfeiang
-Host github.com
-port 443 # 默认是22端口
-HostName ssh.github.com
-IdentityFile ~/.ssh/id_rsa
-ServerAliveInterval 60
-ServerAliveCountMax 60
 
-git修改远程仓库地址
-方法有三种：
-1.修改命令
-git remote origin set-url [url]
-
-2.先删后加（这种操作不会保持历史记录）
-git remote rm origin
-git remote add origin [url]
-
-3.直接修改config文件(打开.git文件夹找到config文件，替换远程地址)
-
------ 多个KEY 时候
-已经添加好了Key
 
 
 尝试 git https 克隆 （需要用户名和密码）
