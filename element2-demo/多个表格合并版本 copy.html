@@ -11,19 +11,21 @@
         <div class="tab_box">
 
             <div v-for="(item,index) in tableList" :key="index">
-                <div class="h3">
+                <!-- <div class="h3">
                     <div class="item-title item1">
                         星期{{ handlerWeek()[item.weekNum -1]}}
                     </div>
                     <div class="item-title item2">
                         {{item.createTime}}
                     </div>
-                </div>
+                </div> -->
                 <el-table :data="item.list" border :show-header="false" style="width: 100%"
                     :span-method="arraySpanMethod" :row-class-name="rowClassName">
+                    <el-table-column prop="weekNum" align="center" label="星期" width="200px">
+                    </el-table-column>
 
                     <el-table-column prop="timeMeal" :formatter="handlerDaysT" align="center" sortable label="就餐时间"
-                        width="40px">
+                        width="100px">
                     </el-table-column>
                     <el-table-column prop="categoryName" align="center" sortable label="类别" width="150px">
                     </el-table-column>
@@ -187,7 +189,7 @@
                         ]
                     }
                 ],
-                needMergeArr: ['timeMeal', 'categoryName',], //需要进行合并的column的prop值 'timeMeal','foodName'
+                needMergeArr: ['weekNum', 'timeMeal', 'categoryName',], //需要进行合并的column的prop值 'timeMeal','foodName'
                 rowMergeArrs: {}, //处理过后得到的每个column的合并规则
             }
         },
@@ -199,10 +201,14 @@
         },
         methods: {
             handleArr(arr) {
-                console.log(arr, "handleArr----")
+
                 let newarr = []
                 arr.forEach(item => {
-                    item.list = [...item.moring, ...item.midday, ...item.night]
+                    item.list = [...item.moring, ...item.midday, ...item.night,]
+                    item.list.forEach(i => {
+                        i.weekNum = item.weekNum
+                    })
+
                 })
                 return arr
             },
@@ -234,14 +240,14 @@
             },
             arraySpanMethod({ column, rowIndex }) {
 
-                if (column.property === 'timeMeal') {
-                    return this.mergeAction('timeMeal', rowIndex);
-                } else if (column.property === 'categoryName') {
-                    return this.mergeAction('categoryName', rowIndex);
+                for (let i = 0; i < this.needMergeArr.length; i++) {
+                    if (column.property === this.needMergeArr[i]) {
+                        return this.mergeAction(this.needMergeArr[i], rowIndex);
+                    }
                 }
-                // else if (column.property === 'foodName') {
-                //     return this.mergeAction('foodName', rowIndex);
-                // }
+
+
+
             },
             mergeAction(val, rowIndex) {
                 let _row = this.rowMergeArrs[val].rowArr[rowIndex];

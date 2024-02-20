@@ -16,9 +16,12 @@
 
                 <el-table-column type="index" label="就餐时间" width="40px">
                 </el-table-column>
-                <el-table-column prop="plc" align="center" sortable label="类别" width="150px">
+
+                <el-table-column prop="weekNum" label="星期" width="40px">
                 </el-table-column>
-                <el-table-column prop="id" align="center" sortable label="类33别" width="150px">
+                <el-table-column prop="timeMeal" align="center" sortable label="类别" width="150px">
+                </el-table-column>
+                <el-table-column prop="updateTime" align="center" sortable label="类33别" width="150px">
                 </el-table-column>
                 <el-table-column v-for="(item,index) in
                  needMergeArr" :key="index" prop="thiree" align="center" :label=`${index}sdsdc` width="150px">
@@ -46,36 +49,46 @@
             return {
                 tableData: [],
                 tableList: [
+
                     {
-                        id: 0,
-                        plc: "1111",
-                        thiree: "112"
+                        timeMeal: "121",
+                        updateTime: "2024-02-19 15:07:23",
+                        weekNum: "1",
 
                     },
                     {
-                        id: 1,
-                        plc: "2222",
-                        thiree: "112"
+                        timeMeal: "121",
+                        updateTime: "2024-02-19 15:07:23",
+                        weekNum: "1",
+
                     },
                     {
-                        id: 2,
-                        plc: "2222",
-                        thiree: "112"
+                        timeMeal: "112323",
+                        updateTime: "2024-02-19 15:07:23",
+                        weekNum: "1",
+
                     },
                     {
-                        id: 4,
-                        plc: "3333",
-                        thiree: "112"
+                        timeMeal: "NIG",
+                        updateTime: "2024-02-19 15:07:23",
+                        weekNum: "1",
+
+                    },
+
+                    {
+                        timeMeal: "NIG",
+                        updateTime: "2024-02-19 15:07:23",
+                        weekNum: "1",
+
                     },
                     {
-                        id: 5,
-                        plc: "3333",
-                        thiree: "112"
+                        timeMeal: "NIG",
+                        updateTime: "2024-02-19 15:07:23",
+                        weekNum: "2",
+
                     }
                 ],
-
-
-                needMergeArr: ['plc', "aaa"], //需要进行合并的column的prop值 'timeMeal','foodName'
+                needMergeArr: ['weekNum', "timeMeal"], //需要进行合并的column的prop值 'timeMeal','foodName'
                 rowMergeArrs: {}, //处理过后得到的每个column的合并规则
             }
         },
@@ -86,6 +99,8 @@
             rowMergeHandle(needMergeArr, tableData) {
                 if (!Array.isArray(needMergeArr) && !needMergeArr.length) return false;
                 if (!Array.isArray(tableData) && !tableData.length) return false;
+
+                const id = needMergeArr[0]  // 避免合并的字段重复 默认合并的第一个字段
                 let needMerge = {};
                 needMergeArr.forEach(i => {
                     needMerge[i] = {
@@ -93,11 +108,12 @@
                         rowMergeNum: 0, //用来记录在目前列的第几行的行数，rowNum
                     };
                     tableData.forEach((item, index) => {
+
                         if (index === 0) {
                             needMerge[i].rowArr.push(1);
                             needMerge[i].rowMergeNum = 0;
                         } else {
-                            if (item[i] === tableData[index - 1][i]) {
+                            if (item[i] === tableData[index - 1][i] && item[id] === tableData[index - 1][id]) {
                                 needMerge[i].rowArr[needMerge[i].rowMergeNum] += 1;
                                 needMerge[i].rowArr.push(0);
                             } else {
@@ -109,7 +125,8 @@
                 });
                 return needMerge;
             },
-            arraySpanMethod({ column, rowIndex }) {
+            arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+
                 //  作为组件是否有自定义规则  父组件传入  【object Funciton] 原路返回
 
                 for (let i = 0; i < this.needMergeArr.length; i++) {
@@ -121,7 +138,7 @@
             mergeAction(val, rowIndex) {
                 let _row = this.rowMergeArrs[val].rowArr[rowIndex];
                 let _col = _row > 0 ? 1 : 0;
-                console.log(_row, _col, '_row, _col')
+
                 return [_row, _col];
             },
 
