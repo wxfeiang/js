@@ -2,8 +2,8 @@
  * @Author: wxfeiang
  * @Description:
  * @Date: 2023-04-18 21:48:40
- * @LastEditTime: 2023-04-22 17:53:29
- * @FilePath: /js/es6/数组转化 copy.html
+ * @LastEditTime: 2024-02-11 22:27:00
+ * @FilePath: /js/es6/方块转化 copy.html
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -79,14 +79,57 @@
     const xData = []
     const lenArr = []
 
+    resData.forEach((item, index) => {
+        xData.push(...Object.keys(item))
+        // 把每一项的长度放入数据 取出最大的用于补齐
+        lenArr.push(item[xData[index]].length)
+        const maxNum = Math.max(...lenArr)
 
-    let resalldata = resData.map(item => Object.values(item)).flat(2)
-    // .map(item => item.map(i => i))
-    console.log(resalldata)
+        item[xData[index]] = changeItem(item[xData[index]], maxNum)
+    })
+    // item  最大值----确定有几组
+
+
+    const seil = resData.map((item, index) => {
+        // return seiesData(item[xData[index]], xData.length)
+        return item[xData[index]].map(i => i.value)
+    })
+
+    // 补齐不全的数据
+    function changeItem(data, len) {
+        let c = len - data.length
+        if (c > 0) {
+            for (let i = 0; i < c; i++) {
+                data.push({
+                    name: "",
+                    value: 0
+                })
+            }
+        }
+        return data
+    }
+    seiesData(seil, Math.max(...lenArr))
+
+    //转化为新的分组
+    function seiesData(data, clom) {
+        let arr = new Array(clom)
+        for (let i = 0; i < clom; i++) {
+            arr[i] = []
+            arr[i].push(...data.map(k => k[i]))
+
+            // 原始写法
+            // data.forEach((item, index) => {
+            //     arr[i].push(item[i])
+            // })
+        }
 
 
 
 
+        return arr
+
+
+    }
 
 
 </script>

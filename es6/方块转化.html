@@ -1,8 +1,8 @@
 <!--
  * @Author: wxfeiang
- * @Description: 
+ * @Description:
  * @Date: 2023-04-18 21:48:40
- * @LastEditTime: 2023-07-06 19:59:26
+ * @LastEditTime: 2024-02-11 21:36:39
  * @FilePath: /js/es6/数组转化.html
 -->
 <!DOCTYPE html>
@@ -95,6 +95,7 @@
         // return seiesData(item[xData[index]], xData.length)
         return item[xData[index]].map(i => i.value)
     })
+    console.log('🍐[seil]:', seil);
 
 
 
@@ -102,7 +103,7 @@
 
 
 
-    // 补齐不全的数据 
+    // 补齐不全的数据
     function changeItem(data, len) {
         let c = len - data.length
         if (c > 0) {

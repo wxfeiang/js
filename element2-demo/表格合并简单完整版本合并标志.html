@@ -100,7 +100,7 @@
                 if (!Array.isArray(needMergeArr) && !needMergeArr.length) return false;
                 if (!Array.isArray(tableData) && !tableData.length) return false;
 
-                const id = needMergeArr[0]  // 避免合并的字段重复 默认合并的第一个字段
+                const id = needMergeArr[0]  // 分组:不同组 避免合并的字段重复 默认合并的第一个字段
                 let needMerge = {};
                 needMergeArr.forEach(i => {
                     needMerge[i] = {

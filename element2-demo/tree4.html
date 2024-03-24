@@ -105,7 +105,7 @@
             },
 
 
-            // 
+            //
             submitForm(fun) {
                 let _self = this;
                 _self.formarr.forEach(item => { //根据表单的ref校验
@@ -115,7 +115,7 @@
                 Promise.all(_self.resultArr).then(function () { //都通过了
                     _self[fun]()
                     console.log('所有表单验证通过')
-                    // TODO:可直接执行你的提交 数据 
+                    // TODO:可直接执行你的提交 数据
                     // 该区域使用this无效，promise内面的this表示局部，并不代表VueComponet实例
                 }).catch(function () {
                     console.log("err");
@@ -164,7 +164,7 @@
                 });
             },
 
-            // 删除单个标签 
+            // 删除单个标签
             handleClose(obj, filed, index, tag) {
                 this[obj][filed][index].tag.splice(this[obj][filed][index].tag.indexOf(tag), 1);
             },

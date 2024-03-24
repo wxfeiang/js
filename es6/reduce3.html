@@ -1,0 +1,62 @@
+<!--
+ * @Author: wxfeiang
+ * @Description:
+ * @Date: 2021-12-05 09:32:20
+ * @LastEditTime: 2024-02-11 20:41:50
+ * @FilePath: /js/es6/reduce3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>reduce</title>
+
+</head>
+
+<body>
+  <div>
+    <span>
+
+    </span>
+
+  </div>
+  <script>
+
+    // json 和数组对象相同的合并
+    const json = {
+      '输电': 1,
+      '配电': 2,
+      '变电': 3
+
+    }
+    const initdata = [
+      {
+        name: "输电",
+        color: "#000"
+      },
+      {
+        name: "变电",
+        color: "#111"
+      },
+      {
+        name: "配电",
+        color: "#777"
+      },
+    ]
+
+    function resalt(arr, arr2) {
+      return arr2.map(i => {
+        i.value = arr[i.name] ?? 0
+        return i
+      })
+    }
+    let res = resalt(json, initdata)
+    console.log('🍼️[res]:', res);
+
+  </script>
+</body>
+
+</html>

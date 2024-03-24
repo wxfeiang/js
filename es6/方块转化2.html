@@ -1,0 +1,41 @@
+<!--
+ * @Author: wxfeiang
+ * @Description:
+ * @Date: 2023-04-18 21:48:40
+ * @LastEditTime: 2024-02-12 20:51:10
+ * @FilePath: /js/es6/方块转化2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    const b = [
+        [1, 6, 9, 0],
+        [2, 2, 3, 5],
+        [3, 2,],
+    ]
+    let max = Math.max(...b.map(i => i.length))
+    console.log('🥩[max]:', max);
+    let arr = new Array(max)
+    for (i = 0; i < max; i++) {
+        arr[i] = []
+        arr[i].push(...b.map(k => k[i] ?? 0))
+    }
+    console.log('🍅[arr]:', arr);
+
+
+
+</script>
+
+</html>
