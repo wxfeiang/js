@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>flex</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+    .item {
+      flex: 1;
+      background: #ccc;
+      height: 180px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+  <script>
+    const data = {
+      spuId: "1772553486237642754",
+      skuId: null,
+      shopId: "1650686449834549250",
+      spuName: "灵魂摆渡",
+      brandId: "1772551154657603586",
+      logisticsType: "[2,0,1]",
+      firstCategoryId: "1772550755829624833",
+      secondCategoryId: "1772550884875776002",
+      model: "1h",
+      sellingPoint: null,
+      rotationUrl: [
+        "XXXXXX:61395/ec-saas/20240326/9b9bf4cc644b4657996b69acf8035f73.jpg",
+        "XXXXXX:61395/ec-saas/20240326/f60ca87c0ee34300b7fd952ccf4bd1f5.jpg"
+      ],
+      skuUrl: [
+        "XXXXXX:61395/ec-saas/20240326/ed928af0b9e64b9f930d33680a8eb303.jpg"
+      ],
+      remarkUrl: [
+        "XXXXXX:61395/ec-saas/20240326/09ddb2b633b04df1ad9fd002e8ab0ee9.jpg",
+        "XXXXXX:61395/ec-saas/20240326/6d612679ed8245f19a6d19c2d2ba1fd2.jpg",
+        "XXXXXX:61395/ec-saas/20240326/520cfbd96f4743118e1f94297e564a6b.jpg"
+      ],
+      productSkuInfoRespVOS: [
+        {
+          skuId: "1772553487416242177",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1694163400457732098","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"标准版","版本":"AI智能版","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 0.01,
+          skuStock: 12000,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1694163400457732098",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242178",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1694163400457732098","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"标准版","版本":"AI智能版","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 0.02,
+          skuStock: 12000,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1694163400457732098",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242179",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1694163400457732098","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"标准版","版本":"AI智能版","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 0.03,
+          skuStock: 100,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1694163400457732098",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242180",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1694163484545138689","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"标准版","版本":"标准版","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 0.03,
+          skuStock: 100,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1694163484545138689",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242181",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1694163484545138689","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"标准版","版本":"标准版","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 0.05,
+          skuStock: 1000,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1694163484545138689",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242182",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1694163484545138689","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"标准版","版本":"标准版","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 1,
+          skuStock: 1000,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1694163484545138689",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242183",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1746834314043179009","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"标准版","版本":"标配","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 1,
+          skuStock: 1000,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1746834314043179009",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242184",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1746834314043179009","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"标准版","版本":"标配","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 1,
+          skuStock: 32,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1746834314043179009",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242185",
+          skuValue:
+            '{"112":"1679372356058918914","200":"1746834314043179009","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"标准版","版本":"标配","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 1,
+          skuStock: 23,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372356058918914",
+            "1746834314043179009",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242186",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1694163400457732098","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"AI智能版","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 1,
+          skuStock: 23,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1694163400457732098",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242187",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1694163400457732098","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"AI智能版","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 23,
+          skuStock: 34,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1694163400457732098",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242188",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1694163400457732098","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"AI智能版","规格":"X10旗舰第二代"}',
+          costPrice: 1010,
+          sellingPrice: 23,
+          skuStock: 87,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1694163400457732098",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242189",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1694163484545138689","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"标准版","规格":"电池款：1感应1主机"}',
+          costPrice: 34,
+          sellingPrice: 231,
+          skuStock: 563,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1694163484545138689",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242190",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1694163484545138689","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"标准版","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 12,
+          skuStock: 454,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1694163484545138689",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242191",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1694163484545138689","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"标准版","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 12,
+          skuStock: 346,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1694163484545138689",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242192",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1746834314043179009","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"标配","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 12,
+          skuStock: 2536,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1746834314043179009",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242193",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1746834314043179009","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"标配","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 12,
+          skuStock: 23,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1746834314043179009",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242194",
+          skuValue:
+            '{"112":"1746836750531149826","200":"1746834314043179009","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"至尊版Pro-钢琴黑","版本":"标配","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 12,
+          skuStock: 1334,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1746836750531149826",
+            "1746834314043179009",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242195",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1694163400457732098","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"黑色","版本":"AI智能版","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 234,
+          skuStock: 3522,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1694163400457732098",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242196",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1694163400457732098","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"黑色","版本":"AI智能版","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 34,
+          skuStock: 4442,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1694163400457732098",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242197",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1694163400457732098","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"黑色","版本":"AI智能版","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 34,
+          skuStock: 100,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1694163400457732098",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242198",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1694163484545138689","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"黑色","版本":"标准版","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 22,
+          skuStock: 121,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1694163484545138689",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242199",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1694163484545138689","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"黑色","版本":"标准版","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 234,
+          skuStock: 234,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1694163484545138689",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242200",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1694163484545138689","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"黑色","版本":"标准版","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 24,
+          skuStock: 1244,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1694163484545138689",
+            "1694164662578331649"
+          ]
+        },
+        {
+          skuId: "1772553487416242201",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1746834314043179009","206":"1696712620800798721"}',
+          skuName:
+            '{"颜色":"黑色","版本":"标配","规格":"电池款：1感应1主机"}',
+          costPrice: 10,
+          sellingPrice: 121,
+          skuStock: 254,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1746834314043179009",
+            "1696712620800798721"
+          ]
+        },
+        {
+          skuId: "1772553487416242202",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1746834314043179009","206":"1694165579172167681"}',
+          skuName:
+            '{"颜色":"黑色","版本":"标配","规格":"至尊版PRO-液晶触控/充电便携"}',
+          costPrice: 10,
+          sellingPrice: 23,
+          skuStock: 343,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1746834314043179009",
+            "1694165579172167681"
+          ]
+        },
+        {
+          skuId: "1772553487416242203",
+          skuValue:
+            '{"112":"1679372388338282498","200":"1746834314043179009","206":"1694164662578331649"}',
+          skuName:
+            '{"颜色":"黑色","版本":"标配","规格":"X10旗舰第二代"}',
+          costPrice: 10,
+          sellingPrice: 234,
+          skuStock: 1003,
+          groupPurchasePrice: null,
+          groupPurchaseStock: null,
+          status: 1,
+          skuValueList: [
+            "1679372388338282498",
+            "1746834314043179009",
+            "1694164662578331649"
+          ]
+        }
+      ],
+      specialList: [
+        {
+          specialId: "112",
+          specialName: "颜色",
+          specialValueRespVOS: [
+            {
+              specialValueId:
+                "1679372356058918914",
+              specialValueName: "标准版"
+            },
+            {
+              specialValueId:
+                "1746836750531149826",
+              specialValueName: "至尊版Pro-钢琴黑"
+            },
+            {
+              specialValueId:
+                "1679372388338282498",
+              specialValueName: "黑色"
+            }
+          ]
+        },
+        {
+          specialId: "200",
+          specialName: "版本",
+          specialValueRespVOS: [
+            {
+              specialValueId:
+                "1694163400457732098",
+              specialValueName: "AI智能版"
+            },
+            {
+              specialValueId:
+                "1694163484545138689",
+              specialValueName: "标准版"
+            },
+            {
+              specialValueId:
+                "1746834314043179009",
+              specialValueName: "标配"
+            }
+          ]
+        },
+        {
+          specialId: "206",
+          specialName: "规格",
+          specialValueRespVOS: [
+            {
+              specialValueId:
+                "1696712620800798721",
+              specialValueName:
+                "电池款：1感应1主机"
+            },
+            {
+              specialValueId:
+                "1694165579172167681",
+              specialValueName:
+                "至尊版PRO-液晶触控/充电便携"
+            },
+            {
+              specialValueId:
+                "1694164662578331649",
+              specialValueName: "X10旗舰第二代"
+            }
+          ]
+        }
+      ],
+      productLabelIds: [],
+      decorationSpecialIds: [
+        "1771004446932705282",
+        "1771004446932705283",
+        "1771004446932705284",
+        "1771004446932705285",
+        "1771004446932705286"
+      ],
+      decorationCustomIds: [],
+      unit: "1",
+      spuIntro: "图书文学",
+      scoreIsFlag: true,
+      status: 1,
+      leftStock: 0,
+      groupPrice: null,
+      price: null
+    }
+
+    const infoData = {
+      _id: data.spuId, // 商品ID
+      name: data.spuName, // 商品名称
+      // 商品头像
+      goods_thumb: "",
+
+      // 该商品对应的sku列表
+      sku_list: [
+        data.productSkuInfoRespVOS.map((item) => {
+          return {
+            _id: item.skuId, // SKU ID
+            goods_id: data.spuId, // 商品ID
+            goods_name: data.spuName, // 商品名称
+            // SKU头像
+            image:
+              "https://img14.360buyimg.com/n0/jfs/t1/79668/22/9987/159271/5d780915Ebf9bf3f4/6a1b2703a9ed8737.jpg",
+            price: item.sellingPrice, // SKU 价格
+            sku_name_arr: [
+              Object.values(
+                JSON.parse(item.skuName)
+              )
+            ], // 该SKU由哪些规格组成（规格是有顺序的，需要与spec_list的数组顺序对应）
+            stock: item.skuStock
+          }
+        })
+      ],
+      spec_list: [
+        data.specialList.map((item) => {
+          return {
+            list: [
+              item.specialValueRespVOS.map(
+                (j) => {
+                  return {
+                    name: j.specialValueName
+                  }
+                }
+              )
+            ],
+            name: item.specialName
+          }
+        })
+      ]
+    }
+
+    console.log("🍌[infoData]:", infoData)
+  </script>
+</html>
