@@ -1,8 +1,8 @@
 <!--
  * @Author: wxfeiang
- * @Description: 
+ * @Description:
  * @Date: 2022-08-18 11:32:44
- * @LastEditTime: 2022-08-23 18:10:05
+ * @LastEditTime: 2023-09-29 00:12:31
  * @FilePath: /js/element2-demo/tree2.html
 -->
 <!DOCTYPE html>
@@ -1892,7 +1892,7 @@
         function flatData(arr) {
             arr.forEach(item => {
                 newArr.push(item)
-                item.children && item.children.length > 0 ? flatData(item.children) : ""
+                item?.children?.length > 0 ? flatData(item.children) : ""
                 delete item.children
                 //  item.children = ''    //若是扁平化后的数组须要显示父子层级，能够把这一项删除
             })

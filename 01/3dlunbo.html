@@ -153,7 +153,7 @@
         aName.push(item.classList[0])
 
     }
-    console.log(aName)
+    console.log('🍆[aName]:', aName);
 
     function nextPic() { //  向下翻页   把数组的最后一个 拿到第一个位置  在删除
         aName.unshift(aName[aName.length - 1]);
@@ -191,17 +191,17 @@
         }
         aSpan[index].style.background = "#45c17c"
     }
-    // 点击事件 
+    // 点击事件
     // document.querySelector(".list1").onclick = prePic;
     // document.querySelector(".list3").onclick = nextPic;
     //  做事件监听 事件代理  imgbox
 
     oImgbox.addEventListener("click", function (ev) {
-        // 判断当前点击元素   鼠标事件  
+        // 判断当前点击元素   鼠标事件
         //  console.log(window.event)
         ev = ev || window.event;
         console.log(ev.target.parentNode)
-        // 点中的 li 
+        // 点中的 li
         var ele = ev.target.parentNode;
         var elename = ele.classList[0];
         switch (ele.classList[0]) {
@@ -219,10 +219,10 @@
 
 
     // 定时任务
-    var timer = setInterval(function () {
-        nextPic();
+    // var timer = setInterval(function () {
+    //     nextPic();
 
-    }, 1500)
+    // }, 1500)
 </script>
 
 </html>

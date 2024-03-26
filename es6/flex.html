@@ -631,49 +631,43 @@
     }
 
     const infoData = {
-      _id: data.spuId, // 商品ID
-      name: data.spuName, // 商品名称
-      // 商品头像
-      goods_thumb: "",
-
-      // 该商品对应的sku列表
-      sku_list: [
-        data.productSkuInfoRespVOS.map((item) => {
-          return {
+    _id: data.spuId, // 商品ID
+    name: data.spuName, // 商品名称
+    // 商品头像
+    goods_thumb: "https://img14.360buyimg.com/n0/jfs/t1/79668/22/9987/159271/5d780915Ebf9bf3f4/6a1b2703a9ed8737.jpg",
+    // 该商品对应的sku列表
+    sku_list: data.productSkuInfoRespVOS.map((item) => {
+        return {
             _id: item.skuId, // SKU ID
             goods_id: data.spuId, // 商品ID
             goods_name: data.spuName, // 商品名称
             // SKU头像
             image:
-              "https://img14.360buyimg.com/n0/jfs/t1/79668/22/9987/159271/5d780915Ebf9bf3f4/6a1b2703a9ed8737.jpg",
+                "https://copyright.bdstatic.com/vcg/creative/cc9c744cf9f7c864889c563cbdeddce6.jpg@h_1280",
             price: item.sellingPrice, // SKU 价格
-            sku_name_arr: [
-              Object.values(
+            sku_name_arr: Object.values(
                 JSON.parse(item.skuName)
-              )
-            ], // 该SKU由哪些规格组成（规格是有顺序的，需要与spec_list的数组顺序对应）
+            )
+            , // 该SKU由哪些规格组成（规格是有顺序的，需要与spec_list的数组顺序对应）
             stock: item.skuStock
-          }
-        })
-      ],
-      spec_list: [
-        data.specialList.map((item) => {
-          return {
-            list: [
-              item.specialValueRespVOS.map(
+        }
+    })
+    ,
+    spec_list: data.specialList.map((item) => {
+        return {
+            list: item.specialValueRespVOS.map(
                 (j) => {
-                  return {
-                    name: j.specialValueName
-                  }
+                    return {
+                        name: j.specialValueName
+                    }
                 }
-              )
-            ],
+            )
+            ,
             name: item.specialName
-          }
-        })
-      ]
-    }
+        }
+    })
 
-    console.log("🍌[infoData]:", infoData)
+}
+  </script>
   </script>
 </html>
