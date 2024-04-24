@@ -1,321 +1,384 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-</head>
-
-<body>
+  <body>
     <div id="app">
-        <div class="tab_box">
-
-            <div v-for="(item,index) in tableList" :key="index">
-                <div class="h3">
-                    <div class="item-title item1">
-                        {{item.weekNum}}
-                    </div>
-                    <div class="item-title item2">
-                        {{item.createTime}}
-                    </div>
-                </div>
-                <el-table :data="item.list" border :show-header="false" style="width: 100%"
-                    :span-method="arraySpanMethod">
-
-                    <el-table-column prop="timeMeal" sortable label="就餐时间" width="120px">
-                    </el-table-column>
-                    <el-table-column prop="categoryName" sortable label="类别" width="150px">
-                    </el-table-column>
-                    <el-table-column prop="foodName" sortable label="餐品">
-
-
-                    </el-table-column>
-                </el-table>
-
-
+      <div class="tab_box">
+        <div
+          v-for="(item,index) in tableList"
+          :key="index"
+        >
+          <div class="h3">
+            <div class="item-title item1">
+              {{item.weekNum}}
             </div>
-
+            <div class="item-title item2">
+              {{item.createTime}}
+            </div>
+          </div>
+          <el-table
+            :data="item.list"
+            border
+            :show-header="false"
+            style="width: 100%"
+            :span-method="arraySpanMethod"
+          >
+            <el-table-column
+              prop="timeMeal"
+              sortable
+              label="就餐时间"
+              width="120px"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="categoryName"
+              sortable
+              label="类别"
+              width="150px"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="foodName"
+              sortable
+              label="餐品"
+            >
+            </el-table-column>
+          </el-table>
         </div>
-
+      </div>
     </div>
-</body>
-<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
 
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
     new Vue({
-        el: '#app',
-        data() {
-            return {
-                tableData: [],
-                tableList: [],
-                rows: [
-                    {
-                        "id": "1559839139432300546",
-                        "weekNum": "1",
-                        "weekDate": "2022-08-23 00:00:00",
-                        "createTime": "2022-08-17 17:46:45",
-                        "updateTime": null,
-                        "moring": [
-                            {
-                                "id": null,
-                                "timeMeal": "MOR",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['馒头','油657条','蛋糕','包子']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "热菜"
-                            },
-                            {
-                                "id": null,
-                                "timeMeal": "MOR",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['酸辣瓜片','青笋炒肉']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "每日中午面食"
-                            }
-                        ],
-                        "midday": [
-                            {
-                                "id": null,
-                                "timeMeal": "MIDDAY",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['馒头','油条','蛋糕890','包子']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "小吃"
-                            },
-                            {
-                                "id": null,
-                                "timeMeal": "MIDDAY",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['酸辣66瓜片','青笋炒454肉']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "每日中午面食"
-                            }
-                        ],
-                        "night": [
-                            {
-                                "id": null,
-                                "timeMeal": "NIGHT",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['兰州臊子面','油饼','手撕莲白']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "汤品"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "1559839028706869249",
-                        "weekNum": "5",
-                        "weekDate": "2022-08-22 00:00:00",
-                        "createTime": "2022-08-17 17:46:19",
-                        "updateTime": null,
-                        "moring": [
-                            {
-                                "id": null,
-                                "timeMeal": "MOR",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['馒头','油657条','蛋糕','包子']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "热菜"
-                            },
-                            {
-                                "id": null,
-                                "timeMeal": "MOR",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['酸辣瓜片','青笋炒肉']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "每日中午面食"
-                            }
-                        ],
-                        "midday": [
-                            {
-                                "id": null,
-                                "timeMeal": "MIDDAY",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['馒头','油条','蛋糕890','包子']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "小吃"
-                            },
-                            {
-                                "id": null,
-                                "timeMeal": "MIDDAY",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['酸辣66瓜片','青笋炒454肉']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "每日中午面食"
-                            }
-                        ],
-                        "night": [
-                            {
-                                "id": null,
-                                "timeMeal": "NIGHT",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['兰州臊子面','油饼','手撕莲白']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "汤品"
-                            },
-                            {
-                                "id": null,
-                                "timeMeal": "NIGHT",
-                                "weekDateId": null,
-                                "foodTypeId": null,
-                                "foodName": "['兰州臊子面','油饼','手撕莲白']",
-                                "createTime": null,
-                                "updateTime": null,
-                                "categoryName": "汤品"
-                            }
-                        ]
-                    }
-                ],
-                needMergeArr: ['timeMeal', 'categoryName', 'foodName'], //需要进行合并的column的prop值
-                rowMergeArrs: {}, //处理过后得到的每个column的合并规则
-            }
-        },
-        created() {
-            this.tableList = this.handleArr(this.rows)
-            this.rowMergeArrs = this.rowMergeHandle(this.needMergeArr, this.tableList[0].list); // 处理数据
-        },
-        methods: {
-            handleArr(arr) {
-                let newarr = []
-
-                arr.forEach(item => {
-                    item.list = [...item.moring, ...item.moring, ...item.midday, ...item.night]
-                })
-                return arr
-
-            },
-
-
-            rowMergeHandle(needMergeArr, tableData) {
-                if (!Array.isArray(needMergeArr) && !needMergeArr.length) return false;
-                if (!Array.isArray(tableData) && !tableData.length) return false;
-                let needMerge = {};
-                needMergeArr.forEach(i => {
-                    needMerge[i] = {
-                        rowArr: [], //该数组用来记录在目前列中的每一行的cell应该向下合并几行还是应该被合并。如果对应数组的数据==0,则说明该cell应该被合并。
-                        rowMergeNum: 0, //用来记录在目前列的第几行的行数，rowNum
-                    };
-                    tableData.forEach((item, index) => {
-                        if (index === 0) {
-                            needMerge[i].rowArr.push(1);
-                            needMerge[i].rowMergeNum = 0;
-                        } else {
-                            if (item[i] === tableData[index - 1][i]) {
-                                needMerge[i].rowArr[needMerge[i].rowMergeNum] += 1;
-                                needMerge[i].rowArr.push(0);
-                            } else {
-                                needMerge[i].rowArr.push(1);
-                                needMerge[i].rowMergeNum = index;
-                            }
-                        }
-                    });
-                });
-                return needMerge;
-            },
-            arraySpanMethod({ column, rowIndex }) {
-                // console.log("arraySpanMethod", row, column, rowIndex, columnIndex);
-                if (column.property === 'timeMeal') {
-                    return this.mergeAction('timeMeal', rowIndex, column);
-                } else if (column.property === 'categoryName') {
-                    return this.mergeAction('categoryName', rowIndex, column);
-                } else if (column.property === 'foodName') {
-                    return this.mergeAction('foodName', rowIndex, column);
+      el: "#app",
+      data() {
+        return {
+          tableData: [],
+          tableList: [],
+          rows: [
+            {
+              id: "1559839139432300546",
+              weekNum: "1",
+              weekDate: "2022-08-23 00:00:00",
+              createTime: "2022-08-17 17:46:45",
+              updateTime: null,
+              moring: [
+                {
+                  id: null,
+                  timeMeal: "MOR",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['馒头','油657条','蛋糕','包子']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "热菜"
+                },
+                {
+                  id: null,
+                  timeMeal: "MOR",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['酸辣瓜片','青笋炒肉']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "每日中午面食"
                 }
+              ],
+              midday: [
+                {
+                  id: null,
+                  timeMeal: "MIDDAY",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['馒头','油条','蛋糕890','包子']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "小吃"
+                },
+                {
+                  id: null,
+                  timeMeal: "MIDDAY",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['酸辣66瓜片','青笋炒454肉']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "每日中午面食"
+                }
+              ],
+              night: [
+                {
+                  id: null,
+                  timeMeal: "NIGHT",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['兰州臊子面','油饼','手撕莲白']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "汤品"
+                }
+              ]
             },
-            mergeAction(val, rowIndex) {
-                let _row = this.rowMergeArrs[val].rowArr[rowIndex];
-                let _col = _row > 0 ? 1 : 0;
-                return [_row, _col];
-            },
-            chengeData(arr) {
-                let _list = arr.reduce(
-                    (list, cur) => [
-                        ...list,
-                        ...cur.list.reduce(
-                            (l, c) => [
-                                ...l,
-                                {
-                                    ...cur,
-                                    ...c,
-
-                                },
-
-                            ],
-                            []
-                        ),
-                    ],
-                    []
-                );
-                console.log(_list);
-                return _list;
-            },
-            handleData(data) {
-                data.forEach(item => {
-                    item.list = [...item.moring, ...item.moring, ...item.midday, ...item.night]
-                })
-                return data
+            {
+              id: "1559839028706869249",
+              weekNum: "5",
+              weekDate: "2022-08-22 00:00:00",
+              createTime: "2022-08-17 17:46:19",
+              updateTime: null,
+              moring: [
+                {
+                  id: null,
+                  timeMeal: "MOR",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['馒头','油657条','蛋糕','包子']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "热菜"
+                },
+                {
+                  id: null,
+                  timeMeal: "MOR",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['酸辣瓜片','青笋炒肉']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "每日中午面食"
+                }
+              ],
+              midday: [
+                {
+                  id: null,
+                  timeMeal: "MIDDAY",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['馒头','油条','蛋糕890','包子']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "小吃"
+                },
+                {
+                  id: null,
+                  timeMeal: "MIDDAY",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['酸辣66瓜片','青笋炒454肉']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "每日中午面食"
+                }
+              ],
+              night: [
+                {
+                  id: null,
+                  timeMeal: "NIGHT",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['兰州臊子面','油饼','手撕莲白']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "汤品"
+                },
+                {
+                  id: null,
+                  timeMeal: "NIGHT",
+                  weekDateId: null,
+                  foodTypeId: null,
+                  foodName:
+                    "['兰州臊子面','油饼','手撕莲白']",
+                  createTime: null,
+                  updateTime: null,
+                  categoryName: "汤品"
+                }
+              ]
             }
+          ],
+          needMergeArr: [
+            "timeMeal",
+            "categoryName",
+            "foodName"
+          ], //需要进行合并的column的prop值
+          rowMergeArrs: {} //处理过后得到的每个column的合并规则
+        }
+      },
+      created() {
+        this.tableList = this.handleArr(this.rows)
+        this.rowMergeArrs = this.rowMergeHandle(
+          this.needMergeArr,
+          this.tableList[0].list
+        ) // 处理数据
+      },
+      methods: {
+        handleArr(arr) {
+          let newarr = []
 
-
+          arr.forEach((item) => {
+            item.list = [
+              ...item.moring,
+              ...item.moring,
+              ...item.midday,
+              ...item.night
+            ]
+          })
+          return arr
         },
 
-
+        rowMergeHandle(needMergeArr, tableData) {
+          if (
+            !Array.isArray(needMergeArr) &&
+            !needMergeArr.length
+          )
+            return false
+          if (
+            !Array.isArray(tableData) &&
+            !tableData.length
+          )
+            return false
+          let needMerge = {}
+          needMergeArr.forEach((i) => {
+            needMerge[i] = {
+              rowArr: [], //该数组用来记录在目前列中的每一行的cell应该向下合并几行还是应该被合并。如果对应数组的数据==0,则说明该cell应该被合并。
+              rowMergeNum: 0 //用来记录在目前列的第几行的行数，rowNum
+            }
+            tableData.forEach((item, index) => {
+              if (index === 0) {
+                needMerge[i].rowArr.push(1)
+                needMerge[i].rowMergeNum = 0
+              } else {
+                if (
+                  item[i] ===
+                  tableData[index - 1][i]
+                ) {
+                  needMerge[i].rowArr[
+                    needMerge[i].rowMergeNum
+                  ] += 1
+                  needMerge[i].rowArr.push(0)
+                } else {
+                  needMerge[i].rowArr.push(1)
+                  needMerge[i].rowMergeNum = index
+                }
+              }
+            })
+          })
+          return needMerge
+        },
+        arraySpanMethod({ column, rowIndex }) {
+          // console.log("arraySpanMethod", row, column, rowIndex, columnIndex);
+          if (column.property === "timeMeal") {
+            return this.mergeAction(
+              "timeMeal",
+              rowIndex,
+              column
+            )
+          } else if (
+            column.property === "categoryName"
+          ) {
+            return this.mergeAction(
+              "categoryName",
+              rowIndex,
+              column
+            )
+          } else if (
+            column.property === "foodName"
+          ) {
+            return this.mergeAction(
+              "foodName",
+              rowIndex,
+              column
+            )
+          }
+        },
+        mergeAction(val, rowIndex) {
+          let _row =
+            this.rowMergeArrs[val].rowArr[
+              rowIndex
+            ]
+          let _col = _row > 0 ? 1 : 0
+          return [_row, _col]
+        },
+        chengeData(arr) {
+          let _list = arr.reduce(
+            (list, cur) => [
+              ...list,
+              ...cur.list.reduce(
+                (l, c) => [
+                  ...l,
+                  {
+                    ...cur,
+                    ...c
+                  }
+                ],
+                []
+              )
+            ],
+            []
+          )
+          console.log(_list)
+          return _list
+        },
+        handleData(data) {
+          data.forEach((item) => {
+            item.list = [
+              ...item.moring,
+              ...item.moring,
+              ...item.midday,
+              ...item.night
+            ]
+          })
+          return data
+        }
+      }
     })
-</script>
-<style lang="">
+  </script>
+  <style lang="">
     body {
-        /* background: #fff; */
+      /* background: #fff; */
     }
 
     .tab_box {
-        border: 1px solid #EBEEF5;
-
+      border: 1px solid #ebeef5;
     }
 
     .h3 {
-        display: flex;
-        background: pink;
+      display: flex;
+      background: pink;
     }
 
     .item-title {
-
-        text-align: center;
-        line-height: 40px;
-        color: #999;
-        border-bottom: none;
+      text-align: center;
+      line-height: 40px;
+      color: #999;
+      border-bottom: none;
     }
 
     .item1 {
-        width: 200px;
-        border-right: 1px solid #EBEEF5;
+      width: 200px;
+      border-right: 1px solid #ebeef5;
     }
 
     .item2 {
-        flex: 1;
+      flex: 1;
     }
-</style>
-
-
-
+  </style>
 </html>

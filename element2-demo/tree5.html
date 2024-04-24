@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>处理树</title>
+  </head>
+  <body>
+    <script>
+      const treeData = {
+        data: [
+          {
+            id: "1",
+            createTime:
+              "2024-04-24T13:12:29.032Z",
+            updateTime:
+              "2024-04-24T13:13:18.796Z",
+            createUser: "1",
+            updateUser: "1",
+            path: "/system",
+            name: "sysTem",
+            routerParams: null,
+            component: null,
+            redirect: null,
+            title: "系统管理",
+            type: 0,
+            icon: "ri:settings-3-line",
+            extraIcon: null,
+            status: 1,
+            showLink: true,
+            showParent: true,
+            rank: 1,
+            keepAlive: true,
+            hiddenTag: false,
+            dynamicLevel: null,
+            activePath: null,
+            frameSrc: null,
+            frameLoading: null,
+            auths: "['1']",
+            pId: "0",
+            children: [
+              {
+                id: "2",
+                createTime:
+                  "2024-04-24T13:10:42.357Z",
+                updateTime:
+                  "2024-04-24T13:13:04.378Z",
+                createUser: "1",
+                updateUser: "1",
+                path: "/system/user/index",
+                name: "SystemUser",
+                routerParams: null,
+                component: null,
+                redirect: null,
+                title: "用户管理",
+                type: 1,
+                icon: "ri:admin2-line",
+                extraIcon: null,
+                status: 1,
+                showLink: true,
+                showParent: true,
+                rank: 1,
+                keepAlive: true,
+                hiddenTag: false,
+                dynamicLevel: null,
+                activePath: null,
+                frameSrc: null,
+                frameLoading: null,
+                auths: "['1']",
+                pId: "1"
+              }
+            ]
+          }
+        ]
+      }
+      let a = changeTree(treeData.data)
+      console.log("🥜[a ]=====:", a)
+      //changeTree2(treeData)
+      function changeTree(tree) {
+        return tree.map((item) => {
+            item?.auths = JSON.parse(item.auths)
+          let {
+            path,
+            name,
+            component,
+            children,
+            ...meat
+          } = item
+          if (children?.length > 0) {
+            children = changeTree(children)
+          }
+          return {
+            path,
+            name,
+            component,
+            children,
+            meat
+          }
+        })
+      }
+      function changeTree2(tree) {
+        const { data } = tree
+        let list = data.reduce((pre, cur) => {
+          const {
+            path,
+            name,
+            component,
+            children,
+            ...meat
+          } = pre
+        }, [])
+      }
+    </script>
+  </body>
+</html>

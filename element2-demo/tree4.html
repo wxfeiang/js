@@ -1,240 +1,274 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-</head>
-
-<body>
+  <body>
     <div id="app">
-        <div class="cont_box">
-            <div class="title">
-                早餐
-            </div>
-            <div class="from">
-                <el-form :model="moring" ref="moring" label-width="100px">
-                    <div v-for="(item, index) in moring.food" :key="index">
-                        <el-form-item label='类型' :prop="'food.' + index + '.name'" :rules="{
+      <div class="cont_box">
+        <div class="title">早餐</div>
+        <div class="from">
+          <el-form
+            :model="moring"
+            ref="moring"
+            label-width="100px"
+          >
+            <div
+              v-for="(item, index) in moring.food"
+              :key="index"
+            >
+              <el-form-item
+                label="类型"
+                :prop="'food.' + index + '.name'"
+                :rules="{
                         required: true, message: '类型不能为空', trigger: 'blur'
-                      }">
-                            <el-input v-model="item.name" placeholder="请输入类型"></el-input>
-                        </el-form-item>
-                        <el-form-item>
-                            <div class="tag_box">
-                                <div class="tag_item">
-                                    <el-tag :key="tag" v-for="tag in item.tag" closable :disable-transitions="false"
-                                        @close="handleClose('moring','food', index ,tag)">
-                                        {{tag}}
-                                    </el-tag>
-                                    <el-input class="input-new-tag" placeholder="请输入"
-                                        v-model="moring.food[index].tagValue" size="small"
-                                        @keyup.enter.native="handleInputConfirm('moring','food',index)"
-                                        @blur="handleInputConfirm('moring','food',index)">
-                                    </el-input>
-
-                                </div>
-                                <div class="btn_box">
-                                    <el-button circle icon="el-icon-delete"
-                                        @click.prevent="removeitem('moring','food',item)" size="mini">
-                                    </el-button>
-                                    <el-button circle icon="el-icon-delete" v-if="moring.food.length-1 !=0 || index>0 "
-                                        @click.prevent="removeitem('moring','food',item)" size="mini">
-                                    </el-button>
-                                    <el-button circle icon="el-icon-plus" v-if="index == moring.food.length-1"
-                                        @click="addFrom('moring','food')" size="mini"></el-button>
-                                </div>
-                            </div>
-
-                        </el-form-item>
-                    </div>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('subData')">获取数据</el-button>
-                        <el-button @click="resetForm('moring')">重置</el-button>
-                    </el-form-item>
-                </el-form>
+                      }"
+              >
+                <el-input
+                  v-model="item.name"
+                  placeholder="请输入类型"
+                ></el-input>
+              </el-form-item>
+              <el-form-item>
+                <div class="tag_box">
+                  <div class="tag_item">
+                    <el-tag
+                      :key="tag"
+                      v-for="tag in item.tag"
+                      closable
+                      :disable-transitions="false"
+                      @close="handleClose('moring','food', index ,tag)"
+                    >
+                      {{tag}}
+                    </el-tag>
+                    <el-input
+                      class="input-new-tag"
+                      placeholder="请输入"
+                      v-model="moring.food[index].tagValue"
+                      size="small"
+                      @keyup.enter.native="handleInputConfirm('moring','food',index)"
+                      @blur="handleInputConfirm('moring','food',index)"
+                    >
+                    </el-input>
+                  </div>
+                  <div class="btn_box">
+                    <el-button
+                      circle
+                      icon="el-icon-delete"
+                      @click.prevent="removeitem('moring','food',item)"
+                      size="mini"
+                    >
+                    </el-button>
+                    <el-button
+                      circle
+                      icon="el-icon-delete"
+                      v-if="moring.food.length-1 !=0 || index>0 "
+                      @click.prevent="removeitem('moring','food',item)"
+                      size="mini"
+                    >
+                    </el-button>
+                    <el-button
+                      circle
+                      icon="el-icon-plus"
+                      v-if="index == moring.food.length-1"
+                      @click="addFrom('moring','food')"
+                      size="mini"
+                    ></el-button>
+                  </div>
+                </div>
+              </el-form-item>
             </div>
+            <el-form-item>
+              <el-button
+                type="primary"
+                @click="submitForm('subData')"
+                >获取数据</el-button
+              >
+              <el-button
+                @click="resetForm('moring')"
+                >重置</el-button
+              >
+            </el-form-item>
+          </el-form>
         </div>
-
-
-
+      </div>
     </div>
-</body>
-<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
     new Vue({
-        el: '#app',
-        data() {
-            return {
-                moring: {
-                    week: '',
-                    weekDate: '',
-                    food: [
-                        {
-                            name: '',
-                            tag: ["1111", "222"],
-                            tagValue: '',
-                        }
-                    ],
-
-                },
-                // 多个moring'
-                formarr: ['moring'],//假设这是四个form表单的ref
-                resultarr: [],//用来接受返回结果的数组
-
-            }
-        },
-        created() {
-
-
-        },
-        methods: {
-            //封装验证函数
-            checkForm(formName) {
-                let _self = this;
-                _self.resultArr = []
-                let result = new Promise(function (resolve, reject) {
-                    _self.$refs[formName].validate((valid) => {
-                        if (valid) {
-                            resolve();
-                        } else { reject() }
-                    })
-                })
-                _self.resultArr.push(result) //push 得到promise的结果
-            },
-
-
-            //
-            submitForm(fun) {
-                let _self = this;
-                _self.formarr.forEach(item => { //根据表单的ref校验
-                    _self.checkForm(item)
-                })
-                //resultArr数组的值必须是promise对象才能使用Promise.all，在checkForm做了这一步
-                Promise.all(_self.resultArr).then(function () { //都通过了
-                    _self[fun]()
-                    console.log('所有表单验证通过')
-                    // TODO:可直接执行你的提交 数据
-                    // 该区域使用this无效，promise内面的this表示局部，并不代表VueComponet实例
-                }).catch(function () {
-                    console.log("err");
-                });
-            },
-
-
-
-
-            subData() {
-                let data = {
-                    week: this.moring.week,
-                    moring: this.chaagrr(this.moring.food)
+      el: "#app",
+      data() {
+        return {
+          moring: {
+            week: "",
+            weekDate: "",
+            food: [
+              {
+                name: "",
+                tag: ["1111", "222"],
+                tagValue: ""
+              }
+            ]
+          },
+          // 多个moring'
+          formarr: ["moring"], //假设这是四个form表单的ref
+          resultarr: [] //用来接受返回结果的数组
+        }
+      },
+      created() {},
+      methods: {
+        //封装验证函数
+        checkForm(formName) {
+          let _self = this
+          _self.resultArr = []
+          let result = new Promise(function (
+            resolve,
+            reject
+          ) {
+            _self.$refs[formName].validate(
+              (valid) => {
+                if (valid) {
+                  resolve()
+                } else {
+                  reject()
                 }
-                console.log(data)
-
-            },
-            chaagrr(array) {
-                var json = {}
-                array.forEach(item => {
-                    json[item.name] = item.tag
-
-                });
-                return JSON.stringify(json)
-            },
-
-
-            resetForm(formName) {
-                this.$refs[formName].resetFields();
-            },
-            // 点击删除
-            removeitem(obj, filed, item) {
-                var index = this[obj][filed].indexOf(item)
-                if (index !== -1) {
-                    this[obj][filed].splice(index, 1)
-                }
-            },
-            // 点击添加
-            addFrom(obj, filed) {
-                console.log(obj, filed)
-
-                this[obj][filed].push({
-                    name: '',
-                    tag: [],
-                    tagValue: '',
-                });
-            },
-
-            // 删除单个标签
-            handleClose(obj, filed, index, tag) {
-                this[obj][filed][index].tag.splice(this[obj][filed][index].tag.indexOf(tag), 1);
-            },
-            // 单个标签输入
-            handleInputConfirm(obj, filed, index) {
-                let inputValue = this[obj][filed][index].tagValue
-                if (inputValue) {
-                    this[obj][filed][index].tag.push(inputValue);
-                }
-                this[obj][filed][index].tagValue = '';
-            }
-
-
+              }
+            )
+          })
+          _self.resultArr.push(result) //push 得到promise的结果
         },
 
+        //
+        submitForm(fun) {
+          let _self = this
+          _self.formarr.forEach((item) => {
+            //根据表单的ref校验
+            _self.checkForm(item)
+          })
+          //resultArr数组的值必须是promise对象才能使用Promise.all，在checkForm做了这一步
+          Promise.all(_self.resultArr)
+            .then(function () {
+              //都通过了
+              _self[fun]()
+              console.log("所有表单验证通过")
+              // TODO:可直接执行你的提交 数据
+              // 该区域使用this无效，promise内面的this表示局部，并不代表VueComponet实例
+            })
+            .catch(function () {
+              console.log("err")
+            })
+        },
 
+        subData() {
+          let data = {
+            week: this.moring.week,
+            moring: this.chaagrr(this.moring.food)
+          }
+          console.log(data)
+        },
+        chaagrr(array) {
+          var json = {}
+          array.forEach((item) => {
+            json[item.name] = item.tag
+          })
+          return JSON.stringify(json)
+        },
+
+        resetForm(formName) {
+          this.$refs[formName].resetFields()
+        },
+        // 点击删除
+        removeitem(obj, filed, item) {
+          var index =
+            this[obj][filed].indexOf(item)
+          if (index !== -1) {
+            this[obj][filed].splice(index, 1)
+          }
+        },
+        // 点击添加
+        addFrom(obj, filed) {
+          console.log(obj, filed)
+
+          this[obj][filed].push({
+            name: "",
+            tag: [],
+            tagValue: ""
+          })
+        },
+
+        // 删除单个标签
+        handleClose(obj, filed, index, tag) {
+          this[obj][filed][index].tag.splice(
+            this[obj][filed][index].tag.indexOf(
+              tag
+            ),
+            1
+          )
+        },
+        // 单个标签输入
+        handleInputConfirm(obj, filed, index) {
+          let inputValue =
+            this[obj][filed][index].tagValue
+          if (inputValue) {
+            this[obj][filed][index].tag.push(
+              inputValue
+            )
+          }
+          this[obj][filed][index].tagValue = ""
+        }
+      }
     })
+  </script>
 
-
-
-
-
-</script>
-
-
-<style lang="">
+  <style lang="">
     .cont_box {
-        display: flex;
+      display: flex;
     }
 
     .title {
-        width: 50px;
-        line-height: 40px;
+      width: 50px;
+      line-height: 40px;
     }
 
     .from {
-        flex: 1;
+      flex: 1;
     }
 
     .tag_box {
-        display: flex;
-        justify-content: space-between;
-
+      display: flex;
+      justify-content: space-between;
     }
 
     .tag_item {
-        width: 90%;
+      width: 90%;
     }
 
-    .btn_box {}
+    .btn_box {
+    }
 
-    .el-tag+.el-tag {
-        margin-left: 10px;
+    .el-tag + .el-tag {
+      margin-left: 10px;
     }
 
     .button-new-tag {
-        margin-left: 10px;
-        height: 32px;
-        line-height: 30px;
-        padding-top: 0;
-        padding-bottom: 0;
+      margin-left: 10px;
+      height: 32px;
+      line-height: 30px;
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
     .input-new-tag {
-        width: 90px;
-        margin-left: 10px;
-        vertical-align: bottom;
+      width: 90px;
+      margin-left: 10px;
+      vertical-align: bottom;
     }
-</style>
-
-
-
+  </style>
 </html>
