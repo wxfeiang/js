@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">{{list}}</div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          dynamicValidateForm: {
+            domains: []
+          },
+          formData: {
+            formValue: {}
+          },
+
+          arr: [
+            {
+              leabel: "颜色",
+              list: ["红色", "蓝色", "黄色"]
+            },
+            {
+              leabel: "内存",
+              list: ["15G", "20G", "30G"]
+            },
+            {
+              leabel: "版本",
+              list: ["1.0", "2.0", "30"]
+            },
+            {
+              leabel: "尺寸",
+              list: ["1.0", "2.0", "30"]
+            }
+          ],
+          other: {
+            stok: "",
+            wegeit: "",
+            price: ""
+          }
+        }
+      },
+      created() {
+        this.list = this.calcDescartesFromObjArr(
+          this.arr,
+          "leabel",
+          "list",
+          this.other
+        )
+      },
+      methods: {
+        calcDescartesSimpleArr(data) {
+          return data.reduce((total, r) =>
+            r.reduce((row, rr) => {
+              total.forEach(
+                (t) =>
+                  (Array.isArray(t) &&
+                    row.push([...t, rr])) ||
+                  row.push([t, rr])
+              )
+              return row
+            }, [])
+          )
+        },
+        calcDescartesFromObjArr(
+          data,
+          filedKey,
+          dataKey,
+          other
+        ) {
+          return this.calcDescartesSimpleArr(
+            data.map((r) =>
+              r[dataKey].map((rr) => ({
+                [r[filedKey]]: rr
+              }))
+            )
+          ).map((r) =>
+            Array.isArray(r)
+              ? r.reduce(
+                  (t, r) =>
+                    Object.assign(t, r, {
+                      ...other
+                    }),
+                  {}
+                )
+              : r
+          )
+        }
+      }
+    })
+  </script>
+  <style lang=""></style>
+</html>
