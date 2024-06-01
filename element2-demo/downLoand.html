@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="downLoad()">Click me</button>
+    <script>
+      let arr = [
+        "https://inews.gtimg.com/om_bt/OHyQqgC_5oi4Vm0tlH49XvJzqNBHo2Zryxx5F_be5N2cIAA/1000",
+
+        "https://univs-news-1256833609.file.myqcloud.com/resource_files/cont_pub/I/AIJOI/J3SLIQIDP5BOND3A2T57W6BTOI.png"
+      ]
+
+      function downLoad() {
+        fetch(arr[1]).then((res) => {
+          res.blob().then((blob) => {
+            const blobUrl =
+              window.URL.createObjectURL(blob)
+            // 这里的文件名根据实际情况从响应头或者url里获取
+            const filename = "hong.jpg"
+            const a = document.createElement("a")
+            a.href = blobUrl
+            a.download = filename
+            a.click()
+            window.URL.revokeObjectURL(blobUrl)
+          })
+        })
+      }
+    </script>
+  </body>
+</html>
