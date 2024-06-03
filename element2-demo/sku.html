@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div id="app">{{list}}</div>
+    <div id="app"></div>
   </body>
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
 
@@ -38,11 +38,11 @@
             {
               leabel: "版本",
               list: ["1.0", "2.0", "30"]
-            },
-            {
-              leabel: "尺寸",
-              list: ["1.0", "2.0", "30"]
             }
+            // {
+            //   leabel: "尺寸",
+            //   list: ["1.0", "2.0", "30"]
+            // }
           ],
           other: {
             stok: "",
@@ -58,6 +58,9 @@
           "list",
           this.other
         )
+
+        console.log("🥗[this.list]:", this.list)
+        this.change()
       },
       methods: {
         calcDescartesSimpleArr(data) {
@@ -96,6 +99,18 @@
                 )
               : r
           )
+        },
+        change(data) {
+          let arr = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+          ]
+          let a = []
+          arr[0].forEach((r) => {
+           
+          })
+          console.log("🥗[a]:", a)
         }
       }
     })

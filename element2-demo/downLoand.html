@@ -12,18 +12,17 @@
     <button onclick="downLoad()">Click me</button>
     <script>
       let arr = [
-        "https://inews.gtimg.com/om_bt/OHyQqgC_5oi4Vm0tlH49XvJzqNBHo2Zryxx5F_be5N2cIAA/1000",
-
+        "https://video.zcool.cn/b0c4e9851d9471efae876723b78e0102/0d83813bc9dd4743baf13f029e6f260f-6835fa0f05455cab5400b1876a72d7ed-hd.mp4?auth_key=1717259095-624bbaa7f76a43ad9be1326da91e6589-0-d92fd04c592b66aa3bcd6a3cf740eefc",
         "https://univs-news-1256833609.file.myqcloud.com/resource_files/cont_pub/I/AIJOI/J3SLIQIDP5BOND3A2T57W6BTOI.png"
       ]
 
       function downLoad() {
-        fetch(arr[1]).then((res) => {
+        fetch(arr[0]).then((res) => {
           res.blob().then((blob) => {
             const blobUrl =
               window.URL.createObjectURL(blob)
             // 这里的文件名根据实际情况从响应头或者url里获取
-            const filename = "hong.jpg"
+            const filename = "hong.mp4"
             const a = document.createElement("a")
             a.href = blobUrl
             a.download = filename

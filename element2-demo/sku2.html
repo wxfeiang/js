@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <video width="320" height="240">
+        <source
+          src="https://video.zcool.cn/b0c4e9851d9471efae876723b78e0102/0d83813bc9dd4743baf13f029e6f260f-6835fa0f05455cab5400b1876a72d7ed-hd.mp4?auth_key=1717259095-624bbaa7f76a43ad9be1326da91e6589-0-d92fd04c592b66aa3bcd6a3cf740eefc"
+          type="video/mp4"
+        />
+
+        您的浏览器不支持Video标签。
+      </video>
+    </div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          dynamicValidateForm: {
+            domains: []
+          },
+          formData: {
+            formValue: {}
+          },
+
+          arr: [
+            {
+              leabel: "颜色",
+              list: ["红色", "蓝色", "黄色"]
+            },
+            {
+              leabel: "内存",
+              list: ["15G", "20G", "30G"]
+            },
+            {
+              leabel: "版本",
+              list: ["1.0", "2.0", "30"]
+            }
+            // {
+            //   leabel: "尺寸",
+            //   list: ["1.0", "2.0", "30"]
+            // }
+          ],
+          other: {
+            stok: "",
+            wegeit: "",
+            price: ""
+          },
+          specList: [
+            {
+              name: "颜色",
+              children: [
+                { name: "黄色", name: "绿色" }
+              ]
+            },
+            {
+              name: "尺寸",
+              children: [
+                { name: "XL" },
+                { name: "XXL" }
+              ]
+            }
+          ]
+        }
+      },
+      created() {},
+      methods: {
+        arrp(arr) {
+          //编辑原数组格式
+          if (arr[0].children) {
+            arr = arr.map((item) => {
+              return (item = item.children)
+            })
+          }
+          if (arr.length === 1) {
+            //最终合并成一个
+            return arr[0]
+          } else {
+            //有两个子数组就合并
+            let arrySon = []
+            //将组合放到新数组中
+            arr[0].forEach((_, index) => {
+              arr[1].forEach((_, index1) => {
+                arrySon.push(
+                  [].concat(
+                    arr[0][index],
+                    arr[1][index1]
+                  )
+                )
+              })
+            })
+            // 新数组并入原数组,去除合并的前两个数组
+            arr[0] = arrySon
+            arr.splice(1, 1)
+            // 递归
+            return this.arrp(arr)
+          }
+        }
+      }
+    })
+  </script>
+  <style lang="css"></style>
+</html>

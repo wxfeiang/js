@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      {{clonum}}
+      <el-table
+        :data="result"
+        border
+        style="width: 100%"
+      >
+        <el-table-column
+          type="index"
+          label="序号"
+          width="80px"
+        >
+        </el-table-column>
+
+        <el-table-column
+          v-for="(item,index) in clonum"
+          :key="index"
+          :label="item.attrId"
+          align="center"
+          :prop="item.attrId"
+        >
+        </el-table-column>
+      </el-table>
+    </div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          dynamicValidateForm: {
+            domains: []
+          },
+          formData: {
+            formValue: {}
+          },
+          needMergeArr: [
+            "color",
+            "model",
+            "memorySize"
+          ], //需要进行合并的column的prop值 'timeMeal','foodName'
+          rowMergeArrs: {}, //处理过后得到的每个column的合并规则
+
+          other: {
+            stok: "",
+            wegeit: "",
+            price: ""
+          },
+          specList: [
+            {
+              attrId: "color",
+              attrInfo: ["红色", "绿色", "蓝色"]
+            },
+            {
+              attrId: "model",
+              attrInfo: ["V30", "V30Pro", "14pro"]
+            },
+            {
+              attrId: "memorySize",
+              attrInfo: [
+                "6+128",
+                "8+128",
+                "8+256"
+              ]
+            }
+          ],
+          result: [],
+          clonum: []
+        }
+      },
+      created() {
+        let a = this.specList.map(
+          (item) => item.attrId
+        )
+
+        let b = Object.keys(this.other)
+        this.clonum = [...a, ...b].map((i) => {
+          return {
+            attrId: i
+          }
+        })
+
+        this.getResult(
+          { ...this.other },
+          0,
+          this.specList,
+          "attrId",
+          "attrInfo"
+        )
+      },
+      methods: {
+        getResult(
+          obj,
+          listIndex,
+          list,
+          id,
+          info,
+          other
+        ) {
+          for (
+            let index = 0;
+            index < list[listIndex][info].length;
+            index++
+          ) {
+            obj[list[listIndex][id]] =
+              list[listIndex][info][index]
+
+            if (listIndex < list.length - 1) {
+              this.getResult(
+                obj,
+                listIndex + 1,
+                list,
+                id,
+                info
+              )
+            } else {
+              this.result.push(
+                JSON.parse(JSON.stringify(obj))
+              )
+            }
+          }
+        }
+      }
+    })
+  </script>
+  <style lang=""></style>
+</html>
