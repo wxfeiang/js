@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      boday {
+        background: #f8fcff;
+      }
+      .warp {
+        border-bottom: 1px solid #707070;
+      }
+      .warp_box {
+        display: flex;
+        /* width: 25%; */
+
+        align-items: center;
+      }
+      .box_item {
+        text-align: center;
+        flex: 1;
+
+        .index {
+          margin: 10px auto;
+          font-weight: bold;
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          background: #e9e9e9;
+          border-radius: 50%;
+        }
+        .title {
+          font-family: Microsoft YaHei,
+            Microsoft YaHei;
+          font-weight: bold;
+          font-size: 20px;
+          color: #383838;
+          line-height: 60px;
+        }
+        .detil {
+          font-family: Microsoft YaHei,
+            Microsoft YaHei;
+          font-weight: 400;
+          font-size: 16px;
+          color: #999999;
+          line-height: 60px;
+        }
+      }
+      .over,
+      .active {
+        border-bottom: 1px solid #2d69ef;
+        .index {
+          color: #fff;
+          background: #2d69ef;
+        }
+        .title {
+          color: #2d69ef;
+        }
+      }
+      .over {
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="warp">
+      <div class="warp_box">
+        <div class="box_item over">
+          <div class="index">1</div>
+          <div class="title">认证须知</div>
+          <div class="detil">
+            请您在开始认证前准备好以下材料
+          </div>
+        </div>
+        <div class="box_item active">
+          <div class="index">1</div>
+          <div class="title">认证须知</div>
+          <div class="detil">
+            请您在开始认证前准备好以下材料
+          </div>
+        </div>
+        <div class="box_item">
+          <div class="index">1</div>
+          <div class="title">认证须知</div>
+          <div class="detil">
+            请您在开始认证前准备好以下材料
+          </div>
+        </div>
+        <div class="box_item">
+          <div class="index">1</div>
+          <div class="title">认证须知</div>
+          <div class="detil">
+            请您在开始认证前准备好以下材料
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
