@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <!-- 引入 css -->
+    <link
+      href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css"
+      rel="stylesheet"
+    />
+
+    <!-- 引入 js -->
+    <script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+    <script>
+      var E = window.wangEditor // 全局变量
+    </script>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+    <div id="app">
+      <div style="border: 1px solid #ccc">
+        <Toolbar
+          style="border-bottom: 1px solid #ccc"
+          :editor="editor"
+          :defaultConfig="toolbarConfig"
+          :mode="mode"
+        />
+        <Editor
+          style="
+            height: 500px;
+            overflow-y: hidden;
+          "
+          v-model="html"
+          :defaultConfig="editorConfig"
+          :mode="mode"
+          @onCreated="onCreated"
+        />
+      </div>
+    </div>
+
+    <script>
+      const { createEditor, createToolbar } =
+        window.wangEditor
+
+      new Vue({
+        el: "#app",
+        components: {
+          createEditor,
+          createToolbar
+        },
+        data() {
+          return {
+            editor: null,
+            html: "<p>hello</p>",
+            toolbarConfig: {},
+            editorConfig: {
+              placeholder: "请输入内容..."
+            },
+            mode: "default" // or 'simple'
+          }
+        },
+        methods: {
+          onCreated(editor) {
+            this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+          }
+        },
+        mounted() {
+          // 模拟 ajax 请求，异步渲染编辑器
+          setTimeout(() => {
+            this.html =
+              "<p>模拟 Ajax 异步设置内容 HTML</p>"
+          }, 1500)
+        },
+        beforeDestroy() {
+          const editor = this.editor
+          if (editor == null) return
+          editor.destroy() // 组件销毁时，及时销毁编辑器
+        }
+      })
+    </script>
+  </body>
+</html>

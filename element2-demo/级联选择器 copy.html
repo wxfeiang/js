@@ -1,0 +1,193 @@
+<!--
+ * @Author: wxfeiang
+ * @Description:
+ * @Date: 2022-09-16 19:39:10
+ * @LastEditTime: 2024-04-16 14:03:43
+ * @FilePath: /js/element2-demo/级联选择器 copy.html
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      {{alt}} {{value}}
+
+      <el-cascader
+        ref="cc"
+        v-model="value"
+        :props="props"
+        :options="options"
+        @change="change"
+        style="width: 1000px"
+      ></el-cascader>
+      <el-button @click="sure"> 确定 </el-button>
+    </div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          value: [],
+          options: [
+            {
+              value: "zhinan",
+              label: "指南",
+              children: [
+                {
+                  value: "shejiyuanze",
+                  label: "设计原则",
+                  children: [
+                    {
+                      value: "yizhi",
+                      label: "一dcf致"
+                    },
+                    {
+                      value: "fankui",
+                      label: "反馈"
+                    },
+                    {
+                      value: "xiaolv",
+                      label: "效率"
+                    },
+                    {
+                      value: "kekong"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              value: "shejiyuanze",
+              label: "设计3333原则",
+              children: [
+                {
+                  value: "yi3333zhi",
+                  label: "一ad致"
+                },
+                {
+                  value: "fank33333ui",
+                  label: "反馈"
+                },
+                {
+                  value: "xi33333aolv",
+                  label: "效率"
+                },
+                {
+                  value: "k3333ekong"
+                }
+              ]
+            }
+          ],
+          props: {
+            // checkStrictly: true,
+            value: "value",
+            children: "children",
+            label: "label",
+            multiple: true,
+            emitPath: false
+          },
+          alt: null,
+          //treeData: null,
+          newTreeList: []
+        }
+      },
+      created() {
+        setTimeout(() => {
+          console.log("🍒")
+          this.value = [
+            "shejiyuanze",
+            "yizhi",
+            "yi3333zhi",
+            "xiaolv"
+          ]
+        }, 1000)
+      },
+      methods: {
+        changeArr(arr) {
+          //  console.log("--", arr)
+          let c = {
+            val: "",
+            chile: []
+          }
+          arr.forEach((item) => {
+            if (
+              item.children &&
+              item.children.length > 0
+            ) {
+              //  console.log(item)
+              this.changeArr(item.children)
+            } else {
+              c.val = item.value + "valuesss"
+            }
+          })
+          return c
+        },
+
+        // 递归树状数据
+        getTreeList(treeList, newTreeList) {
+          console.log(treeList)
+          treeList.map((c) => {
+            let tempData = {
+              label: c.name
+            }
+            if (
+              c.children &&
+              c.children.length > 0
+            ) {
+              tempData.children = []
+              this.getTreeList(
+                c.children,
+                tempData.children
+              )
+            }
+            newTreeList.push(tempData)
+          })
+        },
+        // treeDataFormat(treeJson) {
+        //     if (!Array.isArray(treeJson) || treeJson && treeJson.length <= 0) {
+        //         return []
+        //     }
+        //     let res = []
+        //     treeJson.forEach((item, i) => {
+        //         res.push({
+        //             title: item.id,
+        //             value: item.id,
+        //             children: (item.children && item.children.length > 0) ? this.treeDataFormat(item.children) : null
+        //         })
+        //     })
+        //     // console.log(res)
+        //     return res
+        // },
+        sure(data) {
+          console.log(this.value)
+        },
+        change(data) {
+          console.log(data, "---")
+
+          setTimeout(() => {
+            let ss =
+              this.$refs.cc.getCheckedNodes()
+            console.log(ss)
+          }, 100)
+        }
+      },
+      created() {
+        //  = this.changeArr(this.options)
+        // this.alt = this.getTreeList(this.treeData, this.newTreeList);
+
+        // this.alt = this.treeDataFormat(this.treeData);
+        console.log(this.alt)
+      }
+    })
+  </script>
+</html>

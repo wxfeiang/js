@@ -87,7 +87,7 @@
             name,
             component,
             children,
-            ...meat
+            ...meta
           } = item
           if (children?.length > 0) {
             children = changeTree(children)
@@ -97,7 +97,7 @@
             name,
             component,
             children,
-            meat
+            meta
           }
         })
       }
@@ -109,7 +109,7 @@
             name,
             component,
             children,
-            ...meat
+            ...meta
           } = pre
         }, [])
       }

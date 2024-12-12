@@ -1,28 +1,79 @@
 <!--
  * @Author: wxfeiang
- * @Description: 
+ * @Description:
  * @Date: 2022-11-05 19:54:38
- * @LastEditTime: 2022-11-05 19:57:28
+ * @LastEditTime: 2024-05-28 09:49:27
  * @FilePath: /js/element2-demo/test.html
 -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        var a = 1
-        var a = 2
-        //  const a = 3
-        function a() { }
-        console.log(a)
-    </script>
-</body>
+      function cartesianProduct(arrays) {
+        return arrays.reduce(
+          (a, b) => {
+            return a.reduce((acc, val, i) => {
+              b.forEach((v) => {
+                acc.push(
+                  // 假设你希望结果是一个对象数组，包含所有属性的组合
+                  arrays.reduce(
+                    (objAcc, obj, index) => {
+                      // 只复制当前循环到的对象的属性
+                      const newObj = { ...objAcc }
+                      // 覆盖当前对象的 list 属性为当前循环的值
+                      newObj[obj.leabel] =
+                        obj.list[
+                          index ===
+                          arrays.indexOf(a)
+                            ? i
+                            : arrays.indexOf(
+                                b
+                              ) === index
+                            ? v
+                            : newObj[obj.leabel]
+                        ]
+                      return newObj
+                    },
+                    {}
+                  )
+                )
+              })
+            }, [])
+          },
+          [[]]
+        ) // 初始化累加器为一个包含空数组的数组
+      }
 
+      const input = [
+        {
+          label: "颜色", // 注意修正了属性名拼写错误，从 'leabel' 改为 'label'
+          list: ["红色", "蓝色", "黄色"]
+        },
+        {
+          label: "内存",
+          list: ["15G", "20G", "30G"]
+        },
+        {
+          label: "版本",
+          list: ["1.0", "2.0", "30"]
+        }
+      ]
+
+      const result = cartesianProduct(input)
+      console.log(result)
+    </script>
+  </body>
 </html>
