@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>处理树</title>
+  </head>
+  <body>
+    <script>
+      const tree = [
+        {
+          id: 1,
+          name: "Root 1",
+          children: [
+            {
+              id: 2,
+              name: "Child 1.1",
+              children: [
+                {
+                  id: 3,
+                  name: "Grandchild 1.1.1"
+                },
+                {
+                  id: 4,
+                  name: "Grandchild 1.1.2"
+                }
+              ]
+            },
+            { id: 5, name: "Child 1.2" }
+          ]
+        },
+        {
+          id: 6,
+          name: "Root 2",
+          children: [
+            {
+              id: 7,
+              name: "Child 2.1",
+
+              children: [
+                {
+                  id: 9,
+                  name: "Grandchild 2.1.1"
+                },
+                {
+                  id: 10,
+                  name: "Grandchild 2.1.2"
+                }
+              ]
+            },
+            { id: 8, name: "Child 2.2" }
+          ]
+        }
+      ]
+      function addRootIndexToChildren(
+        tree,
+        rootIndex
+      ) {
+        tree.forEach((node, index) => {
+          node.rootIndex = rootIndex ?? index
+          if (
+            node.children &&
+            node.children.length > 0
+          ) {
+            addRootIndexToChildren(
+              node.children,
+              node.rootIndex
+            )
+          }
+        })
+      }
+
+      // 调用函数
+      addRootIndexToChildren(tree)
+
+      // 输出结果
+      console.log(JSON.stringify(tree, null, 2))
+    </script>
+  </body>
+</html>

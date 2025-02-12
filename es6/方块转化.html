@@ -2,142 +2,136 @@
  * @Author: wxfeiang
  * @Description:
  * @Date: 2023-04-18 21:48:40
- * @LastEditTime: 2024-02-11 21:36:39
- * @FilePath: /js/es6/数组转化.html
+ * @LastEditTime: 2024-12-12 14:43:08
+ * @FilePath: /js/es6/方块转化.html
 -->
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
-</body>
-<script>
+  <body></body>
+  <script>
     const resData = [
-        {
-            "750酒泉": [
-                {
-                    name: "酒泉1",
-                    value: 1
-                },
-                {
-                    name: "酒泉2",
-                    value: 2
-                },
-                {
-                    name: "酒泉3",
-                    value: 3
-                }
-            ]
-        },
-        {
-            "760酒泉": [
-                {
-                    name: "酒泉5",
-                    value: 5
-                },
-                {
-                    name: "酒泉6",
-                    value: 6
-                }
+      {
+        "750酒泉": [
+          {
+            name: "酒泉1",
+            value: 1
+          },
+          {
+            name: "酒泉2",
+            value: 2
+          },
+          {
+            name: "酒泉3",
+            value: 3
+          }
+        ]
+      },
+      {
+        "760酒泉": [
+          {
+            name: "酒泉5",
+            value: 5
+          },
+          {
+            name: "酒泉6",
+            value: 6
+          }
+        ]
+      },
+      {
+        "770兰州": [
+          {
+            name: "兰州8",
+            value: 8
+          },
+          {
+            name: "兰州9",
+            value: 9
+          },
 
-            ]
-        },
-        {
-            "770兰州": [
-                {
-                    name: "兰州8",
-                    value: 8
-                },
-                {
-                    name: "兰州9",
-                    value: 9
-                },
-
-                {
-                    name: "兰州10",
-                    value: 10
-                }
-            ]
-        },
-        {
-            "7000余中": [
-                {
-                    name: "余中2",
-                    value: 11
-                },
-
-            ]
-        }
+          {
+            name: "兰州10",
+            value: 10
+          }
+        ]
+      },
+      {
+        "7000余中": [
+          {
+            name: "余中2",
+            value: 11
+          }
+        ]
+      }
     ]
     const xData = []
     const lenArr = []
 
     resData.forEach((item, index) => {
-        xData.push(...Object.keys(item))
-        // console.log('🥒[ item[xData[index]]]:', item[xData[index]]);
+      xData.push(...Object.keys(item))
+      // console.log('🥒[ item[xData[index]]]:', item[xData[index]]);
 
-        // 把每一项的长度放入数据 取出最大的用于补齐
-        lenArr.push(item[xData[index]].length)
-        const maxNum = Math.max(...lenArr)
-        item[xData[index]] = changeItem(item[xData[index]], maxNum)
+      // 把每一项的长度放入数据 取出最大的用于补齐
+      lenArr.push(item[xData[index]].length)
+      const maxNum = Math.max(...lenArr)
+      item[xData[index]] = changeItem(
+        item[xData[index]],
+        maxNum
+      )
     })
     // item  最大值----确定有几组
-    console.log('🍠[lenArr]:', lenArr);
+    console.log("🍠[lenArr]:", lenArr)
 
     const seil = resData.map((item, index) => {
-        // return seiesData(item[xData[index]], xData.length)
-        return item[xData[index]].map(i => i.value)
+      // return seiesData(item[xData[index]], xData.length)
+      return item[xData[index]].map(
+        (i) => i.value
+      )
     })
-    console.log('🍐[seil]:', seil);
-
-
-
-
-
-
+    console.log("🍐[seil]:====", seil)
 
     // 补齐不全的数据
     function changeItem(data, len) {
-        let c = len - data.length
-        if (c > 0) {
-            for (let i = 0; i < c; i++) {
-                data.push({
-                    name: "",
-                    value: 0
-                })
-            }
+      let c = len - data.length
+      if (c > 0) {
+        for (let i = 0; i < c; i++) {
+          data.push({
+            name: "",
+            value: 0
+          })
         }
-        return data
+      }
+      return data
     }
     seiesData(seil, Math.max(...lenArr))
     //转化为新的分组
     function seiesData(data, clom) {
-        let arr = new Array(clom)
-        for (let i = 0; i < clom; i++) {
-            arr[i] = []
-            arr[i].push(...data.map(k => k[i]))
+      let arr = new Array(clom)
+      for (let i = 0; i < clom; i++) {
+        arr[i] = []
+        arr[i].push(...data.map((k) => k[i]))
 
-            // 原始写法
-            // data.forEach((item, index) => {
-            //     arr[i].push(item[i])
-            // })
-        }
-        console.log('🍼️[arr]:', arr);
+        // 原始写法
+        // data.forEach((item, index) => {
+        //     arr[i].push(item[i])
+        // })
+      }
+      console.log("🍼️[arr]:", arr)
 
-
-        return arr
-
-
+      return arr
     }
-
-
-</script>
-
+  </script>
 </html>
