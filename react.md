@@ -335,4 +335,237 @@ module.exports = {
 4. **严格质量门禁**：Commit时自动运行lint检查和类型验证
 5. **类型安全强化**：完善的TS类型定义和路径映射
 
-通过`pnpm create vite@latest`初始化后，用户可直接使用完整的现代化React开发环境，享受从开发到部署的全流程优化。
+通过`pnpm create vite@latest`初始化后，用户可直接使用完整的现代化React开发环境，享受从开发到部署的全流程优化。\
+
+
+
+以下是在现有模板中增加版本管理和自动生成CHANGELOG的完整方案：
+
+---
+
+### 一、新增工具链
+```bash
+pnpm add -D standard-version @commitlint/cli commitizen cz-conventional-changelog
+```
+
+---
+
+### 二、配置文件更新
+
+#### 1. .versionrc.json (版本管理配置)
+```json
+{
+  "types": [
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Bug Fixes"},
+    {"type": "chore", "section": "Maintenance"},
+    {"type": "docs", "section": "Documentation"},
+    {"type": "style", "section": "Code Style"},
+    {"type": "refactor", "section": "Code Refactoring"},
+    {"type": "perf", "section": "Performance Improvements"},
+    {"type": "test", "section": "Tests"}
+  ],
+  "skip": {
+    "tag": true
+  }
+}
+```
+
+#### 2. package.json 新增scripts
+```diff
+"scripts": {
++ "release": "standard-version",
++ "release:first": "standard-version --first-release",
+  "commit": "git add . && git-cz",
+  "changelog": "auto-changelog -p"
+}
+```
+
+#### 3. 扩展commitlint配置 (.commitlintrc.cjs)
+```javascript
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      ['feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore', 'revert', 'perf']
+    ]
+  }
+}
+```
+
+---
+
+### 三、工作流程集成
+
+#### 1. 版本控制流程
+```bash
+# 常规发布流程
+pnpm run release -- --release-as major|minor|patch
+
+# 首次发布
+pnpm run release:first
+
+# 生成CHANGELOG示例
+pnpm run changelog
+```
+
+#### 2. 版本策略
+| 提交类型       | 版本升级策略   |
+|----------------|----------------|
+| feat           | minor (v1.2.0) |
+| fix            | patch (v1.2.3) |
+| BREAKING CHANGE| major (v2.0.0) |
+
+---
+
+### 四、CHANGELOG生成示例
+```markdown
+# Changelog
+
+## [1.2.0](https://github.com/yourproject/compare/v1.1.0...v1.2.0) (2024-03-20)
+
+### Features
+* 新增用户Profile组件 (#45) @dev1
+
+### Bug Fixes
+* 修复登录页样式错位问题 (#44) @dev2
+
+### Maintenance
+* 更新依赖到最新版本 (#43) @dev1
+```
+
+---
+
+### 五、版本管理钩子增强
+
+#### 1. 预发布钩子 (husky/pre-push)
+```bash
+#!/bin/sh
+echo "⏳ Running version check..."
+if git diff HEAD origin/main --quiet -- package.json; then
+  echo "❌ Package version not updated!"
+  exit 1
+else
+  echo "✅ Version updated properly"
+fi
+```
+
+#### 2. commitizen集成 (package.json)
+```json
+{
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
+```
+
+---
+
+### 六、README新增章节
+
+```markdown
+## 🚢 版本管理
+
+### 语义化版本控制
+| 变更类型         | 版本规则       | 示例         |
+|------------------|----------------|-------------|
+| 初始发布         | 1.0.0          | -           |
+| 新增功能(feat)   | 次版本(+0.1.0) | 1.1.0 → 1.2.0 |
+| Bug修复(fix)     | 修订版本(+0.0.1)| 1.2.0 → 1.2.1 |
+| 重大变更         | 主版本(+1.0.0) | 1.2.1 → 2.0.0 |
+
+### 版本操作命令
+```bash
+# 交互式创建新版本（自动生成CHANGELOG）
+pnpm run release
+
+# 查看版本历史
+git tag -n --sort=-v:refname
+```
+
+### CHANGELOG规范
+- 每个条目必须关联Issue编号
+- 变更说明使用过去时态
+- 遵循Angular提交规范格式
+
+示例提交信息：
+```
+feat(auth): 新增第三方登录支持 (#123)
+
+- 集成Google OAuth2.0
+- 新增对应API接口
+```
+
+## 🔄 版本回滚
+```bash
+# 步骤1: 撤销最近发布
+git revert HEAD --no-edit
+
+# 步骤2: 删除错误tag
+git tag -d v1.2.0
+
+# 步骤3: 重新执行发布
+pnpm run release
+```
+
+---
+
+### 七、项目集成验证
+
+1. **初次发布测试**
+```bash
+echo "1.0.0" > VERSION
+git add .
+pnpm run commit # 选择chore类型
+pnpm run release:first
+```
+
+2. **功能发布验证**
+```bash
+pnpm run commit # 选择feat类型
+pnpm run release -- --release-as minor
+```
+
+3. **热修复流程**
+```bash
+pnpm run commit # 选择fix类型
+pnpm run release -- --release-as patch
+```
+
+---
+
+### 八、版本审计机制
+
+#### 1. version-check脚本 (scripts/version-check.js)
+```javascript
+const fs = require('fs')
+const pkg = require('../package.json')
+const currentVersion = fs.readFileSync('./VERSION', 'utf8').trim()
+
+if (pkg.version !== currentVersion) {
+  console.error('❌ Version mismatch between package.json and VERSION')
+  process.exit(1)
+}
+```
+
+#### 2. 添加到git钩子
+```bash
+# 在husky/pre-commit中添加
+pnpm run version-check
+```
+
+---
+
+该方案实现了从提交规范→版本管理→更新日志生成的全自动化流程，确保项目满足以下需求：
+
+1. **严格语义版本**：自动计算版本号升降级
+2. **精确变更追溯**：每行CHANGELOG关联具体提交
+3. **审计合规**：版本锁定文件保护机制
+4. **团队协作友好**：强制遵循Angular提交规范
+5. **开发效率提升**：交互式提交+自动生成日志
+
+使用该方案后，项目版本管理将满足企业级开发标准，兼容Gitlab/Github的Release机制，可直接作为CICD流程的基础组件。
