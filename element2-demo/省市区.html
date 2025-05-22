@@ -1,0 +1,218 @@
+<!--
+ * @Author: wxfeiang
+ * @Description:
+ * @Date: 2025-05-22 22:40:57
+ * @LastEditTime: 2025-05-22 23:15:53
+ * @FilePath: /js/element2-demo/省市区.html
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      {{ form.province }} {{ form.city }} {{ form.area }}
+      <el-form :model="form" label-width="100px">
+        <el-form-item label="省">
+          <el-select
+            v-model="form.province"
+            placeholder=""
+            clearable
+            @change="handleProvinceChange"
+          >
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="市">
+          <el-select v-model="form.city" placeholder="" clearable @change="handleCityChange">
+            <el-option
+              v-for="item in cityOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="区">
+          <el-select v-model="form.area" placeholder="" clearable @change="handleAreaChange">
+            <el-option
+              v-for="item in areaOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+    </div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.13/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          value: '',
+          options: [],
+          cityOptions: [],
+          areaOptions: [],
+          form: {
+            province: '',
+            city: '',
+            area: ''
+          },
+          mockData: [
+            { id: 1, name: '北京市' },
+            { id: 2, name: '上海市' },
+            { id: 3, name: '广东省' },
+            { id: 4, name: '江苏省' },
+            { id: 5, name: '浙江省' }
+          ],
+          // 模拟市级数据
+          cityData: {
+            1: [
+              { id: 101, name: '东城区' },
+              { id: 102, name: '西城区' },
+              { id: 103, name: '朝阳区' },
+              { id: 104, name: '海淀区' },
+              { id: 105, name: '丰台区' }
+            ],
+            2: [
+              { id: 201, name: '黄浦区' },
+              { id: 202, name: '徐汇区' },
+              { id: 203, name: '长宁区' },
+              { id: 204, name: '静安区' },
+              { id: 205, name: '普陀区' }
+            ],
+            3: [
+              { id: 301, name: '广州市' },
+              { id: 302, name: '深圳市' },
+              { id: 303, name: '珠海市' },
+              { id: 304, name: '汕头市' },
+              { id: 305, name: '佛山市' }
+            ],
+            4: [
+              { id: 401, name: '南京市' },
+              { id: 402, name: '无锡市' },
+              { id: 403, name: '徐州市' },
+              { id: 404, name: '常州市' },
+              { id: 405, name: '苏州市' }
+            ],
+            5: [
+              { id: 501, name: '杭州市' },
+              { id: 502, name: '宁波市' },
+              { id: 503, name: '温州市' },
+              { id: 504, name: '嘉兴市' },
+              { id: 505, name: '湖州市' }
+            ]
+          },
+          // 模拟区级数据
+          areaData: {
+            101: [
+              { id: 1011, name: '东华门街道' },
+              { id: 1012, name: '景山街道' },
+              { id: 1013, name: '交道口街道' }
+            ],
+            102: [
+              { id: 1021, name: '德胜街道' },
+              { id: 1022, name: '金融街街道' },
+              { id: 1023, name: '什刹海街道' }
+            ],
+            103: [
+              { id: 1031, name: '朝阳区' },
+              { id: 1032, name: '海淀区' },
+              { id: 1033, name: '丰台区' }
+            ],
+            201: [
+              { id: 2011, name: '黄浦区' },
+              { id: 2012, name: '徐汇区' },
+              { id: 2013, name: '长宁区' }
+            ],
+            202: [
+              { id: 2021, name: '黄浦区' },
+              { id: 2022, name: '徐汇区' },
+              { id: 2023, name: '长宁区' }
+            ],
+            301: [
+              { id: 3011, name: '广州市' },
+              { id: 3012, name: '深圳市' },
+              { id: 3013, name: '珠海市' }
+            ],
+            302: [
+              { id: 3021, name: '黄浦区' },
+              { id: 3022, name: '徐汇区' },
+              { id: 3023, name: '长宁区' }
+            ]
+            // ... 其他区级数据
+          }
+        }
+      },
+      created() {
+        this.getCity()
+        this.form = {
+          province: 1,
+          city: 101,
+          area: 1011
+        }
+      },
+      methods: {
+        getCity() {
+          this.options = this.mockData.map((item) => ({
+            value: item.id,
+            label: item.name
+          }))
+        },
+        handleProvinceChange(newVal) {
+          console.log('🎂[newVal]=====:', newVal)
+        },
+        handleCityChange(newVal) {
+          console.log('🎂[newVal]:', newVal)
+        },
+        handleAreaChange(newVal) {
+          console.log('🎂[newVal]:', newVal)
+        }
+      },
+      // 监听省份变化
+      watch: {
+        'form.province': {
+          handler(newVal) {
+            if (newVal) {
+              this.cityOptions = this.cityData[newVal].map((item) => ({
+                value: item.id,
+                label: item.name
+              }))
+            } else {
+              this.cityOptions = []
+              this.form.city = ''
+              this.form.area = ''
+            }
+          },
+          immediate: true
+        },
+        'form.city': {
+          handler(newVal) {
+            if (newVal) {
+              this.areaOptions = this.areaData[newVal].map((item) => ({
+                value: item.id,
+                label: item.name
+              }))
+            } else {
+              this.areaOptions = []
+              this.form.area = ''
+            }
+          },
+          immediate: true
+        }
+      }
+    })
+  </script>
+</html>

@@ -2,55 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .warp {
+        display: flex;
+        height: 50px;
+        background: pink;
+      }
+      .warp div {
+        flex: 1;
+        background: pink;
+        text-align: center;
+        line-height: 50px;
+        position: relative;
+        border-radius: 300px;
+      }
+      .warp .active {
+        background: #fff;
+        border-radius: 30px 30px 0 0;
+      }
+      .warp .active::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 110%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 20px;
+        background: #fff;
+        transform: rotate(34deg);
+      }
+    </style>
   </head>
   <body>
-    <script>
-      let data = [
-        {
-          createTime: "2024-09-05T18:05:38",
-          tagId: 183163478732575,
-          tagType: "1",
-          createUser: "21275",
-          state: "0",
-          tagDefine: "根据性别不同打标签",
-          tagName: "性别"
-        },
-        {
-          createTime: "2024-09-05T20:08:49",
-          tagId: "1831665788991049729",
-          tagType: "1",
-          createUser: "21275",
-          state: "0",
-          tagDefine: "根据居住地区的不同打标签",
-          tagName: "地区-安新县"
-        }
-      ]
-      let a = {
-        0: { text: "未实名" },
-        1: { text: "已实名" }
-      }
+    <div class="warp">
+      <div>tab1</div>
+      <div class="active">tab2</div>
+      <div>tab2</div>
+    </div>
 
-      let a5 = {
-        0: {
-          text: "性别"
-        },
-        1: {
-          text: "地区-安新县"
-        }
-      }
-      // const b =
-      //   .map((item) => item)
-      let jsons = {}
-      data.forEach((item, index) => {
-        jsons[item.tagId] = { text: item.tagName }
-      })
-
-      console.log("🎂", jsons)
-    </script>
+    <script></script>
   </body>
 </html>
