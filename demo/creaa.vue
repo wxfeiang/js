@@ -41,10 +41,35 @@ const checkCameraPermission = async () => {
   return new Promise((resolve) => {
     plus.android.requestPermissions(
       ["android.permission.CAMERA"],
-      (e) => resolve(e.denied.length === 0),
-      (err) => {
-        console.error(err);
-        resolve(false);
+      function (resultObj) {
+        let result = 0;
+        for (var i = 0; i < resultObj.granted.length; i++) {
+          const grantedPermission = resultObj.granted[i];
+          console.log("已获取的权限：" + grantedPermission);
+          result = 1;
+        }
+        for (var i = 0; i < resultObj.deniedPresent.length; i++) {
+          const deniedPresentPermission = resultObj.deniedPresent[i];
+          console.log("拒绝本次申请的权限：" + deniedPresentPermission);
+          result = 0;
+        }
+        for (var i = 0; i < resultObj.deniedAlways.length; i++) {
+          const deniedAlwaysPermission = resultObj.deniedAlways[i];
+          console.log("永久拒绝申请的权限：" + deniedAlwaysPermission);
+          result = -1;
+        }
+        resolve(result);
+        // 若所需权限被拒绝,则打开APP设置界面,可以在APP设置界面打开相应权限
+        // if (result != 1) {
+        // gotoAppPermissionSetting()
+        // }
+      },
+      function (error) {
+        console.log("申请权限错误：" + error.code + " = " + error.message);
+        resolve({
+          code: error.code,
+          message: error.message,
+        });
       }
     );
   });
