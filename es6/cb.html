@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>回调函数</title>
+  </head>
+
+  <body>
+    <button id="btn">点击回调函数</button>
+    <script>
+      function callback(a, cb) {
+        console.log('回调函数执行sdcsd了', a)
+        cb && cb('回调函数执行了的参数')
+      }
+
+      document.getElementById('btn').onclick = function () {
+        console.log('点击事件执行了')
+        callback(1, (res) => {
+          console.log('回调函数执行了', res)
+        })
+      }
+    </script>
+  </body>
+</html>
