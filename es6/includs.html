@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = ['/system/articles/app/list']
+      const b = '/system/articles/app/list'
+      const c = '/system/articles/app/list?title'
+      let a = arr.includes(changeUrl(c))
+      console.log('🍯[a]:', a)
+      console.log(arr[0].indexOf(c))
+      function changeUrl(url) {
+        return url.indexOf('?') > -1 ? url.split('?')[0] : url
+      }
+    </script>
+  </body>
+</html>

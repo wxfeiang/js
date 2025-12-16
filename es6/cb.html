@@ -10,15 +10,15 @@
     <button id="btn">点击回调函数</button>
     <script>
       function callback(a, cb) {
-        console.log('回调函数执行sdcsd了', a)
-        cb && cb('回调函数执行了的参数')
+        console.log('回调函数执行aasdsdsdcsd了', a)
+        cb && cb('我是传给回调函数的参数')
       }
 
       document.getElementById('btn').onclick = function () {
-        console.log('点击事件执行了')
-        callback(1, (res) => {
-          console.log('回调函数执行了', res)
-        })
+        callback(1, tobackk)
+      }
+      const tobackk = function (a) {
+        console.log('===>>>回调函数执行了', a)
       }
     </script>
   </body>
