@@ -1,69 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
     <style>
-        *{margin: 0;padding: 0;}
-        #smallBox{width: 130px;height: 130px;border: 1px solid blue;margin-left: 100px;margin-top: 100px;position: relative;}
-        #rectangle{width: 60px;height: 40px;background: red;opacity: 0.4;position: absolute;filter: alpha(opacity=40);display: none;cursor: move;}
-        #bigBox{width: 369px;height: 246px;border: 1px solid blue;position: absolute;
-            top: 100px;left: 350px;overflow: hidden;display: none;}
-        #bigImg{position: absolute;}
-
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #smallBox {
+        width: 130px;
+        height: 130px;
+        border: 1px solid blue;
+        margin-left: 100px;
+        margin-top: 100px;
+        position: relative;
+      }
+      #rectangle {
+        width: 60px;
+        height: 40px;
+        background: red;
+        opacity: 0.4;
+        position: absolute;
+        filter: alpha(opacity=40);
+        display: none;
+        cursor: move;
+      }
+      #bigBox {
+        width: 369px;
+        height: 246px;
+        border: 1px solid blue;
+        position: absolute;
+        top: 100px;
+        left: 350px;
+        overflow: hidden;
+        display: none;
+      }
+      #bigImg {
+        position: absolute;
+      }
     </style>
     <script>
-        window.onload = function () {
-            var smallBox = document.getElementById("smallBox");
-            var rectangle = document.getElementById("rectangle");
-            var bigBox = document.getElementById("bigBox");
-            var bigImg = document.getElementById("bigImg");
+      window.onload = function () {
+        var smallBox = document.getElementById('smallBox')
+        var rectangle = document.getElementById('rectangle')
+        var bigBox = document.getElementById('bigBox')
+        var bigImg = document.getElementById('bigImg')
 
-
-            smallBox.onmouseover = function () {
-                rectangle.style.display = "block";
-                bigBox.style.display = "block";
-
-            }
-            smallBox.onmouseout = function () {
-                rectangle.style.display = "none";
-                bigBox.style.display = "none";
-            }
-            document.onmousemove = function (ev) {
-
-                var ev = window.event || ev;
-                var l = ev.clientX - smallBox.offsetLeft-rectangle.offsetWidth/2;
-                var t = ev.clientY - smallBox.offsetTop-rectangle.offsetHeight/2;
-                if(l < 0){l = 0}
-                if(l > smallBox.clientWidth - rectangle.offsetWidth){
-                    l = smallBox.clientWidth - rectangle.offsetWidth;
-                }
-                if(t<0){t = 0;}
-                if(t > smallBox.clientHeight - rectangle.offsetHeight){
-                    t = smallBox.clientHeight - rectangle.offsetHeight;
-                }
-
-                //130/l = 800/?  ? =
-                var x = l * bigImg.clientWidth/smallBox.clientWidth;
-                var y = t * bigImg.clientHeight/smallBox.clientHeight;
-                bigImg.style.left = -x + "px";
-                bigImg.style.top = -y +"px";
-                rectangle.style.left = l + "px";
-                rectangle.style.top = t + "px";
-
-
-            }
+        smallBox.onmouseover = function () {
+          rectangle.style.display = 'block'
+          bigBox.style.display = 'block'
         }
+        smallBox.onmouseout = function () {
+          rectangle.style.display = 'none'
+          bigBox.style.display = 'none'
+        }
+        document.onmousemove = function (ev) {
+          var ev = window.event || ev
+          var l = ev.clientX - smallBox.offsetLeft - rectangle.offsetWidth / 2
+          var t = ev.clientY - smallBox.offsetTop - rectangle.offsetHeight / 2
+          if (l < 0) {
+            l = 0
+          }
+          if (l > smallBox.clientWidth - rectangle.offsetWidth) {
+            l = smallBox.clientWidth - rectangle.offsetWidth
+          }
+          if (t < 0) {
+            t = 0
+          }
+          if (t > smallBox.clientHeight - rectangle.offsetHeight) {
+            t = smallBox.clientHeight - rectangle.offsetHeight
+          }
+
+          //130/l = 800/?  ? =
+          var x = (l * bigImg.clientWidth) / smallBox.clientWidth
+          var y = (t * bigImg.clientHeight) / smallBox.clientHeight
+          bigImg.style.left = -x + 'px'
+          bigImg.style.top = -y + 'px'
+          rectangle.style.left = l + 'px'
+          rectangle.style.top = t + 'px'
+        }
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="smallBox">
-        <div id="rectangle"></div>
-        <img src="small.jpg" alt="" width="130" height="130" id="fd">
+      <div id="rectangle"></div>
+      <img src="small.jpg" alt="" width="130" height="130" id="fd" />
     </div>
     <div id="bigBox">
-        <img src="big.jpg" alt="" width="800" height="800" id="bigImg">
+      <img src="big.jpg" alt="" width="800" height="800" id="bigImg" />
     </div>
-
-</body>
+  </body>
 </html>
